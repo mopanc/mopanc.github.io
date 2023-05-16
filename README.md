@@ -1,2 +1,2 @@
 # mopanc.github.io
-Portfolio website
+Portfolio personal website
