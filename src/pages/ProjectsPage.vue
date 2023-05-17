@@ -355,7 +355,7 @@ export default {
 
 .container--projects {
   margin: auto;
-  max-width: 114rem;
+  width: 90%;
 }
 
 .card-color-0 {
@@ -408,6 +408,50 @@ export default {
 
 .card-color-12 {
   background-color: #328ce7;
+}
+
+@media screen and (max-width: 1024px) {
+  .container--projects {
+  margin: auto;
+  width: 80%;
+}
+
+  .project__card {
+  width: 265px;
+}
+.project__img {
+    width: 239px;
+    height: 155px;
+}
+}
+
+@media screen and (max-width: 530px) {
+  .container--projects {
+  margin: auto;
+  width: 90%;
+  max-width: 100rem;
+}
+
+.project__card {
+  width: 80%;
+}
+
+.project__img {
+    width: 239px;
+    height: 155px;
+}
+
+.search-content {
+    display: block;
+}
+
+.project_content {
+  margin: 20px 0;
+}
+
+.search_box {
+  width: 100%;
+}
 }
 
 </style>

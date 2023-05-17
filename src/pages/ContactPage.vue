@@ -7,40 +7,40 @@
         <p>Email: {{ contato.email }}</p>
         <p>Phone: {{ contato.telefone }}</p>
         <div class="footer__content social_links-1">
-                            <h4 class="footer__title"></h4>
-                            <ul class="footer__social-list">
-                                <li class="footer__social-item">
-                                    <a href="https://www.facebook.com/jorgemopanc" class="footer__social-link-1">
-                                        <i class="ri-facebook-fill"></i>
-                                    </a>
-                                </li>
-                                <li class="footer__social-item">
-                                    <a href="https://www.instagram.com/jorgemopanc/" class="footer__social-link-1">
-                                        <i class="ri-instagram-fill"></i>
-                                    </a>
-                                </li>
-                                <li class="footer__social-item">
-                                    <a href="https://twitter.com/JorgeMo56542670" class="footer__social-link-1">
-                                        <i class="ri-twitter-fill"></i>
-                                    </a>
-                                </li>
-                                <li class="footer__social-item">
-                                    <a href="https://github.com/mopanc" class="footer__social-link-1">
-                                        <i class="ri-github-fill"></i>
-                                    </a>
-                                </li>
-                                <li class="footer__social-item">
-                                    <a href="https://www.linkedin.com/in/jorge-mopanc/" class="footer__social-link-1">
-                                        <i class="ri-linkedin-fill"></i>
-                                    </a>
-                                </li>
-                                <li class="footer__social-item">
-                                    <a href="https://codepen.io/mopanc" class="footer__social-link-1">
-                                        <i class="ri-codepen-line"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+            <h4 class="footer__title"></h4>
+            <ul class="footer__social-list">
+                <li class="footer__social-item">
+                    <a href="https://www.facebook.com/jorgemopanc" class="footer__social-link-1">
+                        <i class="ri-facebook-fill"></i>
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a href="https://www.instagram.com/jorgemopanc/" class="footer__social-link-1">
+                        <i class="ri-instagram-fill"></i>
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a href="https://twitter.com/JorgeMo56542670" class="footer__social-link-1">
+                        <i class="ri-twitter-fill"></i>
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a href="https://github.com/mopanc" class="footer__social-link-1">
+                        <i class="ri-github-fill"></i>
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a href="https://www.linkedin.com/in/jorge-mopanc/" class="footer__social-link-1">
+                        <i class="ri-linkedin-fill"></i>
+                    </a>
+                </li>
+                <li class="footer__social-item">
+                    <a href="https://codepen.io/mopanc" class="footer__social-link-1">
+                        <i class="ri-codepen-line"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
       </div>
     </div>
     <div class="contact-form">
@@ -177,5 +177,17 @@ justify-content: left;
 
 #message {
   height: 100px;
+}
+
+@media screen and (max-width: 764px) {
+  .contacts-page {
+  display: block;
+
+}
+
+.contact-form {
+  margin-top: 4rem;
+  max-width: 380px;
+}
 }
 </style>
