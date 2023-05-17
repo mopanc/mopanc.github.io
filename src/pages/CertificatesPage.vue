@@ -580,4 +580,19 @@ onMounted(() => {
 .section__title {
   color: #000;
 }
+
+@media screen and (max-width: 764px) {
+    .btn--secondary {
+        width: 100%;
+        margin-top: 0;
+    }
+    .contact__content-cert {
+        display: block;
+    }
+    .contact__img-cert {
+        min-width: 100%;
+        max-height: 200px;
+        margin-bottom: 4rem;
+    }
+}
 </style>
