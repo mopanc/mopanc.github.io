@@ -222,7 +222,7 @@
                 <SlickHome />
                 <div class="qualification__footer__projects">
                     <p class="qualification__footer__projects-text" ref="see_all"></p>
-                    <a href="mywork.html" class="btn btn--secondary" ref="see_projects"></a>
+                    <a href="/projects" class="btn btn--secondary" ref="see_projects"></a>
                 </div>
             </div>
         </section>
