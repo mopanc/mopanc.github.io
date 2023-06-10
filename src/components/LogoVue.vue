@@ -34,7 +34,7 @@ h1 {
 }
 
 .name, .lastName {
-  color: #42b983;
+  color: var(--color-primary);
   transition: all 1s ease-in-out;
 }
 

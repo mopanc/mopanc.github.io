@@ -22,9 +22,14 @@ export default {
   title_experience: "Experience",
   subtitle_experience: "Profissional jobs",
   profissional_experience: "Professional Experience",
+
+  title_balancas: "Software Developer at Balanças Marques",
+  description_balancas: "At Balanças Marques I am part of the development and research team, I work with software development used in the products that the company manufactures, the technologies and tools I use are Nodejs, Reactjs, Typescript, and Javascript",
+  dates_balancas: "2023 - Present",
+
   title_frontkom: "Software Developer at Frontkom",
-  description_frontkom: "At Frontkom I'm a frontend developer working with React.js and vue.js developing new projects or implementing new features and also maintaining some websites made with wordpress and drupal.",
-  dates_frontkom: "2022 - Present",
+  description_frontkom: "At Frontkom I worked as frontend developer worked with React.js and vue.js developing new projects and implementing new features and also maintaining some websites made with wordpress and drupal.",
+  dates_frontkom: "2022 - 2023",
 
   title_netgocio: "Web developer at Netgócio",
   description_netgocio: "I was responsible for developing projects, such as landing pages, institutional websites, and e-commerce web stores, I also had support maintenance responsibilities solving problems related to SSL certificates, domains, and hosting.",

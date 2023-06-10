@@ -60,7 +60,7 @@ export default {
 
 .language-option.selected img{
   width: 24px;
-  border-bottom: 2px solid #42b983;
+  border-bottom: 2px solid var(--color-primary);
   transform: scale(1.05);
 }
 

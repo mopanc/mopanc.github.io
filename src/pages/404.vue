@@ -187,7 +187,7 @@ button {
   font-size: 5.6rem;
   padding-bottom: 40px;
   margin: auto;
-  color: #42b983;
+  color: 4var(--color-primary);
 }
 
 .message__text {
@@ -248,7 +248,7 @@ button {
 .e-nav__link:before {
   content: '';
   height: 200px;
-  background: #42b983;
+  background: var(--color-primary);
   position: absolute;
   top: 70px;
   right: 70px;

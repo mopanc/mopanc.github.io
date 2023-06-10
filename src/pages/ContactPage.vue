@@ -169,7 +169,7 @@ button {
     color: var(--color-white);
 }
 .footer__social-link-1:hover {
-    color: #42b983;
+    color: var(--color-primary);
 }
 .social_links-1 {
 justify-content: left;
