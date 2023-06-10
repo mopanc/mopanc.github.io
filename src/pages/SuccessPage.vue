@@ -23,7 +23,7 @@
 .checkmark {
   width: 80px;
   height: 80px;
-  background-color: #42b983;
+  background-color: var(--color-primary);
   border-radius: 50%;
   display: inline-block;
   position: relative;

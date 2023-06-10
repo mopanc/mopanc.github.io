@@ -21,14 +21,19 @@ export default {
   title_experience: "Experiência",
   subtitle_experience: "Trabalho profissional",
   profissional_experience: "Experiência profissional",
+  
+  title_balancas: "Desenvolvedor de software na Balanças Marques",
+  description_balancas: "Na balanças Marques faço parte da equipa de desenvolvimento e pesquisa, trabalho com desenvolvimento de software utilizado nos produtos que a empresa fabrica, as tecnologias e ferramentas que utilizo são Nodejs, Reactjs, Typescript, e Javascript",
+  dates_balancas: "2023 - Present",
 
   title_frontkom: "Desenvolvedor de software na Frontkom",
-  description_frontkom: "Na Frontkom sou desenvolvedor frontend trabalho com React.js e vue.js desenvolvendo novos projetos ou implementando novas funcionalidades e também mantendo atualizados e seguros alguns sites feitos com wordpress e drupal.",
-  dates_frontkom: "2022 - Presente",
+  description_frontkom: "Na Frontkom fui desenvolvedor frontend trabalho com React.js e vue.js desenvolvendo novos projetos ou implementando novas funcionalidades e também mantendo atualizados e seguros alguns sites feitos com wordpress e drupal.",
+  dates_frontkom: "2022 - 2023",
 
   title_netgocio: "Desenvolvedor web na Netgócio",
   description_netgocio: "Fui responsável pelo desenvolvimento de projetos, como landing pages, sites institucionais e lojas virtuais de comércio eletrônico B2B e B2C, além de responsabilidades de manutenção de suporte, resolvendo problemas relacionados a certificados SSL, domínios e hospedagens.",
   dates_netgocio: "2021 - 2022",
+
 
   services: "Serviços",
   what_i_do: "O que faço!",

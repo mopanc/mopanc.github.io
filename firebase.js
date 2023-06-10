@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 // import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref, push, set } from "firebase/database";
 // import { getDatabase, ref, set, push } from "firebase/database";
@@ -11,7 +12,7 @@ import { getDatabase, ref, push, set } from "firebase/database";
 const firebaseConfig = {
   apiKey: "AIzaSyBodL-nt1_bN2URVTqiFIujrSzZZR7C0N8",
   authDomain: "portfolio-db-2f39b.firebaseapp.com",
-  databaseURL: "https://portfolio-db-2f39b-default-rtdb.europe-west1.firebasedatabase.app",
+  databaseURL: "https://portfolio-db-2f39b-default-rtdb.europe-west1.firebasedatabase.app/",
   projectId: "portfolio-db-2f39b",
   storageBucket: "portfolio-db-2f39b.appspot.com",
   messagingSenderId: "84266637472",
@@ -21,6 +22,9 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+// eslint-disable-next-line no-unused-vars
+const analytics = getAnalytics(app);
+//console.log(analytics)
 // const analytics = getAnalytics(app);
 
 // obtenha uma referência para o Realtime Database

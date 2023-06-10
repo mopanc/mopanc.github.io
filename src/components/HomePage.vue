@@ -16,12 +16,12 @@
                             <div class="home__info-wrapper">
                                 <div class="plus_projects">
                                     <span>+</span>
-                                    <p class="home__info-number" ref="countup2">15</p>
+                                    <p class="home__info-number" ref="countup2">25</p>
                                 </div>
                                 <h2 class="home__info-title" ref="projects_completed"></h2>
                             </div>
                             <div class="home__info-wrapper">
-                                <p class="home__info-number" ref="countup3">02</p>
+                                <p class="home__info-number" ref="countup3">03</p>
                                 <h2 class="home__info-title" ref="companies"></h2>
                             </div>
                         </div>
@@ -91,6 +91,7 @@
                                 <ul class="skills__list">
                                     <li class="skills__item"><img src="../assets/icons/php-icon.svg" height="16px" width="16px" alt="php icon">PHP</li>
                                     <li class="skills__item"><img src="../assets/icons/nodejs-icon.svg" height="16px" width="16px" alt="nodejs icon">Nodejs</li>
+                                    <li class="skills__item"><img src="../assets/icons/typescriptlang-icon.svg" height="16px" width="16px" alt="typescript icon">TypeScript</li>
                                     <li class="skills__item"><img src="../assets/icons/firebase-icon.svg" height="16px" width="16px" alt="Firebase icon">Firebase</li>
                                     <li class="skills__item"><img src="../assets/icons/mysql-official.svg" height="16px" width="16px" alt="MySql icon">MySql</li>
                                     <li class="skills__item"><img src="../assets/icons/npmjs-icon.svg" height="16px" width="16px" alt="npm icon">Npm</li>
@@ -164,11 +165,17 @@
                     <div class="d-grid qualification__content">
                         <!-- Experience 1-->
                         <div class="qualification__item">
+                            <h3 class="qualification__title" ref="title_balancas"></h3>
+                            <p class="qualification__description" ref="description_balancas"></p>
+                            <span class="qualification__date" ref="dates_balancas"></span>
+                        </div>
+                        <!-- Experience 2-->
+                        <div class="qualification__item">
                             <h3 class="qualification__title" ref="title_frontkom"></h3>
                             <p class="qualification__description" ref="description_frontkom"></p>
                             <span class="qualification__date" ref="dates_frontkom"></span>
                         </div>
-                        <!-- Experience 2-->
+                        <!-- Experience 3-->
                         <div class="qualification__item">
                             <h3 class="qualification__title" ref="title_netgocio"></h3>
                             <p class="qualification__description" ref="description_netgocio"></p>
@@ -259,10 +266,10 @@ export default {
             const countup1 = new CountUp(this.$refs.countup1, 0, 3, 0, options); // 0 -> início, 3 -> fim
             countup1.start();
 
-            const countup2 = new CountUp(this.$refs.countup2, 0, 15, 0, options);
+            const countup2 = new CountUp(this.$refs.countup2, 0, 25, 0, options);
             countup2.start();
 
-            const countup3 = new CountUp(this.$refs.countup3, 0, 2, 0, options);
+            const countup3 = new CountUp(this.$refs.countup3, 0, 3, 0, options);
             countup3.start();
 
             const selectedLanguage = localStorage.getItem('selectedLanguage') || "en";
@@ -290,6 +297,9 @@ export default {
             this.$refs.title_experience.textContent = expressions.title_experience;
             this.$refs.subtitle_experience.textContent = expressions.subtitle_experience;
             this.$refs.profissional_experience.textContent = expressions.profissional_experience;
+            this.$refs.title_balancas.textContent = expressions.title_balancas;
+            this.$refs.description_balancas.textContent = expressions.description_balancas;
+            this.$refs.dates_balancas.textContent = expressions.dates_balancas;
             this.$refs.title_frontkom.textContent = expressions.title_frontkom;
             this.$refs.description_frontkom.textContent = expressions.description_frontkom;
             this.$refs.dates_frontkom.textContent = expressions.dates_frontkom;
@@ -321,7 +331,7 @@ export default {
     height: 370px;
     overflow: hidden;
     border-radius: 50%;
-    border: 3px solid #42b983;
+    border: 3px solid var(--color-primary);
     transition: transform 0.5s ease-out;
 }
 
@@ -365,7 +375,7 @@ export default {
     color: var(--color-white);
 }
 .footer__social-link:hover {
-    color: #42b983;
+    color: var(--color-primary);
 }
 .social_links {
 justify-content: center;

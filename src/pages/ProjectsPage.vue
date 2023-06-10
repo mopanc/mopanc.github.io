@@ -246,7 +246,7 @@ export default {
   width: 310px;
   height: 500px;
   margin: -5px -5px;
-  border: 1px solid #42b983;
+  border: 1px solid var(--color-primary);
   display: flex;
   flex-direction: column;
 }
@@ -315,12 +315,12 @@ export default {
 }
 
 .project__link:hover {
-  color: #42b983;
+  color: var(--color-primary);
   padding-left: 8px;
 }
 
 .project__link:hover i {
-  color: #42b983;
+  color: var(--color-primary);
   padding-left: 8px;
 }
 
@@ -342,7 +342,7 @@ export default {
 
 .search_box {
   padding: 5px 16px 5px 5px;
-  border: 1px solid #42b983;
+  border: 1px solid var(--color-primary);
   border-radius: 6px;
   width: 220px;
   outline: none;
@@ -359,7 +359,7 @@ export default {
 }
 
 .card-color-0 {
-  background: linear-gradient(45deg, #3503ad, #42b983);
+  background: linear-gradient(45deg, #348765, var(--color-primary));
 }
 
 .card-color-1 {
