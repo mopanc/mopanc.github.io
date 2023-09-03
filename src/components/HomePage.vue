@@ -190,8 +190,8 @@
         <section id="service" class="section service">
             <div class="container">
                 <div class="section__header">
-                    <h2 class="section__title" ref="services"></h2>
-                    <span class="section__subtitle" ref="what_i_do"></span>
+                    <h2 class="section__title_service" ref="services"></h2>
+                    <span class="section__subtitle_service" ref="what_i_do"></span>
                 </div>
                 <div class="d-grid service__wrapper">
                     <!--xxxxxx service card 1 xxxxxx-->
