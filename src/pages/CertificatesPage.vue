@@ -8,6 +8,18 @@
               </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
+                        <img class="contact__img-cert" src="../assets/img/certificates/48-coursera.png" alt="Sql">
+                        <div>
+                          <h2 class="contact__title-cert">Certificate Sql</h2>
+                          <p class="contact__description-cert">Coursera - IBM <br/> A Practical Introduction for Querying Databases - Finished with Honors </p>
+                        </div>
+                    </div>
+                    <div class="contact__btn">
+                        <a class="btn btn--secondary button--modal"></a>
+                    </div>
+                </div>
+                <div class="d-grid contact__wrapper-cert">
+                    <div class="contact__content-cert">
                         <img class="contact__img-cert" src="../assets/img/certificates/1-cursoemvideohtml5.png" alt="html5">
                         <div>
                           <h2 class="contact__title-cert certificate_html"></h2>
@@ -584,7 +596,7 @@ onMounted(() => {
 @media screen and (max-width: 764px) {
     .btn--secondary {
         width: 100%;
-        margin-top: 0;
+        margin-top: 0 !important;
     }
     .contact__content-cert {
         display: block;

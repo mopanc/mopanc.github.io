@@ -500,7 +500,8 @@ body {
 /* Services
 --------------------------------------------------------------*/
 .service {
-  background-image: url(../assets/bg1.jpg);
+  min-height: 70vh;
+  background-image: url(../assets/pexels2.jpg);
   color: #fff;
   background-attachment: fixed;
   background-position: center;
@@ -522,7 +523,8 @@ body {
 .service__card:hover {
   cursor: pointer;
   color: white; 
-  background: linear-gradient(45deg, #348765, var(--color-primary));
+  /* background: linear-gradient(45deg, #348765, var(--color-primary)); */
+  background: var(--color-primary);
 }
 .service__card:hover .service__title {
   color: white; 
@@ -548,7 +550,7 @@ body {
   color: #676767;
 }
 
-.section__title {
+.section__title_service {
   color: #fff;
 }
 
@@ -1050,18 +1052,21 @@ input:checked + .slider:before {
 }
 
 .container-skills .cards:nth-child(1) .face.face2 {
-  background: linear-gradient(35deg, #348765, var(--color-primary));
+  /* background: linear-gradient(35deg, #348765, var(--color-primary)); */
+  background: var(--color-primary);
   border-radius: 6px;
   
 }
 
 .container-skills .cards:nth-child(2) .face.face2 {
-  background: linear-gradient(35deg, var(--color-primary), #348765);
+  /* background: linear-gradient(35deg, var(--color-primary), #348765); */
+  background: var(--color-primary);
   border-radius: 6px;
 }
 
 .container-skills .cards:nth-child(3) .face.face2 {
-  background: linear-gradient(35deg, #348765, var(--color-primary));
+  /* background: linear-gradient(35deg, #348765, var(--color-primary)); */
+  background: var(--color-primary);
 }
 
 /* .container-skills .cards .face.face2::before {

@@ -150,7 +150,8 @@ body {
   background-size: cover;
   width: 300px;
   height: 420px;
-  background: linear-gradient(45deg, #348765, var(--color-primary));
+  /* background: linear-gradient(45deg, #348765, var(--color-primary)); */
+  background: var(--color-primary);
   border-radius: 6px;
   box-shadow: 0 15px 60px rgba(0, 0, 0, 0.2);
   

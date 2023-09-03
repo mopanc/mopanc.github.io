@@ -315,8 +315,10 @@ export default {
 }
 
 .project__link:hover {
-  color: var(--color-primary);
+  /* color: var(--color-primary); */
+  color: white;
   padding-left: 8px;
+  font-weight: 700;
 }
 
 .project__link:hover i {
@@ -359,7 +361,8 @@ export default {
 }
 
 .card-color-0 {
-  background: linear-gradient(45deg, #348765, var(--color-primary));
+  /* background: linear-gradient(45deg, #348765, var(--color-primary)); */
+  background: var(--color-primary);
 }
 
 .card-color-1 {
