@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-    
+
     <!-- <div>
       <div class="projects-cards-content-left">
         <div>
@@ -211,6 +211,18 @@ h3 {
 .projects-cards-content-left {
     display: flex;
     margin: 80px 0;
+}
+
+@media screen and (max-width: 530px) {
+.projects-cards-content {
+  display: block !important;
+  margin: 80px 0;
+}
+
+.projects-cards-content-left {
+    display: block !important;
+    margin: 80px 0;
+}
 }
 .transparent-box {
   min-height: 135px;

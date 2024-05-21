@@ -611,6 +611,7 @@ h3 {
     display: flex;
     margin: 80px 0;
 }
+
 .transparent-box {
   min-height: 135px;
   height: fit-content;
@@ -661,6 +662,31 @@ h3 {
 .svg_icons {
   height: 16px;
   width: 16px;
+}
+
+@media screen and (max-width: 530px) {
+.projects-cards-content {
+  background-color: var(--color-bg-primary-bk);
+  display: block !important;
+  justify-content: center;
+  margin: 80px 0;
+}
+
+.projects-cards-content-left {
+    display: block !important;
+    margin: 80px 0;
+}
+
+.fixed-size-img {
+  width: 275px; /* Defina o tamanho desejado aqui */
+  height: 200px; /* Defina o tamanho desejado aqui */
+  object-fit: cover; /* Ajusta a imagem dentro do contêiner */
+}
+.content_proj {
+    display: block;
+    max-width: 100%;
+}
+
 }
 
 </style>
