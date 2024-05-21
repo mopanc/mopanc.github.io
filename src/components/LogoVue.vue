@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100px;
+  height: 100%;
 }
 
 h1 {
@@ -47,7 +47,7 @@ h1 {
 }
 
 .dev, .slash, .closeDev {
-  color: #151515;
+  color: #fff;
   transform-origin: center;
   transition: all 1s ease-in-out;
 }
