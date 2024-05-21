@@ -351,7 +351,7 @@ button {
 .cable {
   width: 8px;
     height: 248px;
-    background-image: linear-gradient(rgba(1, 1, 1, 0.7), rgb(17, 124, 44)), linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
+    background-image: linear-gradient(rgba(1, 1, 1, 0.7), rgb(63, 17, 124)), linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7));
 }
 
 .cover {
@@ -514,6 +514,6 @@ button {
 }
 
 .body_404 {
-  background-color: #1a1a1a;
+  background-color: #11071F;
 }
 </style>

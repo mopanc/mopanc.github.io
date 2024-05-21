@@ -6,7 +6,8 @@ export default {
   projects: 'Projetos',
   certificates: 'Certificados',
   title: `Olá, eu sou o Jorge, desenvolvedor web`,
-  presentation: "Bem-vindo ao meu portfólio! Meu nome é Jorge e tenho cerca de 3 anos de experiência como desenvolvedor web. Ao longo do meu percurso, aprimorei minhas habilidades em várias linguagens e frameworks, o que me permite encarar desafios complexos com confiança. Sou apaixonado por criar experiências de usuário dinâmicas e intuitivas. Através do meu trabalho, busco combinar estética com funcionalidade, criando websites exclusivos que aprimoram a jornada do usuário.",
+  // presentation: "Bem-vindo ao meu website! Meu nome é Jorge e tenho cerca de 3 anos de experiência como desenvolvedor web. Ao longo do meu percurso, aprimorei minhas habilidades em várias linguagens e frameworks, o que me permite encarar desafios complexos com confiança. Sou apaixonado por criar experiências de usuário dinâmicas e intuitivas. Através do meu trabalho, busco combinar estética com funcionalidade, criando websites exclusivos que aprimoram a jornada do usuário.",
+  presentation: "Bem-vindo ao meu website! O Meu nome é Jorge,e tenho cerca de 3 anos de experiência como desenvolvedor web. Ao longo do meu percurso, aprimorei as minhas habilidades em várias linguagens e frameworks, o que me permite encarar desafios complexos com confiança. Sou apaixonado por criar experiências de usuário dinâmicas e intuitivas. Através do meu trabalho, busco combinar estética com funcionalidade, criando websites exclusivos que aprimoram a jornada do usuário.",
   experience: "Anos de experiência",
   projects_completed: "Projetos terminados",
   companies: "Empresas que trabalhei",
@@ -15,7 +16,7 @@ export default {
   who_i_am: "Quem eu sou!",
   Technologies: "Tecnologias que tenho trabalhado recentemente:",
   title_about_me: "Sou um desenvolvedor web experiente e profissional.",
-  description_about_me: "Sou um desenvolvedor web apaixonado pelo que faço. O meu trabalho é fundamentado na disciplina e nas habilidades de resiliência que adquiri durante meu tempo nas forças armadas. Sou comunicativo e curioso, sou casado e tenho dois filhos, a Beatriz e Matheus. No meu tempo livre gosto de andar de bicicleta e estudar novas tecnologias. Gosto de ler, principalmente livros relacionados a desenvolvimento pessoal, psicologia e neurociência.",
+  description_about_me: "Sou um desenvolvedor web apaixonado pelo que faço. Além disso, sou movido por valores fundamentais que são essenciais para o meu trabalho. Acredito na importância da Visão para direcionar cada projeto, na Habilidade de Comunicação para garantir uma colaboração eficaz, na Integridade como a base de todas as interações, na Empatia e Compreensão para entender as necessidades dos usuários, na Resiliência para superar desafios, na Motivação constante que impulsiona o meu desenvolvimento, na Habilidade em Tomada de Decisão para orientar escolhas fundamentais, no Desenvolvimento de Pessoas como parte integrante do meu crescimento profissional, no Pensamento Estratégico para abordar projetos de maneira abrangente, na Responsabilidade para garantir entregas consistentes. Juntos, esses valores moldam a minha abordagem, resultando em soluções que transcendem o esperado.",
   know_more: "Saiba mais",
 
   title_experience: "Experiência",
@@ -35,16 +36,17 @@ export default {
   dates_netgocio: "2021 - 2022",
 
 
-  services: "Serviços",
+  services: "Experiência de trabalho",
   what_i_do: "O que faço!",
-  front_end: "Desenvolvimento Front End",
-  backend: "Desenvolvimento Backend",
-  drupal_wodrpress: "Wordpress ou Drupal",
+  front_end: "Frontend",
+  backend: "Backend",
+  database: "Database",
+  dev_ops: "DevOps",
 
   my_projects: "Projetos",
   recent_work: "O meu trabalho recente",
   freela_calc: "Calculadora freelance",
-  freela_calc_description: "Jobs Calc, permite-nos definir o valor por hora de um desenvolvedor, quantas horas queremos trabalhamos e adicionar trabalhos na lista e assim podemos ter uma visão do preço e do tempo que vai nos custar, projeto interessante.",
+  freela_calc_description: "Aplicação web que permite aos utilizadores especificar quantas horas desejam trabalhar por dia e adicionar projetos à lista. A aplicação calcula o custo e o tempo necessário para concluir cada projeto, obtendo uma visão clara dos preços e prazos. *Este projeto foi realizado numa maratona oferecida pela RocketSeat.",
   apple_calculator: "Calculadora Apple",
   apple_calculator_description: "Uma calculadora inspirada na calculadora do sistema mac os, já fiz várias calculadoras mas essa ficou muito boa!",
   covid_19: "Rastreador Covid 19",
@@ -103,7 +105,7 @@ export default {
   //footer
   my_phone: "(+351) 910 559 307",
   my_email: "jorgemopanc@icloud.com",
-  rights: "© 2023 Jorge Morais. Todos os direitos reservados",
+  rights: "© 2024 Jorge Morais. Todos os direitos reservados",
 
   //certificates
   section_title: "Certificados",

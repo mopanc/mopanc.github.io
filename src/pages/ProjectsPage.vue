@@ -1,41 +1,73 @@
 <template>
     <!--xxxxxxxxxxxx Projects xxxxxxxxxxxx-->
-    <section id="project" class="section project">
-        <div class="container--projects">
-            <div class="search-content">
-                <div class="project_content">
-                    <h2 class="section__title--projects" ref="projects_page"></h2>
-                    <span class="section__subtitle--projects" ref="projects_page_subtitle"></span>
-                </div>
-                <div>
-                    <label for="search_box" ref="projects_page_search"> </label>
-                    <input class="search_box" type="text" name="search_box" v-model="searchTerm" placeholder="Search projects">
-                </div>
-            </div>
-            <div class="d-grid project__wrapper">
-                <div v-for="(project, index) in filteredProjects" :key="index" class="project__card" :class="project.class">
-                    <div class="border">
-                        <div>
-                            <img :src="project.imageSrc" :alt="project.imageAlt" class="project__img">
-                        </div>
-                        <div class="project__header">
-                            <h3 class="project__title">{{ project.projectName }}</h3>
-                        </div>
-                        <div class="project__details">
-                            <div>
-                                <p class="project__description">{{ project.projectDescription }}</p>
-                            </div>
-                            <div>
-                                <a :href="project.githubLink" target="_blank" class="project__link"> {{ project.view_project }}
-                                    <i class="ri-arrow-right-line"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+     <section id="project" class="section project">
+    <div class="container--projects">
+      <div class="search-content">
+        <div class="project_content">
+          <h2 class="section__title--projects" ref="projects_page"></h2>
+          <span class="section__subtitle--projects" ref="projects_page_subtitle"></span>
         </div>
-    </section>
+        <div>
+          <label for="search_box" ref="projects_page_search"> </label>
+          <input class="search_box" type="text" name="search_box" v-model="searchTerm" placeholder="Search projects">
+        </div>
+      </div>
+      <div>
+        <div v-for="(project, index) in filteredProjects" :key="index" :class="project.class">
+          <div :class="['projects-cards-content', {'projects-cards-content-left': index % 2 !== 0}]">
+            <div v-if="index % 2 === 0" class="content_proj">
+              <div class="testimonial__content">
+                <h3 class="testimonial__name-right">{{ project.projectName }}</h3>
+                <div class="transparent-box">
+                  <p class="testimonial__description">{{ project.projectDescription }}</p>
+                  <ul class="tecnologies-used">
+                    <li
+                      v-for="(tech, idx) in project.technologies"
+                      :key="idx"
+                      class="skills__item"
+                    >
+                      <img
+                        :src="getIconPath(tech.icon)"
+                        :alt="tech.name + ' icon'"
+                        class="svg_icons"
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div>
+                <img :src="project.imageSrc" :alt="project.imageAlt" class="testimonial__img fixed-size-img" />
+              </div>
+            </div>
+            <div v-else class="content_proj">
+              <div>
+                <img :src="project.imageSrc" :alt="project.imageAlt" class="testimonial__img fixed-size-img" />
+              </div>
+              <div class="testimonial__content">
+                <h3 class="testimonial__name">{{ project.projectName }}</h3>
+                <div class="transparent-box-left">
+                  <p class="testimonial__description">{{ project.projectDescription }}</p>
+                  <ul class="tecnologies-used">
+                    <li
+                      v-for="(tech, idx) in project.technologies"
+                      :key="idx"
+                      class="skills__item"
+                    >
+                      <img
+                        :src="getIconPath(tech.icon)"
+                        :alt="tech.name + ' icon'"
+                        class="svg_icons"
+                      />
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -85,17 +117,22 @@ export default {
   data() {
     return {
       expressions: {},
-      searchTerm: '', // Propriedade para armazenar o termo de busca
+      searchTerm: '',
       projects: [
-          {
-            imageSrc: googleGlass,
-            imageAlt: 'Google Glasses',
-            projectName: 'google_title',
-            projectDescription: 'google_description',
-            githubLink: 'https://github.com/mopanc/projeto-glass-html5',
-            class: 'card-color-0',
-            view_project: 'view_project'
-          },
+        {
+          imageSrc: googleGlass,
+          imageAlt: "Google Glasses",
+          projectName: "google_title",
+          projectDescription: "google_description",
+          githubLink: "https://github.com/mopanc/projeto-glass-html5",
+          class: "card-color-0",
+          view_project: "view_project",
+          technologies: [
+            { name: "Html5", icon: "w3_html5-icon.svg" },
+            { name: "Css3", icon: "w3_css-icon.svg" },
+            { name: "JavaScript", icon: "js.svg" },
+          ],
+        },
           {
             imageSrc: pythonBirds,
             imageAlt: 'Python Birds Game',
@@ -103,7 +140,10 @@ export default {
             projectDescription: 'python_description',
             githubLink: 'https://github.com/mopanc/pythonbirds-simples',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+              { name: "Python", icon: "python-icon.svg" },
+            ],
           },
           {
             imageSrc: jobsCalc,
@@ -112,7 +152,14 @@ export default {
             projectDescription: 'jobs_description',
             githubLink: 'https://github.com/mopanc/MaratonaDiscover',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+              { name: "JavaScript", icon: "js.svg" },
+              { name: "Node.js", icon: "nodejs-icon.svg" },
+              { name: "Ejs", icon: "ejs.svg" },
+              { name: "Express", icon: "express.svg" },
+              { name: "SQLite", icon: "sqlitebrowser.svg" },
+            ],
           },
           {
             imageSrc: instagramImage,
@@ -121,7 +168,12 @@ export default {
             projectDescription: 'instagram_description',
             githubLink: 'https://github.com/mopanc/InstagramPage',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+            { name: "Html5", icon: "w3_html5-icon.svg" },
+            { name: "Css3", icon: "w3_css-icon.svg" },
+            { name: "JavaScript", icon: "js.svg" },
+            ],
           },
           {
             imageSrc: netflixImage,
@@ -130,7 +182,12 @@ export default {
             projectDescription: 'netflix_description',
             githubLink: 'https://github.com/mopanc/interfaceNetflix',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+            { name: "Html5", icon: "w3_html5-icon.svg" },
+            { name: "Css3", icon: "w3_css-icon.svg" },
+            { name: "JavaScript", icon: "js.svg" },
+            ],
           },
           {
             imageSrc: santanderImage,
@@ -139,7 +196,11 @@ export default {
             projectDescription: 'santanderApp_description',
             githubLink: 'https://github.com/mopanc/SantanderDevWeek',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+              { name: "Kotlin", icon: "kotlin1.svg" },
+              { name: "Android", icon: "Android2021.svg" }
+            ],
           },
           {
             imageSrc: calculatorImage,
@@ -148,7 +209,11 @@ export default {
             projectDescription: 'calculator_description',
             githubLink: 'https://github.com/mopanc/calculator',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+              { name: "JavaScript", icon: "js.svg" },
+              { name: "VueJs", icon: "vuejs-icon.svg" }
+            ],
           },
           {
             imageSrc: snakeImage,
@@ -157,7 +222,10 @@ export default {
             projectDescription: 'snake_description',
             githubLink: 'https://github.com/mopanc/snakeGame',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+              { name: "JavaScript", icon: "js.svg" }
+            ],
           },
           {
             imageSrc: facebookImage,
@@ -166,7 +234,12 @@ export default {
             projectDescription: 'facebook_description',
             githubLink: 'https://github.com/mopanc/Tela-Login-Facebook',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+            { name: "Html5", icon: "w3_html5-icon.svg" },
+            { name: "Css3", icon: "w3_css-icon.svg" },
+            { name: "JavaScript", icon: "js.svg" },
+            ],
           },
           {
             imageSrc: covidImage,
@@ -175,7 +248,12 @@ export default {
             projectDescription: 'covid_description',
             githubLink: 'https://github.com/mopanc/covid19-tracker',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+            { name: "Html5", icon: "w3_html5-icon.svg" },
+            { name: "Css3", icon: "w3_css-icon.svg" },
+            { name: "JavaScript", icon: "js.svg" },
+            ],
           },
           {
             imageSrc: imcImage,
@@ -184,7 +262,11 @@ export default {
             projectDescription: 'bmi_description',
             githubLink: 'https://github.com/mopanc/calcImcApp',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+              { name: "Kotlin", icon: "kotlin1.svg" },
+              { name: "Android", icon: "Android2021.svg" }
+            ],
           },
           {
             imageSrc: gotImage,
@@ -193,7 +275,12 @@ export default {
             projectDescription: 'wgot_description',
             githubLink: 'https://github.com/mopanc/GameOfThronesPage',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+            { name: "Html5", icon: "w3_html5-icon.svg" },
+            { name: "Css3", icon: "w3_css-icon.svg" },
+            { name: "JavaScript", icon: "js.svg" },
+            ],
           },
           {
             imageSrc: socialImage,
@@ -202,7 +289,11 @@ export default {
             projectDescription: 'social_description',
             githubLink: 'https://github.com/mopanc/profile-page',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+              { name: "JavaScript", icon: "js.svg" },
+              { name: "ReactJs", icon: "reactjs-icon.svg" },
+            ],
           },
           {
             imageSrc: calcImage,
@@ -211,7 +302,12 @@ export default {
             projectDescription: 'calc_description',
             githubLink: 'https://github.com/mopanc/calc',
             class: 'card-color-0',
-            view_project: 'view_project'
+            view_project: 'view_project',
+            technologies: [
+            { name: "Html5", icon: "w3_html5-icon.svg" },
+            { name: "Css3", icon: "w3_css-icon.svg" },
+            { name: "JavaScript", icon: "js.svg" },
+            ],
           },
       ]
     };
@@ -229,7 +325,17 @@ export default {
         return projectNameLowerCase.includes(searchTermLowerCase);
       });
     }
-  }
+  },
+  methods: {
+    getIconPath(icon) {
+      try {
+        return require(`@/assets/icons/${icon}`);
+      } catch (error) {
+        console.error("Icon not found:", icon);
+        return "";
+      }
+    },
+  },
 };
 </script>
 <style>
@@ -252,11 +358,11 @@ export default {
 }
 
 .section__title--projects {
-  color: #000;
+  color: var(--color-primary);
   font-size: 44px;
 }
 .section__subtitle {
-  color: #000;
+  color: var(--color-primary);
 }
 
 .project__header {
@@ -346,7 +452,7 @@ export default {
   padding: 5px 16px 5px 5px;
   border: 1px solid var(--color-primary);
   border-radius: 6px;
-  width: 220px;
+  width: 320px;
   outline: none;
 }
 .search_box:focus {
@@ -357,12 +463,14 @@ export default {
 
 .container--projects {
   margin: auto;
-  width: 90%;
+  width: 70%;
 }
 
 .card-color-0 {
+  display: flex;
+  justify-content: center;
   /* background: linear-gradient(45deg, #348765, var(--color-primary)); */
-  background: var(--color-primary);
+  /* background: var(--color-primary); */
 }
 
 .card-color-1 {
@@ -416,7 +524,7 @@ export default {
 @media screen and (max-width: 1024px) {
   .container--projects {
   margin: auto;
-  width: 80%;
+  width: 100%;
 }
 
   .project__card {
@@ -455,6 +563,104 @@ export default {
 .search_box {
   width: 100%;
 }
+}
+
+
+.testimonial__content {
+  width: 90%;
+  margin: auto;
+  padding: 20px 0;
+}
+.testimonial__content,
+p,
+h3 {
+  color: #fff;
+}
+
+.testimonial__name {
+  margin-top: 30px;
+  font-size: 2.4rem;
+  text-align: justify;
+  color: #CCD6F6;
+}
+
+.testimonial__name-right {
+  margin-top: 30px;
+  margin-left: 20px;
+  font-size: 2.4rem;
+  text-align: justify;
+  color: #CCD6F6;
+}
+
+.testimonial__description {
+  color: #fff;
+  padding: 20px 20px 0 20px;
+  /* margin-top: 30px; */
+  margin-right: 40px;
+  text-align: justify;
+}
+
+.projects-cards-content {
+  background-color: var(--color-bg-primary-bk);
+  display: flex;
+  justify-content: center;
+  margin: 80px 0;
+}
+
+.projects-cards-content-left {
+    display: flex;
+    margin: 80px 0;
+}
+.transparent-box {
+  min-height: 135px;
+  height: fit-content;
+  width: 105%;
+  border-radius: 8px;
+  background: rgba(105, 59, 147, 0.2); /* Fundo roxo com opacidade */
+  backdrop-filter: blur(7px); /* Efeito de desfoque */
+  -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Webkit */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Bordas semi-transparentes */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve para profundidade */
+}
+
+.transparent-box-left {
+  min-height: 135px;
+  height: fit-content;
+  width: 105%;
+  margin-left: -20px;
+  border-radius: 8px;
+  background: rgba(105, 59, 147, 0.2); /* Fundo roxo com opacidade */
+  backdrop-filter: blur(7px); /* Efeito de desfoque */
+  -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Webkit */
+  border: 1px solid rgba(255, 255, 255, 0.3); /* Bordas semi-transparentes */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra leve para profundidade */
+}
+
+.tecnologies-used {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 12px;
+}
+
+.projects_box {
+  display: flex;
+  justify-content: center;
+}
+
+.content_proj {
+  display: flex;
+  max-width: 100%;
+}
+
+.fixed-size-img {
+  width: 520px; /* Defina o tamanho desejado aqui */
+  height: 340px; /* Defina o tamanho desejado aqui */
+  object-fit: cover; /* Ajusta a imagem dentro do contêiner */
+}
+
+.svg_icons {
+  height: 16px;
+  width: 16px;
 }
 
 </style>

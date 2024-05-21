@@ -6,7 +6,8 @@ export default {
   projects: 'Projects',
   certificates: 'Certificates',
   title: `Hello, I'm Jorge, Web Developer.`,
-  presentation: "Welcome to my portfolio! My name is Jorge, and I have around 3 years of experience as a web developer. Throughout my journey, I have honed my skills in various languages and frameworks, enabling me to tackle complex challenges with confidence. I am passionate about creating dynamic and intuitive user experiences. Through my work, I strive to combine aesthetics with functionality, crafting unique websites that enhance the user journey.",
+  // presentation: "Welcome to my website! My name is Jorge, and I have around 3 years of experience as a web developer. Throughout my journey, I have honed my skills in various languages and frameworks, enabling me to tackle complex challenges with confidence. I am passionate about creating dynamic and intuitive user experiences. Through my work, I strive to combine aesthetics with functionality, crafting unique websites that enhance the user journey.",
+  presentation: "Welcome to my website! My name is Jorge, and I have around 3 years of experience as a web developer. Throughout my journey, I've refined my skills in various languages and frameworks, empowering me to confidently tackle complex challenges. I am passionate about crafting dynamic and intuitive user experiences. Through my work, I strive to blend aesthetics with functionality, creating unique websites that enhance the user journey.",
   experience: "Years Experience",
   projects_completed: "Projects Completed",
   companies: "Companies Worked",
@@ -15,7 +16,7 @@ export default {
   who_i_am: "Who I am",
   Technologies: "Technologies I've been working with:",
   title_about_me: "I'm a Professional and Experienced Web Developer.",
-  description_about_me: "I am a web developer who is passionate about what I do. My work is grounded in the discipline and resilience skills that I acquired during my time in the military. I am communicative and proactive, and I am married with two children, Beatriz and Matheus. In my free time, I enjoy biking and studying new technologies. I also enjoy reading, especially books related to personal development, psychology, and neuroscience.",
+  description_about_me: "I am a web developer who is passionate about what I do. Moreover, I am guided by core values that are integral to my work. I believe in the importance of Vision to steer each project, Communication Skills to ensure effective collaboration, Integrity as the bedrock of all interactions, Empathy and Understanding to grasp user needs, Resilience to overcome challenges, Constant Motivation driving my ongoing development, Decision-Making Ability to guide crucial choices, People Development as a crucial aspect of my professional growth, Strategic Thinking to approach projects comprehensively, and Responsibility to ensure consistent deliveries. Together, these values shape my approach, resulting in solutions that surpass expectations.",
   know_more: "Know more",
   //Experience section
 
@@ -35,16 +36,17 @@ export default {
   description_netgocio: "I was responsible for developing projects, such as landing pages, institutional websites, and e-commerce web stores, I also had support maintenance responsibilities solving problems related to SSL certificates, domains, and hosting.",
   dates_netgocio: "2021 - 2022",
   //service section
-  services: "Services",
+  services: "Work experience",
   what_i_do: "What I do",
-  front_end: "Front End Development",
-  backend: "Backend Development",
-  drupal_wodrpress: "Wordpress or Drupal",
+  front_end: "Frontend",
+  backend: "Backend",
+  database: "Database",
+  dev_ops: "DevOps",
   //Projects section
   my_projects: "Projects",
   recent_work: "My recent Work",
   freela_calc: "Freelance work calculator",
-  freela_calc_description: "Jobs Calc, we can define our hourly rate, how many hours we work per week and add jobs to the list and then we can have a view of the price and the time it will cost us , interesting.",
+  freela_calc_description: "A web application that allows users specify how many hours they want to work per day and add projects to the list. The application calculates the cost and time required to complete each project, providing a clear overview of prices and deadlines. *This project was completed during a marathon offered by RocketSeat.",
   apple_calculator: "Apple calculator",
   apple_calculator_description: "A calculator inspired by the mac os system calculator I've made several calculators but this one turned out really nice!",
   covid_19: "Covid 19 tracker",
@@ -99,7 +101,7 @@ export default {
   //Footer
   my_phone: "(+351) 910 559 307",
   my_email: "jorgemopanc@icloud.com",
-  rights: "© 2023 Jorge Morais. All Rights Reserved",
+  rights: "© 2024 Jorge Morais. All Rights Reserved",
 
   //certificates
   section_title: "Certificates",

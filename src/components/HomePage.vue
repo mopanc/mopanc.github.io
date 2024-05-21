@@ -86,62 +86,65 @@
                     <div class="skills">
                         <h3 class="skills__title" ref="Technologies"></h3>
                         <div class="container-skills">
+
                             <div class="cards">
-                            <div class="face face1">
-                                <ul class="skills__list">
-                                    <li class="skills__item"><img src="../assets/icons/php-icon.svg" height="16px" width="16px" alt="php icon">PHP</li>
-                                    <li class="skills__item"><img src="../assets/icons/nodejs-icon.svg" height="16px" width="16px" alt="nodejs icon">Nodejs</li>
-                                    <li class="skills__item"><img src="../assets/icons/typescriptlang-icon.svg" height="16px" width="16px" alt="typescript icon">TypeScript</li>
-                                    <li class="skills__item"><img src="../assets/icons/firebase-icon.svg" height="16px" width="16px" alt="Firebase icon">Firebase</li>
-                                    <li class="skills__item"><img src="../assets/icons/mysql-official.svg" height="16px" width="16px" alt="MySql icon">MySql</li>
-                                    <li class="skills__item"><img src="../assets/icons/npmjs-icon.svg" height="16px" width="16px" alt="npm icon">Npm</li>
-                                    <li class="skills__item"><img src="../assets/icons/python-icon.svg" height="16px" width="16px" alt="Python icon">Python</li>
-                                    <li class="skills__item"><img src="../assets/icons/graphql-icon.svg" height="16px" width="16px" alt="Graphql icon">GraphQl</li>
-                                    <li class="skills__item"><img src="../assets/icons/docker-icon.svg" width="16px" height="16px" alt="Docker icon">Docker</li>
-                                </ul>      
-                            </div>
-                        <div class="face face2">
-                            <h2 class="face_title">Backend</h2>
-                        </div>
+                                <div class="face face1">
+                                    <ul class="skills__list">
+                                        <li class="skills__item"><img src="../assets/icons/nodejs-icon.svg" height="16px" width="16px" alt="nodejs icon">Nodejs</li>
+                                        <li class="skills__item"><img src="../assets/icons/typescriptlang-icon.svg" height="16px" width="16px" alt="typescript icon">TypeScript</li>
+                                        <li class="skills__item"><img src="../assets/icons/mysql-official.svg" height="16px" width="16px" alt="MySql icon">MySql</li>
+                                        <li class="skills__item"><img src="../assets/icons/npmjs-icon.svg" height="16px" width="16px" alt="npm icon">Npm</li>
+                                        <li class="skills__item"><img src="../assets/icons/graphql-icon.svg" height="16px" width="16px" alt="Graphql icon">GraphQl</li>
+                                        <li class="skills__item"><img src="../assets/icons/docker-icon.svg" width="16px" height="16px" alt="Docker icon">Docker</li>
+                                        <li class="skills__item"><img src="../assets/icons/python-icon.svg" height="16px" width="16px" alt="Python icon">Python</li>
+                                        <li class="skills__item"><img src="../assets/icons/php-icon.svg" height="16px" width="16px" alt="php icon">PHP</li>
+                                        <li class="skills__item"><img src="../assets/icons/firebase-icon.svg" height="16px" width="16px" alt="Firebase icon">Firebase</li>
+                                        <li class="skills__item"><img src="../assets/icons/socketio.svg" height="16px" width="16px" alt="Firebase icon">SocketIo</li>
+                                    </ul>      
+                                </div>
+                                <div class="face face2">
+                                    <h2 class="face_title">Backend</h2>
+                                </div>
                             </div>
 
                             <div class="cards">
-                        <div class="face face1">
-                            <ul class="skills__list">
-                                <li class="skills__item"><img src="../assets/icons/w3_html5-icon.svg" height="16px" width="16px" alt="html5 icon">Html5</li>
-                                <li class="skills__item"><img src="../assets/icons/w3_css-icon.svg" height="16px" width="16px" alt="css3 icon">Css3</li>
-                                <li class="skills__item"><img src="../assets/icons/sass-lang-icon.svg" height="16px" width="16px" alt="sass icon">Sass</li>
-                                <li class="skills__item"><img src="../assets/icons/239ec8a4-163e-4792-83b6-3f6d96911757.svg" height="16px" width="16px" alt="javascript icon">Javascript</li>
-                                <li class="skills__item"><img src="../assets/icons/jquery-vertical.svg" alt="jquery" height="16px" width="16px">jquery</li>
-                                <li class="skills__item"><img src="../assets/icons/getbootstrap-icon.svg" alt="Bootstrap" height="16px" width="16px">Bootstrap</li>
-                                <li class="skills__item"><img src="../assets/icons/reactjs-icon.svg" width="16px" height="16px" alt="react icon">Reactjs</li>
-                                <li class="skills__item"><img src="../assets/icons/vuejs-icon.svg" width="16px" height="16px" alt="vue icon">Vuejs</li>
-                                <li class="skills__item"><img src="../assets/icons/nuxtjs-icon.svg" alt="Nuxtjs" height="16px" width="16px">Nuxtjs</li>
-                                <li class="skills__item"><img src="../assets/icons/tailwindcss-icon.svg" alt="Tailwind" height="16px" width="16px">Tailwind</li>
-                            </ul>
-                        </div>
-                        <div class="face face2">
-                            <h2 class="face_title">Frontend</h2>
-                        </div>
+                                <div class="face face1">
+                                    <ul class="skills__list">
+                                        <li class="skills__item"><img src="../assets/icons/js.svg" height="16px" width="16px" alt="javaScript icon">Javascript</li>
+                                        <li class="skills__item"><img src="../assets/icons/w3_html5-icon.svg" height="16px" width="16px" alt="html5 icon">Html5</li>
+                                        <li class="skills__item"><img src="../assets/icons/w3_css-icon.svg" height="16px" width="16px" alt="css3 icon">Css3</li>
+                                        <li class="skills__item"><img src="../assets/icons/sass-lang-icon.svg" height="16px" width="16px" alt="sass icon">Sass</li>
+                                        <li class="skills__item"><img src="../assets/icons/239ec8a4-163e-4792-83b6-3f6d96911757.svg" height="16px" width="16px" alt="javascript icon">Javascript</li>
+                                        <li class="skills__item"><img src="../assets/icons/jquery-vertical.svg" alt="jquery" height="16px" width="16px">jquery</li>
+                                        <li class="skills__item"><img src="../assets/icons/getbootstrap-icon.svg" alt="Bootstrap" height="16px" width="16px">Bootstrap</li>
+                                        <li class="skills__item"><img src="../assets/icons/reactjs-icon.svg" width="16px" height="16px" alt="react icon">Reactjs</li>
+                                        <li class="skills__item"><img src="../assets/icons/vuejs-icon.svg" width="16px" height="16px" alt="vue icon">Vuejs</li>
+                                        <li class="skills__item"><img src="../assets/icons/nuxtjs-icon.svg" alt="Nuxtjs" height="16px" width="16px">Nuxtjs</li>
+                                        <li class="skills__item"><img src="../assets/icons/tailwindcss-icon.svg" alt="Tailwind" height="16px" width="16px">Tailwind</li>
+                                    </ul>
+                                </div>
+                                <div class="face face2">
+                                    <h2 class="face_title">Frontend</h2>
+                                </div>
                             </div>
 
                             <div class="cards">
-                        <div class="face face1">
-                            <ul class="skills__list">
-                                <li class="skills__item"><img src="../assets/icons/atlassian_jira-icon.svg" height="16px" width="16px" alt="Jira icon">Jira</li>
-                                <li class="skills__item"><img src="../assets/icons/getpostman-icon.svg" alt="Postaman" height="16px" width="16px">Postman</li>
-                                <li class="skills__item"><img src="../assets/icons/git-scm-icon.svg" height="16px" width="16px" alt="Git icon">Git</li>
-                                <li class="skills__item"><img src="../assets/icons/github-icon.svg" height="16px" width="16px" alt="Github icon">Github</li>
-                                <li class="skills__item"><img src="../assets/icons/gitlab-icon.svg" alt="Gitlab" height="16px" width="16px">Gitlab</li>
-                                <li class="skills__item"><img src="../assets/icons/google_analytics-icon.svg" alt="Analitics" height="16px" width="16px">Analytics</li>
-                                <li class="skills__item"><img src="../assets/icons/monday-icon.svg" width="16px" height="16px" alt="Monday icon">Monday</li>
-                                <li class="skills__item"><img src="../assets/icons/visualstudio_code-icon.svg" width="16px" height="16px" alt="Vscode icon">Vscode</li>
-                                <li class="skills__item"><img src="../assets/icons/slack-icon.svg" width="16px" height="16px" alt="Slack icon">Slack</li>
-                            </ul>
-                        </div>
-                        <div class="face face2">
-                            <h2 class="face_title">Tools</h2>
-                        </div>
+                                <div class="face face1">
+                                    <ul class="skills__list">
+                                        <li class="skills__item"><img src="../assets/icons/visualstudio_code-icon.svg" width="16px" height="16px" alt="Vscode icon">Vscode</li>
+                                        <li class="skills__item"><img src="../assets/icons/git-scm-icon.svg" height="16px" width="16px" alt="Git icon">Git</li>
+                                        <li class="skills__item"><img src="../assets/icons/github-icon.svg" height="16px" width="16px" alt="Github icon">Github</li>
+                                        <li class="skills__item"><img src="../assets/icons/gitlab-icon.svg" alt="Gitlab" height="16px" width="16px">Gitlab</li>
+                                        <li class="skills__item"><img src="../assets/icons/getpostman-icon.svg" alt="Postaman" height="16px" width="16px">Postman</li>
+                                        <li class="skills__item"><img src="../assets/icons/atlassian_jira-icon.svg" height="16px" width="16px" alt="Jira icon">Jira</li>
+                                        <li class="skills__item"><img src="../assets/icons/slack-icon.svg" width="16px" height="16px" alt="Slack icon">Slack</li>
+                                        <li class="skills__item"><img src="../assets/icons/monday-icon.svg" width="16px" height="16px" alt="Monday icon">Monday</li>
+                                        <li class="skills__item"><img src="../assets/icons/google_analytics-icon.svg" alt="Analitics" height="16px" width="16px">Analytics</li>
+                                    </ul>
+                                </div>
+                                <div class="face face2">
+                                    <h2 class="face_title">Tools</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -182,6 +185,12 @@
                             <span class="qualification__date" ref="dates_netgocio"></span>
                         </div>
                     </div>
+                    <!-- <div>
+                        <a href="https://www.linkedin.com/in/jorge-mopanc/" class="footer__social-link">
+                            <i class="ri-linkedin-fill"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/jorge-mopanc/"> Please visit my Linkedin Page</a>
+                    </div> -->
                 </div>
             </div>
         </section>
@@ -211,9 +220,16 @@
                     <!--xxxxxx service card 3 xxxxxx-->
                     <div class="service__card">
                         <div class="service__icon">
+                            <i class="ri-database-2-line"></i>
+                        </div>
+                        <h3 class="service__title" ref="database"></h3>
+                    </div>
+                    <!--xxxxxx service card 4 xxxxxx-->
+                    <div class="service__card">
+                        <div class="service__icon">
                             <i class="ri-pages-line"></i>
                         </div>
-                        <h3 class="service__title" ref="drupal_wodrpress"></h3>
+                        <h3 class="service__title" ref="dev_ops"></h3>
                     </div>
                 </div>
             </div>
@@ -310,7 +326,8 @@ export default {
             this.$refs.what_i_do.textContent = expressions.what_i_do;
             this.$refs.front_end.textContent = expressions.front_end;
             this.$refs.backend.textContent = expressions.backend;
-            this.$refs.drupal_wodrpress.textContent = expressions.drupal_wodrpress;
+            this.$refs.database.textContent = expressions.database;
+            this.$refs.dev_ops.textContent = expressions.dev_ops;
             this.$refs.my_projects.textContent = expressions.my_projects;
             this.$refs.recent_work.textContent = expressions.recent_work;
             this.$refs.see_all.textContent = expressions.see_all;
@@ -372,11 +389,11 @@ export default {
 }
 
 .footer__social-link {
-    color: var(--color-white);
-}
-.footer__social-link:hover {
     color: var(--color-primary);
 }
+/* .footer__social-link:hover {
+    color: var();
+} */
 .social_links {
 justify-content: center;
 }

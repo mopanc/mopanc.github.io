@@ -590,7 +590,7 @@ onMounted(() => {
 }
 
 .section__title {
-  color: #000;
+  color: #fff;
 }
 
 @media screen and (max-width: 764px) {

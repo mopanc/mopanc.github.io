@@ -43,10 +43,6 @@
   margin-left: -6px;
 }
 
-.btn--secondary {
-  margin-top: 40px;
-}
-
 .title--success {
     margin-top: 40px;
 

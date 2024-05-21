@@ -1,7 +1,7 @@
 :root {
   /* Colors
   ____________________*/
-  --color-primary: #ff0000;
+  --color-primary: #EE7E2F;
   /* --color-primary: #42b983; */
   /* --color-primary: #003EE9; */
   --color-primary-dark: #208c61;
@@ -12,11 +12,12 @@
   --color-white: #ffffff;
   --color-text: #676767;
   --color-border: #373737; */
-  --color-bg-primary: #ffffff;
+  --color-bg-primary: #1A0B2E;
+  --color-bg-primary-bk: #11071F;
   --color-bg-secondary: #676767;
   --color-bg-footer: #151515;
-  --color-white: #1a1a1a;
-  --color-text: #676767;
+  --color-white: #A362FF;
+  --color-text: #A362FF;
   --color-border: #373737;
 
   /* Font & Typography
@@ -48,7 +49,7 @@ font-family: 'Stalinist One', cursive;
   /* With & Height 
   ------------------*/
   --width-container: 98rem;
-  --height-header: 10rem;
+  --height-header: 8rem;
   --height-header--scroll: 8rem;
 
   /* Transition and box shadow*/
@@ -107,7 +108,7 @@ main {
 }
 
 body {
-  background-color: var(--color-bg-primary);
+  background-color: var(--color-bg-primary-bk);
   font-family: var(--ff-body);
   font-size: var(--fs-md);
   color: var(--color-text);
@@ -191,6 +192,7 @@ body {
 --------------------------------------------------------------*/
 .header {
   background-color: var(--color-bg-primary);
+  color: #fff;
   position: fixed;
   top: 0;
   left: 0;
@@ -420,6 +422,7 @@ body {
 }
 
 .skills__item {
+  color: #806EE3;
   margin-bottom: 1rem;
   display: flex;
   font-size: 0.8em;
@@ -501,7 +504,7 @@ body {
 --------------------------------------------------------------*/
 .service {
   min-height: 70vh;
-  background-image: url(../assets/pexels2.jpg);
+  background-image: url(../assets/openart-image1.jpeg);
   color: #fff;
   background-attachment: fixed;
   background-position: center;
@@ -521,7 +524,7 @@ body {
 }
 
 .service__card:hover {
-  cursor: pointer;
+  /* cursor: pointer; */
   color: white; 
   /* background: linear-gradient(45deg, #348765, var(--color-primary)); */
   background: var(--color-primary);
@@ -610,10 +613,10 @@ body {
 }
 
 .testimonial__img {
-  max-width: 40rem;
+  max-width: 50rem;
   border-radius: 6px;
   margin: auto;
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
 }
 
 .testimonial__description {
@@ -668,6 +671,7 @@ body {
 .contact__title {
   font-size: var(--fs-xxl);
   margin-bottom: 2rem;
+  color: var(--color-primary);
 }
 
 .contact__title-cert {
@@ -703,7 +707,7 @@ body {
 /* Footer
 --------------------------------------------------------------*/
 .footer {
-  background-color: var(--color-bg-footer);
+  background-color: var(--color-bg-primary-bk);
   padding: 5rem 0;
 }
 
@@ -882,9 +886,12 @@ body {
   }
 
   .qualification__content,
-  .service__wrapper,
   .project__wrapper {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .service__wrapper {
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .qualification__description, .qualification__title {
