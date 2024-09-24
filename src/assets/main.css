@@ -1,7 +1,7 @@
 :root {
   /* Colors
   ____________________*/
-  --color-primary: #EE7E2F;
+  --color-primary: #000;
   /* --color-primary: #42b983; */
   /* --color-primary: #003EE9; */
   --color-primary-dark: #208c61;
@@ -12,13 +12,13 @@
   --color-white: #ffffff;
   --color-text: #676767;
   --color-border: #373737; */
-  --color-bg-primary: #1A0B2E;
-  --color-bg-primary-bk: #11071F;
-  --color-bg-secondary: #676767;
-  --color-bg-footer: #151515;
-  --color-white: #A362FF;
-  --color-text: #A362FF;
-  --color-border: #373737;
+  --color-bg-primary: #3a3a3a;
+  --color-bg-primary-bk: #1d1d1d;
+  --color-bg-secondary: #747474;
+  --color-bg-footer: #2a2a2a;
+  --color-white: #f1f1f1;
+  --color-text: #f2f2f2;
+  --color-border: #747474;
 
   /* Font & Typography
 
