@@ -1,10 +1,8 @@
 :root {
   /* Colors
   ____________________*/
-  --color-primary: #000;
   /* --color-primary: #42b983; */
   /* --color-primary: #003EE9; */
-  --color-primary-dark: #208c61;
   /* --color-primary-dark: #0000E9; */
   /* --color-bg-primary: #1a1a1a;
   --color-bg-secondary: #242424;
@@ -12,13 +10,90 @@
   --color-white: #ffffff;
   --color-text: #676767;
   --color-border: #373737; */
-  --color-bg-primary: #3a3a3a;
-  --color-bg-primary-bk: #1d1d1d;
-  --color-bg-secondary: #747474;
-  --color-bg-footer: #2a2a2a;
-  --color-white: #f1f1f1;
-  --color-text: #f2f2f2;
-  --color-border: #747474;
+
+  --color-primary: #00796b;
+  --color-primary-dark: #004d40; 
+  --color-bg-primary: #2e2e2e; 
+  --color-bg-primary-bk: #121212; 
+  --color-bg-secondary: #616161; 
+  --color-bg-footer: #424242; 
+  --color-white: #e0e0e0;
+  --color-text: #ffffff; 
+  --color-border: #616161;
+
+  --color-primary: #1e3a8a; 
+--color-primary-dark: #16264b; 
+--color-bg-primary: #2d2d2d;
+--color-bg-primary-bk: #0f0f0f; 
+--color-bg-secondary: #4f4f4f; 
+--color-bg-footer: #3c3c3c;
+--color-white: #f9f9f9; 
+--color-text: #ffdd57; 
+--color-border: #4f4f4f; 
+
+--color-primary: #2962ff; /* Azul vibrante */
+--color-primary-dark: #1e40af; /* Azul mais profundo */
+--color-bg-primary: #2d2d2d; /* Cinza escuro para fundo */
+--color-bg-primary-bk: #0f0f0f; /* Preto profundo */
+--color-bg-secondary: #4f4f4f; /* Cinza intermediário */
+--color-bg-footer: #3c3c3c; /* Cinza escuro */
+--color-white: #f9f9f9; /* Branco claro */
+--color-text: #ffd700; /* Dourado mais forte */
+--color-border: #4f4f4f; /* Cinza intermediário para bordas */
+
+--color-primary: #1e90ff; /* Azul elétrico */
+--color-primary-dark: #0047ab; /* Azul navy */
+--color-bg-primary: #2d2d2d; /* Cinza escuro */
+--color-bg-primary-bk: #0f0f0f; /* Preto */
+--color-bg-secondary: #4f4f4f; /* Cinza intermediário */
+--color-bg-footer: #3c3c3c; /* Cinza escuro para o rodapé */
+--color-white: #ffffff; /* Branco puro */
+--color-text: #ffcc00; /* Dourado intenso */
+--color-border: #4f4f4f; /* Cinza intermediário para bordas */
+
+--color-primary: #007bff; /* Azul bem saturado */
+--color-primary-dark: #0056b3; /* Azul profundo */
+--color-bg-primary: #2d2d2d; /* Cinza escuro para fundo */
+--color-bg-primary-bk: #0f0f0f; /* Preto profundo */
+--color-bg-secondary: #4f4f4f; /* Cinza intermediário */
+--color-bg-footer: #3c3c3c; /* Cinza escuro */
+--color-white: #f9f9f9; /* Branco claro */
+--color-text: #ffb800; /* Dourado metálico */
+--color-border: #4f4f4f; /* Cinza intermediário para bordas */
+
+--color-primary: #0d6efd; /* Azul luminoso */
+--color-primary-dark: #003580; /* Azul profundo */
+--color-bg-primary: #2d2d2d; /* Cinza escuro */
+--color-bg-primary-bk: #0f0f0f; /* Preto fosco */
+--color-bg-secondary: #4f4f4f; /* Cinza intermediário */
+--color-bg-footer: #3c3c3c; /* Cinza escuro para rodapé */
+--color-white: #f9f9f9; /* Branco claro */
+--color-text: #ffbf00; /* Dourado realçado */
+--color-border: #4f4f4f; /* Cinza intermediário para bordas */
+
+/* --color-primary: #e74c3c; 
+--color-primary-dark: #c0392b; 
+--color-bg-primary: #2c2c2c;
+--color-bg-primary-bk: #1a1a1a;
+--color-bg-secondary: #444444; 
+--color-bg-footer: #333333; 
+--color-white: #f7f7f7;
+--color-text: #fdfdfd;
+--color-border: #444444;  */
+
+/* --color-primary: #2ecc71; 
+--color-primary-dark: #27ae60; 
+--color-bg-primary: #2e2e2e; 
+--color-bg-primary-bk: #121212;
+--color-bg-secondary: #95a5a6; 
+--color-bg-footer: #7f8c8d; 
+--color-white: #ecf0f1; 
+--color-text: #ffffff; 
+--color-border: #95a5a6; */
+
+
+
+  
 
   /* Font & Typography
 
