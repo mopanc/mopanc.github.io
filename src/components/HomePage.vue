@@ -91,13 +91,14 @@
                                 <div class="face face1">
                                     <ul class="skills__list">
                                         <li class="skills__item"><img src="../assets/icons/nodejs-icon.svg" height="16px" width="16px" alt="nodejs icon">Nodejs</li>
+                                        <li class="skills__item"><img src="../assets/icons/js.svg" height="16px" width="16px" alt="javaScript icon">Javascript</li>
                                         <li class="skills__item"><img src="../assets/icons/typescriptlang-icon.svg" height="16px" width="16px" alt="typescript icon">TypeScript</li>
                                         <li class="skills__item"><img src="../assets/icons/mysql-official.svg" height="16px" width="16px" alt="MySql icon">MySql</li>
                                         <li class="skills__item"><img src="../assets/icons/npmjs-icon.svg" height="16px" width="16px" alt="npm icon">Npm</li>
                                         <li class="skills__item"><img src="../assets/icons/graphql-icon.svg" height="16px" width="16px" alt="Graphql icon">GraphQl</li>
                                         <li class="skills__item"><img src="../assets/icons/docker-icon.svg" width="16px" height="16px" alt="Docker icon">Docker</li>
-                                        <li class="skills__item"><img src="../assets/icons/python-icon.svg" height="16px" width="16px" alt="Python icon">Python</li>
-                                        <li class="skills__item"><img src="../assets/icons/php-icon.svg" height="16px" width="16px" alt="php icon">PHP</li>
+                                        <!-- <li class="skills__item"><img src="../assets/icons/python-icon.svg" height="16px" width="16px" alt="Python icon">Python</li> -->
+                                        <!-- <li class="skills__item"><img src="../assets/icons/php-icon.svg" height="16px" width="16px" alt="php icon">PHP</li> -->
                                         <li class="skills__item"><img src="../assets/icons/firebase-icon.svg" height="16px" width="16px" alt="Firebase icon">Firebase</li>
                                         <li class="skills__item"><img src="../assets/icons/socketio.svg" height="16px" width="16px" alt="Firebase icon">SocketIo</li>
                                     </ul>      
@@ -110,7 +111,6 @@
                             <div class="cards">
                                 <div class="face face1">
                                     <ul class="skills__list">
-                                        <li class="skills__item"><img src="../assets/icons/js.svg" height="16px" width="16px" alt="javaScript icon">Javascript</li>
                                         <li class="skills__item"><img src="../assets/icons/w3_html5-icon.svg" height="16px" width="16px" alt="html5 icon">Html5</li>
                                         <li class="skills__item"><img src="../assets/icons/w3_css-icon.svg" height="16px" width="16px" alt="css3 icon">Css3</li>
                                         <li class="skills__item"><img src="../assets/icons/sass-lang-icon.svg" height="16px" width="16px" alt="sass icon">Sass</li>
