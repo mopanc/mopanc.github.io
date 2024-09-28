@@ -579,13 +579,19 @@ body {
 --------------------------------------------------------------*/
 .service {
   min-height: 70vh;
-  background-image: url(../assets/openart-image1.jpeg);
+  background-image: url(../assets/galaxy.jpg);
   color: #fff;
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
-
+@media (max-width: 768px) {
+  .service {
+    background-size: cover; /* Se adapta melhor para telas menores */
+    background-attachment: scroll; /* Desabilita o efeito fixo em dispositivos móveis */
+  }
+}
 .service__card {
   background-color: #fff;
   box-shadow: var(--box-shadow);
