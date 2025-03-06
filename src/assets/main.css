@@ -71,6 +71,17 @@
 --color-text: #ffbf00; /* Dourado realçado */
 --color-border: #4f4f4f; /* Cinza intermediário para bordas */
 
+/*black e khaki*/
+  --color-primary: #c3b091; /* Khaki médio - cor principal */
+  --color-primary-dark: #8b7a5e; /* Khaki escuro - cor complementadora */
+  --color-bg-primary: #121212; /* Preto profundo para fundo principal */
+  --color-bg-primary-bk: #0a0a0a; /* Preto mais intenso para contraste */
+  --color-bg-secondary: #2d2d2d; /* Cinza escuro para elementos secundários */
+  --color-bg-footer: #1f1f1f; /* Preto médio para rodapés */
+  --color-white: #fdfbee; /* Branco bege claro para contraste - combina com khaki */
+  --color-text: #d2b48c; /* Bege claro / khaki como cor de texto (subtle highlight) */
+  --color-border: #8b7a5e; /* Khaki escuro para bordas e separadores */
+
 /* --color-primary: #e74c3c; 
 --color-primary-dark: #c0392b; 
 --color-bg-primary: #2c2c2c;
