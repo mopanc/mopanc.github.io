@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo - Terminal</title>
+    <style>
+        body {
+            background-color: black; /* Fundo preto para simular terminal */
+            color: #b8c5db; /* Cinza azulado, estilo Zsh */
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .terminal {
+            width: 700px;
+            max-width: 90%;
+            border: 2px solid #b8c5db; /* Cor da borda com tom próximo ao texto */
+            padding: 15px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .line {
+            white-space: pre-wrap;
+            margin: 5px 0;
+        }
+
+        .prompt {
+            color: #6aed1d; /* Verde do Prompt do Terminal */
+        }
+
+        .command {
+            color: #ffdd57; /* Amarelo para simular comandos */
+        }
+
+        .output {
+            color: #b8c5db; /* Cinza azulado para saída dos comandos */
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: #6aed1d; /* Cor verde piscando para o cursor */
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+<div class="terminal" id="terminal"></div>
+<script>
+    const lines = [
+        `<span class="prompt">jorgemorais@macOS</span>:<span class="command">~</span>$ ls -la`,
+        `<span class="output">.</span>`,
+        `<span class="output">..</span>`,
+        `<span class="output">currículo_JorgeMorais.txt</span>`,
+        `<span class="prompt">jorgemorais@macOS</span>:<span class="command">~</span>$ cat currículo_JorgeMorais.txt`,
+        '',
+        `<span class="output">Nome: Jorge Morais</span>`,
+        `<span class="output">Cargo: FullStack Developer</span>`,
+        `<span class="output">Resumo: 4+ anos de experiência com React, Vue.js e Node.js.</span>`,
+        `<span class="output">         Apaixonado por arquitetura limpa e soluções escaláveis.</span>`,
+        `<span class="output">         Fortes habilidades em gestão de código e liderança técnica.</span>`,
+        '',
+        `<span class="output">Contato:</span>`,
+        `<span class="output">  Email: jorgemopanc@icloud.com</span>`,
+        `<span class="output">  Localização: Braga, Portugal</span>`,
+        `<span class="output">  LinkedIn: linkedin.com/in/jorge-mopanc</span>`,
+        `<span class="output">  GitHub: github.com/jorgemorais272</span>`,
+        `<span class="output">  Telefone: +351 910559307</span>`,
+        `<span class="output">  Portfólio: www.jorgemopanc.com</span>`,
+        '',
+        `<span class="prompt">jorgemorais@macOS</span>:<span class="command">~</span>$ cd experiência_profissional`,
+        `<span class="prompt">jorgemorais@macOS</span>:<span class="command">~/experiência_profissional</span>$ ls`,
+        `<span class="output">BalançasMarques.txt  Frontkom.txt  Netgocio.txt</span>`,
+        `<span class="prompt">jorgemorais@macOS</span>:<span class="command">~/experiência_profissional</span>$ cat BalançasMarques.txt`,
+        `<span class="output">Empresa: Balanças Marques</span>`,
+        `<span class="output">Cargo: FullStack Developer (06/2023 - presente)</span>`,
+        `<span class="output">Responsabilidades:</span>`,
+        `<span class="output">  - Desenvolvimento de ferramentas ligadas aos produtos da empresa.</span>`,
+        `<span class="output">  - Análise e desenvolvimento de sistemas backend.</span>`,
+        `<span class="output">  - Tecnologias: React, JavaScript, TypeScript, Node.js, SQL, Git.</span>`,
+        '',
+        `<span class="prompt">jorgemorais@macOS</span>:<span class="command">~/experiência_profissional</span>$ cat Frontkom.txt`,
+        `<span class="output">Empresa: Frontkom</span>`,
+        `<span class="output">Cargo: Frontend Developer (10/2022 - 05/2023)</span>`,
+        `<span class="output">Responsabilidades:</span>`,
+        `<span class="output">  - Desenvolvimento e manutenção de front-end moderno.</span>`,
+        `<span class="output">  - Tecnologias: HTML5, CSS3, React, Tailwind, Drupal, PHP.</span>`,
+        '',
+        `<span class="prompt">jorgemorais@macOS</span>:<span class="command">~/experiência_profissional</span>$ cat Netgocio.txt`,
+        `<span class="output">Empresa: Netgocio</span>`,
+        `<span class="output">Cargo: Web Developer (08/2021 - 10/2022)</span>`,
+        `<span class="output">Responsabilidades:</span>`,
+        `<span class="output">  - Desenvolvimento de websites para B2B e B2C.</span>`,
+        `<span class="output">  - Tecnologias: HTML5, CSS3, jQuery, Bootstrap, Vue.js, PHP.</span>`,
+        '',
+        `<span class="prompt">jorgemorais@macOS</span>:<span class="command">~</span>$ exit`
+    ];
+
+    let index = 0;
+    const terminal = document.getElementById('terminal');
+
+    function typeLine() {
+        if (index < lines.length) {
+            const line = document.createElement('div');
+            line.classList.add('line');
+            line.innerHTML = lines[index];
+            terminal.appendChild(line);
+            index++;
+            setTimeout(typeLine, 100);
+        } else {
+            const cursor = document.createElement('span');
+            cursor.classList.add('cursor');
+            terminal.appendChild(cursor);
+        }
+    }
+
+    typeLine();
+</script>
+</body>
+</html>

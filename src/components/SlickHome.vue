@@ -116,20 +116,25 @@ export default {
       this.selectedLanguage = selectedLanguage;
     }
 
-    // importa o arquivo de idioma correto com base no idioma selecionado
-    import(`../languages/${this.selectedLanguage}.js`).then((module) => {
-      // usa as expressões traduzidas do módulo importado
-      const expressions = module.default;
-      this.$refs.freela_calc.textContent = expressions.freela_calc;
-      this.$refs.covid_19.textContent = expressions.covid_19;
-      this.$refs.covid_19_description.textContent = expressions.covid_19_description;
-      this.$refs.freela_calc_description.textContent = expressions.freela_calc_description;
-      this.$refs.apple_calculator.textContent = expressions.apple_calculator;
-      this.$refs.apple_calculator_description.textContent = expressions.apple_calculator_description;
-      this.$refs.google_glass.textContent = expressions.google_glass;
-      this.$refs.google_glass_description.textContent = expressions.google_glass_description;
-      this.$refs.santander.textContent = expressions.santander;
-      this.$refs.santander_description.textContent = expressions.santander_description;
+    this.$nextTick(() => {
+      // importa o arquivo de idioma correto com base no idioma selecionado
+      import(`../languages/${this.selectedLanguage}.js`).then((module) => {
+        // usa as expressões traduzidas do módulo importado
+        const expressions = module.default;
+        this.$refs.freela_calc.textContent = expressions.freela_calc;
+        this.$refs.freela_calc_description.textContent = expressions.freela_calc_description;
+        this.$refs.covid_19.textContent = expressions.covid_19;
+        this.$refs.covid_19_description.textContent = expressions.covid_19_description;
+        this.$refs.apple_calculator.textContent = expressions.apple_calculator;
+        this.$refs.apple_calculator_description.textContent = expressions.apple_calculator_description;
+        //
+        // if (this.$refs.google_glass.textContent) {
+        //   this.$refs.google_glass.textContent = expressions.google_glass;
+        //   this.$refs.google_glass_description.textContent = expressions.google_glass_description;
+        // }
+        // this.$refs.santander.textContent = expressions.santander;
+        // this.$refs.santander_description.textContent = expressions.santander_description;
+      });
     });
   },
 };
@@ -229,7 +234,7 @@ h3 {
   height: fit-content;
   width: 105%;
   border-radius: 8px;
-  background: rgba(105, 59, 147, 0.2); /* Fundo roxo com opacidade */
+  background: rgba(195, 176, 145, 0.2);
   backdrop-filter: blur(7px); /* Efeito de desfoque */
   -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Webkit */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Bordas semi-transparentes */
@@ -242,7 +247,7 @@ h3 {
   width: 105%;
   margin-left: -20px;
   border-radius: 8px;
-  background: rgba(105, 59, 147, 0.2); /* Fundo roxo com opacidade */
+  background: rgba(195, 176, 145, 0.2);
   backdrop-filter: blur(7px); /* Efeito de desfoque */
   -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Webkit */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Bordas semi-transparentes */

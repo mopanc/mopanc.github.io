@@ -617,7 +617,7 @@ h3 {
   height: fit-content;
   width: 105%;
   border-radius: 8px;
-  background: rgba(105, 59, 147, 0.2); /* Fundo roxo com opacidade */
+  background: rgba(195, 176, 145, 0.2);
   backdrop-filter: blur(7px); /* Efeito de desfoque */
   -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Webkit */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Bordas semi-transparentes */
@@ -630,7 +630,7 @@ h3 {
   width: 105%;
   margin-left: -20px;
   border-radius: 8px;
-  background: rgba(105, 59, 147, 0.2); /* Fundo roxo com opacidade */
+  background: rgba(195, 176, 145, 0.2);
   backdrop-filter: blur(7px); /* Efeito de desfoque */
   -webkit-backdrop-filter: blur(10px); /* Compatibilidade com Webkit */
   border: 1px solid rgba(255, 255, 255, 0.3); /* Bordas semi-transparentes */

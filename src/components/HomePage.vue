@@ -10,7 +10,7 @@
                         <p class="home__description" ref="presentation"></p>
                         <div class="home__info">
                             <div class="home__info-wrapper">
-                                <p class="home__info-number" ref="countup1">03</p>
+                                <p class="home__info-number" ref="countup1">04</p>
                                 <h2 class="home__info-title" ref="experience"></h2>
                             </div>
                             <div class="home__info-wrapper">
@@ -279,7 +279,7 @@ export default {
             useEasing: true, // adicionar suavização (aceleração/desaceleração) à animação
             };
 
-            const countup1 = new CountUp(this.$refs.countup1, 0, 3, 0, options); // 0 -> início, 3 -> fim
+            const countup1 = new CountUp(this.$refs.countup1, 0, 4, 0, options); // 0 -> início, 3 -> fim
             countup1.start();
 
             const countup2 = new CountUp(this.$refs.countup2, 0, 25, 0, options);
