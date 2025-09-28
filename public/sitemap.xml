@@ -4,76 +4,76 @@
 
     <!-- Homepage - English -->
     <url>
-        <loc>https://mopanc.github.io/</loc>
-        <lastmod>2025-01-27</lastmod>
+        <loc>https://www.jorgemopanc.com/</loc>
+        <lastmod>2025-01-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
-        <xhtml:link rel="alternate" hreflang="pt" href="https://mopanc.github.io/?lang=pt"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mopanc.github.io/?lang=en"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mopanc.github.io/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://www.jorgemopanc.com/?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.jorgemopanc.com/?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jorgemopanc.com/"/>
     </url>
 
     <!-- Homepage - Portuguese -->
     <url>
-        <loc>https://mopanc.github.io/?lang=pt</loc>
-        <lastmod>2025-01-27</lastmod>
+        <loc>https://www.jorgemopanc.com/?lang=pt</loc>
+        <lastmod>2025-01-28</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
-        <xhtml:link rel="alternate" hreflang="pt" href="https://mopanc.github.io/?lang=pt"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mopanc.github.io/?lang=en"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mopanc.github.io/"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://www.jorgemopanc.com/?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.jorgemopanc.com/?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jorgemopanc.com/"/>
     </url>
 
     <!-- Projects Page -->
     <url>
-        <loc>https://mopanc.github.io/projects</loc>
-        <lastmod>2025-01-27</lastmod>
+        <loc>https://www.jorgemopanc.com/projects</loc>
+        <lastmod>2025-01-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
-        <xhtml:link rel="alternate" hreflang="pt" href="https://mopanc.github.io/projects?lang=pt"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mopanc.github.io/projects?lang=en"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mopanc.github.io/projects"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://www.jorgemopanc.com/projects?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.jorgemopanc.com/projects?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jorgemopanc.com/projects"/>
     </url>
 
     <!-- Certificates Page -->
     <url>
-        <loc>https://mopanc.github.io/certificates</loc>
-        <lastmod>2025-01-27</lastmod>
+        <loc>https://www.jorgemopanc.com/certificates</loc>
+        <lastmod>2025-01-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
-        <xhtml:link rel="alternate" hreflang="pt" href="https://mopanc.github.io/certificates?lang=pt"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://mopanc.github.io/certificates?lang=en"/>
-        <xhtml:link rel="alternate" hreflang="x-default" href="https://mopanc.github.io/certificates"/>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://www.jorgemopanc.com/certificates?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://www.jorgemopanc.com/certificates?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://www.jorgemopanc.com/certificates"/>
     </url>
 
     <!-- Contact Section (anchor link) -->
     <url>
-        <loc>https://mopanc.github.io/#contact</loc>
-        <lastmod>2025-01-27</lastmod>
+        <loc>https://www.jorgemopanc.com/#contact</loc>
+        <lastmod>2025-01-28</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.7</priority>
     </url>
 
     <!-- About Section (anchor link) -->
     <url>
-        <loc>https://mopanc.github.io/#about</loc>
-        <lastmod>2025-01-27</lastmod>
+        <loc>https://www.jorgemopanc.com/#about</loc>
+        <lastmod>2025-01-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.6</priority>
     </url>
 
     <!-- Experience Section (anchor link) -->
     <url>
-        <loc>https://mopanc.github.io/#qualification</loc>
-        <lastmod>2025-01-27</lastmod>
+        <loc>https://www.jorgemopanc.com/#qualification</loc>
+        <lastmod>2025-01-28</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
     <!-- Services Section (anchor link) -->
     <url>
-        <loc>https://mopanc.github.io/#service</loc>
-        <lastmod>2025-01-27</lastmod>
+        <loc>https://www.jorgemopanc.com/#service</loc>
+        <lastmod>2025-01-28</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>
