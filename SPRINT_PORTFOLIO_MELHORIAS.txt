@@ -215,3 +215,68 @@ v1.3 - Sprint 3 (Funcionalidades)
 v1.4 - Sprint 4 (UX)
 v1.5 - Sprint 5 (A11Y/PWA)
 v2.0 - Sprint 6 (Analytics) - [FINAL]
+
+
+
+
+
+> chat agora tenho isto diz que tenho duas paginas não indexadas porque sera?
+https://jorgemopanc.com/?ref=https://githubhelp.com   Página duplicada sem versão canónica selecionada pelo
+utilizador
+Estas páginas não são indexadas nem publicadas no Google
+Primeira deteção: 17/12/24
+
+⏺ 🚨 PROBLEMA IDENTIFICADO - PARÂMETROS REF!
+
+  🔍 ANÁLISE DO PROBLEMA:
+
+  CAUSA:
+
+  O site githubhelp.com está a gerar links para o teu site com parâmetro ?ref=, criando URLs duplicadas:
+
+  ORIGINAL: https://jorgemopanc.com/
+  DUPLICADA: https://jorgemopanc.com/?ref=https://githubhelp.com
+
+  O Google vê isto como conteúdo duplicado sem canonical tag clara.
+
+  ---
+  🔧 SOLUÇÕES IMEDIATAS:
+
+  SOLUÇÃO A: PARÂMETROS NO SEARCH CONSOLE
+
+  1. Search Console → Settings
+  2. URL Parameters (beta)
+  3. Add parameter: "ref"
+  4. Select: "No URLs" ou "Representative URL"
+  5. Effect: "Doesn't change page content"
+
+  SOLUÇÃO B: CANONICAL TAG DINÂMICA ⭐ RECOMENDADO
+
+  Vou adicionar código para ignorar parâmetros ref na canonical URL:
+
+  <!-- Em vez de canonical fixo, usar dinâmico -->
+  <link rel="canonical" href="https://www.jorgemopanc.com" + rota_sem_parametros>
+
+  SOLUÇÃO C: REDIRECT 301
+
+  // Se URL tem ?ref=, redirecionar para versão limpa
+  if (window.location.search.includes('ref=')) {
+    window.location.replace(window.location.origin + window.location.pathname);
+  }
+
+  ---
+  🚀 IMPLEMENTAÇÃO IMEDIATA:
+
+  Qual solução preferes?
+
+  1. Rápida: Configurar parâmetros no Search Console (2 min)
+  2. Técnica: Adicionar redirect JavaScript (5 min)
+  3. Profissional: Canonical dinâmica + .htaccess rules
+
+  Recomendo começar com #2 (redirect) - é rápido e eficaz.
+
+  Queres que implemente o redirect JavaScript agora? 🎯
+
+> sim
+  ⎿  Session limit reached ∙ resets 12pm
+     /upgrade to increase your usage limit.

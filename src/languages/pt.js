@@ -329,6 +329,71 @@ export default {
   enter_command: "Digite comando...",
   enter_authorization_code: "Digite código de autorização...",
 
+  // Admin terminal commands
+  admin_commands_available: "Comandos disponíveis: logout, extend, status, generate-code, list-codes, clean-codes",
+  user_commands_available: "Comandos disponíveis: logout, extend, status",
+  command_not_found: "Comando não encontrado",
+  insufficient_privileges: "Erro: Comando não encontrado ou privilégios insuficientes",
+
+  // Code generation
+  code_generator_welcome: "Bem-vindo ao Gerador de Códigos de Acesso",
+  enter_user_email: "Digite o endereço de email para o novo código:",
+  select_duration: "Selecione a duração (1h, 4h, 1d):",
+  invalid_email_format: "Formato de email inválido. Tente novamente:",
+  invalid_duration: "Duração inválida. Digite 1h, 4h, ou 1d:",
+  generating_access_code: "Gerando código de acesso...",
+  code_generated_success: "Código gerado com sucesso",
+  send_code_to_user: "Envie este código para",
+  code_copied_clipboard: "Código copiado para a área de transferência",
+  copy_clipboard_error: "Nota: Não foi possível copiar para a área de transferência",
+
+  // Code extension
+  code_extender_title: "Extender tempo para códigos de acesso existentes",
+  enter_email_extend: "Digite o endereço de email para extender o tempo de acesso:",
+  select_extension_duration: "Selecione a duração da extensão (1h, 4h, 1d):",
+  extending_access_time: "Extendendo tempo de acesso...",
+  code_extended_success: "Código extendido com sucesso",
+  access_extended_for: "Acesso extendido para",
+  no_active_code_found: "Nenhum código ativo encontrado para",
+
+  // Code listing
+  code_history_title: "Histórico de Códigos (Últimos 10)",
+  code_table_headers: "Código     │ Email              │ Status   │ Duração  │ Tempo",
+  no_codes_found: "Nenhum código encontrado",
+  status_active: "ativo",
+  status_used: "usado",
+  status_expired: "expirado",
+
+  // Code cleaning
+  cleaning_expired_codes: "Limpando códigos expirados...",
+  expired_codes_cleaned: "Códigos expirados limpos com sucesso",
+  error_cleaning_codes: "Erro ao limpar códigos",
+
+  // System status
+  system_status_title: "Status do Sistema",
+  status_authenticated: "Autenticado",
+  status_not_authenticated: "Não Autenticado",
+  role_administrator: "Administrador",
+  role_user: "Utilizador",
+  time_remaining_label: "Tempo restante:",
+
+  // Session management
+  logging_out: "Terminando sessão...",
+  session_extension_not_implemented: "Extensão de sessão não implementada",
+
+  // Error messages
+  error_generating_code: "Erro ao gerar código",
+  error_extending_code: "Erro ao extender código",
+  error_fetching_codes: "Erro ao buscar códigos",
+  system_error_auth: "Erro do sistema durante autenticação",
+  unable_verify_credentials: "Não foi possível verificar credenciais",
+
+  // Security messages
+  code_already_used: "Este código já foi utilizado",
+  code_expired: "Este código expirou",
+  access_denied: "Acesso negado",
+  unauthorized_access: "Acesso não autorizado - apenas admin MASTER",
+
   // Projects Page
   search_projects: "Pesquisar projetos",
   commercial_project: "Projeto Comercial",

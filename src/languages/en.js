@@ -325,6 +325,71 @@ export default {
   enter_command: "Enter command...",
   enter_authorization_code: "Enter authorization code...",
 
+  // Admin terminal commands
+  admin_commands_available: "Available commands: logout, extend, status, generate-code, list-codes, clean-codes",
+  user_commands_available: "Available commands: logout, extend, status",
+  command_not_found: "Command not found",
+  insufficient_privileges: "Error: Command not found or insufficient privileges",
+
+  // Code generation
+  code_generator_welcome: "Welcome to the Access Code Generator",
+  enter_user_email: "Enter user email address for the new code:",
+  select_duration: "Select duration (1h, 4h, 1d):",
+  invalid_email_format: "Invalid email format. Please try again:",
+  invalid_duration: "Invalid duration. Please enter 1h, 4h, or 1d:",
+  generating_access_code: "Generating access code...",
+  code_generated_success: "Code generated successfully",
+  send_code_to_user: "Send this code to",
+  code_copied_clipboard: "Code copied to clipboard",
+  copy_clipboard_error: "Note: Could not copy to clipboard",
+
+  // Code extension
+  code_extender_title: "Extend time for existing access codes",
+  enter_email_extend: "Enter email address to extend access time:",
+  select_extension_duration: "Select extension duration (1h, 4h, 1d):",
+  extending_access_time: "Extending access time...",
+  code_extended_success: "Code extended successfully",
+  access_extended_for: "Access extended for",
+  no_active_code_found: "No active code found for",
+
+  // Code listing
+  code_history_title: "Code History (Last 10)",
+  code_table_headers: "Code     │ Email              │ Status   │ Duration │ Time",
+  no_codes_found: "No codes found",
+  status_active: "active",
+  status_used: "used",
+  status_expired: "expired",
+
+  // Code cleaning
+  cleaning_expired_codes: "Cleaning expired codes...",
+  expired_codes_cleaned: "Expired codes cleaned successfully",
+  error_cleaning_codes: "Error cleaning codes",
+
+  // System status
+  system_status_title: "System Status",
+  status_authenticated: "Authenticated",
+  status_not_authenticated: "Not Authenticated",
+  role_administrator: "Administrator",
+  role_user: "User",
+  time_remaining_label: "Time remaining:",
+
+  // Session management
+  logging_out: "Logging out...",
+  session_extension_not_implemented: "Session extension not implemented",
+
+  // Error messages
+  error_generating_code: "Error generating code",
+  error_extending_code: "Error extending code",
+  error_fetching_codes: "Error fetching codes",
+  system_error_auth: "System error during authentication",
+  unable_verify_credentials: "Unable to verify credentials",
+
+  // Security messages
+  code_already_used: "This code has already been used",
+  code_expired: "This code has expired",
+  access_denied: "Access denied",
+  unauthorized_access: "Unauthorized access - MASTER admin only",
+
   // Projects Page
   search_projects: "Search projects",
   commercial_project: "Commercial Project",
