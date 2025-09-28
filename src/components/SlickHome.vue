@@ -8,11 +8,11 @@
           <div class="transparent-box">
             <p class="testimonial__description" ref="freela_calc_description"></p>
             <ul class="tecnologies-used">
-              <li class="skills__item"><img src="../assets/icons/js.svg" height="16px" width="16px" alt="javaScript icon"></li>
+              <li class="skills__item"><img src="../assets/icons/python-icon.svg" height="16px" width="16px" alt="Python icon"></li>
               <li class="skills__item"><img src="../assets/icons/nodejs-icon.svg" height="16px" width="16px" alt="nodejs icon"></li>
-              <li class="skills__item"><img src="../assets/icons/ejs.svg" height="16px" width="16px" alt="Ejs icon"></li>
-              <li class="skills__item"><img src="../assets/icons/express.svg" height="16px" width="16px" alt="expressjs icon"></li>
-              <li class="skills__item"><img src="../assets/icons/sqlitebrowser.svg" height="16px" width="16px" alt="sqlite icon"></li>
+              <li class="skills__item"><img src="../assets/icons/reactjs-icon.svg" width="16px" height="16px" alt="react icon"></li>
+              <li class="skills__item">📊 Analytics</li>
+              <li class="skills__item">🤖 Machine Learning</li>
             </ul>
           </div>
         </div>
@@ -32,9 +32,10 @@
           <div class="transparent-box-left">
             <p class="testimonial__description" ref="covid_19_description"></p>
             <ul class="tecnologies-used">
-              <li class="skills__item"><img src="../assets/icons/js.svg" height="16px" width="16px" alt="javaScript icon"></li>
-              <li class="skills__item"><img src="../assets/icons/nodejs-icon.svg" height="16px" width="16px" alt="nodejs icon"></li>
-              <li class="skills__item"><img src="../assets/icons/reactjs-icon.svg" width="16px" height="16px" alt="react icon"></li>
+              <li class="skills__item">⚡ C Programming</li>
+              <li class="skills__item">🔧 ccTalk Protocol</li>
+              <li class="skills__item">📡 MQTT</li>
+              <li class="skills__item">🔒 Security</li>
             </ul>
           </div>
         </div>
@@ -48,8 +49,10 @@
           <div class="transparent-box">
             <p class="testimonial__description" ref="apple_calculator_description"></p>
             <ul class="tecnologies-used">
-              <li class="skills__item"><img src="../assets/icons/js.svg" height="16px" width="16px" alt="javaScript icon"></li>
-              <li class="skills__item"><img src="../assets/icons/vuejs-icon.svg" width="16px" height="16px" alt="vue icon"></li>
+              <li class="skills__item"><img src="../assets/icons/python-icon.svg" height="16px" width="16px" alt="Python icon"></li>
+              <li class="skills__item"><img src="../assets/icons/reactjs-icon.svg" width="16px" height="16px" alt="react icon"></li>
+              <li class="skills__item"><img src="../assets/icons/socketio.svg" height="16px" width="16px" alt="SocketIO icon"></li>
+              <li class="skills__item">🤖 AI/ML</li>
             </ul>
           </div>
         </div>

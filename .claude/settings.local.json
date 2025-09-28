@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx update-browserslist-db:*)",
+      "Bash(npm run serve:*)",
+      "Bash(npm cache clean:*)",
+      "Bash(pkill:*)",
+      "Bash(node:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

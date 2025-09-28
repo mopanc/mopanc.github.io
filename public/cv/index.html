@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jorge Mopanc - CV Terminal</title>
+    <meta name="description" content="Jorge Mopanc's interactive terminal-style CV - A unique way to explore my professional experience">
+    <meta name="author" content="Jorge Mopanc">
+    <link rel="icon" href="../../favicon.svg" type="image/svg+xml">
+    <style>
+        body {
+            background-color: black; /* Fundo preto para simular terminal */
+            color: #b8c5db; /* Cinza azulado, estilo Zsh */
+            font-family: 'Courier New', monospace;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .terminal {
+            width: 700px;
+            max-width: 90%;
+            border: 2px solid #b8c5db; /* Cor da borda com tom próximo ao texto */
+            padding: 15px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .line {
+            white-space: pre-wrap;
+            margin: 5px 0;
+        }
+
+        .prompt {
+            color: #6aed1d; /* Verde do Prompt do Terminal */
+        }
+
+        .command {
+            color: #ffdd57; /* Amarelo para simular comandos */
+        }
+
+        .output {
+            color: #b8c5db; /* Cinza azulado para saída dos comandos */
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 16px;
+            background-color: #6aed1d; /* Cor verde piscando para o cursor */
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+
+        /* Subtle enhancements maintaining terminal authenticity */
+        .terminal {
+            box-shadow: 0 0 20px rgba(106, 237, 29, 0.1);
+            position: relative;
+        }
+
+        .terminal::before {
+            content: "● ● ●";
+            color: #ff5f57;
+            position: absolute;
+            top: -8px;
+            left: 10px;
+            font-size: 10px;
+            letter-spacing: 3px;
+        }
+
+        /* Smooth typing effect */
+        .line {
+            opacity: 0;
+            animation: fadeIn 0.3s ease-in forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Responsive improvements */
+        @media (max-width: 768px) {
+            .terminal {
+                width: 95%;
+                padding: 10px;
+                font-size: 12px;
+            }
+
+            body {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="terminal" id="terminal"></div>
+<script>
+    const lines = [
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~</span>$ ls -la`,
+        `<span class="output">drwxr-xr-x  7 jorge staff   224 Jan 15 2025 .</span>`,
+        `<span class="output">drwxr-xr-x  6 jorge staff   192 Jan 15 2025 ..</span>`,
+        `<span class="output">-rw-r--r--  1 jorge staff  2048 Jan 15 2025 jorge_morais_cv.txt</span>`,
+        `<span class="output">drwxr-xr-x  4 jorge staff   128 Jan 15 2025 work_experience/</span>`,
+        `<span class="output">drwxr-xr-x  3 jorge staff    96 Jan 15 2025 technical_skills/</span>`,
+        `<span class="output">drwxr-xr-x  2 jorge staff    64 Jan 15 2025 education/</span>`,
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~</span>$ cat jorge_morais_cv.txt`,
+        '',
+        `<span class="output">================================================================================</span>`,
+        `<span class="output">                             JORGE MORAIS - CV</span>`,
+        `<span class="output">                            FullStack Developer</span>`,
+        `<span class="output">================================================================================</span>`,
+        '',
+        `<span class="output">PROFESSIONAL SUMMARY:</span>`,
+        `<span class="output">4+ years of experience in React, Vue.js, and Node.js. Passionate about clean</span>`,
+        `<span class="output">architecture, scalable solutions, and efficient development. Beyond coding,</span>`,
+        `<span class="output">I drive projects forward—managing milestones, code reviews, version control,</span>`,
+        `<span class="output">and workflows to build not just software, but strong teams.</span>`,
+        '',
+        `<span class="output">CONTACT INFORMATION:</span>`,
+        `<span class="output">  Email:     jorgemopanc@icloud.com</span>`,
+        `<span class="output">  Phone:     +351 910559307</span>`,
+        `<span class="output">  Location:  Braga, Portugal</span>`,
+        `<span class="output">  Website:   www.jorgemopanc.com</span>`,
+        `<span class="output">  LinkedIn:  linkedin.com/in/jorge-mopanc</span>`,
+        `<span class="output">  GitHub:    github.com/jorgemorais272</span>`,
+        '',
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~</span>$ cd work_experience/`,
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~/work_experience</span>$ ls -t`,
+        `<span class="output">balancas_marques.md  frontkom.md  netgocio.md</span>`,
+        '',
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~/work_experience</span>$ cat balancas_marques.md`,
+        `<span class="output">## FullStack Developer | Balanças Marques</span>`,
+        `<span class="output">**Duration:** 06/2023 - Present | **Location:** Braga</span>`,
+        '',
+        `<span class="output">**Responsibilities:**</span>`,
+        `<span class="output">• Developing tools related to company's industrial products</span>`,
+        `<span class="output">• Analysis, definition of strategies and development of backend systems</span>`,
+        `<span class="output">• Code reviews, version control, and workflow management</span>`,
+        '',
+        `<span class="output">**Technologies:** React, JavaScript, TypeScript, Node.js, SocketIO,</span>`,
+        `<span class="output">                 SQL, MySQL, Git, GitHub</span>`,
+        '',
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~/work_experience</span>$ cat frontkom.md`,
+        `<span class="output">## Frontend Developer | Frontkom</span>`,
+        `<span class="output">**Duration:** 10/2022 - 05/2023 | **Location:** Madeira Island/Norway</span>`,
+        '',
+        `<span class="output">**Responsibilities:**</span>`,
+        `<span class="output">• Development of entire front-end and maintaining websites updated</span>`,
+        `<span class="output">• Cross-functional collaboration with international teams</span>`,
+        '',
+        `<span class="output">**Technologies:** HTML5, Sass, CSS3, Tailwind, React, JavaScript,</span>`,
+        `<span class="output">                 Vue.js, Drupal, PHP, MySQL, Git, GitLab, GitHub,</span>`,
+        `<span class="output">                 Postman, Jira, Confluence, Miro, Figma</span>`,
+        '',
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~/work_experience</span>$ cat netgocio.md`,
+        `<span class="output">## Web Developer | Netgocio</span>`,
+        `<span class="output">**Duration:** 08/2021 - 10/2022 | **Location:** Guimarães</span>`,
+        '',
+        `<span class="output">**Responsibilities:**</span>`,
+        `<span class="output">• Analysis, definition of strategies and development of products</span>`,
+        `<span class="output">• B2B and B2C e-commerce websites development</span>`,
+        `<span class="output">• Complete front-end development responsibility</span>`,
+        '',
+        `<span class="output">**Technologies:** HTML5, Sass, CSS3, jQuery, JavaScript, Bootstrap,</span>`,
+        `<span class="output">                 Foundation, Vue.js, PHP, MySQL, Git, Bitbucket,</span>`,
+        `<span class="output">                 Monday, Notion, Adobe</span>`,
+        '',
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~</span>$ cd technical_skills/`,
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~/technical_skills</span>$ cat skills.json`,
+        `<span class="output">{</span>`,
+        `<span class="output">  "frontend_development": [</span>`,
+        `<span class="output">    "React", "Vue.js", "JavaScript", "TypeScript", "HTML5", "CSS3",</span>`,
+        `<span class="output">    "Sass", "Tailwind", "Bootstrap", "jQuery"</span>`,
+        `<span class="output">  ],</span>`,
+        `<span class="output">  "backend_development": [</span>`,
+        `<span class="output">    "Node.js", "Express.js", "SocketIO", "PHP", "REST APIs"</span>`,
+        `<span class="output">  ],</span>`,
+        `<span class="output">  "databases": [</span>`,
+        `<span class="output">    "MySQL", "SQL Server", "SQL"</span>`,
+        `<span class="output">  ],</span>`,
+        `<span class="output">  "tools_and_workflow": [</span>`,
+        `<span class="output">    "Git", "GitHub", "GitLab", "Bitbucket", "Postman", "Jira",</span>`,
+        `<span class="output">    "Confluence", "Monday", "Notion", "Figma", "Miro", "Adobe"</span>`,
+        `<span class="output">  ],</span>`,
+        `<span class="output">  "soft_skills": [</span>`,
+        `<span class="output">    "Code Quality & Best Practices", "Workflow Management",</span>`,
+        `<span class="output">    "Technical Leadership", "Problem-Solving", "Decision Making",</span>`,
+        `<span class="output">    "Cross-Functional Collaboration", "Continuous Learning"</span>`,
+        `<span class="output">  ]</span>`,
+        `<span class="output">}</span>`,
+        '',
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~</span>$ cd education/`,
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~/education</span>$ cat education.txt`,
+        `<span class="output">EDUCATION & CERTIFICATIONS:</span>`,
+        `<span class="output">────────────────────────────────────────</span>`,
+        `<span class="output">High School Diploma (12th Grade Completed) & Front-end Professional Course</span>`,
+        `<span class="output">Institution: IwTraining</span>`,
+        `<span class="output">Period: 01/2019 - 01/2020</span>`,
+        '',
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~</span>$ whoami && echo "Languages: Portuguese (Native), English (Professional), Spanish (Professional)"`,
+        `<span class="output">jorge</span>`,
+        `<span class="output">Languages: Portuguese (Native), English (Professional), Spanish (Professional)</span>`,
+        '',
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~</span>$ echo "Interests: Family, Cycling, Reading, Technology, Investments, Neuroscience, Space, Traveling, Cryptocurrency"`,
+        `<span class="output">Interests: Family, Cycling, Reading, Technology, Investments, Neuroscience, Space, Traveling, Cryptocurrency</span>`,
+        '',
+        `<span class="prompt">jorge@portfolio</span>:<span class="command">~</span>$ exit`
+    ];
+
+    let index = 0;
+    const terminal = document.getElementById('terminal');
+
+    function typeLine() {
+        if (index < lines.length) {
+            const line = document.createElement('div');
+            line.classList.add('line');
+            line.innerHTML = lines[index];
+            terminal.appendChild(line);
+
+            // Add smooth fade-in animation
+            setTimeout(() => {
+                line.style.opacity = '1';
+            }, 10);
+
+            index++;
+
+            // Variable typing speed for more realistic effect
+            const delay = lines[index - 1].trim() === '' ? 50 : 150;
+            setTimeout(typeLine, delay);
+        } else {
+            // Add final cursor
+            const cursor = document.createElement('span');
+            cursor.classList.add('cursor');
+            terminal.appendChild(cursor);
+
+            // Add keyboard event listener for interactivity
+            document.addEventListener('keydown', handleKeyPress);
+        }
+    }
+
+    // Add some basic keyboard interactivity
+    function handleKeyPress(event) {
+        if (event.key === 'Enter') {
+            const newLine = document.createElement('div');
+            newLine.classList.add('line');
+            newLine.innerHTML = '<span class="prompt">jorgemorais@macOS</span>:<span class="command">~</span>$ <span class="cursor"></span>';
+            terminal.appendChild(newLine);
+        }
+    }
+
+    typeLine();
+</script>
+</body>
+</html>

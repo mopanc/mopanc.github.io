@@ -1,25 +1,157 @@
 <!DOCTYPE html>
-<html lang="">
+<html lang="en" id="html-lang">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title><%= htmlWebpackPlugin.options.title %></title>
+
+    <!-- SEO Meta Tags -->
+    <title>Jorge Mopanc - Programador Full Stack | Desenvolvimento Web Vue.js React Node.js Portugal</title>
+    <meta name="description" content="Programador Full Stack com 4+ anos de experiência. Desenvolvimento de websites, aplicações web, sistemas empresariais. Vue.js, React, Node.js, TypeScript. Freelancer Portugal - Serviços de desenvolvimento de software.">
+    <meta name="keywords" content="programador portugal, desenvolvedor web, full stack developer, criação websites, desenvolvimento aplicações web, programador vue.js, programador react, programador node.js, serviços desenvolvimento software, freelancer programação, sistemas web empresariais, jorge mopanc, desenvolvedor frontend, desenvolvedor backend, programador typescript, criação sites responsivos, desenvolvimento ecommerce, APIs REST, programador freelance portugal, serviços ti, consultoria desenvolvimento web">
+    <meta name="author" content="Jorge Mopanc">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://mopanc.github.io">
+
+    <!-- Additional SEO Meta Tags for Programming Services -->
+    <meta name="geo.region" content="PT">
+    <meta name="geo.placename" content="Portugal">
+    <meta name="ICBM" content="39.3999, -8.2245">
+    <meta name="DC.title" content="Jorge Mopanc - Programador Full Stack Portugal">
+    <meta name="DC.creator" content="Jorge Mopanc">
+    <meta name="DC.subject" content="Programação, Desenvolvimento Web, Vue.js, React, Node.js">
+    <meta name="DC.description" content="Serviços profissionais de desenvolvimento web e programação em Portugal">
+    <meta name="classification" content="Technology, Programming, Web Development">
+    <meta name="coverage" content="Portugal">
+    <meta name="distribution" content="Global">
+    <meta name="rating" content="General">
+    <meta name="revisit-after" content="7 days">
+
+    <!-- Business/Service Specific Meta Tags -->
+    <meta name="business:contact_data:street_address" content="Portugal">
+    <meta name="business:contact_data:locality" content="Portugal">
+    <meta name="business:contact_data:region" content="Portugal">
+    <meta name="business:contact_data:postal_code" content="">
+    <meta name="business:contact_data:country_name" content="Portugal">
+    <meta name="business:contact_data:email" content="jorgemopanc@icloud.com">
+    <meta name="business:contact_data:phone_number" content="+351910559307">
+    <meta name="business:contact_data:website" content="https://mopanc.github.io">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Jorge Mopanc - Programador Full Stack Portugal | Desenvolvimento Web Vue.js React">
+    <meta property="og:description" content="Programador Full Stack especializado em desenvolvimento web. 4+ anos experiência Vue.js, React, Node.js. Freelancer Portugal - Criação websites e aplicações web empresariais.">
+    <meta property="og:url" content="https://mopanc.github.io">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/45471030?v=4">
+    <meta property="og:image:width" content="400">
+    <meta property="og:image:height" content="400">
+    <meta property="og:site_name" content="Jorge Mopanc - Programador Portugal">
+    <meta property="og:locale" content="pt_PT">
+    <meta property="og:locale:alternate" content="en_US">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jorge Mopanc - Programador Full Stack Portugal">
+    <meta name="twitter:description" content="Programador especializado em desenvolvimento web. Vue.js, React, Node.js. Freelancer Portugal - Serviços desenvolvimento software.">
+    <meta name="twitter:image" content="https://avatars.githubusercontent.com/u/45471030?v=4">
+    <meta name="twitter:creator" content="@JorgeMo56542670">
+    <meta name="twitter:site" content="@JorgeMo56542670">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": ["Person", "ProfessionalService"],
+      "name": "Jorge Mopanc",
+      "alternateName": "Jorge Mopanc Programador",
+      "jobTitle": ["Programador Full Stack", "Desenvolvedor Web", "Software Developer"],
+      "description": "Programador Full Stack especializado em desenvolvimento web com 4+ anos de experiência. Serviços de criação de websites, aplicações web e sistemas empresariais em Vue.js, React, Node.js e TypeScript.",
+      "url": "https://mopanc.github.io",
+      "image": "https://avatars.githubusercontent.com/u/45471030?v=4",
+      "email": "jorgemopanc@icloud.com",
+      "telephone": "+351910559307",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PT",
+        "addressRegion": "Portugal"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Portugal"
+      },
+      "serviceType": [
+        "Desenvolvimento Web",
+        "Criação de Websites",
+        "Aplicações Web",
+        "Sistemas Empresariais",
+        "APIs REST",
+        "E-commerce",
+        "Frontend Development",
+        "Backend Development",
+        "Consultoria em TI"
+      ],
+      "priceRange": "€€",
+      "paymentAccepted": ["Transfer Bancário", "PayPal", "Multibanco"],
+      "sameAs": [
+        "https://github.com/mopanc",
+        "https://www.linkedin.com/in/jorge-mopanc/",
+        "https://twitter.com/JorgeMo56542670",
+        "https://www.facebook.com/jorgemopanc",
+        "https://www.instagram.com/jorgemopanc/",
+        "https://codepen.io/mopanc"
+      ],
+      "knowsAbout": [
+        "Vue.js", "React.js", "Node.js", "TypeScript", "JavaScript",
+        "HTML5", "CSS3", "SASS", "MySQL", "Firebase", "GraphQL",
+        "Docker", "Git", "Frontend Development", "Backend Development",
+        "Desenvolvimento Web", "Programação", "Criação Websites",
+        "Aplicações Web", "APIs REST", "E-commerce", "Responsive Design"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Programador Full Stack",
+        "description": "Desenvolvimento de aplicações web e sistemas empresariais",
+        "occupationalCategory": "15-1254.00",
+        "skills": "Vue.js, React.js, Node.js, TypeScript, JavaScript, HTML5, CSS3"
+      },
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Balanças Marques"
+      },
+      "offers": {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Serviços de Desenvolvimento Web",
+          "description": "Desenvolvimento de websites, aplicações web e sistemas empresariais personalizados"
+        },
+        "areaServed": "Portugal",
+        "availableLanguage": ["Português", "English"]
+      }
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" href="<%= BASE_URL %>favicon.svg" type="image/svg+xml">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="<%= BASE_URL %>favicon.svg">
     <!--xxxxxxxxxxxx Google Fonts xxxxxxxxxxxx-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" crossorigin>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Revalia&family=Shadows+Into+Light&family=Stalinist+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Revalia&family=Shadows+Into+Light&family=Stalinist+One&display=swap" rel="stylesheet" crossorigin>
     <!--xxxxxxxxxxxx Remixicons xxxxxxxxxxxx-->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet" crossorigin>
+
+    <!--xxxxxxxxxxxx DevIcons xxxxxxxxxxxx-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" crossorigin>
 
     <!--xxxxxxxxxxxx SwiperJS CSS xxxxxxxxxxxx-->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" crossorigin />
         <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E08VX9Z7F0"></script>
 <script>
@@ -41,6 +173,6 @@
 
         <!-- ScrollReveal -->
         <script src="https://unpkg.com/scrollreveal"></script>
-    
+
   </body>
 </html>

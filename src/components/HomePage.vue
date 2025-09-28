@@ -34,32 +34,32 @@
                             <h4 class="footer__title"></h4>
                             <ul class="footer__social-list">
                                 <li class="footer__social-item">
-                                    <a href="https://www.facebook.com/jorgemopanc" class="footer__social-link">
+                                    <a href="https://www.facebook.com/jorgemopanc" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook Profile">
                                         <i class="ri-facebook-fill"></i>
                                     </a>
                                 </li>
                                 <li class="footer__social-item">
-                                    <a href="https://www.instagram.com/jorgemopanc/" class="footer__social-link">
+                                    <a href="https://www.instagram.com/jorgemopanc/" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram Profile">
                                         <i class="ri-instagram-fill"></i>
                                     </a>
                                 </li>
                                 <li class="footer__social-item">
-                                    <a href="https://twitter.com/JorgeMo56542670" class="footer__social-link">
+                                    <a href="https://twitter.com/JorgeMo56542670" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter Profile">
                                         <i class="ri-twitter-fill"></i>
                                     </a>
                                 </li>
                                 <li class="footer__social-item">
-                                    <a href="https://github.com/mopanc" class="footer__social-link">
+                                    <a href="https://github.com/mopanc" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile">
                                         <i class="ri-github-fill"></i>
                                     </a>
                                 </li>
                                 <li class="footer__social-item">
-                                    <a href="https://www.linkedin.com/in/jorge-mopanc/" class="footer__social-link">
+                                    <a href="https://www.linkedin.com/in/jorge-mopanc/" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile">
                                         <i class="ri-linkedin-fill"></i>
                                     </a>
                                 </li>
                                 <li class="footer__social-item">
-                                    <a href="https://codepen.io/mopanc" class="footer__social-link">
+                                    <a href="https://codepen.io/mopanc" class="footer__social-link" target="_blank" rel="noopener noreferrer" aria-label="CodePen Profile">
                                         <i class="ri-codepen-line"></i>
                                     </a>
                                 </li>
@@ -81,7 +81,9 @@
                     <div class="about__content">
                         <h3 class="about__title" ref="title_about_me"></h3>
                         <p class="about__description" ref="description_about_me"></p>
-                        <a href="#" class="btn btn--secondary" ref="know_more"></a>
+                        <div class="about__actions">
+                            <a href="/about" class="btn btn--secondary" ref="know_more"></a>
+                        </div>
                     </div>
                     <div class="skills">
                         <h3 class="skills__title" ref="Technologies"></h3>
@@ -90,18 +92,17 @@
                             <div class="cards">
                                 <div class="face face1">
                                     <ul class="skills__list">
-                                        <li class="skills__item"><img src="../assets/icons/nodejs-icon.svg" height="16px" width="16px" alt="nodejs icon">Nodejs</li>
-                                        <li class="skills__item"><img src="../assets/icons/js.svg" height="16px" width="16px" alt="javaScript icon">Javascript</li>
-                                        <li class="skills__item"><img src="../assets/icons/typescriptlang-icon.svg" height="16px" width="16px" alt="typescript icon">TypeScript</li>
-                                        <li class="skills__item"><img src="../assets/icons/mysql-official.svg" height="16px" width="16px" alt="MySql icon">MySql</li>
-                                        <li class="skills__item"><img src="../assets/icons/npmjs-icon.svg" height="16px" width="16px" alt="npm icon">Npm</li>
-                                        <li class="skills__item"><img src="../assets/icons/graphql-icon.svg" height="16px" width="16px" alt="Graphql icon">GraphQl</li>
-                                        <li class="skills__item"><img src="../assets/icons/docker-icon.svg" width="16px" height="16px" alt="Docker icon">Docker</li>
-                                        <!-- <li class="skills__item"><img src="../assets/icons/python-icon.svg" height="16px" width="16px" alt="Python icon">Python</li> -->
-                                        <!-- <li class="skills__item"><img src="../assets/icons/php-icon.svg" height="16px" width="16px" alt="php icon">PHP</li> -->
-                                        <li class="skills__item"><img src="../assets/icons/firebase-icon.svg" height="16px" width="16px" alt="Firebase icon">Firebase</li>
-                                        <li class="skills__item"><img src="../assets/icons/socketio.svg" height="16px" width="16px" alt="Firebase icon">SocketIo</li>
-                                    </ul>      
+                                        <li class="skills__item"><img src="../assets/icons/js.svg" height="16px" width="16px" alt="JavaScript icon">JavaScript</li>
+                                        <li class="skills__item"><img src="../assets/icons/typescriptlang-icon.svg" height="16px" width="16px" alt="TypeScript icon">TypeScript</li>
+                                        <li class="skills__item"><img src="../assets/icons/nodejs-icon.svg" height="16px" width="16px" alt="Node.js icon">Node.js</li>
+                                        <li class="skills__item"><img src="../assets/icons/express-js.svg" height="16px" width="16px" alt="Express.js icon">Express.js</li>
+                                        <li class="skills__item"><img src="../assets/icons/postgresql.svg" height="16px" width="16px" alt="PostgreSQL icon">PostgreSQL</li>
+                                        <li class="skills__item"><img src="../assets/icons/mysql-official.svg" height="16px" width="16px" alt="MySQL icon">MySQL</li>
+                                        <li class="skills__item"><img src="../assets/icons/Server-Api-Setting--Streamline-Freehand.png" height="16px" width="16px" alt="REST API icon">REST APIs</li>
+                                        <li class="skills__item"><img src="../assets/icons/mqtt-icon-solid.svg" height="16px" width="16px" alt="MQTT icon">MQTT</li>
+                                        <li class="skills__item"><img src="../assets/icons/socketio.svg" height="16px" width="16px" alt="Socket.IO icon">Socket.IO</li>
+                                        <li class="skills__item"><img src="../assets/icons/binary-svgrepo-com.svg" height="16px" width="16px" alt="ccTalk Protocol icon">ccTalk Protocol</li>
+                                    </ul>
                                 </div>
                                 <div class="face face2">
                                     <h2 class="face_title">Backend</h2>
@@ -111,16 +112,14 @@
                             <div class="cards">
                                 <div class="face face1">
                                     <ul class="skills__list">
-                                        <li class="skills__item"><img src="../assets/icons/w3_html5-icon.svg" height="16px" width="16px" alt="html5 icon">Html5</li>
-                                        <li class="skills__item"><img src="../assets/icons/w3_css-icon.svg" height="16px" width="16px" alt="css3 icon">Css3</li>
-                                        <li class="skills__item"><img src="../assets/icons/sass-lang-icon.svg" height="16px" width="16px" alt="sass icon">Sass</li>
-                                        <li class="skills__item"><img src="../assets/icons/239ec8a4-163e-4792-83b6-3f6d96911757.svg" height="16px" width="16px" alt="javascript icon">Javascript</li>
-                                        <li class="skills__item"><img src="../assets/icons/jquery-vertical.svg" alt="jquery" height="16px" width="16px">jquery</li>
-                                        <li class="skills__item"><img src="../assets/icons/getbootstrap-icon.svg" alt="Bootstrap" height="16px" width="16px">Bootstrap</li>
-                                        <li class="skills__item"><img src="../assets/icons/reactjs-icon.svg" width="16px" height="16px" alt="react icon">Reactjs</li>
-                                        <li class="skills__item"><img src="../assets/icons/vuejs-icon.svg" width="16px" height="16px" alt="vue icon">Vuejs</li>
-                                        <li class="skills__item"><img src="../assets/icons/nuxtjs-icon.svg" alt="Nuxtjs" height="16px" width="16px">Nuxtjs</li>
-                                        <li class="skills__item"><img src="../assets/icons/tailwindcss-icon.svg" alt="Tailwind" height="16px" width="16px">Tailwind</li>
+                                        <li class="skills__item"><img src="../assets/icons/reactjs-icon.svg" width="16px" height="16px" alt="React icon">React.js</li>
+                                        <li class="skills__item"><img src="../assets/icons/vuejs-icon.svg" width="16px" height="16px" alt="Vue icon">Vue.js</li>
+                                        <li class="skills__item">🅰️ Angular</li>
+                                        <li class="skills__item"><img src="../assets/icons/typescriptlang-icon.svg" height="16px" width="16px" alt="TypeScript icon">TypeScript</li>
+                                        <li class="skills__item"><img src="../assets/icons/w3_css-icon.svg" height="16px" width="16px" alt="CSS3 icon">CSS3</li>
+                                        <li class="skills__item"><img src="../assets/icons/tailwindcss-icon.svg" alt="Tailwind" height="16px" width="16px">Tailwind CSS</li>
+                                        <li class="skills__item"><img src="../assets/icons/sass-lang-icon.svg" height="16px" width="16px" alt="Sass icon">Sass/SCSS</li>
+                                        <li class="skills__item"><img src="../assets/icons/w3_css-icon.svg" height="16px" width="16px" alt="Responsive Design icon">Responsive</li>
                                     </ul>
                                 </div>
                                 <div class="face face2">
@@ -131,19 +130,19 @@
                             <div class="cards">
                                 <div class="face face1">
                                     <ul class="skills__list">
-                                        <li class="skills__item"><img src="../assets/icons/visualstudio_code-icon.svg" width="16px" height="16px" alt="Vscode icon">Vscode</li>
-                                        <li class="skills__item"><img src="../assets/icons/git-scm-icon.svg" height="16px" width="16px" alt="Git icon">Git</li>
-                                        <li class="skills__item"><img src="../assets/icons/github-icon.svg" height="16px" width="16px" alt="Github icon">Github</li>
-                                        <li class="skills__item"><img src="../assets/icons/gitlab-icon.svg" alt="Gitlab" height="16px" width="16px">Gitlab</li>
-                                        <li class="skills__item"><img src="../assets/icons/getpostman-icon.svg" alt="Postaman" height="16px" width="16px">Postman</li>
+                                        <li class="skills__item"><img src="../assets/icons/git-scm-icon.svg" height="16px" width="16px" alt="Git icon">Git & GitHub</li>
+                                        <li class="skills__item"><img src="../assets/icons/docker-icon.svg" width="16px" height="16px" alt="Docker icon">Docker</li>
+                                        <li class="skills__item"><img src="../assets/icons/getpostman-icon.svg" alt="Postman" height="16px" width="16px">Postman</li>
+                                        <li class="skills__item"><img src="../assets/icons/linux.svg" height="16px" width="16px" alt="Linux icon">Linux/Unix</li>
+                                        <li class="skills__item"><img src="../assets/icons/webstorm.svg" height="16px" width="16px" alt="WebStorm icon">WebStorm</li>
+                                        <li class="skills__item"><img src="../assets/icons/icons-black/claude.svg" height="16px" width="16px" alt="Claude AI icon">AI Tools</li>
                                         <li class="skills__item"><img src="../assets/icons/atlassian_jira-icon.svg" height="16px" width="16px" alt="Jira icon">Jira</li>
-                                        <li class="skills__item"><img src="../assets/icons/slack-icon.svg" width="16px" height="16px" alt="Slack icon">Slack</li>
-                                        <li class="skills__item"><img src="../assets/icons/monday-icon.svg" width="16px" height="16px" alt="Monday icon">Monday</li>
-                                        <li class="skills__item"><img src="../assets/icons/google_analytics-icon.svg" alt="Analitics" height="16px" width="16px">Analytics</li>
+                                        <li class="skills__item"><img src="../assets/icons/icons-black/githubactions.svg" height="16px" width="16px" alt="CI/CD icon">CI/CD</li>
+                                        <li class="skills__item"><img src="../assets/icons/icons-black/testinglibrary.svg" height="16px" width="16px" alt="Testing icon">Testing</li>
                                     </ul>
                                 </div>
                                 <div class="face face2">
-                                    <h2 class="face_title">Tools</h2>
+                                    <h2 class="face_title">Tools & DevOps</h2>
                                 </div>
                             </div>
                         </div>
@@ -151,6 +150,9 @@
                 </div>
             </div>
         </section>
+
+        <!-- Download CV -->
+        <DownloadCV />
 
         <!--xxxxxxxxxxxx Qualification xxxxxxxxxxxx-->
         <section id="qualification" class="section qualification">
@@ -243,34 +245,110 @@
                     <span class="section__subtitle" ref="recent_work"></span>
                 </div>
                 <SlickHome />
-                <div class="qualification__footer__projects">
-                    <p class="qualification__footer__projects-text" ref="see_all"></p>
-                    <a href="/projects" class="btn btn--secondary" ref="see_projects"></a>
-                </div>
+<!--                <div class="qualification__footer__projects">-->
+<!--                    <p class="qualification__footer__projects-text" ref="see_all"></p>-->
+<!--                    <a href="/projects" class="btn btn&#45;&#45;secondary" ref="see_projects"></a>-->
+<!--                </div>-->
             </div>
         </section>
-        <!-- Contact -->
-        <section id="contact" class="contact">
-            <div class="container">
-                <div class="d-grid contact__wrapper">
-                    <div class="contact__content">
-                        <h2 class="contact__title" ref="work_together"></h2>
-                    </div>
-                </div>
-            </div>
-        </section>
+
+        <!-- Call to Action -->
+        <CallToAction />
+
+        <!-- Contact Form -->
+        <ContactForm />
+
 
     </main>
 </template>
 
 <script>
 import CountUp from 'countup';
-import SlickHome from './SlickHome.vue';
+import SlickHome from './SlickHome-modern.vue';
+import ContactForm from './ContactForm.vue';
+import DownloadCV from './DownloadCV.vue';
+import CallToAction from './CallToAction.vue';
 
 
 export default {
         components: {
             SlickHome,
+            ContactForm,
+            DownloadCV,
+            CallToAction,
+        },
+        data() {
+            return {
+            };
+        },
+        methods: {
+            handleDownloadPDF() {
+                // Download PDF logic here
+                const link = document.createElement('a');
+                link.href = '/src/assets/cv/jorge-morais-cv.pdf';
+                link.download = 'Jorge-Morais-CV.pdf';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            },
+
+
+
+            loadTranslations() {
+                const selectedLanguage = localStorage.getItem('selectedLanguage') || "en";
+                if (selectedLanguage) {
+                    this.selectedLanguage = selectedLanguage;
+                }
+
+                // importa o arquivo de idioma correto com base no idioma selecionado
+                import(`../languages/${this.selectedLanguage}.js`).then((module) => {
+                    // usa as expressões traduzidas do módulo importado
+                    const expressions = module.default;
+
+                    // utiliza as chaves do objeto de expressões para exibir o texto na tela
+                    // Função helper para definir textContent com segurança
+                    const setTextContent = (refName, value) => {
+                      if (this.$refs[refName]) {
+                        this.$refs[refName].textContent = value;
+                      }
+                    };
+
+                    setTextContent('title', expressions.title);
+                    setTextContent('presentation', expressions.presentation);
+                    setTextContent('experience', expressions.experience);
+                    setTextContent('projects_completed', expressions.projects_completed);
+                    setTextContent('companies', expressions.companies);
+                    setTextContent('about_me', expressions.about_me);
+                    setTextContent('who_i_am', expressions.who_i_am);
+                    setTextContent('Technologies', expressions.Technologies);
+                    setTextContent('title_about_me', expressions.title_about_me);
+                    setTextContent('description_about_me', expressions.description_about_me);
+                    setTextContent('know_more', expressions.know_more);
+                    setTextContent('title_experience', expressions.title_experience);
+                    setTextContent('subtitle_experience', expressions.subtitle_experience);
+                    setTextContent('profissional_experience', expressions.profissional_experience);
+                    setTextContent('title_balancas', expressions.title_balancas);
+                    setTextContent('description_balancas', expressions.description_balancas);
+                    setTextContent('dates_balancas', expressions.dates_balancas);
+                    setTextContent('title_frontkom', expressions.title_frontkom);
+                    setTextContent('description_frontkom', expressions.description_frontkom);
+                    setTextContent('dates_frontkom', expressions.dates_frontkom);
+                    setTextContent('title_netgocio', expressions.title_netgocio);
+                    setTextContent('description_netgocio', expressions.description_netgocio);
+                    setTextContent('dates_netgocio', expressions.dates_netgocio);
+                    setTextContent('services', expressions.services);
+                    setTextContent('what_i_do', expressions.what_i_do);
+                    setTextContent('front_end', expressions.front_end);
+                    setTextContent('backend', expressions.backend);
+                    setTextContent('database', expressions.database);
+                    setTextContent('dev_ops', expressions.dev_ops);
+                    setTextContent('my_projects', expressions.my_projects);
+                    setTextContent('recent_work', expressions.recent_work);
+                    setTextContent('see_all', expressions.see_all);
+                    setTextContent('see_projects', expressions.see_projects);
+                    setTextContent('work_together', expressions.work_together);
+                });
+            }
         },
         mounted() {
 
@@ -288,52 +366,19 @@ export default {
             const countup3 = new CountUp(this.$refs.countup3, 0, 3, 0, options);
             countup3.start();
 
-            const selectedLanguage = localStorage.getItem('selectedLanguage') || "en";
-            if (selectedLanguage) {
-                this.selectedLanguage = selectedLanguage;
+            this.loadTranslations();
+
+            // Listen for language changes
+            this.handleLanguageChange = () => {
+                this.loadTranslations();
             }
-
-            // importa o arquivo de idioma correto com base no idioma selecionado
-            import(`../languages/${this.selectedLanguage}.js`).then((module) => {
-            // usa as expressões traduzidas do módulo importado
-            const expressions = module.default;
-
-            // utiliza as chaves do objeto de expressões para exibir o texto na tela
-            this.$refs.title.textContent = expressions.title;
-            this.$refs.presentation.textContent = expressions.presentation;
-            this.$refs.experience.textContent = expressions.experience;
-            this.$refs.projects_completed.textContent = expressions.projects_completed;
-            this.$refs.companies.textContent = expressions.companies;
-            this.$refs.about_me.textContent = expressions.about_me;
-            this.$refs.who_i_am.textContent = expressions.who_i_am;
-            this.$refs.Technologies.textContent = expressions.Technologies;
-            this.$refs.title_about_me.textContent = expressions.title_about_me;
-            this.$refs.description_about_me.textContent = expressions.description_about_me;
-            this.$refs.know_more.textContent = expressions.know_more;
-            this.$refs.title_experience.textContent = expressions.title_experience;
-            this.$refs.subtitle_experience.textContent = expressions.subtitle_experience;
-            this.$refs.profissional_experience.textContent = expressions.profissional_experience;
-            this.$refs.title_balancas.textContent = expressions.title_balancas;
-            this.$refs.description_balancas.textContent = expressions.description_balancas;
-            this.$refs.dates_balancas.textContent = expressions.dates_balancas;
-            this.$refs.title_frontkom.textContent = expressions.title_frontkom;
-            this.$refs.description_frontkom.textContent = expressions.description_frontkom;
-            this.$refs.dates_frontkom.textContent = expressions.dates_frontkom;
-            this.$refs.title_netgocio.textContent = expressions.title_netgocio;
-            this.$refs.description_netgocio.textContent = expressions.description_netgocio;
-            this.$refs.dates_netgocio.textContent = expressions.dates_netgocio;
-            this.$refs.services.textContent = expressions.services;
-            this.$refs.what_i_do.textContent = expressions.what_i_do;
-            this.$refs.front_end.textContent = expressions.front_end;
-            this.$refs.backend.textContent = expressions.backend;
-            this.$refs.database.textContent = expressions.database;
-            this.$refs.dev_ops.textContent = expressions.dev_ops;
-            this.$refs.my_projects.textContent = expressions.my_projects;
-            this.$refs.recent_work.textContent = expressions.recent_work;
-            this.$refs.see_all.textContent = expressions.see_all;
-            this.$refs.see_projects.textContent = expressions.see_projects;
-            this.$refs.work_together.textContent = expressions.work_together;
-        });
+            window.addEventListener('languageChanged', this.handleLanguageChange);
+    },
+    beforeUnmount() {
+        // Remove event listener
+        if (this.handleLanguageChange) {
+            window.removeEventListener('languageChanged', this.handleLanguageChange);
+        }
     }
 }
 
@@ -389,12 +434,30 @@ export default {
 }
 
 .footer__social-link {
-    color: var(--color-primary);
+    color: #4facfe;
 }
-/* .footer__social-link:hover {
-    color: var();
-} */
+.footer__social-link:hover {
+    color: #6ab7ff;
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
 .social_links {
 justify-content: center;
 }
+
+/* About Actions */
+.about__actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+
+@media screen and (max-width: 768px) {
+    .about__actions {
+        flex-direction: column;
+    }
+}
+
 </style>
