@@ -287,7 +287,7 @@ export default {
   message_sent: "Message sent successfully! I'll get back to you soon.",
   message_error: "Sorry, there was an error sending your message. Please try again.",
   access_request_sent: "Access request sent successfully!",
-  access_request_info: "Your request has been sent. You will receive an access code via email if approved.",
+  access_request_confirmation: "Your request has been sent. You will receive an access code via email if approved.",
   access_request_note: "Please check your email within 24-48 hours for a response.",
 
   // Footer
