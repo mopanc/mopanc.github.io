@@ -65,12 +65,15 @@
 
     <!-- Timer quando autenticado -->
     <div v-if="isAccessValid" class="access-timer-toast">
-      <span>✅ Autenticado</span>
-      <button @click="revokeAccess" class="revoke-btn" title="Revogar acesso">
-        🚪
-      </button>
+      <span>✅ {{ isAdmin ? 'Admin' : 'Autenticado' }}</span>
+      <div class="timer-actions">
+        <button @click="revokeAccess" class="revoke-btn" title="Revogar acesso">
+          🚪
+        </button>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
@@ -79,8 +82,8 @@ import { useAccessControlSimple } from '../composables/useAccessControlSimple'
 export default {
   name: 'UnlockToast',
   setup() {
-    const { isAccessValid, validateAccessCode, revokeAccess } = useAccessControlSimple()
-    return { isAccessValid, validateAccessCode, revokeAccess }
+    const { isAccessValid, validateAccessCode, revokeAccess, isAdmin } = useAccessControlSimple()
+    return { isAccessValid, validateAccessCode, revokeAccess, isAdmin }
   },
   data() {
     return {
@@ -99,25 +102,40 @@ export default {
       }
     },
 
-    validateCode() {
+    async validateCode() {
       if (!this.inputCode.trim()) return
 
-      if (this.validateAccessCode(this.inputCode.trim())) {
-        this.isExpanded = false
-        this.inputCode = ''
-        this.error = ''
+      try {
+        const result = await this.validateAccessCode(this.inputCode.trim())
 
-        // Forçar atualizações para garantir reatividade
-        this.$forceUpdate()
-        this.$nextTick(() => {
+        if (result.success) {
+          this.isExpanded = false
+          this.inputCode = ''
+          this.error = ''
+
+          // Log para admin
+          if (result.type === 'admin') {
+            console.log('🔥 Admin detectado! isAdmin:', this.isAdmin)
+          }
+
+          // Forçar atualizações para garantir reatividade
           this.$forceUpdate()
-        })
+          this.$nextTick(() => {
+            this.$forceUpdate()
+          })
 
-        // Disparar evento personalizado para componentes que precisam reagir
-        this.$emit('access-granted')
-        window.dispatchEvent(new CustomEvent('portfolio-access-granted'))
-      } else {
-        this.error = 'Código inválido'
+          // Disparar evento personalizado para componentes que precisam reagir
+          this.$emit('access-granted')
+          window.dispatchEvent(new CustomEvent('portfolio-access-granted'))
+        } else {
+          this.error = result.message || 'Código inválido'
+          setTimeout(() => {
+            this.error = ''
+          }, 3000)
+        }
+      } catch (error) {
+        this.error = 'Erro ao validar código'
+        console.error('Erro:', error)
         setTimeout(() => {
           this.error = ''
         }, 3000)
@@ -154,6 +172,18 @@ export default {
       if (this.isExpanded && !this.$el.contains(e.target)) {
         this.isExpanded = false
       }
+    })
+
+    // Debug: monitorizar mudanças no isAdmin
+    this.$watch('isAdmin', (newVal) => {
+      console.log('🔧 isAdmin changed:', newVal)
+    })
+
+    // Debug: estado inicial
+    console.log('🔧 Initial state:', {
+      isAdmin: this.isAdmin,
+      isAuthenticated: this.isAuthenticated,
+      isAccessValid: this.isAccessValid
     })
   }
 }
@@ -379,6 +409,7 @@ export default {
   font-size: 0.85rem;
   box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
 }
+
 
 .revoke-btn {
   background: rgba(255, 255, 255, 0.2);

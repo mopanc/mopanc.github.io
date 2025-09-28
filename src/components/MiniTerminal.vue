@@ -155,18 +155,21 @@
 import { onMounted } from 'vue'
 import { useAccessControlSimple } from '../composables/useAccessControlSimple'
 import { useLanguage } from '../composables/useLanguage.js'
+import { useSecurity } from '../composables/useSecurity.js'
 
 export default {
   name: 'MiniTerminal',
   setup() {
-    const { isAccessValid, timeRemaining, validateAccessCode, revokeAccess } = useAccessControlSimple()
+    const { isAccessValid, timeRemaining, validateAccessCode, revokeAccess, isAdmin, generateTempCode, getActiveCodes, getAllCodes, extendCodeTime, cleanExpiredCodes } = useAccessControlSimple()
     const { translations, initialize } = useLanguage()
+    const { initSecurity } = useSecurity()
 
     onMounted(async () => {
       await initialize()
+      initSecurity()
     })
 
-    return { isAccessValid, timeRemaining, validateAccessCode, revokeAccess, translations }
+    return { isAccessValid, timeRemaining, validateAccessCode, revokeAccess, isAdmin, generateTempCode, getActiveCodes, getAllCodes, extendCodeTime, cleanExpiredCodes, translations }
   },
   data() {
     return {
@@ -182,7 +185,19 @@ export default {
       showExpiryWarning: false,
       showExpiredNotification: false,
       warningTimer: null,
-      checkTimer: null
+      checkTimer: null,
+      // Admin code generation state
+      codeGenStep: null,
+      codeGenData: {
+        email: '',
+        duration: '1h'
+      },
+      // Admin extend state
+      extendStep: null,
+      extendData: {
+        email: '',
+        duration: '1h'
+      }
     }
   },
   watch: {
@@ -289,7 +304,12 @@ export default {
         await this.typeMessage(`│ ⏰ Session expires in: ${this.formatTime(this.timeRemaining)}${' '.repeat(Math.max(0, 33 - this.formatTime(this.timeRemaining).length))}│`, 'info', false)
         await this.typeMessage('└───────────────────────────────────────────────────────────────┘', 'success', false)
         await this.typeMessage('', 'system', false)
-        await this.typeMessage('Available commands: logout, extend, status', 'info', false)
+
+        if (this.isSecureAdmin()) {
+          await this.typeMessage('Available commands: logout, extend, status, generate-code, list-codes, clean-codes', 'info', false)
+        } else {
+          await this.typeMessage('Available commands: logout, extend, status', 'info', false)
+        }
         await this.typeMessage('', 'system', false)
 
         // Show command prompt
@@ -321,15 +341,359 @@ export default {
     async handleEnter() {
       if (!this.currentInput.trim() || this.isProcessing) return
 
-      const code = this.currentInput.trim()
+      const input = this.currentInput.trim()
       this.isProcessing = true
       this.showInput = false
 
-      // Show the entered command
-      await this.typeMessage(`auth --code="${code}"`, 'command', true)
+      // Se estamos no processo de geração de código
+      if (this.codeGenStep) {
+        await this.processCodeGeneration(input)
+        return
+      }
 
-      // Verification process - fast typing
-      await this.processAuthentication(code)
+      // Se estamos no processo de extend
+      if (this.extendStep) {
+        await this.processExtendCode(input)
+        return
+      }
+
+      // Se estamos autenticados, processar comandos
+      if (this.isAccessValid) {
+        await this.processCommand(input)
+      } else {
+        // Se não estamos autenticados, processar como código de auth
+        await this.typeMessage(`auth --code="${input}"`, 'command', true)
+        await this.processAuthentication(input)
+      }
+    },
+
+    async processCommand(command) {
+      // Show the entered command
+      await this.typeMessage(command, 'command', true)
+
+      // Process different commands
+      switch (command.toLowerCase()) {
+        case 'logout':
+          await this.processLogout()
+          break
+        case 'status':
+          await this.processStatus()
+          break
+        case 'extend':
+          if (this.isSecureAdmin()) {
+            await this.processExtend()
+          } else {
+            await this.typeMessage('Error: Command not found or insufficient privileges', 'error', false)
+            this.resetInput()
+          }
+          break
+        case 'generate-code':
+          if (this.isSecureAdmin()) {
+            await this.processGenerateCode()
+          } else {
+            await this.typeMessage('Error: Command not found or insufficient privileges', 'error', false)
+            this.resetInput()
+          }
+          break
+        case 'list-codes':
+          if (this.isSecureAdmin()) {
+            await this.processListCodes()
+          } else {
+            await this.typeMessage('Error: Command not found or insufficient privileges', 'error', false)
+            this.resetInput()
+          }
+          break
+        case 'clean-codes':
+          if (this.isSecureAdmin()) {
+            await this.processCleanCodes()
+          } else {
+            await this.typeMessage('Error: Command not found or insufficient privileges', 'error', false)
+            this.resetInput()
+          }
+          break
+        default:
+          await this.typeMessage(`Command '${command}' not found`, 'error', false)
+          if (this.isSecureAdmin()) {
+            await this.typeMessage('Available commands: logout, extend, status, generate-code, list-codes, clean-codes', 'info', false)
+          } else {
+            await this.typeMessage('Available commands: logout, extend, status', 'info', false)
+          }
+          this.resetInput()
+          break
+      }
+    },
+
+    async processLogout() {
+      await this.typeMessage('Logging out...', 'info', false)
+      this.revokeAccess()
+      setTimeout(() => this.closeTerminal(), 1000)
+    },
+
+    async processStatus() {
+      await this.typeMessage('', 'system', false)
+      await this.typeMessage('┌─ SYSTEM STATUS ───────────────────────────────────────────────┐', 'info', false)
+      await this.typeMessage(`│ Status: ${this.isAccessValid ? 'Authenticated' : 'Not Authenticated'}${' '.repeat(Math.max(0, 40 - (this.isAccessValid ? 'Authenticated' : 'Not Authenticated').length))}│`, 'info', false)
+      await this.typeMessage(`│ Role: ${this.isAdmin ? 'Administrator' : 'User'}${' '.repeat(Math.max(0, 46 - (this.isAdmin ? 'Administrator' : 'User').length))}│`, 'info', false)
+      await this.typeMessage(`│ Time remaining: ${this.formatTime(this.timeRemaining)}${' '.repeat(Math.max(0, 38 - this.formatTime(this.timeRemaining).length))}│`, 'info', false)
+      await this.typeMessage('└───────────────────────────────────────────────────────────────┘', 'info', false)
+      this.resetInput()
+    },
+
+    async processExtend() {
+      await this.typeMessage('', 'system', false)
+      await this.typeMessage('┌─ CODE EXTENDER ───────────────────────────────────────────────┐', 'success', false)
+      await this.typeMessage('│ Extend time for existing access codes                         │', 'success', false)
+      await this.typeMessage('└───────────────────────────────────────────────────────────────┘', 'success', false)
+
+      this.extendStep = 'email'
+      this.currentInput = ''
+      this.inputPlaceholder = 'Enter user email address...'
+      this.isProcessing = false
+      this.showInput = true
+
+      await this.typeMessage('Enter email address to extend access time:', 'info', false)
+
+      this.$nextTick(() => {
+        if (this.$refs.terminalInput) {
+          this.$refs.terminalInput.focus()
+        }
+      })
+    },
+
+    async processGenerateCode() {
+      await this.typeMessage('', 'system', false)
+      await this.typeMessage('┌─ CODE GENERATOR ──────────────────────────────────────────────┐', 'success', false)
+      await this.typeMessage('│ Welcome to the Access Code Generator                          │', 'success', false)
+      await this.typeMessage('└───────────────────────────────────────────────────────────────┘', 'success', false)
+
+      this.codeGenStep = 'email'
+      this.currentInput = ''
+      this.inputPlaceholder = 'Enter user email address...'
+      this.isProcessing = false
+      this.showInput = true
+
+      await this.typeMessage('Enter email address for the new code:', 'info', false)
+
+      this.$nextTick(() => {
+        if (this.$refs.terminalInput) {
+          this.$refs.terminalInput.focus()
+        }
+      })
+    },
+
+    async processListCodes() {
+      await this.typeMessage('', 'system', false)
+      await this.typeMessage('┌─ CODE HISTORY (Last 10) ──────────────────────────────────────┐', 'info', false)
+      await this.typeMessage('│ Code     │ Email              │ Status   │ Duration │ Time     │', 'info', false)
+      await this.typeMessage('├──────────┼────────────────────┼──────────┼──────────┼──────────┤', 'info', false)
+
+      try {
+        const codes = await this.getAllCodes()
+
+        if (codes.length === 0) {
+          await this.typeMessage('│ No codes found                                                 │', 'warning', false)
+        } else {
+          for (const code of codes) {
+            const truncatedEmail = code.email.length > 18 ? code.email.substring(0, 15) + '...' : code.email
+            const statusColor = code.status === 'active' ? 'success' :
+                               code.status === 'used' ? 'warning' : 'error'
+
+            const timeInfo = code.status === 'active' ?
+                           `${code.timeRemaining}min` :
+                           code.status === 'used' ? 'Used' : 'Expired'
+
+            const line = `│ ${code.code.padEnd(8)} │ ${truncatedEmail.padEnd(18)} │ ${code.status.padEnd(8)} │ ${code.duration.padEnd(8)} │ ${timeInfo.padEnd(8)} │`
+            await this.typeMessage(line, statusColor, false)
+          }
+        }
+      } catch (error) {
+        await this.typeMessage('│ Error fetching codes                                          │', 'error', false)
+      }
+
+      await this.typeMessage('└───────────────────────────────────────────────────────────────┘', 'info', false)
+      this.resetInput()
+    },
+
+    async processCleanCodes() {
+      await this.typeMessage('Cleaning expired codes...', 'info', false)
+
+      try {
+        await this.cleanExpiredCodes()
+        await this.typeMessage('✓ Expired codes cleaned successfully', 'success', false)
+      } catch (error) {
+        await this.typeMessage('✗ Error cleaning codes', 'error', false)
+      }
+
+      this.resetInput()
+    },
+
+    async processCodeGeneration(input) {
+      if (this.codeGenStep === 'email') {
+        // Validar email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(input)) {
+          await this.typeMessage('Invalid email format. Please try again:', 'error', false)
+          this.currentInput = ''
+          this.isProcessing = false
+          this.showInput = true
+          return
+        }
+
+        this.codeGenData.email = input
+        await this.typeMessage(`Email: ${input}`, 'success', false)
+        await this.typeMessage('Select duration (1h, 4h, 1d):', 'info', false)
+
+        this.codeGenStep = 'duration'
+        this.currentInput = ''
+        this.inputPlaceholder = 'Enter duration (1h, 4h, 1d)...'
+        this.isProcessing = false
+        this.showInput = true
+
+      } else if (this.codeGenStep === 'duration') {
+        const validDurations = ['1h', '4h', '1d']
+        if (!validDurations.includes(input.toLowerCase())) {
+          await this.typeMessage('Invalid duration. Please enter 1h, 4h, or 1d:', 'error', false)
+          this.currentInput = ''
+          this.isProcessing = false
+          this.showInput = true
+          return
+        }
+
+        this.codeGenData.duration = input.toLowerCase()
+        await this.typeMessage(`Duration: ${input}`, 'success', false)
+        await this.typeMessage('', 'system', false)
+        await this.typeMessage('Generating access code...', 'info', false)
+
+        try {
+          const result = await this.generateTempCode(this.codeGenData.email, this.codeGenData.duration)
+
+          if (result.success) {
+            await this.typeMessage('', 'system', false)
+            await this.typeMessage('┌─ CODE GENERATED ──────────────────────────────────────────────┐', 'success', false)
+            await this.typeMessage(`│ ✓ Code: ${result.code}${' '.repeat(Math.max(0, 48 - result.code.length))}│`, 'success', false)
+            await this.typeMessage(`│ ✓ Email: ${result.email}${' '.repeat(Math.max(0, 47 - result.email.length))}│`, 'success', false)
+            await this.typeMessage(`│ ✓ Duration: ${result.duration}${' '.repeat(Math.max(0, 44 - result.duration.length))}│`, 'success', false)
+            await this.typeMessage(`│ ✓ Expires: ${result.expiryTime}${' '.repeat(Math.max(0, 45 - result.expiryTime.length))}│`, 'success', false)
+            await this.typeMessage('└───────────────────────────────────────────────────────────────┘', 'success', false)
+            await this.typeMessage('', 'system', false)
+            await this.typeMessage(`Send this code to ${result.email}: ${result.code}`, 'info', false)
+
+            // Copy to clipboard if available
+            if (navigator.clipboard) {
+              try {
+                await navigator.clipboard.writeText(result.code)
+                await this.typeMessage('✓ Code copied to clipboard', 'success', false)
+              } catch (error) {
+                await this.typeMessage('Note: Could not copy to clipboard', 'warning', false)
+              }
+            }
+
+          } else {
+            await this.typeMessage(`✗ Error: ${result.message}`, 'error', false)
+          }
+
+        } catch (error) {
+          await this.typeMessage('✗ Error generating code', 'error', false)
+          console.error('Code generation error:', error)
+        }
+
+        // Reset
+        this.resetInput()
+      }
+
+      this.$nextTick(() => {
+        if (this.$refs.terminalInput) {
+          this.$refs.terminalInput.focus()
+        }
+      })
+    },
+
+    async processExtendCode(input) {
+      if (this.extendStep === 'email') {
+        // Validar email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!emailRegex.test(input)) {
+          await this.typeMessage('Invalid email format. Please try again:', 'error', false)
+          this.currentInput = ''
+          this.isProcessing = false
+          this.showInput = true
+          return
+        }
+
+        this.extendData.email = input
+        await this.typeMessage(`Email: ${input}`, 'success', false)
+        await this.typeMessage('Select extension duration (1h, 4h, 1d):', 'info', false)
+
+        this.extendStep = 'duration'
+        this.currentInput = ''
+        this.inputPlaceholder = 'Enter duration (1h, 4h, 1d)...'
+        this.isProcessing = false
+        this.showInput = true
+
+      } else if (this.extendStep === 'duration') {
+        const validDurations = ['1h', '4h', '1d']
+        if (!validDurations.includes(input.toLowerCase())) {
+          await this.typeMessage('Invalid duration. Please enter 1h, 4h, or 1d:', 'error', false)
+          this.currentInput = ''
+          this.isProcessing = false
+          this.showInput = true
+          return
+        }
+
+        this.extendData.duration = input.toLowerCase()
+        await this.typeMessage(`Extension: ${input}`, 'success', false)
+        await this.typeMessage('', 'system', false)
+        await this.typeMessage('Extending access time...', 'info', false)
+
+        try {
+          const result = await this.extendCodeTime(this.extendData.email, this.extendData.duration)
+
+          if (result.success) {
+            await this.typeMessage('', 'system', false)
+            await this.typeMessage('┌─ CODE EXTENDED ───────────────────────────────────────────────┐', 'success', false)
+            await this.typeMessage(`│ ✓ Code: ${result.code}${' '.repeat(Math.max(0, 48 - result.code.length))}│`, 'success', false)
+            await this.typeMessage(`│ ✓ Email: ${result.email}${' '.repeat(Math.max(0, 47 - result.email.length))}│`, 'success', false)
+            await this.typeMessage(`│ ✓ Extended by: ${this.extendData.duration}${' '.repeat(Math.max(0, 39 - this.extendData.duration.length))}│`, 'success', false)
+            await this.typeMessage(`│ ✓ New expiry: ${result.newExpiryTime}${' '.repeat(Math.max(0, 40 - result.newExpiryTime.length))}│`, 'success', false)
+            await this.typeMessage('└───────────────────────────────────────────────────────────────┘', 'success', false)
+            await this.typeMessage('', 'system', false)
+            await this.typeMessage(`✓ Access extended for ${result.email}`, 'success', false)
+
+          } else {
+            await this.typeMessage(`✗ Error: ${result.message}`, 'error', false)
+          }
+
+        } catch (error) {
+          await this.typeMessage('✗ Error extending code', 'error', false)
+          console.error('Code extend error:', error)
+        }
+
+        // Reset
+        this.resetInput()
+      }
+
+      this.$nextTick(() => {
+        if (this.$refs.terminalInput) {
+          this.$refs.terminalInput.focus()
+        }
+      })
+    },
+
+    resetInput() {
+      this.currentInput = ''
+      this.isProcessing = false
+      this.showInput = true
+      this.codeGenStep = null
+      this.extendStep = null
+      this.codeGenData = { email: '', duration: '1h' }
+      this.extendData = { email: '', duration: '1h' }
+      this.inputPlaceholder = this.translations.enter_command || 'Enter command...'
+
+      this.$nextTick(() => {
+        if (this.$refs.terminalInput) {
+          this.$refs.terminalInput.focus()
+        }
+      })
     },
 
     async processAuthentication(code) {
@@ -341,34 +705,74 @@ export default {
       await this.typeMessage('│ [VERIFY] Validating token...                                  │', 'processing', false)
       await this.typeMessage('│ [HASH] Computing verification...                              │', 'processing', false)
 
-      // Check if code is valid
-      const isValid = this.validateAccessCode(code)
+      // Check if code is valid - usar a versão async que retorna detalhes
+      try {
+        const result = await this.validateAccessCode(code)
 
-      if (isValid) {
-        await this.typeMessage('│ [✓] Token validated successfully                              │', 'success', false)
-        await this.typeMessage('│ [✓] Administrator privileges granted                          │', 'success', false)
-        await this.typeMessage('│ [✓] Session initialized (expires: 4h)                        │', 'success', false)
-        await this.typeMessage('│ [✓] Security policies applied                                 │', 'success', false)
-        await this.typeMessage('└───────────────────────────────────────────────────────────────┘', 'success', false)
-        await this.typeMessage('', 'system', false)
-        await this.typeMessage('╔═══════════════════════════════════════════════════════════════╗', 'success', false)
-        await this.typeMessage('║                  ✅ AUTHENTICATION SUCCESSFUL                 ║', 'success', false)
-        await this.typeMessage('║                     Welcome, Administrator                    ║', 'success', false)
-        await this.typeMessage('╚═══════════════════════════════════════════════════════════════╝', 'success', false)
+        if (result.success) {
+          await this.typeMessage('│ [✓] Token validated successfully                              │', 'success', false)
 
-        // Close terminal after success - instant
-        setTimeout(() => this.closeTerminal(), 400)
+          if (result.type === 'admin') {
+            await this.typeMessage('│ [✓] Administrator privileges granted                          │', 'success', false)
+          } else {
+            await this.typeMessage('│ [✓] User privileges granted                                   │', 'success', false)
+          }
 
-      } else {
-        await this.typeMessage('│ [✗] Token validation failed                                   │', 'error', false)
-        await this.typeMessage('│ [ERROR] Invalid or expired code                               │', 'error', false)
-        await this.typeMessage('│ [DENIED] Access denied                                        │', 'error', false)
+          await this.typeMessage('│ [✓] Session initialized                                       │', 'success', false)
+          await this.typeMessage('│ [✓] Security policies applied                                 │', 'success', false)
+          await this.typeMessage('└───────────────────────────────────────────────────────────────┘', 'success', false)
+          await this.typeMessage('', 'system', false)
+          await this.typeMessage('╔═══════════════════════════════════════════════════════════════╗', 'success', false)
+          await this.typeMessage('║                  ✅ AUTHENTICATION SUCCESSFUL                 ║', 'success', false)
+
+          if (result.type === 'admin') {
+            await this.typeMessage('║                     Welcome, Administrator                    ║', 'success', false)
+          } else {
+            await this.typeMessage('║                        Welcome, User                          ║', 'success', false)
+          }
+
+          await this.typeMessage('╚═══════════════════════════════════════════════════════════════╝', 'success', false)
+
+          // Close terminal after success
+          setTimeout(() => this.closeTerminal(), 400)
+
+        } else {
+          await this.typeMessage('│ [✗] Token validation failed                                   │', 'error', false)
+
+          // Mostrar mensagem específica do erro
+          if (result.message.includes('já foi utilizado')) {
+            await this.typeMessage('│ [ERROR] Code already used - one-time access only              │', 'error', false)
+          } else if (result.message.includes('expirou')) {
+            await this.typeMessage('│ [ERROR] Code expired - time limit exceeded                    │', 'error', false)
+          } else {
+            await this.typeMessage('│ [ERROR] Invalid or expired code                               │', 'error', false)
+          }
+
+          await this.typeMessage('│ [DENIED] Access denied                                        │', 'error', false)
+          await this.typeMessage('└───────────────────────────────────────────────────────────────┘', 'error', false)
+          await this.typeMessage('', 'system', false)
+          await this.typeMessage(`⚠️  ${result.message}`, 'warning', false)
+          await this.typeMessage('', 'system', false)
+
+          // Reset for new attempt
+          setTimeout(() => {
+            this.currentInput = ''
+            this.isProcessing = false
+            this.showInput = true
+            this.$nextTick(() => {
+              if (this.$refs.terminalInput) {
+                this.$refs.terminalInput.focus()
+              }
+            })
+          }, 100)
+        }
+      } catch (error) {
+        await this.typeMessage('│ [✗] System error during authentication                        │', 'error', false)
+        await this.typeMessage('│ [ERROR] Unable to verify credentials                          │', 'error', false)
         await this.typeMessage('└───────────────────────────────────────────────────────────────┘', 'error', false)
-        await this.typeMessage('', 'system', false)
-        await this.typeMessage('⚠️  Contact administrator for valid credentials: jorgemopanc@icloud.com', 'info', false)
-        await this.typeMessage('', 'system', false)
 
-        // Reset for new attempt - instant
+        console.error('Authentication error:', error)
+
         setTimeout(() => {
           this.currentInput = ''
           this.isProcessing = false
@@ -503,6 +907,23 @@ export default {
     // Dismiss expired notification
     dismissExpiredNotification() {
       this.showExpiredNotification = false
+    },
+
+    // Verificação de segurança para admin - não pode ser manipulado via console
+    isSecureAdmin() {
+      // Verificação tripla de segurança
+      const storedCode = localStorage.getItem('portfolioAccessCode')
+      const storedAdmin = localStorage.getItem('portfolioAdminAccess')
+      const masterCode = 'JM.gjpm!23A83g4x31'
+
+      // Verifica se:
+      // 1. Tem privilégios admin no composable
+      // 2. Código armazenado é exatamente o MASTER
+      // 3. Flag de admin está ativa
+      return this.isAdmin &&
+             storedCode === masterCode &&
+             storedAdmin === 'true' &&
+             this.isAccessValid
     }
   }
 }
