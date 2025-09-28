@@ -347,21 +347,13 @@ const submitToNetlify = async () => {
 }
 
 const handleAccessRequest = async () => {
-  // Simulate validation and code generation process
-  await new Promise(resolve => setTimeout(resolve, 3000))
-
-  // Generate access code
-  const accessCode = generateAccessCode()
-
   messageType.value = 'success'
   messageText.value = `
-${translations.access_granted || 'Access request approved!'}
+${translations.access_request_sent || 'Access request sent successfully!'}
 
-${translations.access_code_generated || 'Your access code:'}
+${translations.access_request_info || 'Your request has been sent. You will receive an access code via email if approved.'}
 
-🔑 ${accessCode}
-
-${translations.access_code_info || 'This code is valid for 4 hours. Use it to unlock protected content.'}
+${translations.access_request_note || 'Please check your email within 24-48 hours for a response.'}
   `
   showMessage.value = true
 
