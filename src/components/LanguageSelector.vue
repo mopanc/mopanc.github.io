@@ -9,31 +9,60 @@
   </div>
 </template>
 
-<script>
-export default {
-  data() {
-    return {
-      selectedLanguage: 'en'
-    }
-  },
-  mounted() {
-    // recupera o idioma selecionado anteriormente do localStorage (se houver)
-    const selectedLanguage = localStorage.getItem('selectedLanguage');
-    if (selectedLanguage) {
-      // define o idioma selecionado anteriormente como o idioma selecionado atualmente
-      this.selectedLanguage = selectedLanguage;
-    }
-  },
-  methods: {
-    selectLanguage(language) {
-      // salva o valor selecionado no localStorage
-      localStorage.setItem('selectedLanguage', language);
-      
-      // atualiza a variável selectedLanguage com o idioma selecionado
-      this.selectedLanguage = language;
+<script setup>
+import { useLanguage } from '../composables/useLanguage.js'
 
-      location.reload();
-    }
+const { selectedLanguage, setLanguage } = useLanguage()
+
+const selectLanguage = async (language) => {
+  try {
+    await setLanguage(language)
+    updateMetaTags(language)
+
+    // Dispatch custom event instead of page reload
+    window.dispatchEvent(new CustomEvent('languageChanged', {
+      detail: { language }
+    }))
+  } catch (error) {
+    console.error('Failed to change language:', error)
+  }
+}
+
+const updateMetaTags = (language) => {
+  const isPt = language === 'pt'
+
+  // Atualiza title
+  document.title = isPt
+    ? 'Jorge Mopanc - Desenvolvedor de Software | Vue.js, React & Node.js'
+    : 'Jorge Mopanc - Software Developer | Vue.js, React & Node.js Expert'
+
+  // Atualiza meta description
+  const metaDescription = document.querySelector('meta[name="description"]')
+  if (metaDescription) {
+    metaDescription.content = isPt
+      ? 'Jorge Mopanc é um desenvolvedor de software profissional com 4+ anos de experiência em Vue.js, React.js, Node.js e TypeScript. Disponível para projetos freelance e oportunidades full-time.'
+      : 'Jorge Mopanc is a professional software developer with 4+ years experience in Vue.js, React.js, Node.js, and TypeScript. Available for freelance projects and full-time opportunities.'
+  }
+
+  // Atualiza Open Graph
+  const ogTitle = document.querySelector('meta[property="og:title"]')
+  if (ogTitle) {
+    ogTitle.content = isPt
+      ? 'Jorge Mopanc - Desenvolvedor de Software | Vue.js & React'
+      : 'Jorge Mopanc - Software Developer | Vue.js & React Expert'
+  }
+
+  const ogDescription = document.querySelector('meta[property="og:description"]')
+  if (ogDescription) {
+    ogDescription.content = isPt
+      ? 'Desenvolvedor de software profissional com 4+ anos de experiência. Especializado em Vue.js, React.js, Node.js e desenvolvimento web moderno.'
+      : 'Professional software developer with 4+ years experience. Specialized in Vue.js, React.js, Node.js, and modern web development.'
+  }
+
+  // Atualiza locale
+  const ogLocale = document.querySelector('meta[property="og:locale"]')
+  if (ogLocale) {
+    ogLocale.content = isPt ? 'pt_PT' : 'en_US'
   }
 }
 </script>

@@ -1,77 +1,6 @@
 :root {
-  /* Colors
+  /* Colors - Active Theme: Dark Khaki
   ____________________*/
-  /* --color-primary: #42b983; */
-  /* --color-primary: #003EE9; */
-  /* --color-primary-dark: #0000E9; */
-  /* --color-bg-primary: #1a1a1a;
-  --color-bg-secondary: #242424;
-  --color-bg-footer: #151515;
-  --color-white: #ffffff;
-  --color-text: #676767;
-  --color-border: #373737; */
-
-  --color-primary: #00796b;
-  --color-primary-dark: #004d40; 
-  --color-bg-primary: #2e2e2e; 
-  --color-bg-primary-bk: #121212; 
-  --color-bg-secondary: #616161; 
-  --color-bg-footer: #424242; 
-  --color-white: #e0e0e0;
-  --color-text: #ffffff; 
-  --color-border: #616161;
-
-  --color-primary: #1e3a8a; 
---color-primary-dark: #16264b; 
---color-bg-primary: #2d2d2d;
---color-bg-primary-bk: #0f0f0f; 
---color-bg-secondary: #4f4f4f; 
---color-bg-footer: #3c3c3c;
---color-white: #f9f9f9; 
---color-text: #ffdd57; 
---color-border: #4f4f4f; 
-
---color-primary: #2962ff; /* Azul vibrante */
---color-primary-dark: #1e40af; /* Azul mais profundo */
---color-bg-primary: #2d2d2d; /* Cinza escuro para fundo */
---color-bg-primary-bk: #0f0f0f; /* Preto profundo */
---color-bg-secondary: #4f4f4f; /* Cinza intermediário */
---color-bg-footer: #3c3c3c; /* Cinza escuro */
---color-white: #f9f9f9; /* Branco claro */
---color-text: #ffd700; /* Dourado mais forte */
---color-border: #4f4f4f; /* Cinza intermediário para bordas */
-
---color-primary: #1e90ff; /* Azul elétrico */
---color-primary-dark: #0047ab; /* Azul navy */
---color-bg-primary: #2d2d2d; /* Cinza escuro */
---color-bg-primary-bk: #0f0f0f; /* Preto */
---color-bg-secondary: #4f4f4f; /* Cinza intermediário */
---color-bg-footer: #3c3c3c; /* Cinza escuro para o rodapé */
---color-white: #ffffff; /* Branco puro */
---color-text: #ffcc00; /* Dourado intenso */
---color-border: #4f4f4f; /* Cinza intermediário para bordas */
-
---color-primary: #007bff; /* Azul bem saturado */
---color-primary-dark: #0056b3; /* Azul profundo */
---color-bg-primary: #2d2d2d; /* Cinza escuro para fundo */
---color-bg-primary-bk: #0f0f0f; /* Preto profundo */
---color-bg-secondary: #4f4f4f; /* Cinza intermediário */
---color-bg-footer: #3c3c3c; /* Cinza escuro */
---color-white: #f9f9f9; /* Branco claro */
---color-text: #ffb800; /* Dourado metálico */
---color-border: #4f4f4f; /* Cinza intermediário para bordas */
-
---color-primary: #0d6efd; /* Azul luminoso */
---color-primary-dark: #003580; /* Azul profundo */
---color-bg-primary: #2d2d2d; /* Cinza escuro */
---color-bg-primary-bk: #0f0f0f; /* Preto fosco */
---color-bg-secondary: #4f4f4f; /* Cinza intermediário */
---color-bg-footer: #3c3c3c; /* Cinza escuro para rodapé */
---color-white: #f9f9f9; /* Branco claro */
---color-text: #ffbf00; /* Dourado realçado */
---color-border: #4f4f4f; /* Cinza intermediário para bordas */
-
-/*black e khaki*/
   --color-primary: #c3b091; /* Khaki médio - cor principal */
   --color-primary-dark: #8b7a5e; /* Khaki escuro - cor complementadora */
   --color-bg-primary: #121212; /* Preto profundo para fundo principal */
@@ -82,30 +11,164 @@
   --color-text: #d2b48c; /* Bege claro / khaki como cor de texto (subtle highlight) */
   --color-border: #8b7a5e; /* Khaki escuro para bordas e separadores */
 
-/* --color-primary: #e74c3c; 
---color-primary-dark: #c0392b; 
---color-bg-primary: #2c2c2c;
---color-bg-primary-bk: #1a1a1a;
---color-bg-secondary: #444444; 
---color-bg-footer: #333333; 
---color-white: #f7f7f7;
---color-text: #fdfdfd;
---color-border: #444444;  */
+  /* Accessibility & Animation Variables
+  ____________________*/
+  --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --focus-ring: 0 0 0 3px rgba(195, 176, 145, 0.5);
+  --border-radius: 6px;
 
-/* --color-primary: #2ecc71; 
---color-primary-dark: #27ae60; 
---color-bg-primary: #2e2e2e; 
---color-bg-primary-bk: #121212;
---color-bg-secondary: #95a5a6; 
---color-bg-footer: #7f8c8d; 
---color-white: #ecf0f1; 
---color-text: #ffffff; 
---color-border: #95a5a6; */
+  /* Typography Variables
+  ____________________*/
+  --ff-body: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ff-heading: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  --fs-xs: 0.75rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 1rem;
+  --fs-lg: 1.125rem;
+  --fs-xl: 1.25rem;
+  --fs-xxl: 1.5rem;
+  --fs-3xl: 1.875rem;
+
+}
+
+/* Screen Reader Only Text */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Focus Visible Styles */
+.focus-visible *:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.focus-visible *:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* High Contrast Mode */
+.high-contrast {
+  --color-primary: #ffffff;
+  --color-text: #ffffff;
+  --color-border: #ffffff;
+  --color-bg-primary: #000000;
+  --color-bg-secondary: #000000;
+}
+
+.high-contrast * {
+  border-color: var(--color-border) !important;
+  color: var(--color-text) !important;
+}
+
+/* Reduced Motion */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Skip Link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: var(--color-primary);
+  color: var(--color-bg-primary);
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: var(--border-radius);
+  font-weight: var(--fw-semibold);
+  z-index: 9999;
+  transition: var(--transition);
+}
+
+.skip-link:focus {
+  top: 6px;
+}
+
+/* Better Button Accessibility */
+button, .btn {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+button:focus-visible, .btn:focus-visible {
+  box-shadow: var(--focus-ring);
+}
+
+button:disabled, .btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Link Accessibility */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+a:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+a:hover {
+  color: var(--color-primary);
+}
+
+/* Form Accessibility */
+input, textarea, select {
+  font-family: inherit;
+  transition: var(--transition);
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Touch Target Sizes */
+@media (pointer: coarse) {
+  button, .btn, a, input[type="button"], input[type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Motion Safe Queries */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
 
 
 
-  
-
+:root {
   /* Font & Typography
 
 font-family: 'Goldman', cursive;
@@ -132,7 +195,7 @@ font-family: 'Stalinist One', cursive;
   --zindex-menu: 1000;
   --zindex-fixed: 1010;
 
-  /* With & Height 
+  /* With & Height
   ------------------*/
   --width-container: 98rem;
   --height-header: 8rem;
@@ -215,7 +278,7 @@ body {
 }
 
 .section__header {
-  margin: 8rem 0 6rem 0;
+  margin: 2rem 0 2rem 0;
   text-align: center;
 }
 
@@ -239,6 +302,37 @@ body {
   bottom: -1.5rem;
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* =========================
+   LIGHT MODE OVERRIDES
+   ========================= */
+
+/* Light mode text color fixes */
+.theme-light {
+  color: var(--color-text) !important;
+}
+
+.theme-light h1,
+.theme-light h2,
+.theme-light h3,
+.theme-light h4,
+.theme-light p,
+.theme-light .home__description,
+.theme-light .home__title,
+.theme-light .section__title,
+.theme-light .section__subtitle,
+.theme-light .about__description,
+.theme-light .about__title,
+.theme-light .testimonial__description,
+.theme-light .service__title,
+.theme-light .qualification__title,
+.theme-light .qualification__description {
+  color: var(--color-text) !important;
+}
+
+.theme-light .btn {
+  color: var(--color-bg-primary) !important;
 }
 
 .d-grid {
@@ -491,7 +585,7 @@ body {
   font-size: var(--fs-lg);
   text-align: left;
   margin-bottom: 3rem;
-  width: 360px;
+  width: 380px;
 }
 
 .skills__wrapper {
@@ -508,12 +602,15 @@ body {
 }
 
 .skills__item {
-  color: #806EE3;
+  color: var(--color-text);
   margin-bottom: 1rem;
   display: flex;
-  font-size: 0.8em;
+  align-items: center;
+  font-size: 0.85em;
+  text-align: left;
   & img {
-    margin: 0 1rem;
+    margin-right: 0.5rem;
+    flex-shrink: 0;
   }
 }
 
@@ -1046,8 +1143,8 @@ body {
   border: 1px solid #1a1a1a;
   /* background-image: linear-gradient(to  right, hsl(210, 78%, 56%) , hsl(146,    68%, 55%)); */
   background: #283048;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #208c61, #ffffff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #208c61, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, #4facfe, #ffffff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4facfe, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   transition: .2s;
   border-radius: 34px;
@@ -1068,8 +1165,8 @@ body {
 input:checked + .slider {
  /* background-image: linear-gradient(to  right, hsl(210, 78%, 56%) , hsl(146,    68%, 55%)); */
   background: #283048;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #208c61, #ffffff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #208c61, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, #4facfe, #ffffff);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #4facfe, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
 }
@@ -1080,7 +1177,7 @@ input:checked + .slider:before {
 }
 
 .about_me, .experience-title, .service-title {
-  color: #1a1a1a;
+  color: #4facfe;
 }
 
 

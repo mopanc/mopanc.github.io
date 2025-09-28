@@ -1,0 +1,812 @@
+{
+  "projects": [
+    {
+      "id": "Qore-Rewrite",
+      "category": "professional",
+      "isPublic": false,
+      "featured": true,
+      "projectType": "Enterprise Software - Business Management Platform",
+      "status": "In Production",
+      "title": "QORE - Plataforma de Gestão Empresarial",
+      "description": "Sistema empresarial completo para gestão centralizada de negócios multi-loja, desenvolvido com stack tecnológico avançado: Node.js, Express.js, TypeScript, TypeORM e SQL Server no backend, React com TypeScript no frontend, e Socket.IO para comunicação em tempo real. Inclui gestão de lojas, análise de vendas com dashboards estatísticos, controlo de stocks, gestão de utilizadores com permissões granulares, e automação de processos. Funcionalidades principais: configuração remota de dispositivos via protocolo ETPROXY proprietário, sincronização de dados empresariais, análises comparativas, rankings de produtos, exportação PDF/CSV, gestão inteligente de preços, backups automáticos e licenciamento controlado por dispositivos.",
+      "images": [
+        {
+          "src": "qore/Grafics.png",
+          "alt": "Gráfico interativo com estatísticas de vendas e métricas empresariais",
+          "title": "Estatísticas de Vendas"
+        },
+        {
+          "src": "qore/Chart.png",
+          "alt": "Painel com gráficos comparativos de desempenho e evolução de vendas",
+          "title": "Gráficos de Desempenho"
+        },
+        {
+          "src": "qore/Database.png",
+          "alt": "Visualização de base de dados com listagem estruturada de artigos e transações",
+          "title": "Base de Dados"
+        },
+        {
+          "src": "qore/Receive.png",
+          "alt": "Ecrã de receção de artigos com controlo de stocks e entradas em armazém",
+          "title": "Receção de Stocks"
+        },
+        {
+          "src": "qore/report.png",
+          "alt": "Relatório detalhado com listagem de utilizadores e permissões atribuídas",
+          "title": "Relatórios de Utilizadores"
+        },
+        {
+          "src": "qore/Stores.png",
+          "alt": "Interface de gestão de lojas com configuração de secções, grupos e dispositivos",
+          "title": "Gestão de Lojas"
+        },
+        {
+          "src": "qore/Tasks.png",
+          "alt": "Lista de tarefas automáticas do sistema com estados e prioridades",
+          "title": "Gestão de Tarefas"
+        },
+        {
+          "src": "qore/VAT.png",
+          "alt": "Configuração de perfis de IVA com regras fiscais aplicadas a artigos e serviços",
+          "title": "Configuração de IVA"
+        },
+        {
+          "src": "qore/VAT1.png",
+          "alt": "Tabela de taxas de IVA com percentagens e categorias aplicáveis",
+          "title": "Tabela de IVA"
+        }
+      ],
+      "technologies": [
+        { "name": "Node.js", "icon": "nodejs-icon.svg" },
+        { "name": "Express.js", "icon": "express-js.svg" },
+        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
+        { "name": "TypeORM", "icon": "Typeorm--Streamline-Simple-Icons.svg" },
+        { "name": "SQL Server", "icon": "microsoft-sql-server.svg" },
+        { "name": "Socket.IO", "icon": "socketio.svg" },
+        { "name": "React", "icon": "reactjs-icon.svg" },
+        { "name": "CSS3", "icon": "w3_css-icon.svg" },
+        { "name": "RESTful API", "icon": "getpostman-icon.svg" },
+        { "name": "C#", "icon": "visualstudio_code-icon.svg" },
+        { "name": "InnoSetup", "icon": "innosetup.svg" }
+      ],
+      "links": {
+        "repository": null,
+        "website": null
+      }
+    },
+    {
+      "id": "alice4cash-payment-machine",
+      "category": "professional",
+      "isPublic": false,
+      "featured": true,
+      "projectType": "Embedded Systems - Payment Machine Backend",
+      "status": "In Production",
+      "title": "Alice4Cash - Sistema de Pagamento Automatizado",
+      "description": "Webservice backend para máquina de pagamentos automatizada Alice4Cash, desenvolvido em C puro para controlo de hardware complexo incluindo hoppers, validadores de moedas/notas, reciclador e cofre de segurança. Utiliza protocolos especializados CCTalk e EID003 para comunicação com periféricos, e MQTT para integração com aplicações móveis. Principais desafios: gestão rigorosa de memória em ambiente restrito, prevenção de memory leaks, manipulação de dados binários e sincronização em tempo real. Funcionalidades: validação automática de valores, cálculo de troco, controlo LED, monitoramento remoto via MQTT e logging detalhado de transações.",
+      "images": [
+        {
+          "src": "alice4cash/homepage.png",
+          "alt": "Máquina Alice4Cash mostrando design moderno com interface digital e compartimentos para processamento de dinheiro",
+          "title": "Máquina Alice4Cash"
+        },
+        {
+          "src": "alice4cash/black.png",
+          "alt": "Vista dos componentes internos incluindo hoppers, validadores, reciclador e sistema de controlo",
+          "title": "Componentes Hardware"
+        },
+        {
+          "src": "alice4cash/white.png",
+          "alt": "Interface de desenvolvimento do webservice backend mostrando código C e configurações MQTT",
+          "title": "Backend Development"
+        },
+        {
+          "src": "alice4cash/desc1.png",
+          "alt": "Diagrama de comunicação CCTalk e EID003 entre componentes da máquina",
+          "title": "Protocolos de Comunicação"
+        },
+        {
+          "src": "alice4cash/desc2.png",
+          "alt": "Aplicação móvel conectada via MQTT para monitoramento e controlo remoto da máquina",
+          "title": "Integração Mobile MQTT"
+        },
+        {
+          "src": "alice4cash/desc3.png",
+          "alt": "Ambiente de testes com debugging de memory leaks e análise de performance",
+          "title": "Testing & Debugging"
+        },
+        {
+          "src": "alice4cash/desc4.png",
+          "alt": "Ambiente de testes com debugging de memory leaks e análise de performance",
+          "title": "Testing & Debugging"
+        }
+      ],
+      "technologies": [
+        { "name": "C Programming", "icon": "c-programming.svg" },
+        { "name": "MQTT Protocol", "icon": "mqtt-icon-solid.svg" },
+        { "name": "CCTalk Protocol", "icon": "binary-svgrepo-com.svg" },
+        { "name": "EID003 Protocol", "icon": "binary-svgrepo-com.svg" },
+        { "name": "Embedded Systems", "icon": "memory.svg" },
+        { "name": "Linux Embedded", "icon": "linux.svg" },
+        { "name": "IoT Communication", "icon": "iot.svg" }
+      ],
+      "links": {
+        "repository": null,
+        "website": "https://www.alice4cash.com/"
+      }
+    },
+    {
+      "id": "q-scope-ai-trader",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "projectType": "Plataforma de Trading Algorítmico com IA",
+      "status": "In Development",
+      "title": "Q-Scope AI Trading Platform",
+      "description": "Plataforma avançada de trading algorítmico que combina IA com análise técnica moderna. Integra engine quântico NEURO-IA-CORE v4.0, análise multi-timeframe e Elliott Wave Theory para decisões automatizadas. Inclui dashboard em tempo real, gestão de risco dinâmica e integração completa com Binance API através de WebSocket e autenticação JWT.",
+      "images": [
+        {
+          "src": "q-scope-ai/login.png",
+          "alt": "Sistema de gestão de risco dinâmico",
+          "title": "Dynamic Risk Management"
+        },
+        {
+          "src": "q-scope-ai/dashboard.png",
+          "alt": "Dashboard principal com análise IA em tempo real",
+          "title": "AI Trading Dashboard"
+        },
+        {
+          "src": "q-scope-ai/live_signals.png",
+          "alt": "Sinais de IA ao vivo com Elliott Wave e Fibonacci",
+          "title": "Live AI Signals"
+        },
+        {
+          "src": "q-scope-ai/active_positions.png",
+          "alt": "Análise multi-timeframe e confluências quânticas",
+          "title": "Multi-Timeframe Analysis"
+        },
+        {
+          "src": "q-scope-ai/how_ai_works.png",
+          "alt": "Sistema de gestão de risco dinâmico",
+          "title": "Dynamic Risk Management"
+        },
+        {
+          "src": "q-scope-ai/license.png",
+          "alt": "Sistema de gestão de risco dinâmico",
+          "title": "Dynamic Risk Management"
+        },
+        {
+          "src": "q-scope-ai/pair_setup.png",
+          "alt": "Sistema de gestão de risco dinâmico",
+          "title": "Dynamic Risk Management"
+        },
+        {
+          "src": "q-scope-ai/training.png",
+          "alt": "Sistema de gestão de risco dinâmico",
+          "title": "Dynamic Risk Management"
+        }
+      ],
+      "technologies": [
+        { "name": "Python", "icon": "python-icon.svg" },
+        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
+        { "name": "Node.js", "icon": "nodejs-icon.svg" },
+        { "name": "React", "icon": "reactjs-icon.svg" },
+        { "name": "Express.js", "icon": "express.svg" },
+        { "name": "TypeORM", "icon": "nodejs-icon.svg" },
+        { "name": "MySQL", "icon": "mysql-official.svg" },
+        { "name": "Socket.IO", "icon": "socketio.svg" },
+        { "name": "Vite", "icon": "js.svg" },
+        { "name": "TailwindCSS", "icon": "tailwindcss-icon.svg" },
+        { "name": "Binance API", "icon": "getpostman-icon.svg" },
+        { "name": "JWT Authentication", "icon": "getpostman-icon.svg" }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/Q-scope-AI",
+        "website": null
+      }
+    },
+    {
+      "id": "smarttrade-ai",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "projectType": "Sistema de Inteligência Artificial para crypto Trading",
+      "status": "In Development",
+      "title": "Smart Trade AI",
+      "description": "Sistema de inteligência artificial avançado para análise de gráficos de cryptomoedas que combina múltiplas tecnologias de machine learning. Integra algoritmos Quantum based, Fibonacci, Elliott Waves, análise multi-timeframe e otimização de portfólio com modelos Random Forest e Gradient Boosting. Inclui gestão de risco adaptativa que processa mais de 50 indicadores técnicos em tempo real, substituindo decisões manuais por análise contextual baseada em padrões Elliott Wave e confiança da IA.",
+      "images": [
+        {
+          "src": "crypto_ai_analyser/dashboard.png",
+          "alt": "Dashboard da análise IA em tempo real",
+          "title": "IA Dashboard"
+        },
+        {
+          "src": "crypto_ai_analyser/elliot_waves.png",
+          "alt": "Visualização dos modelos ML e Elliott Wave",
+          "title": "Modelos ML"
+        },
+        {
+          "src": "crypto_ai_analyser/fibonacci.png",
+          "alt": "Quantum Elliott Wave e Multi-Timeframe Analysis",
+          "title": "Quantum Analysis"
+        },
+        {
+          "src": "crypto_ai_analyser/how_ai_works.png",
+          "alt": "Quantum Portfolio Optimizer e Risk Manager",
+          "title": "AI Risk Management"
+        }
+      ],
+      "technologies": [
+        { "name": "Python", "icon": "python-icon.svg" },
+        { "name": "Scikit-learn", "icon": "python-icon.svg" },
+        { "name": "NumPy", "icon": "python-icon.svg" },
+        { "name": "Pandas", "icon": "python-icon.svg" }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/trading-bot",
+        "website": null
+      }
+    },
+    {
+      "id": "dataconvert-saas-platform",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "projectType": "Plataforma SaaS de Processamento de Dados",
+      "status": "In Development",
+      "title": "DataConvert - Professional Data Processing Platform",
+      "description": "Plataforma SaaS para automatização de processamento de dados corporativos com sistema multi-tenant. Combina extração inteligente de tabelas PDF através de IA (tabula-py + pdfplumber) com mapeamento visual de colunas e conversão automatizada para CSV/JSON. Inclui sistema de templates personalizados, dashboard analítico, gestão de planos (Free/Personal/Enterprise) e upload drag-and-drop.",
+      "images": [
+        {
+          "src": "data-convert/Landing_page.png",
+          "alt": "Registo com seleção de planos e multi-tenancy",
+          "title": "User Registration"
+        },
+        {
+          "src": "data-convert/dashboard.png",
+          "alt": "Dashboard principal com estatísticas e templates recentes",
+          "title": "Analytics Dashboard"
+        },
+        {
+          "src": "data-convert/my_templates.png",
+          "alt": "Gestão de templates com filtros e pesquisa avançada",
+          "title": "Template Management"
+        },
+        {
+          "src": "data-convert/import.png",
+          "alt": "Interface de upload com drag-and-drop e processamento em lote",
+          "title": "File Import System"
+        },
+        {
+          "src": "data-convert/subscriptions.png",
+          "alt": "Interface de autenticação com sistema JWT",
+          "title": "Authentication System"
+        }
+      ],
+      "technologies": [
+        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
+        { "name": "React", "icon": "reactjs-icon.svg" },
+        { "name": "Node.js", "icon": "nodejs-icon.svg" },
+        { "name": "Express.js", "icon": "express.svg" },
+        { "name": "TypeORM", "icon": "nodejs-icon.svg" },
+        { "name": "PostgreSQL", "icon": "mysql-official.svg" },
+        { "name": "Python", "icon": "python-icon.svg" },
+        { "name": "FastAPI", "icon": "python-icon.svg" },
+        { "name": "Vite", "icon": "js.svg" },
+        { "name": "TailwindCSS", "icon": "tailwindcss-icon.svg" },
+        { "name": "Tabula-py", "icon": "python-icon.svg" },
+        { "name": "PDFplumber", "icon": "python-icon.svg" },
+        { "name": "Pandas", "icon": "python-icon.svg" },
+        { "name": "JWT Authentication", "icon": "getpostman-icon.svg" },
+        { "name": "Bcrypt", "icon": "visualstudio_code-icon.svg" },
+        { "name": "Axios", "icon": "js.svg" },
+        { "name": "Multer", "icon": "nodejs-icon.svg" }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/dataconvert-platform",
+        "website": null
+      }
+    },
+    {
+      "id": "google-glass-website",
+      "category": "personal",
+      "isPublic": true,
+      "featured": false,
+      "projectType": "Website Responsivo com Redesign Moderno",
+      "status": "Completed",
+      "title": "Google Glass - Website Modernizado",
+      "description": "Redesign moderno do meu primeiro projeto web sobre Google Glass, originalmente criado no curso do Gustavo Guanabara. Transformei o design clássico numa experiência contemporânea com design system premium, paleta terrosa sofisticada e navegação avançada. Inclui responsividade completa, animações fluidas, formulário com validação em tempo real e galeria interativa.",
+      "images": [
+        {
+          "src": "google_glass/homepage.png",
+          "alt": "Página inicial com header glassmorphism e design premium",
+          "title": "Homepage Premium Design"
+        },
+        {
+          "src": "google_glass/fotos.png",
+          "alt": "Menu de navegação moderno com hover effects sofisticados",
+          "title": "Advanced Navigation"
+        },
+        {
+          "src": "google_glass/multimidia.png",
+          "alt": "Layout responsivo com grid moderno e tipografia premium",
+          "title": "Modern Content Layout"
+        },
+        {
+          "src": "google_glass/specs.png",
+          "alt": "Formulário de contato modernizado com validação em tempo real",
+          "title": "Modern Contact Form"
+        }
+      ],
+      "technologies": [
+        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
+        { "name": "CSS3", "icon": "w3_css-icon.svg" },
+        { "name": "JavaScript ES6+", "icon": "js.svg" },
+        { "name": "Media Queries", "icon": "w3_css-icon.svg" },
+        { "name": "Google Fonts", "icon": "google_analytics-icon.svg" },
+        { "name": "Accessibility (A11y)", "icon": "w3_html5-icon.svg" },
+        { "name": "Cross-browser Support", "icon": "visualstudio_code-icon.svg" }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/projeto-glass-html5",
+        "website": null
+      }
+    },
+    {
+      "id": "digital-garage-management",
+      "category": "personal",
+      "isPublic": true,
+      "featured": false,
+      "projectType": "Aplicação Web - Sistema de Gestão de Oficina",
+      "status": "Completed",
+      "title": "Sistema de Gestão Digital de Oficina",
+      "description": "Sistema moderno e profissional de gestão de oficina construído com React.js e Ant Design. Oferece gestão completa de serviços automotivos com reservas online, gestão de clientes e controles administrativos. Inclui homepage com tema Ferrari, sistema de reservas com operações CRUD e painel administrativo. Construído com padrões React modernos e design responsivo.",
+      "images": [
+        {
+          "src": "garage/banner.png",
+          "alt": "Homepage showing Digital Garage hero banner with Ferrari theme and service features",
+          "title": "Digital Garage Homepage"
+        },
+        {
+          "src": "garage/features.png",
+          "alt": "Booking management interface with table, filters and CRUD operations",
+          "title": "Booking Management System"
+        },
+        {
+          "src": "garage/tipos.png",
+          "alt": "Administrator",
+          "title": "Administrative Panel"
+        },
+        {
+          "src": "garage/admin1.png",
+          "alt": "Administrator",
+          "title": "Booking Forms Interface"
+        },
+        {
+          "src": "garage/admin2.png",
+          "alt": "Administrator",
+          "title": "Booking Forms Interface"
+        }
+      ],
+      "technologies": [
+        { "name": "React.js", "icon": "reactjs-icon.svg" },
+        { "name": "Ant Design", "icon": "reactjs-icon.svg" },
+        { "name": "JavaScript ES6+", "icon": "js.svg" },
+        { "name": "CSS3", "icon": "w3_css-icon.svg" },
+        { "name": "JSON Server", "icon": "js.svg" },
+        { "name": "Axios", "icon": "js.svg" },
+        { "name": "React Router", "icon": "reactjs-icon.svg" }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/digital-garage-management",
+        "website": null
+      }
+    },
+    {
+      "id": "capitalges-website",
+      "category": "professional",
+      "isPublic": false,
+      "featured": true,
+      "projectType": "Web Development - Corporate Website",
+      "status": "In Production",
+      "title": "CapitalGes - Consultoria Empresarial",
+      "description": "Website corporativo profissional desenvolvido para a CapitalGes, empresa portuguesa especializada em consultoria empresarial para PMEs. Focado em contabilidade, fiscalidade, apoio à gestão e recursos humanos. Desenvolvido com PHP puro e Nginx, oferece experiência moderna com design minimalista, sistema de newsletter, área de notícias, integração com redes sociais e otimização SEO completa.",
+      "images": [
+        {
+          "src": "capitalges/homepage.png",
+          "alt": "Homepage da CapitalGes mostrando serviços de consultoria empresarial com design minimalista",
+          "title": "Página Principal"
+        },
+        {
+          "src": "capitalges/news.png",
+          "alt": "Página de serviços detalhando contabilidade, fiscalidade e apoio à gestão",
+          "title": "Serviços Empresariais"
+        },
+        {
+          "src": "capitalges/aboutus.png",
+          "alt": "Página sobre a empresa com missão e valores da CapitalGes",
+          "title": "Sobre a Empresa"
+        },
+        {
+          "src": "capitalges/contacts.png",
+          "alt": "Página de contactos com formulário e informações de localização",
+          "title": "Contactos e Localização"
+        },
+        {
+          "src": "capitalges/mobile1.png",
+          "alt": "Área de notícias e atualizações sobre consultoria empresarial",
+          "title": "Centro de Notícias"
+        },
+        {
+          "src": "capitalges/mobile2.png",
+          "alt": "Área de notícias e atualizações sobre consultoria empresarial",
+          "title": "Centro de Notícias"
+        }
+      ],
+      "technologies": [
+        { "name": "PHP", "icon": "php-icon.svg" },
+        { "name": "Nginx", "icon": "docker-icon.svg" },
+        { "name": "JavaScript", "icon": "js.svg" },
+        { "name": "jQuery", "icon": "jquery-vertical.svg" },
+        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
+        { "name": "CSS3", "icon": "w3_css-icon.svg" },
+        { "name": "Sass", "icon": "sass-lang-icon.svg" },
+        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
+        { "name": "Responsive Design", "icon": "w3_css-icon.svg" }
+      ],
+      "links": {
+        "repository": null,
+        "website": "https://www.capitalges.pt"
+      }
+    },
+    {
+      "id": "amf-shoes-website",
+      "category": "professional",
+      "isPublic": false,
+      "featured": true,
+      "projectType": "Desenvolvimento Web - Website Corporativo E-commerce",
+      "status": "In Production",
+      "title": "AMF Safety Shoes - Website Corporativo",
+      "description": "Website corporativo desenvolvido para a AMF Safety Shoes, empresa portuguesa líder em calçado técnico de segurança (650.000 pares/ano, €20M faturação). Plataforma digital premium multilingue (PT/EN) que combina storytelling corporativo com funcionalidades e-commerce. Desenvolvido com PHP, Nginx e foco em sustentabilidade, inovação I&D e certificações de qualidade.",
+      "images": [
+        {
+          "src": "amf/homepage.png",
+          "alt": "Homepage da AMF Safety Shoes com hero section e apresentação da empresa líder em calçado de segurança",
+          "title": "Homepage Corporativa"
+        },
+        {
+          "src": "amf/page1.png",
+          "alt": "Página interna da AMF mostrando conteúdo detalhado sobre produtos e serviços",
+          "title": "Página de Conteúdo"
+        },
+        {
+          "src": "amf/page2.png",
+          "alt": "Segunda página interna com informações sobre a empresa e processos",
+          "title": "Informações da Empresa"
+        },
+        {
+          "src": "amf/mobile1.png",
+          "alt": "Versão mobile do site AMF mostrando design responsivo e navegação otimizada",
+          "title": "Interface Mobile 1"
+        },
+        {
+          "src": "amf/mobile2.png",
+          "alt": "Segunda interface mobile demonstrando adaptabilidade do design para dispositivos móveis",
+          "title": "Interface Mobile 2"
+        }
+      ],
+      "technologies": [
+        { "name": "PHP", "icon": "php-icon.svg" },
+        { "name": "Nginx", "icon": "docker-icon.svg" },
+        { "name": "JavaScript", "icon": "js.svg" },
+        { "name": "jQuery", "icon": "jquery-vertical.svg" },
+        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
+        { "name": "CSS3", "icon": "w3_css-icon.svg" },
+        { "name": "Sass", "icon": "sass-lang-icon.svg" },
+        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
+        { "name": "Google Tag Manager", "icon": "google_analytics-icon.svg" },
+        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
+        { "name": "Multilingual Support", "icon": "w3_html5-icon.svg" }
+      ],
+      "links": {
+        "repository": null,
+        "website": "https://www.amfshoes.com/pt/"
+      }
+    },
+    {
+      "id": "toworkfor-ecommerce",
+      "category": "professional",
+      "isPublic": false,
+      "featured": true,
+      "projectType": "E-commerce Development - B2C Online Store",
+      "status": "In Production",
+      "title": "Toworkfor - E-commerce de Calçado de Segurança",
+      "description": "Plataforma e-commerce B2C completa desenvolvida para a Toworkfor, especializada em calçado de segurança profissional. O projeto apresenta uma loja online moderna e funcional com catálogo extenso de produtos de segurança laboral, sistema de gestão de utilizadores, e experiência de compra otimizada. Desenvolvido com PHP puro e arquitetura robusta, o site oferece funcionalidades avançadas de e-commerce incluindo carrinho de compras inteligente, sistema de checkout seguro, gestão de stock em tempo real, múltiplos métodos de pagamento, e sistema de tracking de encomendas. A plataforma conta com design responsivo premium, suporte multilingue (Português, Inglês, Espanhol, Francês, Alemão), sistema de filtros avançados por categoria, tamanho, marca e preço, pesquisa inteligente de produtos, sistema de reviews e avaliações, programa de fidelização, e integração com redes sociais. O desenvolvimento técnico inclui PHP para backend robusto, JavaScript e jQuery para interatividade, HTML5 semântico para SEO otimizado, CSS3 responsivo com design mobile-first, integração com Google Analytics e Tag Manager, Facebook Pixel para remarketing, sistema de gestão de cookies GDPR compliant, e otimização de performance. A interface destaca navegação intuitiva por categorias, visualização de produtos com zoom, sistema de wishlist, comparador de produtos, calculadora de fretes, chat de suporte integrado, e área de cliente personalizada. Este projeto representa uma solução e-commerce completa que combina funcionalidade empresarial com experiência de utilizador superior, posicionando a Toworkfor como líder digital no mercado de equipamentos de proteção individual e calçado de segurança profissional.",
+      "images": [
+        {
+          "src": "toworkfor/homepage.png",
+          "alt": "Homepage da Toworkfor mostrando catálogo de calçado de segurança com design moderno e navegação intuitiva",
+          "title": "Homepage E-commerce"
+        },
+        {
+          "src": "toworkfor/products.png",
+          "alt": "Página de produtos com filtros avançados, grid responsivo e informações detalhadas de calçado de segurança",
+          "title": "Catálogo de Produtos"
+        },
+        {
+          "src": "toworkfor/shoes.png",
+          "alt": "Página de detalhes do produto mostrando especificações técnicas, imagens e opções de compra",
+          "title": "Detalhes do Produto"
+        },
+        {
+          "src": "toworkfor/login.png",
+          "alt": "Interface de login e registro com design moderno e validação de formulários",
+          "title": "Sistema de Autenticação"
+        },
+        {
+          "src": "toworkfor/menu.png",
+          "alt": "Menu de navegação com categorias organizadas e sistema de pesquisa avançada",
+          "title": "Navegação e Menu"
+        },
+        {
+          "src": "toworkfor/mobile1.png",
+          "alt": "Interface mobile otimizada mostrando responsividade e adaptação para dispositivos móveis",
+          "title": "Interface Mobile 1"
+        },
+        {
+          "src": "toworkfor/mobile2.png",
+          "alt": "Segunda tela mobile demonstrando carrinho de compras e processo de checkout móvel",
+          "title": "Interface Mobile 2"
+        }
+      ],
+      "technologies": [
+        { "name": "PHP", "icon": "php-icon.svg" },
+        { "name": "MySQL", "icon": "mysql-official.svg" },
+        { "name": "JavaScript", "icon": "js.svg" },
+        { "name": "jQuery", "icon": "jquery-vertical.svg" },
+        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
+        { "name": "CSS3", "icon": "w3_css-icon.svg" },
+        { "name": "Bootstrap", "icon": "getbootstrap-icon.svg" },
+        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
+        { "name": "Google Tag Manager", "icon": "google_analytics-icon.svg" },
+        { "name": "Facebook Pixel", "icon": "slack-icon.svg" },
+        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
+        { "name": "Multilingual Support", "icon": "w3_html5-icon.svg" },
+        { "name": "Payment Integration", "icon": "getpostman-icon.svg" },
+        { "name": "GDPR Compliance", "icon": "visualstudio_code-icon.svg" }
+      ],
+      "links": {
+        "repository": null,
+        "website": "https://www.toworkfor.pt/pt/"
+      }
+    },
+    {
+      "id": "loucas-falcao-ecommerce",
+      "category": "professional",
+      "isPublic": false,
+      "featured": true,
+      "projectType": "E-commerce Development - B2B/B2C Wholesale Platform",
+      "status": "In Production",
+      "title": "Louças Falcão - E-commerce de Porcelana e Decoração",
+      "description": "Plataforma e-commerce sofisticada desenvolvida para a Louças Falcão, empresa portuguesa especializada em porcelana, cerâmica e artigos decorativos sediada em Barcelos. O projeto apresenta uma solução digital completa que combina vendas B2B e B2C, oferecendo um catálogo extenso de produtos de decoração, utilidades domésticas e artigos colecionáveis. Desenvolvido com tecnologias web modernas, o site serve tanto clientes profissionais quanto consumidores finais, com funcionalidades adaptadas para ambos os segmentos. A plataforma oferece navegação avançada por múltiplas categorias incluindo porcelana/cerâmica, marfinites/resinas, vidro, flores/plantas artificiais, vime/madeira, bonecas de porcelana, brinquedos/peluches, têxteis/calçado e decorações temáticas. O sistema de e-commerce inclui motor de pesquisa avançado com filtros específicos, distinção entre produtos nacionais e importados, separação entre artigos decorativos e utilitários, sistema de login profissional para clientes B2B, suporte multilingue completo (Português, Inglês, Francês, Espanhol), e integração com sistemas de pagamento e logística. O desenvolvimento técnico emprega arquitetura robusta para gestão de inventário complexo, sistema de preços diferenciados B2B/B2C, otimização SEO para múltiplos idiomas, design responsivo para todos os dispositivos, integração com Google Analytics para análise detalhada, e interface administrativa para gestão de produtos e encomendas. A experiência do utilizador destaca navegação intuitiva por extensas categorias, visualização profissional de produtos com zoom, sistema de wishlist e comparação, calculadora de quantidades para encomendas profissionais, e área de cliente personalizada com histórico de compras. Este projeto representa uma solução e-commerce especializada que posiciona a Louças Falcão como referência digital no mercado português de decoração e utilidades domésticas, combinando tradição artesanal com tecnologia moderna.",
+      "images": [
+        {
+          "src": "falcao/homepage.png",
+          "alt": "Homepage da Louças Falcão mostrando catálogo de porcelana, cerâmica e artigos decorativos com navegação profissional",
+          "title": "Homepage E-commerce"
+        },
+        {
+          "src": "falcao/products.png",
+          "alt": "Página de produtos com grid organizado, filtros avançados e categorização detalhada de louças e decoração",
+          "title": "Catálogo de Produtos"
+        },
+        {
+          "src": "falcao/toys.png",
+          "alt": "Seção de brinquedos e artigos colecionáveis mostrando diversidade do catálogo e organização por categorias",
+          "title": "Categoria Brinquedos e Colecionáveis"
+        }
+      ],
+      "technologies": [
+        { "name": "PHP", "icon": "php-icon.svg" },
+        { "name": "MySQL", "icon": "mysql-official.svg" },
+        { "name": "JavaScript", "icon": "js.svg" },
+        { "name": "jQuery", "icon": "jquery-vertical.svg" },
+        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
+        { "name": "CSS3", "icon": "w3_css-icon.svg" },
+        { "name": "Bootstrap", "icon": "getbootstrap-icon.svg" },
+        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
+        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
+        { "name": "Multilingual Support", "icon": "w3_html5-icon.svg" },
+        { "name": "Advanced Search", "icon": "google_analytics-icon.svg" },
+        { "name": "B2B Integration", "icon": "business.svg" },
+        { "name": "Inventory Management", "icon": "inventory.svg" },
+        { "name": "SEO Optimization", "icon": "google_analytics-icon.svg" }
+      ],
+      "links": {
+        "repository": null,
+        "website": "https://www.loucasfalcao.com/pt/porcelana-ceramica"
+      }
+    },
+    {
+      "id": "frontend-training-collection",
+      "category": "personal",
+      "isPublic": true,
+      "featured": false,
+      "projectType": "Desenvolvimento Web - Coleção de Treinos Frontend",
+      "status": "Completed",
+      "title": "Coleção de Treinos Frontend - Projetos Clone",
+      "description": "Coleção de projetos de treino frontend desenvolvidos durante a minha jornada autodidacta, demonstrando dedicação ao domínio de HTML5, CSS3 e JavaScript vanilla através da reprodução de interfaces populares. Inclui recriações pixel-perfect de Facebook, Instagram, Netflix, Game of Thrones e calculadora moderna. Cada projeto foca diferentes aspetos do desenvolvimento frontend sem frameworks.",
+      "images": [
+        {
+          "src": "frontend/insta.png",
+          "alt": "Instagram login interface recreation with gradient backgrounds",
+          "title": "Instagram Login Clone"
+        },
+        {
+          "src": "frontend/facebook.png",
+          "alt": "Facebook login page clone with authentic blue theme and form layout",
+          "title": "Facebook Login Clone"
+        },
+        {
+          "src": "frontend/netflix.png",
+          "alt": "Netflix main page clone with movie grid and responsive design",
+          "title": "Netflix Homepage Clone"
+        },
+        {
+          "src": "frontend/gameofthrones.png",
+          "alt": "Game of Thrones website clone with dark medieval theme",
+          "title": "Game of Thrones Website Clone"
+        },
+        {
+          "src": "frontend/calc.png",
+          "alt": "Custom modern calculator with sleek design and full functionality",
+          "title": "Modern Calculator (Original Design)"
+        },
+        {
+          "src": "frontend/maccalc.png",
+          "alt": "Custom modern calculator with sleek design and full functionality",
+          "title": "Modern Calculator (Original Design)"
+        }
+      ],
+      "technologies": [
+        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
+        { "name": "CSS3", "icon": "w3_css-icon.svg" },
+        { "name": "JavaScript ES6+", "icon": "js.svg" },
+        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
+        { "name": "CSS Grid", "icon": "grid.svg" },
+        { "name": "Flexbox", "icon": "flexbox.svg" }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/frontend-training-clones",
+        "website": null
+      }
+    },
+    {
+      "id": "jobscalc-freelancer-calculator",
+      "category": "personal",
+      "isPublic": true,
+      "featured": false,
+      "projectType": "Aplicação Web - Calculadora de Projetos Freelancer",
+      "status": "Completed",
+      "title": "JobsCalc - Calculadora de Projetos Freelancer",
+      "description": "Aplicação web full-stack desenvolvida durante o bootcamp Maratona Discover da Rocketseat para cálculo de orçamentos e gestão de horas de trabalho freelancer. Inclui gestão completa de projetos com operações CRUD, cálculos automáticos baseados em taxa horária, acompanhamento de status e dashboard profissional com métricas em tempo real. Construída com Node.js, Express, EJS e SQLite.",
+      "images": [
+        {
+          "src": "jobs_calc/dashboard.png",
+          "alt": "Professional dashboard showing project overview with status cards and metrics",
+          "title": "Project Dashboard"
+        },
+        {
+          "src": "jobs_calc/profile.png",
+          "alt": "Profile management page with hourly rate calculator and work planning",
+          "title": "Profile & Rate Configuration"
+        },
+        {
+          "src": "jobs_calc/create.png",
+          "alt": "Job creation form with automatic budget calculation",
+          "title": "New Project Creation"
+        }
+      ],
+      "technologies": [
+        { "name": "Node.js", "icon": "nodejs-icon.svg" },
+        { "name": "Express.js", "icon": "express.svg" },
+        { "name": "EJS", "icon": "ejs.svg" },
+        { "name": "SQLite", "icon": "sqlite.svg" },
+        { "name": "JavaScript ES6+", "icon": "js.svg" },
+        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
+        { "name": "CSS3", "icon": "w3_css-icon.svg" },
+        { "name": "MVC Architecture", "icon": "architecture.svg" },
+        { "name": "RESTful API", "icon": "getpostman-icon.svg" },
+        { "name": "Nodemon", "icon": "nodemon.svg" },
+        { "name": "NPM", "icon": "npm.svg" }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/MaratonaDiscover",
+        "website": null
+      }
+    },
+    {
+      "id": "marvel-digital-catalog",
+      "category": "personal",
+      "isPublic": true,
+      "featured": false,
+      "projectType": "Aplicação Web - Catálogo de Comics e Personagens Marvel",
+      "status": "Completed",
+      "title": "Catálogo Digital Marvel",
+      "description": "Aplicação web moderna e interativa para explorar o universo Marvel, apresentando comics e personagens através da API oficial Marvel. Construída com JavaScript vanilla e CSS moderno, oferece experiência premium com design glassmorphism, pesquisa em tempo real, filtragem avançada e sistema de carrinho de compras funcional. Inclui sistema de favoritos com localStorage e arquitetura JavaScript modular.",
+      "images": [
+        {
+          "src": "marvel/home.png",
+          "alt": "Homepage showing Marvel comics grid with search bar and filters",
+          "title": "Comics Catalog Homepage"
+        },
+        {
+          "src": "marvel/characteres.png",
+          "alt": "Characters page displaying Marvel heroes and villains with stats",
+          "title": "Marvel Characters Gallery"
+        },
+        {
+          "src": "marvel/cart.png",
+          "alt": "Shopping cart interface with item management and checkout",
+          "title": "Shopping Cart System"
+        },
+        {
+          "src": "marvel/detail.png",
+          "alt": "Detail interface with information detailed",
+          "title": "Detailed modal"
+        }
+      ],
+      "technologies": [
+        { "name": "JavaScript ES6+", "icon": "js.svg" },
+        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
+        { "name": "CSS3", "icon": "w3_css-icon.svg" },
+        { "name": "Marvel API", "icon": "getpostman-icon.svg" },
+        { "name": "Bootstrap 4", "icon": "getbootstrap-icon.svg" },
+        { "name": "jQuery", "icon": "jquery-vertical.svg" }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/catalogo-digital-marvel",
+        "website": null
+      }
+    },
+    {
+      "id": "monty-hall-problem",
+      "category": "personal",
+      "isPublic": true,
+      "featured": false,
+      "projectType": "Desenvolvimento Web - Jogo Educativo Interativo",
+      "status": "Completed",
+      "title": "Problema de Monty Hall - Jogo Interativo",
+      "description": "Aplicação web educativa interativa que demonstra o famoso paradoxo de probabilidade de Monty Hall através de uma interface de jogo envolvente. Recria o cenário clássico do game show onde jogadores escolhem entre três portas para ilustrar o conceito contra-intuitivo que trocar de porta aumenta as hipóteses de ganhar de 33.3% para 66.7%. Construída com Vue.js 2 e interface visualmente apelativa com portas 3D.",
+      "images": [
+        {
+          "src": "monthy_hall/home.png",
+          "alt": "Monty Hall game interface showing three doors with instructions and probability explanation",
+          "title": "Main Game Interface"
+        },
+        {
+          "src": "monthy_hall/door.png",
+          "alt": "Monty Hall game with door selection and probability cards visible",
+          "title": "Door Selection State"
+        },
+        {
+          "src": "monthy_hall/open.png",
+          "alt": "Monty Hall game showing opened door with animated gift reveal",
+          "title": "Prize Reveal Animation"
+        }
+      ],
+      "technologies": [
+        { "name": "Vue.js 2", "icon": "vue.svg" },
+        { "name": "JavaScript ES6+", "icon": "js.svg" },
+        { "name": "CSS3", "icon": "w3_css-icon.svg" },
+        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
+        { "name": "CSS Grid", "icon": "grid.svg" },
+        { "name": "CSS Animations", "icon": "animation.svg" },
+        { "name": "Responsive Design", "icon": "w3_css-icon.svg" }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/montyhall",
+        "website": null
+      }
+    }
+  ]
+}

@@ -1,0 +1,256 @@
+import { useState } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "@/components/ui/separator";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  ExternalLink,
+  Github,
+  ChevronLeft,
+  ChevronRight,
+  X,
+} from "lucide-react";
+
+interface ProjectImage {
+  src: string;
+  alt: string;
+  title: string;
+}
+
+interface Technology {
+  name: string;
+  icon: string;
+}
+
+interface ProjectLinks {
+  repository?: string;
+  website?: string;
+}
+
+interface Project {
+  id: string;
+  category: string;
+  isPublic: boolean;
+  featured: boolean;
+  projectType: string;
+  status: string;
+  title: string;
+  description: string;
+  images: ProjectImage[];
+  technologies: Technology[];
+  links: ProjectLinks;
+}
+
+interface ProjectModalProps {
+  project: Project | null;
+  isOpen: boolean;
+  onClose: () => void;
+}
+
+export const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  if (!project) return null;
+
+  const nextImage = () => {
+    setCurrentImageIndex((prev) =>
+      prev === project.images.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prev) =>
+      prev === 0 ? project.images.length - 1 : prev - 1
+    );
+  };
+
+  const handleClose = () => {
+    setCurrentImageIndex(0);
+    onClose();
+  };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={handleClose}>
+      <DialogContent className="max-w-7xl max-h-[85vh] p-0 bg-gradient-card border-border overflow-hidden">
+        <DialogHeader className="p-6 pb-4 border-b border-border/50">
+          <div className="flex items-start justify-between">
+            <div className="space-y-3 flex-1">
+              <DialogTitle className="text-3xl font-bold text-foreground">
+                {project.title}
+              </DialogTitle>
+              <div className="flex items-center gap-3">
+                <Badge variant="secondary" className="bg-tech-primary/20 text-tech-primary border-tech-primary/30">
+                  {project.status}
+                </Badge>
+                <Badge variant="outline" className="border-accent text-accent">
+                  {project.projectType}
+                </Badge>
+                {project.featured && (
+                  <Badge variant="outline" className="border-tech-accent text-tech-accent">
+                    Destaque
+                  </Badge>
+                )}
+              </div>
+            </div>
+          </div>
+        </DialogHeader>
+
+        <div className="flex flex-col lg:flex-row h-full max-h-[calc(85vh-120px)]">
+          {/* Left Side - Images */}
+          <div className="lg:w-2/5 p-6 lg:pr-4">
+            {project.images.length > 0 && (
+              <div className="space-y-4">
+                {/* Main Image */}
+                <div className="relative">
+                  <div className="relative h-64 lg:h-80 rounded-lg overflow-hidden bg-muted">
+                    {/* Placeholder for image */}
+                    <div className="w-full h-full bg-gradient-primary/20 flex items-center justify-center">
+                      <div className="text-center space-y-2">
+                        <div className="text-4xl lg:text-5xl font-bold text-tech-primary opacity-50">
+                          {project.title.charAt(0)}
+                        </div>
+                        <p className="text-sm text-muted-foreground px-4">
+                          {project.images[currentImageIndex].title}
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Navigation Arrows */}
+                    {project.images.length > 1 && (
+                      <>
+                        <Button
+                          variant="secondary"
+                          size="icon"
+                          className="absolute left-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background/90 backdrop-blur-sm h-8 w-8"
+                          onClick={prevImage}
+                        >
+                          <ChevronLeft className="h-4 w-4" />
+                        </Button>
+                        <Button
+                          variant="secondary"
+                          size="icon"
+                          className="absolute right-2 top-1/2 -translate-y-1/2 bg-background/80 hover:bg-background/90 backdrop-blur-sm h-8 w-8"
+                          onClick={nextImage}
+                        >
+                          <ChevronRight className="h-4 w-4" />
+                        </Button>
+                      </>
+                    )}
+                  </div>
+
+                  {/* Image Counter */}
+                  <div className="absolute top-2 right-2 bg-background/80 backdrop-blur-sm rounded-full px-3 py-1 text-xs font-medium">
+                    {currentImageIndex + 1} / {project.images.length}
+                  </div>
+                </div>
+
+                {/* Image Thumbnails */}
+                {project.images.length > 1 && (
+                  <div className="flex gap-2 overflow-x-auto pb-2">
+                    {project.images.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`flex-shrink-0 w-16 h-12 rounded-md overflow-hidden border-2 transition-all duration-300 ${
+                          index === currentImageIndex
+                            ? "border-tech-primary shadow-glow scale-105"
+                            : "border-border hover:border-tech-primary/50"
+                        }`}
+                        onClick={() => setCurrentImageIndex(index)}
+                      >
+                        <div className="w-full h-full bg-gradient-primary/20 flex items-center justify-center">
+                          <div className="text-xs font-bold text-tech-primary opacity-70">
+                            {index + 1}
+                          </div>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+
+          {/* Right Side - Content */}
+          <div className="lg:w-3/5 flex flex-col">
+            <ScrollArea className="flex-1 px-6 lg:pl-4 pb-6">
+              <div className="space-y-6">
+                {/* Description */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
+                    <div className="w-1 h-6 bg-gradient-primary rounded-full" />
+                    Sobre o Projeto
+                  </h3>
+                  <div className="bg-secondary/30 border border-border/50 rounded-lg p-4">
+                    <p className="text-foreground leading-relaxed text-base">
+                      {project.description}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Technologies */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
+                    <div className="w-1 h-6 bg-gradient-primary rounded-full" />
+                    Tecnologias Utilizadas
+                  </h3>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {project.technologies.map((tech, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-2 p-3 rounded-lg bg-secondary/50 border border-border hover:bg-tech-primary/10 hover:border-tech-primary/30 transition-all duration-300 group"
+                      >
+                        <div className="w-5 h-5 bg-tech-primary/20 rounded flex items-center justify-center flex-shrink-0">
+                          <div className="w-2.5 h-2.5 bg-tech-primary rounded-sm opacity-70 group-hover:opacity-100 transition-opacity" />
+                        </div>
+                        <span className="text-sm font-medium text-foreground group-hover:text-tech-primary transition-colors truncate">
+                          {tech.name}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Links */}
+                {(project.links.repository || project.links.website) && (
+                  <div className="space-y-4">
+                    <h3 className="text-xl font-semibold text-foreground flex items-center gap-2">
+                      <div className="w-1 h-6 bg-gradient-primary rounded-full" />
+                      Links do Projeto
+                    </h3>
+                    <div className="flex flex-wrap gap-3">
+                      {project.links.repository && (
+                        <Button
+                          variant="outline"
+                          className="border-border hover:bg-tech-primary/10 hover:border-tech-primary/50 hover:text-tech-primary transition-all duration-300"
+                          onClick={() => window.open(project.links.repository, "_blank")}
+                        >
+                          <Github className="mr-2 h-4 w-4" />
+                          Repositório
+                        </Button>
+                      )}
+                      {project.links.website && (
+                        <Button
+                          className="bg-gradient-primary hover:shadow-glow transition-all duration-300"
+                          onClick={() => window.open(project.links.website, "_blank")}
+                        >
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Ver Site
+                        </Button>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            </ScrollArea>
+          </div>
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+};

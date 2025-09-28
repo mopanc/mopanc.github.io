@@ -1,5 +1,5 @@
 <template>
-    <!--xxxxxxxxxxxx Projects xxxxxxxxxxxx-->
+  <!--xxxxxxxxxxxx Projects xxxxxxxxxxxx-->
      <section id="project" class="section project">
     <div class="container--projects">
       <div class="search-content">
@@ -9,12 +9,21 @@
         </div>
         <div>
           <label for="search_box" ref="projects_page_search"> </label>
-          <input class="search_box" type="text" name="search_box" v-model="searchTerm" placeholder="Search projects">
+          <input class="search_box" type="text" name="search_box" v-model="searchTerm" :placeholder="translations.search_projects || 'Search projects'">
         </div>
       </div>
       <div>
-        <div v-for="(project, index) in filteredProjects" :key="index" :class="project.class">
-          <div :class="['projects-cards-content', {'projects-cards-content-left': index % 2 !== 0}]">
+        <div v-for="(project, index) in displayedProjects" :key="index" :class="project.class">
+          <div :class="['projects-cards-content', {'projects-cards-content-left': index % 2 !== 0}, {'project-locked': !isAccessValid && !project.isPublic}]" class="project-container">
+
+            <!-- Sobreposição de cadeado para projetos bloqueados -->
+            <div v-if="!isAccessValid && !project.isPublic" class="project-lock-overlay" @click="showUnlockTerminal">
+              <div class="lock-content">
+                <i class="ri-lock-line lock-icon"></i>
+                <p class="lock-text">{{ translations.commercial_project || 'Projeto Comercial' }}</p>
+                <p class="lock-subtext">{{ translations.click_to_unlock || 'Clique para desbloquear' }}</p>
+              </div>
+            </div>
             <div v-if="index % 2 === 0" class="content_proj">
               <div class="testimonial__content">
                 <h3 class="testimonial__name-right">{{ project.projectName }}</h3>
@@ -26,11 +35,10 @@
                       :key="idx"
                       class="skills__item"
                     >
-                      <img
-                        :src="getIconPath(tech.icon)"
-                        :alt="tech.name + ' icon'"
-                        class="svg_icons"
-                      />
+                      <i
+                        :class="[getIconClass(tech.name), 'svg_icons']"
+                        :title="tech.name + ' icon'"
+                      ></i>
                     </li>
                   </ul>
                 </div>
@@ -53,11 +61,10 @@
                       :key="idx"
                       class="skills__item"
                     >
-                      <img
-                        :src="getIconPath(tech.icon)"
-                        :alt="tech.name + ' icon'"
-                        class="svg_icons"
-                      />
+                      <i
+                        :class="[getIconClass(tech.name), 'svg_icons']"
+                        :title="tech.name + ' icon'"
+                      ></i>
                     </li>
                   </ul>
                 </div>
@@ -65,12 +72,62 @@
             </div>
           </div>
         </div>
+
+        <!-- Indicador de Projetos Bloqueados -->
+        <div v-if="!isAccessValid && hasLockedProjects" class="locked-projects-indicator">
+          <div class="locked-indicator-content">
+            <div class="locked-icon">
+              <i class="ri-lock-line"></i>
+            </div>
+            <div class="locked-info">
+              <h3>{{ lockedProjectsCount }} Projetos Comerciais Privados</h3>
+              <p>Acima vê apenas uma amostra do meu trabalho. Tenho mais {{ lockedProjectsCount }} projetos desenvolvidos para empresas que requerem autorização para visualização devido a direitos de propriedade intelectual.</p>
+              <div class="locked-features">
+                <span class="feature-item">
+                  <i class="ri-building-line"></i>
+                  Projetos Empresariais
+                </span>
+                <span class="feature-item">
+                  <i class="ri-code-box-line"></i>
+                  Código Proprietário
+                </span>
+                <span class="feature-item">
+                  <i class="ri-shield-check-line"></i>
+                  Acesso Controlado
+                </span>
+              </div>
+              <div class="locked-actions">
+                <button @click="requestAccess" class="access-btn primary">
+                  <i class="ri-mail-send-line"></i>
+                  Solicitar Acesso Completo
+                </button>
+                <button @click="showUnlockTerminal" class="access-btn secondary">
+                  <i class="ri-key-line"></i>
+                  Já Tenho um Código
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
+    <!-- Access Request Modal -->
+    <AccessRequestModal
+      :visible="showAccessModal"
+      content-type="project"
+      @close="closeAccessModal"
+      @go-to-contact="goToContactPage"
+      @show-auth="showAuthTerminal"
+    />
   </section>
 </template>
 
 <script>
+import { onMounted } from 'vue'
+import { useAccessControlSimple } from '../composables/useAccessControlSimple'
+import { useLanguage } from '../composables/useLanguage.js'
+import AccessRequestModal from '../components/AccessRequestModal.vue'
 // eslint-disable-next-line no-unused-vars
 import en from "../languages/en";
 // eslint-disable-next-line no-unused-vars
@@ -92,6 +149,19 @@ import calcImage from '../assets/img/calc.png';
 
 
 export default {
+    components: {
+      AccessRequestModal
+    },
+    setup() {
+      const { isAccessValid } = useAccessControlSimple()
+      const { translations, initialize } = useLanguage()
+
+      onMounted(async () => {
+        await initialize()
+      })
+
+      return { isAccessValid, translations }
+    },
     mounted() {
     const selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
     if (selectedLanguage) {
@@ -118,7 +188,11 @@ export default {
     return {
       expressions: {},
       searchTerm: '',
+      selectedProject: null,
+      currentImageIndex: 0,
+      showAccessModal: false,
       projects: [
+        // PROJETOS PÚBLICOS (sempre visíveis - os 2 primeiros)
         {
           imageSrc: googleGlass,
           imageAlt: "Google Glasses",
@@ -127,24 +201,44 @@ export default {
           githubLink: "https://github.com/mopanc/projeto-glass-html5",
           class: "card-color-0",
           view_project: "view_project",
+          isPublic: true,
+          gallery: [
+            { src: googleGlass, alt: "Google Glass Main Interface", title: "Main Interface" },
+            { src: googleGlass, alt: "Google Glass Features", title: "Features Overview" },
+            { src: googleGlass, alt: "Google Glass Design", title: "UI Design" },
+            { src: googleGlass, alt: "Google Glass Responsive", title: "Responsive Design" }
+          ],
+          projectType: "Academic",
+          status: "Completed",
           technologies: [
             { name: "Html5", icon: "w3_html5-icon.svg" },
             { name: "Css3", icon: "w3_css-icon.svg" },
             { name: "JavaScript", icon: "js.svg" },
           ],
         },
-          {
-            imageSrc: pythonBirds,
-            imageAlt: 'Python Birds Game',
-            projectName: 'python_title',
-            projectDescription: 'python_description',
-            githubLink: 'https://github.com/mopanc/pythonbirds-simples',
-            class: 'card-color-0',
-            view_project: 'view_project',
-            technologies: [
-              { name: "Python", icon: "python-icon.svg" },
-            ],
-          },
+        {
+          imageSrc: pythonBirds,
+          imageAlt: 'Python Birds Game',
+          projectName: 'python_title',
+          projectDescription: 'python_description',
+          githubLink: 'https://github.com/mopanc/pythonbirds-simples',
+          class: 'card-color-0',
+          view_project: 'view_project',
+          isPublic: true,
+          gallery: [
+            { src: pythonBirds, alt: "Python Birds Gameplay", title: "Gameplay" },
+            { src: pythonBirds, alt: "Python Birds Code Structure", title: "Code Structure" },
+            { src: pythonBirds, alt: "Python Birds Game Over", title: "Game Over Screen" },
+            { src: pythonBirds, alt: "Python Birds Menu", title: "Main Menu" }
+          ],
+          projectType: "Game Development",
+          status: "Completed",
+          technologies: [
+            { name: "Python", icon: "python-icon.svg" },
+          ],
+        },
+
+        // PROJETOS EMPRESARIAIS/COMERCIAIS (requerem código de acesso)
           {
             imageSrc: jobsCalc,
             imageAlt: 'Jobs Calc Tool',
@@ -153,6 +247,7 @@ export default {
             githubLink: 'https://github.com/mopanc/MaratonaDiscover',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
               { name: "JavaScript", icon: "js.svg" },
               { name: "Node.js", icon: "nodejs-icon.svg" },
@@ -169,6 +264,7 @@ export default {
             githubLink: 'https://github.com/mopanc/InstagramPage',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
             { name: "Html5", icon: "w3_html5-icon.svg" },
             { name: "Css3", icon: "w3_css-icon.svg" },
@@ -183,6 +279,7 @@ export default {
             githubLink: 'https://github.com/mopanc/interfaceNetflix',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
             { name: "Html5", icon: "w3_html5-icon.svg" },
             { name: "Css3", icon: "w3_css-icon.svg" },
@@ -197,6 +294,7 @@ export default {
             githubLink: 'https://github.com/mopanc/SantanderDevWeek',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
               { name: "Kotlin", icon: "kotlin1.svg" },
               { name: "Android", icon: "Android2021.svg" }
@@ -210,6 +308,7 @@ export default {
             githubLink: 'https://github.com/mopanc/calculator',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
               { name: "JavaScript", icon: "js.svg" },
               { name: "VueJs", icon: "vuejs-icon.svg" }
@@ -223,6 +322,7 @@ export default {
             githubLink: 'https://github.com/mopanc/snakeGame',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
               { name: "JavaScript", icon: "js.svg" }
             ],
@@ -235,6 +335,7 @@ export default {
             githubLink: 'https://github.com/mopanc/Tela-Login-Facebook',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
             { name: "Html5", icon: "w3_html5-icon.svg" },
             { name: "Css3", icon: "w3_css-icon.svg" },
@@ -249,6 +350,7 @@ export default {
             githubLink: 'https://github.com/mopanc/covid19-tracker',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
             { name: "Html5", icon: "w3_html5-icon.svg" },
             { name: "Css3", icon: "w3_css-icon.svg" },
@@ -263,6 +365,7 @@ export default {
             githubLink: 'https://github.com/mopanc/calcImcApp',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
               { name: "Kotlin", icon: "kotlin1.svg" },
               { name: "Android", icon: "Android2021.svg" }
@@ -276,6 +379,7 @@ export default {
             githubLink: 'https://github.com/mopanc/GameOfThronesPage',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
             { name: "Html5", icon: "w3_html5-icon.svg" },
             { name: "Css3", icon: "w3_css-icon.svg" },
@@ -290,6 +394,7 @@ export default {
             githubLink: 'https://github.com/mopanc/profile-page',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
               { name: "JavaScript", icon: "js.svg" },
               { name: "ReactJs", icon: "reactjs-icon.svg" },
@@ -303,6 +408,7 @@ export default {
             githubLink: 'https://github.com/mopanc/calc',
             class: 'card-color-0',
             view_project: 'view_project',
+            isPublic: false,
             technologies: [
             { name: "Html5", icon: "w3_html5-icon.svg" },
             { name: "Css3", icon: "w3_css-icon.svg" },
@@ -324,17 +430,135 @@ export default {
         const projectNameLowerCase = project.projectName.toLowerCase();
         return projectNameLowerCase.includes(searchTermLowerCase);
       });
+    },
+    displayedProjects() {
+      // Sempre mostra todos os projetos filtrados
+      // A proteção será visual (com cadeado) no template
+      return this.filteredProjects;
+    },
+    totalProjectsCount() {
+      return this.projects.length;
+    },
+    visibleProjectsCount() {
+      return this.displayedProjects.length;
+    },
+    lockedProjectsCount() {
+      return this.projects.filter(project => !project.isPublic).length;
+    },
+    hasLockedProjects() {
+      return this.lockedProjectsCount > 0;
     }
   },
   methods: {
-    getIconPath(icon) {
-      try {
-        return require(`@/assets/icons/${icon}`);
-      } catch (error) {
-        console.error("Icon not found:", icon);
-        return "";
+    getIconClass(techName) {
+      // Mapeamento para DevIcons com classes colored
+      const iconMap = {
+        // Linguagens de programação
+        'JavaScript': 'devicon-javascript-plain colored',
+        'TypeScript': 'devicon-typescript-plain colored',
+        'Python': 'devicon-python-plain colored',
+        'Java': 'devicon-java-plain colored',
+        'Kotlin': 'devicon-kotlin-plain colored',
+        'PHP': 'devicon-php-plain colored',
+
+        // Frontend
+        'Html5': 'devicon-html5-plain colored',
+        'HTML5': 'devicon-html5-plain colored',
+        'Css3': 'devicon-css3-plain colored',
+        'CSS3': 'devicon-css3-plain colored',
+        'VueJs': 'devicon-vuejs-plain colored',
+        'Vue.js': 'devicon-vuejs-plain colored',
+        'ReactJs': 'devicon-react-original colored',
+        'React': 'devicon-react-original colored',
+        'jQuery': 'devicon-jquery-plain colored',
+        'Bootstrap': 'devicon-bootstrap-plain colored',
+        'Sass': 'devicon-sass-original colored',
+        'TailwindCSS': 'devicon-tailwindcss-plain colored',
+
+        // Backend & Runtime
+        'Node.js': 'devicon-nodejs-plain colored',
+        'Express': 'devicon-express-original colored',
+        'ExpressJS': 'devicon-express-original colored',
+        'Ejs': 'devicon-nodejs-plain colored', // Fallback para EJS
+
+        // ORM/ODM
+        'TypeORM': 'devicon-typescript-plain colored', // Fallback para TypeORM
+
+        // Mobile
+        'Android': 'devicon-android-plain colored',
+
+        // Databases
+        'MySQL': 'devicon-mysql-plain colored',
+        'PostgreSQL': 'devicon-postgresql-plain colored',
+        'MongoDB': 'devicon-mongodb-plain colored',
+        'SQLite': 'devicon-sqlite-plain colored',
+        'Redis': 'devicon-redis-plain colored',
+        'Firebase': 'devicon-firebase-plain colored',
+
+        // Tools & DevOps
+        'Git': 'devicon-git-plain colored',
+        'GitHub': 'devicon-github-original colored',
+        'Docker': 'devicon-docker-plain colored',
+
+        // Build Tools
+        'Webpack': 'devicon-webpack-plain colored',
+        'Vite': 'devicon-vite-original colored',
+
+        // Trading/Finance (usando ícones alternativos)
+        'Indicadores Trade': 'devicon-python-plain colored', // Fallback
+        'Trading': 'devicon-python-plain colored', // Fallback
+
+        // Others
+        'GraphQL': 'devicon-graphql-plain colored'
+      };
+
+      // Buscar a classe do ícone no mapeamento
+      const iconClass = iconMap[techName];
+
+      if (iconClass) {
+        return iconClass;
+      } else {
+        // Fallback: tentar o nome em lowercase
+        const fallbackName = techName.toLowerCase().replace(/\s+/g, '').replace('.', '');
+        console.warn(`Icon not mapped for "${techName}", trying fallback: devicon-${fallbackName}-plain colored`);
+        return `devicon-${fallbackName}-plain colored`;
       }
     },
+    requestAccess() {
+      // Redirecionar para página de contacto
+      this.$router.push('/contact')
+    },
+    showUnlockTerminal() {
+      // Show professional access request modal
+      this.showAccessModal = true
+    },
+
+    closeAccessModal() {
+      this.showAccessModal = false
+    },
+
+    goToContactPage() {
+      // Navigate to contact page
+      this.$router.push({ path: '/contact' })
+    },
+
+    showAuthTerminal() {
+      // Encontrar e abrir o terminal
+      const miniTerminal = document.querySelector('.terminal-toggle')
+      if (miniTerminal) {
+        // Scroll até o terminal
+        miniTerminal.scrollIntoView({ behavior: 'smooth', block: 'center' })
+
+        // Animação de destaque
+        miniTerminal.style.animation = 'pulse 0.6s ease-in-out 3'
+
+        // Abrir o terminal após a animação
+        setTimeout(() => {
+          miniTerminal.style.animation = ''
+          miniTerminal.click()
+        }, 1500)
+      }
+    }
   },
 };
 </script>
@@ -660,8 +884,8 @@ h3 {
 }
 
 .svg_icons {
-  height: 16px;
-  width: 16px;
+  font-size: 16px;
+  transition: all 0.3s ease;
 }
 
 @media screen and (max-width: 530px) {
@@ -687,6 +911,262 @@ h3 {
     max-width: 100%;
 }
 
+}
+
+/* Locked Projects Indicator */
+.locked-projects-indicator {
+  margin: 60px 0;
+  padding: 0 2rem;
+}
+
+.locked-indicator-content {
+  background: linear-gradient(135deg, rgba(255, 85, 85, 0.1), rgba(255, 149, 0, 0.1));
+  border: 2px solid rgba(255, 85, 85, 0.3);
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(255, 85, 85, 0.1);
+}
+
+.locked-icon {
+  background: linear-gradient(135deg, #ff5555, #ff9500);
+  color: white;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(255, 85, 85, 0.3);
+}
+
+.locked-info h3 {
+  color: var(--color-white);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.locked-info p {
+  color: var(--color-text);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  max-width: 500px;
+}
+
+.locked-features {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.feature-item i {
+  color: #ff9500;
+  font-size: 1.1rem;
+}
+
+.locked-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.access-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.access-btn.primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+.access-btn.primary:hover {
+  background: #5a4fcf;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(106, 90, 205, 0.3);
+}
+
+.access-btn.secondary {
+  background: transparent;
+  color: var(--color-text);
+  border: 2px solid rgba(255, 149, 0, 0.3);
+}
+
+.access-btn.secondary:hover {
+  background: rgba(255, 149, 0, 0.1);
+  border-color: #ff9500;
+  color: #ff9500;
+  transform: translateY(-2px);
+}
+
+/* Project Lock Overlay */
+.project-container {
+  position: relative;
+}
+
+.project-lock-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  cursor: pointer;
+  border-radius: 20px;
+  transition: all 0.3s ease;
+}
+
+.project-lock-overlay:hover {
+  background: rgba(0, 0, 0, 0.9);
+  transform: scale(1.02);
+}
+
+.lock-content {
+  text-align: center;
+  color: white;
+  animation: pulse-lock 2s infinite;
+}
+
+.lock-icon {
+  font-size: 3rem;
+  color: #ff6b6b;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.lock-text {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: white;
+}
+
+.lock-subtext {
+  font-size: 0.9rem;
+  opacity: 0.8;
+  color: #ccc;
+}
+
+.project-locked {
+  filter: grayscale(30%);
+  opacity: 0.7;
+}
+
+@keyframes pulse-lock {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.05);
+    opacity: 0.8;
+  }
+}
+
+/* Responsive para locked projects */
+@media screen and (max-width: 768px) {
+  .lock-icon {
+    font-size: 2.5rem;
+  }
+
+  .lock-text {
+    font-size: 1rem;
+  }
+
+  .lock-subtext {
+    font-size: 0.8rem;
+  }
+
+  .locked-projects-indicator {
+    margin: 40px 0;
+    padding: 0 1rem;
+  }
+
+  .locked-indicator-content {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .locked-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+
+  .locked-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .locked-features {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .feature-item {
+    font-size: 0.8rem;
+  }
+
+  .locked-actions {
+    justify-content: center;
+    margin-top: 1rem;
+  }
+
+  .access-btn {
+    font-size: 0.8rem;
+    padding: 0.7rem 1.2rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .locked-features {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .locked-actions {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .access-btn {
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
+  }
 }
 
 </style>

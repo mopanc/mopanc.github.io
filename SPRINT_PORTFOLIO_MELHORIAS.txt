@@ -1,0 +1,217 @@
+# 🚀 SPRINT DE MELHORIAS - PORTFÓLIO JORGE MOPANC
+# Data de Criação: 2025-01-13
+# Projeto: mopanc.github.io (Vue.js 3 Portfolio)
+
+## 🔍 ANÁLISE INICIAL COMPLETADA
+
+### ESTRUTURA ATUAL:
+- Vue.js 3 com Vue Router
+- 3,740 linhas de código Vue
+- Firebase integrado
+- Google Analytics configurado
+- Lint: ✅ Sem erros
+- Tecnologias: Vue3, GSAP, ScrollReveal, Swiper, SendGrid
+
+### ❌ PROBLEMAS CRÍTICOS IDENTIFICADOS:
+
+#### SEO & Performance:
+- HTML lang="" vazio (crítico para SEO)
+- Falta meta description personalizada
+- Ausência de meta keywords
+- Sem Open Graph tags
+- Fontes externas sem font-display: swap
+- Scripts síncronos bloqueando renderização
+- Browserslist desatualizado
+
+#### Código & Estrutura:
+- 74 linhas de CSS comentado/morto (main.css linhas 1-74)
+- Lógica de navegação no main.js (deve estar em Vue)
+- Importação dinâmica de idiomas não otimizada
+- Mistura de responsabilidades Vue/Vanilla JS
+- Falta favicon personalizado
+
+#### UX & Funcionalidades:
+- Links redes sociais não abrem nova aba
+- Formulário contacto inexistente (só título)
+- Falta página 404 personalizada
+- Sem indicadores de loading
+- Toggle dark/light mode não funcional
+- Falta download CV/certificados
+
+#### Profissionalismo:
+- Falta sitemap.xml
+- Ausência robots.txt
+- Sem structured data (Schema.org)
+- Analytics básico (pode melhorar)
+
+---
+
+## 🎯 PLANO DE SPRINTS
+
+### 📈 SPRINT 1 - SEO & META CRÍTICOS (Prioridade ALTA)
+**Objetivo**: Melhorar ranking Google e indexação
+**Duração Estimada**: 2-3 horas
+
+#### Tasks:
+1. [ ] Corrigir HTML lang (pt/en dinâmico)
+2. [ ] Adicionar meta description personalizada
+3. [ ] Implementar meta keywords relevantes
+4. [ ] Criar Open Graph tags completas
+5. [ ] Adicionar Twitter Cards
+6. [ ] Implementar Structured Data (JSON-LD)
+7. [ ] Otimizar carregamento fontes (font-display: swap)
+8. [ ] Criar sitemap.xml
+9. [ ] Configurar robots.txt
+10. [ ] Atualizar browserslist
+
+**Impacto**: 📊 SEO score +40-60 pontos
+
+---
+
+### 🧹 SPRINT 2 - LIMPEZA & OTIMIZAÇÃO CÓDIGO
+**Objetivo**: Código limpo e performante
+**Duração Estimada**: 2-3 horas
+
+#### Tasks:
+1. [ ] Limpar CSS comentado (linhas 1-74 main.css)
+2. [ ] Mover lógica navegação para componente Vue
+3. [ ] Otimizar importação dinâmica idiomas
+4. [ ] Separar responsabilidades JS/Vue
+5. [ ] Criar favicon personalizado
+6. [ ] Implementar lazy loading imagens
+7. [ ] Minificar assets não utilizados
+8. [ ] Error boundaries Vue
+9. [ ] Code splitting básico
+
+**Impacto**: 🚀 Performance +20-30%, Manutenibilidade +50%
+
+---
+
+### 💼 SPRINT 3 - FUNCIONALIDADES PROFISSIONAIS
+**Objetivo**: Portfolio business-ready
+**Duração Estimada**: 4-5 horas
+
+#### Tasks:
+1. [ ] Criar formulário contacto funcional
+2. [ ] Integrar EmailJS ou SendGrid
+3. [ ] Página projectos detalhada (/projects)
+4. [ ] Sistema download CV (PDF)
+5. [ ] Galeria certificações
+6. [ ] Links externos nova aba
+7. [ ] Breadcrumbs navegação
+8. [ ] Call-to-actions estratégicos
+
+**Impacto**: 💰 Conversões +100%, Profissionalismo +80%
+
+---
+
+### 🎨 SPRINT 4 - UX & INTERATIVIDADE
+**Objetivo**: Experiência user premium
+**Duração Estimada**: 3-4 horas
+
+#### Tasks:
+1. [ ] Loading states e skeleton screens
+2. [ ] Página 404 personalizada
+3. [ ] Dark/Light mode funcional
+4. [ ] Animações GSAP otimizadas
+5. [ ] Micro-interações
+6. [ ] Scroll smooth behaviors
+7. [ ] Responsive melhorado
+8. [ ] Touch gestures mobile
+
+**Impacto**: 😍 User Experience +70%, Engagement +50%
+
+---
+
+### ♿ SPRINT 5 - ACESSIBILIDADE & PWA
+**Objetivo**: Inclusivo e moderno
+**Duração Estimada**: 2-3 horas
+
+#### Tasks:
+1. [ ] ARIA labels completos
+2. [ ] Navegação por teclado
+3. [ ] Contraste cores WCAG
+4. [ ] Screen readers support
+5. [ ] PWA manifest.json
+6. [ ] Service Worker básico
+7. [ ] Offline fallback
+8. [ ] Install prompt
+
+**Impacto**: ♿ Acessibilidade +90%, Tech Score +30%
+
+---
+
+### 📊 SPRINT 6 - MONITORING & ANALYTICS
+**Objetivo**: Dados e performance
+**Duração Estimada**: 2 horas
+
+#### Tasks:
+1. [ ] Google Tag Manager
+2. [ ] Enhanced eCommerce events
+3. [ ] Lighthouse CI
+4. [ ] Bundle analyzer
+5. [ ] Error tracking (Sentry)
+6. [ ] Performance monitoring
+7. [ ] A/B testing setup
+8. [ ] Conversion tracking
+
+**Impacto**: 📈 Insights +100%, Optimização contínua
+
+---
+
+## 🏆 METAS FINAIS ESPERADAS
+
+### Performance:
+- Lighthouse Score: 90+ em todas as métricas
+- First Contentful Paint: <2s
+- Largest Contentful Paint: <3s
+- Time to Interactive: <4s
+
+### SEO:
+- Google PageSpeed: 90+
+- Structured Data: 100% válido
+- Core Web Vitals: Verde
+- Mobile Friendly: 100%
+
+### Business:
+- Contactos mensais: +200%
+- Tempo na página: +150%
+- Taxa conversão: +100%
+- Rankings Google: Top 3 para "Jorge Mopanc"
+
+---
+
+## 📋 SPRINT ATUAL: EM DEFINIÇÃO
+
+### Próximo Passo:
+Escolher sprint inicial (recomendação: SPRINT 1 - SEO)
+
+### Comandos Úteis:
+```bash
+npm run serve    # desenvolvimento
+npm run build    # produção
+npm run lint     # verificar código
+```
+
+### Files para Modificar (SPRINT 1):
+- public/index.html (meta tags)
+- src/components/PageHeader.vue (lang dinâmico)
+- public/sitemap.xml (criar)
+- public/robots.txt (criar)
+- src/assets/main.css (limpar)
+
+---
+
+## 📞 CONTACTO DESENVOLVIMENTO
+Desenvolvedor: Claude Code Assistant
+Projeto: Portfolio Profissional Jorge Mopanc
+Repositório: mopanc.github.io
+
+## 🔄 VERSIONING
+v1.0 - Estado atual (análise completa)
+v1.1 - Sprint 1 (SEO) - [PRÓXIMO]
+v1.2 - Sprint 2 (Código)
+v1.3 - Sprint 3 (Funcionalidades)
+v1.4 - Sprint 4 (UX)
+v1.5 - Sprint 5 (A11Y/PWA)
+v2.0 - Sprint 6 (Analytics) - [FINAL]

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+    <!-- Homepage - English -->
+    <url>
+        <loc>https://mopanc.github.io/</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://mopanc.github.io/?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mopanc.github.io/?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://mopanc.github.io/"/>
+    </url>
+
+    <!-- Homepage - Portuguese -->
+    <url>
+        <loc>https://mopanc.github.io/?lang=pt</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://mopanc.github.io/?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mopanc.github.io/?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://mopanc.github.io/"/>
+    </url>
+
+    <!-- Projects Page -->
+    <url>
+        <loc>https://mopanc.github.io/projects</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://mopanc.github.io/projects?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mopanc.github.io/projects?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://mopanc.github.io/projects"/>
+    </url>
+
+    <!-- Certificates Page -->
+    <url>
+        <loc>https://mopanc.github.io/certificates</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://mopanc.github.io/certificates?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://mopanc.github.io/certificates?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://mopanc.github.io/certificates"/>
+    </url>
+
+    <!-- Contact Section (anchor link) -->
+    <url>
+        <loc>https://mopanc.github.io/#contact</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- About Section (anchor link) -->
+    <url>
+        <loc>https://mopanc.github.io/#about</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- Experience Section (anchor link) -->
+    <url>
+        <loc>https://mopanc.github.io/#qualification</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
+    <!-- Services Section (anchor link) -->
+    <url>
+        <loc>https://mopanc.github.io/#service</loc>
+        <lastmod>2025-01-27</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.4</priority>
+    </url>
+
+</urlset>

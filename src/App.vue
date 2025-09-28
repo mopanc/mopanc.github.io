@@ -3,6 +3,12 @@
     <PageHeader />
     <router-view></router-view>
     <FooterPage />
+
+    <!-- Terminal de Autenticação -->
+    <MiniTerminal />
+
+    <!-- Cookie Banner -->
+    <CookieBanner />
   </div>
 </template>
 
@@ -10,12 +16,25 @@
 import '../firebase.js';
 import PageHeader from './components/PageHeader';
 import FooterPage from './components/FooterPage.vue';
+import MiniTerminal from './components/MiniTerminal.vue';
+import CookieBanner from './components/CookieBanner.vue';
+import { useCookieConsent } from './composables/useCookieConsent';
 
 export default {
   name: 'App',
   components: {
     PageHeader,
     FooterPage,
+    MiniTerminal,
+    CookieBanner,
+  },
+  setup() {
+    const { initializeConsent } = useCookieConsent()
+
+    // Initialize cookie consent on app startup
+    initializeConsent()
+
+    return {}
   }
 }
 

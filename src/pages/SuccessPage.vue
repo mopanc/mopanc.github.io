@@ -3,7 +3,7 @@
     <div class="content">
       <div class="checkmark"></div>
       <h1 class="title--success">Formulário enviado com sucesso!</h1>
-      <a href="/" target="_blanck" class="btn btn--secondary">Voltar</a>
+      <a href="/" target="_blank" class="btn btn--secondary">Voltar</a>
     </div>
   </div>
 </template>
