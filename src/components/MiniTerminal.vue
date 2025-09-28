@@ -1116,7 +1116,7 @@ export default {
 }
 
 .terminal-output {
-  min-height: 100%;
+  min-height: 95%;
 }
 
 /* Terminal Lines */
