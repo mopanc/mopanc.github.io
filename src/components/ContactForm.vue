@@ -351,7 +351,7 @@ const handleAccessRequest = async () => {
   messageText.value = `
 ${translations.access_request_sent || 'Access request sent successfully!'}
 
-${translations.access_request_info || 'Your request has been sent. You will receive an access code via email if approved.'}
+${translations.access_request_confirmation || 'Your request has been sent. You will receive an access code via email if approved.'}
 
 ${translations.access_request_note || 'Please check your email within 24-48 hours for a response.'}
   `
@@ -370,12 +370,6 @@ const handleRegularMessage = () => {
   resetForm()
 }
 
-const generateAccessCode = () => {
-  const prefixes = ['PORT', 'VIEW', 'ACCESS', 'UNLOCK', 'SHOW']
-  const numbers = Math.floor(Math.random() * 9000) + 1000
-  const prefix = prefixes[Math.floor(Math.random() * prefixes.length)]
-  return `${prefix}${numbers}`
-}
 
 const resetForm = () => {
   Object.keys(form).forEach(key => form[key] = '')

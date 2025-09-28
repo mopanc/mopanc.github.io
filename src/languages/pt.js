@@ -291,7 +291,7 @@ export default {
   message_sent: "Mensagem enviada com sucesso! Entrarei em contacto em breve.",
   message_error: "Desculpe, houve um erro ao enviar a sua mensagem. Por favor, tente novamente.",
   access_request_sent: "Pedido de acesso enviado com sucesso!",
-  access_request_info: "O seu pedido foi enviado. Receberá um código de acesso por email se aprovado.",
+  access_request_confirmation: "O seu pedido foi enviado. Receberá um código de acesso por email se aprovado.",
   access_request_note: "Por favor, verifique o seu email em 24-48 horas para uma resposta.",
 
   // Footer
