@@ -1,0 +1,243 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Custom form notifications
+[forms.contact-form]
+  template = "form-submission"
+
+# Email para ti (notificação)
+[[notifications]]
+  type = "email"
+  event = "form-submission"
+  config.to = "jorgemopanc@icloud.com"
+  config.subject = "📧 Novo {{ form.subject | title }} - Portfolio"
+
+# Email automático para quem submete (confirmação)
+[[notifications]]
+  type = "email"
+  event = "form-submission"
+  config.to = "{{ form.email }}"
+  config.subject = "✅ Mensagem Recebida - Jorge Morais Portfolio"
+  config.template = """
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mensagem Recebida</title>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .header {
+      background: linear-gradient(135deg, #c3b091, #d2b48c);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    .content {
+      padding: 30px;
+      text-align: center;
+    }
+    .footer {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>✅ Mensagem Recebida!</h1>
+    </div>
+    <div class="content">
+      <p>Olá <strong>{{ form.name }}</strong>,</p>
+      <p>A sua mensagem foi recebida com sucesso. Obrigado pelo seu interesse!</p>
+      {% if form.subject == "access_request" %}
+      <p><strong>🔐 Pedido de Acesso:</strong><br>
+      O seu pedido de acesso ao portfolio será analisado. Receberá uma resposta por email em 24-48 horas.</p>
+      {% else %}
+      <p>Entrarei em contacto consigo em breve.</p>
+      {% endif %}
+      <p>Cumprimentos,<br><strong>Jorge Morais</strong></p>
+    </div>
+    <div class="footer">
+      Portfolio: <strong>mopanc.github.io</strong>
+    </div>
+  </div>
+</body>
+</html>
+  """
+
+# Template para notificação (teu email)
+[[notifications]]
+  type = "email"
+  event = "form-submission"
+  config.to = "jorgemopanc@icloud.com"
+  config.subject = "📧 Novo {{ form.subject | title }} - Portfolio"
+  config.template = """
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Novo Pedido de Contacto</title>
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    .header {
+      background: linear-gradient(135deg, #c3b091, #d2b48c);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 700;
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .content {
+      padding: 30px;
+    }
+    .field {
+      margin-bottom: 20px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      border-left: 4px solid #c3b091;
+    }
+    .field-label {
+      font-weight: 600;
+      color: #495057;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 8px;
+    }
+    .field-value {
+      color: #212529;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    .priority {
+      border-left-color: #dc3545;
+    }
+    .footer {
+      background: #f8f9fa;
+      padding: 20px;
+      text-align: center;
+      color: #6c757d;
+      font-size: 14px;
+    }
+    .timestamp {
+      background: #e9ecef;
+      padding: 15px;
+      text-align: center;
+      font-size: 12px;
+      color: #6c757d;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🚀 Novo Contacto - Portfolio</h1>
+      <div class="badge">{{ form.subject | replace: "_", " " | title }}</div>
+    </div>
+
+    <div class="content">
+      <div class="field">
+        <div class="field-label">👤 Pessoa</div>
+        <div class="field-value">{{ form.name }}</div>
+      </div>
+
+      <div class="field">
+        <div class="field-label">📧 Email</div>
+        <div class="field-value">{{ form.email }}</div>
+      </div>
+
+      {% if form.company %}
+      <div class="field">
+        <div class="field-label">🏢 Empresa</div>
+        <div class="field-value">{{ form.company }}</div>
+      </div>
+      {% endif %}
+
+      {% if form.position %}
+      <div class="field">
+        <div class="field-label">💼 Cargo</div>
+        <div class="field-value">{{ form.position }}</div>
+      </div>
+      {% endif %}
+
+      {% if form.reason %}
+      <div class="field">
+        <div class="field-label">🎯 Motivo</div>
+        <div class="field-value">{{ form.reason | replace: "_", " " | title }}</div>
+      </div>
+      {% endif %}
+
+      <div class="field">
+        <div class="field-label">💬 Mensagem</div>
+        <div class="field-value">{{ form.message }}</div>
+      </div>
+
+      {% if form.subject == "access_request" %}
+      <div class="field priority">
+        <div class="field-label">🔐 Ação Necessária</div>
+        <div class="field-value">
+          <strong>Pedido de Acesso ao Portfolio</strong><br>
+          Esta pessoa está a pedir acesso ao conteúdo protegido.
+          Revê as informações e decide se queres conceder acesso.
+        </div>
+      </div>
+      {% endif %}
+    </div>
+
+    <div class="timestamp">
+      📅 Recebido em {{ created_at | date: "%d/%m/%Y às %H:%M" }}
+    </div>
+
+    <div class="footer">
+      Enviado automaticamente pelo formulário de contacto do portfolio<br>
+      <strong>mopanc.github.io</strong>
+    </div>
+  </div>
+</body>
+</html>
+  """
