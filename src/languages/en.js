@@ -286,9 +286,9 @@ export default {
   error_title: "Error",
   message_sent: "Message sent successfully! I'll get back to you soon.",
   message_error: "Sorry, there was an error sending your message. Please try again.",
-  access_granted: "Access request approved!",
-  access_code_generated: "Your access code:",
-  access_code_info: "This code is valid for 4 hours. Use it to unlock protected content.",
+  access_request_sent: "Access request sent successfully!",
+  access_request_info: "Your request has been sent. You will receive an access code via email if approved.",
+  access_request_note: "Please check your email within 24-48 hours for a response.",
 
   // Footer
   footer_tagline: "Full Stack Developer",
