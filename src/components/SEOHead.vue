@@ -8,15 +8,15 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Jorge Mopanc - Programador Full Stack | Desenvolvimento Web Vue.js React Node.js Portugal'
+      default: 'Jorge Morais - Full Stack Developer | React Vue.js Node.js TypeScript Expert | Freelancer'
     },
     description: {
       type: String,
-      default: 'Programador Full Stack com 4+ anos de experiência. Desenvolvimento de websites, aplicações web, sistemas empresariais. Vue.js, React, Node.js, TypeScript. Freelancer Portugal - Serviços de desenvolvimento de software.'
+      default: 'Senior Full Stack Developer with 4+ years experience. React, Vue.js, Node.js, TypeScript specialist. Expert in web development, REST APIs, enterprise systems. Available for freelance projects worldwide.'
     },
     keywords: {
       type: String,
-      default: 'programador portugal, desenvolvedor web, full stack developer, criação websites, desenvolvimento aplicações web'
+      default: 'full stack developer, react developer, vue.js developer, nodejs developer, typescript developer, web developer, javascript expert, freelancer developer, remote developer, software engineer'
     },
     ogImage: {
       type: String,

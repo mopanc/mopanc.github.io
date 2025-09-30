@@ -643,6 +643,22 @@ export default {
   project_links: "Project Links",
   repository: "Repository",
   live_demo: "Live Demo",
+
+  // Professional Project Disclaimer
+  professional_disclaimer_title: "Intellectual Property",
+  professional_disclaimer_text: "This project is the complete property of the company where it was developed during my employment period. It is present in my portfolio exclusively to demonstrate my technical skills and professional experience acquired.",
+  professional_disclaimer_note: "Note: All intellectual property, code, and assets belong entirely to the employing company.",
+
+  // Access Request Messages
+  access_required_title: "🔐 Restricted Professional Content",
+  access_required_subtitle: "Enterprise projects and detailed experience available",
+  access_required_description: "This content includes projects developed in corporate environments and specific technical details. Due to confidentiality and intellectual property reasons, it requires prior authorization.",
+  access_request_instructions: "💡 How to request access:",
+  access_instruction_1: "1. Send an email to jorge.morais.dev@gmail.com",
+  access_instruction_2: "2. Include a brief introduction and reason for request",
+  access_instruction_3: "3. You will receive a temporary access code",
+  request_access_cta: "📧 Request Access Code",
+  unlock_access_btn: "🔓 Enter Access Code",
   highlight: "Highlight",
 
   // Contact page translations
@@ -681,15 +697,19 @@ export default {
   ai_tech: "Python • Analytics • Patterns",
   trading_tech: "Algorithms • ML • Risk Management",
 
-  // Access Request Modal
-  access_required_title: "Premium Content Access Required",
-  access_required_description: "This content contains premium professional information and requires authorized access.",
+  // Access Request Modal (old keys removed - duplicates)
   contact_for_access: "Request Access",
   contact_description: "Contact me directly to discuss access to premium content and portfolio details.",
   have_access_code: "Have an Access Code?",
   access_code_description: "If you already have an access code, use the authentication terminal.",
   go_to_contact: "Go to Contact Page",
   use_access_code: "Use Access Code",
+
+  // Restricted Content Modal
+  restricted_modal_title: "🔐 Private Content",
+  restricted_modal_description: "If you want to view this content, please contact the website administrator.",
+  go_to_contact_form: "Contact Administrator",
+  already_have_code: "I already have a code",
 
   // Cookie Banner & Privacy
   cookie_title: "Privacy & Cookies",

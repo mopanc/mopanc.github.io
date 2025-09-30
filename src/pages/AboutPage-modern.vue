@@ -47,7 +47,7 @@
               active: activeTab === tab.id,
               locked: tab.requiresAccess && !isAccessValid
             }]"
-            :disabled="tab.requiresAccess && !isAccessValid"
+            :disabled="false"
             :data-requires-access="tab.requiresAccess"
             :data-tab-id="tab.id"
           >
@@ -56,9 +56,16 @@
               <span class="tab-label">{{ tab.label }}</span>
               <span class="tab-years">{{ tab.years }}</span>
             </div>
-            <!-- Lock indicator for restricted tabs -->
-            <div v-if="tab.requiresAccess && !isAccessValid" class="tab-lock" :title="lockTooltipMessage">
-              <i class="ri-lock-line"></i>
+            <!-- Enhanced lock indicator for restricted tabs -->
+            <div v-if="tab.requiresAccess && !isAccessValid" class="tab-lock-enhanced">
+              <div class="lock-icon">
+                <i class="ri-lock-line"></i>
+              </div>
+              <div class="lock-tooltip">
+                <div class="tooltip-title">{{ translations.access_required_title || '🔐 Conteúdo Restrito' }}</div>
+                <div class="tooltip-subtitle">{{ translations.access_required_subtitle || 'Experiência profissional detalhada disponível' }}</div>
+                <div class="tooltip-action">{{ translations.request_access_cta || '📧 Clique para solicitar acesso' }}</div>
+              </div>
             </div>
           </button>
         </div>
@@ -1087,12 +1094,11 @@
       </div>
     </div>
 
-    <!-- Access Request Modal -->
-    <AccessRequestModal
+    <!-- Restricted Content Modal -->
+    <RestrictedContentModal
       :visible="showAccessModal"
-      content-type="experience"
+      :requestedContent="'About Page - Professional Experience'"
       @close="closeAccessModal"
-      @go-to-contact="goToContactPage"
       @show-auth="showAuthTerminal"
     />
   </div>
@@ -1100,17 +1106,24 @@
 
 <script>
 import { useAccessControlSimple } from '../composables/useAccessControlSimple.js'
-import AccessRequestModal from '../components/AccessRequestModal.vue'
+import { useLanguage } from '../composables/useLanguage.js'
+import RestrictedContentModal from '../components/RestrictedContentModal.vue'
 
 export default {
   name: 'AboutPageModern',
   components: {
-    AccessRequestModal
+    RestrictedContentModal
   },
   setup() {
     const { isAccessValid } = useAccessControlSimple()
+    const { translations, initialize } = useLanguage()
+
+    // Initialize translations
+    initialize()
+
     return {
-      isAccessValid
+      isAccessValid,
+      translations
     }
   },
   data() {
@@ -1121,6 +1134,7 @@ export default {
       expandedItem: null,
       timelineProgress: 0,
       showAccessModal: false,
+      requestedTabId: null,
       militaryTitle: 'Exército Português',
       militarySubtitle: 'Atirador Especializado | Missão Internacional Bosnia Herzegovina',
       militaryContent: {
@@ -1700,10 +1714,9 @@ export default {
           return false
         }
 
-        // If someone disabled the button via inspect element, double-check
+        // If clicking on restricted content, show access request modal
         if (requiresAccess === 'true' && !this.isAccessValid) {
-          console.warn('Security: Attempted bypass of disabled button')
-          this.showUnlockTerminal()
+          this.showAccessRequestModal(tabId)
           return false
         }
       }
@@ -1719,7 +1732,8 @@ export default {
 
       // Only allow technical skills without authentication
       if (tabId !== 'technical' && !this.isAccessValid) {
-        console.warn('Security: Access denied - only technical skills available')
+        console.log('Requesting access for tab:', tabId)
+        this.showAccessRequestModal(tabId)
         this.showUnlockTerminal()
         return false
       }
@@ -1737,6 +1751,13 @@ export default {
 
     showUnlockTerminal() {
       // Show professional access request modal
+      this.showAccessModal = true
+    },
+
+    showAccessRequestModal(tabId) {
+      // Instead of just showing unlock modal, we could create a specific modal
+      // For now, we'll show the existing access modal with additional context
+      this.requestedTabId = tabId
       this.showAccessModal = true
     },
 
@@ -5971,36 +5992,115 @@ export default {
 
 /* Locked tabs and content styles */
 .nav-tab.locked {
-  opacity: 0.7;
-  background: rgba(108, 117, 125, 0.1);
-  cursor: not-allowed;
+  opacity: 0.9;
+  background: rgba(255, 193, 7, 0.08);
+  border-color: rgba(255, 193, 7, 0.3);
+  cursor: pointer;
   position: relative;
-  pointer-events: none; /* Prevent all interaction */
-}
-
-.nav-tab.locked .tab-lock {
-  pointer-events: auto; /* Allow tooltip interaction specifically on lock icon */
+  pointer-events: auto;
 }
 
 .nav-tab.locked:hover {
-  background: rgba(255, 193, 7, 0.1);
-  border-color: rgba(255, 193, 7, 0.3);
+  background: rgba(255, 193, 7, 0.15);
+  border-color: rgba(255, 193, 7, 0.5);
   transform: translateY(-2px);
-  pointer-events: auto; /* Allow hover for tooltip */
-  cursor: help; /* Change cursor to indicate information available */
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.2);
+  pointer-events: auto;
+  cursor: pointer;
 }
 
-.nav-tab:disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
-  background: rgba(108, 117, 125, 0.1) !important;
-  border-color: rgba(108, 117, 125, 0.2) !important;
+/* Enhanced Lock Indicator */
+.tab-lock-enhanced {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 10;
 }
 
-.nav-tab:disabled:hover {
-  transform: none !important;
-  background: rgba(255, 193, 7, 0.1) !important;
-  border-color: rgba(255, 193, 7, 0.3) !important;
+.lock-icon {
+  background: linear-gradient(135deg, #ffc107, #ff9800);
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
+  cursor: help;
+  animation: pulse-lock 2s infinite;
+}
+
+.lock-icon i {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+@keyframes pulse-lock {
+  0%, 100% {
+    box-shadow: 0 2px 8px rgba(255, 193, 7, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 16px rgba(255, 193, 7, 0.6);
+  }
+}
+
+.lock-tooltip {
+  position: absolute;
+  top: 30px;
+  right: 0;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.95), rgba(0, 0, 0, 0.85));
+  color: white;
+  padding: 1rem;
+  border-radius: 12px;
+  min-width: 280px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border: 1px solid rgba(255, 193, 7, 0.3);
+}
+
+.tab-lock-enhanced:hover .lock-tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.tooltip-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #ffc107;
+}
+
+.tooltip-subtitle {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.7rem;
+  line-height: 1.4;
+}
+
+.tooltip-action {
+  font-size: 0.75rem;
+  color: #ff9800;
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Arrow for tooltip */
+.lock-tooltip::before {
+  content: '';
+  position: absolute;
+  top: -8px;
+  right: 12px;
+  width: 0;
+  height: 0;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid rgba(0, 0, 0, 0.9);
 }
 
 .tab-lock {

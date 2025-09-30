@@ -275,6 +275,21 @@
                     <div class="description-content">
                       <p>{{ selectedProject.projectDescription }}</p>
                     </div>
+
+                    <!-- Professional Project Disclaimer -->
+                    <div v-if="selectedProject.category === 'professional'" class="professional-disclaimer">
+                      <div class="disclaimer-header">
+                        <i class="ri-building-line"></i>
+                        <h4>{{ translations.professional_disclaimer_title || 'Propriedade Intelectual' }}</h4>
+                      </div>
+                      <div class="disclaimer-content">
+                        <p>{{ translations.professional_disclaimer_text || 'Este projeto é propriedade total da empresa onde foi desenvolvido durante o meu período de colaboração como funcionário. Está presente no meu portfólio exclusivamente para demonstrar as minhas competências técnicas e experiência profissional adquirida.' }}</p>
+                        <p class="disclaimer-note">
+                          <i class="ri-information-line"></i>
+                          {{ translations.professional_disclaimer_note || 'Nota: Toda a propriedade intelectual, código e assets pertencem integralmente à empresa empregadora.' }}
+                        </p>
+                      </div>
+                    </div>
                   </div>
 
                   <!-- Technologies -->
@@ -358,17 +373,15 @@
                       <p>{{ getLockedDescription(selectedProject) }}</p>
                     </div>
 
-                    <div class="access-required-modern">
-                      <div class="access-message-modern">
-                        <i class="ri-information-line"></i>
-                        <div>
-                          <strong>Autenticação Necessária</strong>
-                          <p>Este projeto contém informações proprietárias e requer autorização de acesso.</p>
-                        </div>
+                    <div class="access-required-simple">
+                      <div class="access-icon">
+                        <i class="ri-lock-line"></i>
                       </div>
-                      <button @click="showUnlockTerminal" class="unlock-btn-modern">
-                        <i class="ri-key-line"></i>
-                        Desbloquear Acesso
+                      <h4>{{ translations.access_required_title || '🔐 Conteúdo Profissional Restrito' }}</h4>
+                      <p>{{ translations.restricted_modal_description || 'Este conteúdo contém informação profissional confidencial e requer autorização prévia para acesso.' }}</p>
+                      <button @click="showRestrictedAccessModal" class="access-details-btn">
+                        <i class="ri-information-line"></i>
+                        {{ translations.how_to_request || '📧 Como Solicitar Acesso' }}
                       </button>
                     </div>
                   </div>
@@ -425,6 +438,14 @@
         </div>
       </div>
     </Transition>
+
+    <!-- Restricted Content Modal -->
+    <RestrictedContentModal
+      :visible="showRestrictedModal"
+      :requestedContent="selectedProject ? selectedProject.projectName : ''"
+      @close="closeRestrictedModal"
+      @show-auth="handleShowAuth"
+    />
   </div>
 </template>
 
@@ -433,6 +454,7 @@ import { watch, computed } from 'vue'
 import { useAccessControlSimple } from '../composables/useAccessControlSimple'
 import { useProjects } from '../composables/useProjects'
 import { useLanguage } from '../composables/useLanguage'
+import RestrictedContentModal from '../components/RestrictedContentModal.vue'
 
 export default {
     setup() {
@@ -521,6 +543,9 @@ export default {
         await this.loadProjects(selectedLanguage)
       }
     },
+  components: {
+    RestrictedContentModal
+  },
   data() {
     return {
       expressions: {},
@@ -531,6 +556,7 @@ export default {
       selectedCategory: 'all',
       selectedStatus: 'all',
       showFeaturedOnly: false,
+      showRestrictedModal: false,
     };
   },
   computed: {
@@ -1011,6 +1037,16 @@ export default {
     handleImageError(event) {
       // Set fallback image when image fails to load
       event.target.src = require('@/data/projects/images/def.png');
+    },
+    showRestrictedAccessModal() {
+      this.showRestrictedModal = true;
+    },
+    closeRestrictedModal() {
+      this.showRestrictedModal = false;
+    },
+    handleShowAuth() {
+      this.closeRestrictedModal();
+      this.showUnlockTerminal();
     }
   },
   // Cleanup when component is destroyed
@@ -2392,6 +2428,78 @@ export default {
   margin: 0;
 }
 
+/* Professional Project Disclaimer */
+.professional-disclaimer {
+  background: linear-gradient(135deg, rgba(255, 193, 7, 0.1) 0%, rgba(255, 152, 0, 0.1) 100%);
+  border: 1px solid rgba(255, 193, 7, 0.3);
+  border-radius: 12px;
+  padding: 1.2rem;
+  margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.professional-disclaimer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #ffc107, #ff9800);
+}
+
+.disclaimer-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+  color: #ff9800;
+}
+
+.disclaimer-header i {
+  font-size: 1.25rem;
+  color: #ff9800;
+}
+
+.disclaimer-header h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-text);
+}
+
+.disclaimer-content p {
+  color: var(--color-text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin: 0 0 0.75rem 0;
+}
+
+.disclaimer-content p:last-child {
+  margin-bottom: 0;
+}
+
+.disclaimer-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-style: italic;
+  font-size: 0.85rem !important;
+  color: rgba(var(--color-text-rgb), 0.8) !important;
+  background: rgba(0, 0, 0, 0.1);
+  padding: 0.75rem;
+  border-radius: 8px;
+  margin-top: 0.75rem !important;
+}
+
+.disclaimer-note i {
+  font-size: 1rem;
+  color: #ff9800;
+  margin-top: 0.1rem;
+  flex-shrink: 0;
+}
+
 /* Technologies Section */
 .technologies-section {
   display: flex;
@@ -2536,48 +2644,148 @@ export default {
 
 /* Access Required Modern */
 .access-required-modern {
-  background: rgba(195, 176, 145, 0.05);
-  border: 2px solid rgba(195, 176, 145, 0.2);
-  border-radius: 12px;
-  padding: 1.2rem;
+  background: linear-gradient(135deg, rgba(195, 176, 145, 0.08) 0%, rgba(195, 176, 145, 0.03) 100%);
+  border: 2px solid rgba(195, 176, 145, 0.25);
+  border-radius: 16px;
+  padding: 1.5rem;
   margin-top: 1rem;
+  position: relative;
+  overflow: hidden;
 }
 
-.access-message-modern {
+.access-required-modern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-primary), #c3b091);
+}
+
+.access-header-modern {
   display: flex;
   align-items: flex-start;
-  gap: 0.8rem;
-  margin-bottom: 1rem;
+  gap: 1rem;
+  margin-bottom: 1.2rem;
 }
 
-.access-message-modern i {
-  font-size: 1.2rem;
+.access-header-modern i {
+  font-size: 1.8rem;
   color: var(--color-primary);
-  margin-top: 0.1rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
 }
 
-.access-message-modern strong {
-  color: var(--color-white);
-  display: block;
-  margin-bottom: 0.4rem;
-  font-size: 0.9rem;
-}
-
-.access-message-modern p {
+.access-titles h4 {
   color: var(--color-text);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.3rem 0;
+}
+
+.access-subtitle {
+  color: var(--color-primary);
+  font-size: 0.95rem;
+  font-weight: 500;
   margin: 0;
   opacity: 0.9;
-  font-size: 0.85rem;
+}
+
+.access-description {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.access-description p {
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
+  opacity: 0.8;
+}
+
+.access-instructions {
+  margin-bottom: 1.5rem;
+}
+
+.access-instructions h5 {
+  color: var(--color-text);
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.8rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.access-instructions ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.access-instructions li {
+  color: var(--color-text);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-bottom: 0.6rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.access-instructions li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.access-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.request-access-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.9rem 1.5rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #c3b091 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+.request-access-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(195, 176, 145, 0.3);
+  text-decoration: none;
+  color: white;
+}
+
+.request-access-btn i {
+  font-size: 1.1rem;
 }
 
 .unlock-btn-modern {
   width: 100%;
   padding: 0.8rem 1.5rem;
-  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
-  color: var(--color-bg-primary);
-  border: none;
-  border-radius: 10px;
-  font-weight: 700;
+  background: rgba(195, 176, 145, 0.1);
+  border: 2px solid rgba(195, 176, 145, 0.3);
+  color: var(--color-text);
+  border-radius: 8px;
+  font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
   display: flex;
@@ -2585,6 +2793,11 @@ export default {
   justify-content: center;
   gap: 0.6rem;
   font-size: 0.9rem;
+}
+
+.unlock-btn-modern:hover {
+  background: rgba(195, 176, 145, 0.15);
+  border-color: var(--color-primary);
 }
 
 .unlock-btn-modern:hover {
@@ -2598,6 +2811,69 @@ export default {
 
 
 
+
+/* Simplified Access Required */
+.access-required-simple {
+  text-align: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(195, 176, 145, 0.08) 0%, rgba(195, 176, 145, 0.03) 100%);
+  border: 2px solid rgba(195, 176, 145, 0.15);
+  border-radius: 16px;
+  margin-top: 1rem;
+}
+
+.access-icon {
+  font-size: 3rem;
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+  animation: pulse-glow 2s infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    text-shadow: 0 0 20px var(--color-primary);
+  }
+  50% {
+    text-shadow: 0 0 30px var(--color-primary), 0 0 40px var(--color-primary);
+  }
+}
+
+.access-required-simple h4 {
+  color: var(--color-text);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+
+.access-required-simple p {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.access-details-btn {
+  padding: 0.8rem 2rem;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.95rem;
+}
+
+.access-details-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(195, 176, 145, 0.3);
+}
 
 /* Modal Header */
 .modal-header {
@@ -3409,6 +3685,36 @@ export default {
     padding: 1rem;
   }
 
+  .professional-disclaimer {
+    padding: 1rem;
+    margin-top: 0.75rem;
+  }
+
+  .disclaimer-header {
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .disclaimer-header h4 {
+    font-size: 0.95rem;
+  }
+
+  .disclaimer-content p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 0.5rem;
+  }
+
+  .disclaimer-note {
+    font-size: 0.8rem !important;
+    padding: 0.6rem;
+    gap: 0.4rem;
+  }
+
+  .disclaimer-note i {
+    font-size: 0.9rem;
+  }
+
   .tech-grid-modern {
     grid-template-columns: 1fr;
     gap: 0.5rem;
@@ -3445,17 +3751,62 @@ export default {
   }
 
   .access-required-modern {
-    padding: 1rem;
+    padding: 1.2rem;
   }
 
-  .access-message-modern {
-    gap: 0.6rem;
-    margin-bottom: 0.8rem;
+  .access-header-modern {
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .access-header-modern i {
+    font-size: 1.5rem;
+  }
+
+  .access-titles h4 {
+    font-size: 1.1rem;
+  }
+
+  .access-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .access-description {
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .access-description p {
+    font-size: 0.9rem;
+  }
+
+  .access-instructions {
+    margin-bottom: 1.2rem;
+  }
+
+  .access-instructions h5 {
+    font-size: 0.95rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .access-instructions li {
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+    padding-left: 1.2rem;
+  }
+
+  .access-actions {
+    gap: 0.7rem;
+  }
+
+  .request-access-btn {
+    padding: 0.8rem 1.2rem;
+    font-size: 0.9rem;
   }
 
   .unlock-btn-modern {
     padding: 0.7rem 1.2rem;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
   }
 
   /* Image Preview Mobile Small */

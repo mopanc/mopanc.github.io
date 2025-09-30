@@ -647,6 +647,22 @@ export default {
   project_links: "Links do Projeto",
   repository: "Repositório",
   live_demo: "Demo Ao Vivo",
+
+  // Professional Project Disclaimer
+  professional_disclaimer_title: "Propriedade Intelectual",
+  professional_disclaimer_text: "Este projeto é propriedade total da empresa onde foi desenvolvido durante o meu período de colaboração como funcionário. Está presente no meu portfólio exclusivamente para demonstrar as minhas competências técnicas e experiência profissional adquirida.",
+  professional_disclaimer_note: "Nota: Toda a propriedade intelectual, código e assets pertencem integralmente à empresa empregadora.",
+
+  // Access Request Messages
+  access_required_title: "🔐 Conteúdo Profissional Restrito",
+  access_required_subtitle: "Projetos empresariais e experiência detalhada disponíveis",
+  access_required_description: "Este conteúdo inclui projetos desenvolvidos em ambiente empresarial e detalhes técnicos específicos. Por questões de confidencialidade e propriedade intelectual, requer autorização prévia.",
+  access_request_instructions: "💡 Como solicitar acesso:",
+  access_instruction_1: "1. Envie um email para jorge.morais.dev@gmail.com",
+  access_instruction_2: "2. Inclua uma breve apresentação e o motivo da solicitação",
+  access_instruction_3: "3. Receberá um código de acesso temporário",
+  request_access_cta: "📧 Solicitar Código de Acesso",
+  unlock_access_btn: "🔓 Inserir Código de Acesso",
   highlight: "Destaque",
 
   // Contact page translations
@@ -685,15 +701,19 @@ export default {
   ai_tech: "Python • Análise • Padrões",
   trading_tech: "Algoritmos • ML • Gestão Risco",
 
-  // Access Request Modal
-  access_required_title: "Acesso a Conteúdo Premium Necessário",
-  access_required_description: "Este conteúdo contém informação profissional premium e requer acesso autorizado.",
+  // Access Request Modal (old keys removed - duplicates)
   contact_for_access: "Solicitar Acesso",
   contact_description: "Contacte-me diretamente para discutir o acesso a conteúdo premium e detalhes do portfólio.",
   have_access_code: "Tem um Código de Acesso?",
   access_code_description: "Se já tem um código de acesso, use o terminal de autenticação.",
   go_to_contact: "Ir para Página de Contacto",
   use_access_code: "Usar Código de Acesso",
+
+  // Restricted Content Modal
+  restricted_modal_title: "🔐 Conteúdo Privado",
+  restricted_modal_description: "Se quiser consultar este conteúdo, por favor entre em contacto com o administrador do website.",
+  go_to_contact_form: "Contactar Administrador",
+  already_have_code: "Já tenho um código",
 
   // Cookie Banner & Privacy
   cookie_title: "Privacidade & Cookies",
