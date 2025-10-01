@@ -141,10 +141,24 @@
                   </span>
                 </div>
 
+                <div>
+                <!-- Case Study Button -->
+                <router-link
+                  v-if="project.caseStudySlug"
+                  :to="`/projects/${project.caseStudySlug}`"
+                  class="btn-case-study"
+                  @click.stop
+                >
+                  <i class="ri-article-line"></i>
+                  {{ translations.view_case_study || 'View Case Study' }}
+                </router-link>
+
                 <!-- Single Action Button -->
                 <button class="btn-view-clean" @click.stop="openProjectModal(project)">
                   View Details
                 </button>
+                </div>
+
               </template>
 
               <!-- Show placeholder content for locked projects -->
@@ -948,6 +962,7 @@ export default {
     openProjectModal(project) {
       // Só abre modal se o projeto for público ou se tiver acesso válido
       if (project.isPublic || this.isAccessValid) {
+        console.log('Opening project:', project.projectName, 'Category:', project.category);
         this.selectedProject = project;
         this.currentImageIndex = 0; // Reset image index
         document.body.style.overflow = 'hidden'; // Prevent scroll
@@ -2053,13 +2068,42 @@ export default {
   font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  margin-top: auto;
+  margin-top: 10px;
 }
 
 .btn-view-clean:hover {
   background: linear-gradient(135deg, var(--color-primary), #4facfe);
   transform: translateY(-1px);
   box-shadow: 0 4px 15px rgba(106, 90, 205, 0.3);
+}
+
+.btn-case-study {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+  padding: 0.7rem 1rem;
+  background: linear-gradient(135deg, #ff6b6b, #ee5a6f);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+}
+
+.btn-case-study:hover {
+  background: linear-gradient(135deg, #ee5a6f, #ff6b6b);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+  color: white;
+}
+
+.btn-case-study i {
+  font-size: 1rem;
 }
 
 .locked-btn-clean {

@@ -104,6 +104,7 @@ export default {
   calc_title: "Calculator",
   calc_description: "Calculator made in javascript, it was a simple project but I also enjoyed doing it and the design was interesting.",
   view_project: "View project",
+  view_case_study: "View Case Study",
   not_found_title: "Page not found",
   not_found_description: "We're sorry, the page you were looking for isn't found here. The link you followed may either be broken or no longer exists. Please try again, or take a look at our.",
   home_page: "Home Page",

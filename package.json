@@ -22,6 +22,7 @@
     "nodemailer": "^6.9.2",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "particles.js": "^2.0.0",
+    "prismjs": "^1.30.0",
     "ribbons": "^0.0.5",
     "slick-carousel": "^1.8.1",
     "swiper": "^9.3.0",
@@ -36,6 +37,9 @@
     "@vue/cli-service": "~5.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^8.0.3",
+    "fs-extra": "^11.3.2",
+    "glob": "^11.0.3",
+    "sharp": "^0.34.4",
     "stream-browserify": "^3.0.0"
   },
   "eslintConfig": {

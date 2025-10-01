@@ -106,6 +106,7 @@ export default {
   calc_title: "Calculadora",
   calc_description: "Calculadora feita em javascript, foi um projeto simples mas também gostei de fazer e o design ficou interessante.",
   view_project: "Ver projeto",
+  view_case_study: "Ver Case Study",
 
   not_found_title: "Página não encontrada",
   not_found_description: "Pedimos desculpa, a página que procura não foi encontrada, o link que endereço que tentou aceder ou está errado ou não existe mais. Por favor tente novamente ou volte a página principal.",

@@ -52,6 +52,9 @@ export function useLanguage() {
     // Update HTML lang attribute
     document.documentElement.lang = language
 
+    // Dispatch custom event for language change
+    window.dispatchEvent(new CustomEvent('languageChanged', { detail: { language } }))
+
     return loadTranslations(language)
   }
 

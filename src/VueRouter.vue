@@ -6,6 +6,7 @@ import HomePage from './components/HomePage.vue';
 
 // Lazy load other pages with code splitting
 const ProjectsPage = () => import('./pages/ProjectsPage-modern.vue');
+const ProjectDetail = () => import('./pages/ProjectDetail.vue');
 const AboutPage = () => import('./pages/AboutPage-modern.vue');
 const ContactPage = () => import('./pages/ContactPage.vue');
 const PrivacyPage = () => import('./pages/PrivacyPage.vue');
@@ -22,6 +23,11 @@ const routes = [
     path: '/projects',
     component: ProjectsPage,
     meta: { title: 'Projects - Jorge Mopanc' }
+  },
+  {
+    path: '/projects/:slug',
+    component: ProjectDetail,
+    meta: { title: 'Project Case Study - Jorge Mopanc' }
   },
   {
     path: '/about',
