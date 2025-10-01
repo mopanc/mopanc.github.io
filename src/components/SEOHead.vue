@@ -1,5 +1,5 @@
 <template>
-  <!-- SEO Component - No visual content, only meta management -->
+  <div></div>
 </template>
 
 <script>
@@ -24,7 +24,7 @@ export default {
     },
     canonical: {
       type: String,
-      default: 'https://mopanc.github.io'
+      default: 'https://jorgemopanc.com'
     },
     type: {
       type: String,

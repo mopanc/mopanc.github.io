@@ -26,6 +26,7 @@ export function useProjects() {
         projectDescription: project.description,
         githubLink: project.links.repository,
         websiteLink: project.links.website,
+        caseStudySlug: project.caseStudySlug || null,
         gallery: project.images.map(img => ({
           src: getProjectImage(img.src),
           alt: img.alt,
