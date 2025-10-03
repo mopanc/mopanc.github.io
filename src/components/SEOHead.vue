@@ -8,11 +8,11 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Jorge Morais - Full Stack Developer | React Vue.js Node.js TypeScript Expert | Freelancer'
+      default: 'Jorge Morais - Full Stack Developer | React Vue Node'
     },
     description: {
       type: String,
-      default: 'Senior Full Stack Developer with 4+ years experience. React, Vue.js, Node.js, TypeScript specialist. Expert in web development, REST APIs, enterprise systems. Available for freelance projects worldwide.'
+      default: 'Full Stack Developer with 4+ years experience in React, Vue.js, Node.js & TypeScript. Available for freelance projects.'
     },
     keywords: {
       type: String,
