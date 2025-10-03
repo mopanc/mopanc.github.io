@@ -313,7 +313,11 @@ export default {
                       }
                     };
 
-                    setTextContent('title', expressions.title);
+                    // Set title with HTML support for line break
+                    if (this.$refs['title']) {
+                        this.$refs['title'].innerHTML = expressions.title;
+                    }
+                    // setTextContent('title', expressions.title);
                     setTextContent('presentation', expressions.presentation);
                     setTextContent('experience', expressions.experience);
                     setTextContent('projects_completed', expressions.projects_completed);
