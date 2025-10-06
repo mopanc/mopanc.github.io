@@ -63,32 +63,19 @@ export function useAccessControlSimple() {
       const code = generateUniqueCode()
       const now = new Date().getTime()
 
-      // Calcular tempo de expiração
-      let expiryTime
-      switch (duration) {
-        case '1h':
-          expiryTime = now + (1 * 60 * 60 * 1000)
-          break
-        case '4h':
-          expiryTime = now + (4 * 60 * 60 * 1000)
-          break
-        case '1d':
-          expiryTime = now + (24 * 60 * 60 * 1000)
-          break
-        default:
-          expiryTime = now + (1 * 60 * 60 * 1000)
-      }
-
       // Armazenar código no Firebase
+      // MUDANÇA: Não calcular expiryTime na criação, apenas guardar a duration
+      // O código só expira após ser ativado
       const sanitizedCode = sanitizeCodeForFirebase(code)
       const codesRef = dbRef(db, `portfolioCodes/${sanitizedCode}`)
       await set(codesRef, {
         originalCode: code, // manter o código original
         email,
-        expiryTime,
-        duration,
+        duration, // guardar duração: 1h, 4h, 1d
         createdAt: now,
         used: false,
+        activatedAt: null, // quando foi ativado
+        expiryTime: null, // será calculado quando ativado
         createdBy: 'admin'
       })
 
@@ -97,8 +84,7 @@ export function useAccessControlSimple() {
         code,
         email,
         duration,
-        expiryTime: new Date(expiryTime).toLocaleString(),
-        message: `Código ${code} gerado para ${email}`
+        message: `Código ${code} gerado para ${email} (válido até ativação, depois expira em ${duration})`
       }
     } catch (error) {
       console.error('Erro ao gerar código:', error)
@@ -128,19 +114,26 @@ export function useAccessControlSimple() {
       const allCodes = Object.entries(codes)
         .map(([codeKey, data]) => {
           let status = 'active'
+
+          // MUDANÇA: Status baseado em ativação
           if (data.used) {
-            status = 'used'
-          } else if (data.expiryTime <= now) {
-            status = 'expired'
+            // Se foi usado/ativado, verificar se expirou
+            if (data.expiryTime && data.expiryTime <= now) {
+              status = 'expired'
+            } else {
+              status = 'used'
+            }
           }
+          // Códigos não ativados nunca expiram
 
           return {
             code: data.originalCode || codeKey,
             sanitizedKey: codeKey,
             ...data,
             status,
-            timeRemaining: status === 'active' ? Math.floor((data.expiryTime - now) / (1000 * 60)) : 0,
-            expiryTimeFormatted: new Date(data.expiryTime).toLocaleString(),
+            timeRemaining: (status === 'used' && data.expiryTime) ? Math.floor((data.expiryTime - now) / (1000 * 60)) : null,
+            expiryTimeFormatted: data.expiryTime ? new Date(data.expiryTime).toLocaleString() : 'N/A (aguarda ativação)',
+            activatedAtFormatted: data.activatedAt ? new Date(data.activatedAt).toLocaleString() : null,
             createdAtFormatted: new Date(data.createdAt).toLocaleString(),
             usedAtFormatted: data.usedAt ? new Date(data.usedAt).toLocaleString() : null
           }
@@ -174,9 +167,10 @@ export function useAccessControlSimple() {
       const codes = snapshot.val()
       const now = new Date().getTime()
 
-      // Remover códigos expirados ou usados
+      // MUDANÇA: Remover apenas códigos ativados E expirados
       for (const [codeKey, data] of Object.entries(codes)) {
-        if (data.expiryTime <= now || data.used) {
+        // Só remove se foi ativado (used=true) E expirou
+        if (data.used && data.expiryTime && data.expiryTime <= now) {
           await remove(dbRef(db, `portfolioCodes/${codeKey}`))
         }
       }
@@ -218,7 +212,7 @@ export function useAccessControlSimple() {
         }
       }
 
-      // Calcular novo tempo de expiração
+      // MUDANÇA: Calcular novo tempo de expiração
       const now = new Date().getTime()
       let additionalTime
       switch (newDuration) {
@@ -235,13 +229,23 @@ export function useAccessControlSimple() {
           additionalTime = 1 * 60 * 60 * 1000
       }
 
-      const newExpiryTime = now + additionalTime
+      // Se código foi ativado, extender a partir do tempo restante
+      // Se não foi ativado, manter sem expiryTime
+      let newExpiryTime
+      if (codeToExtend.used && codeToExtend.expiryTime) {
+        // Código já ativado: extender tempo atual
+        newExpiryTime = Math.max(codeToExtend.expiryTime, now) + additionalTime
+      } else {
+        // Código não ativado: não definir expiryTime
+        newExpiryTime = null
+      }
 
       // Atualizar no Firebase
       const codeRef = dbRef(db, `portfolioCodes/${codeToExtend.sanitizedKey}`)
       await set(codeRef, {
         ...codeToExtend,
         expiryTime: newExpiryTime,
+        duration: newDuration,
         extendedAt: now,
         extendedBy: 'admin'
       })
@@ -250,8 +254,10 @@ export function useAccessControlSimple() {
         success: true,
         code: codeToExtend.code,
         email: codeToExtend.email,
-        newExpiryTime: new Date(newExpiryTime).toLocaleString(),
-        message: `Código para ${email} extendido por ${newDuration}`
+        newExpiryTime: newExpiryTime ? new Date(newExpiryTime).toLocaleString() : 'N/A (aguarda ativação)',
+        message: newExpiryTime
+          ? `Código para ${email} extendido por ${newDuration}`
+          : `Duration do código para ${email} atualizada para ${newDuration} (aguarda ativação)`
       }
 
     } catch (error) {
@@ -311,18 +317,72 @@ export function useAccessControlSimple() {
           return { success: false, message: 'Código inválido.' }
         }
 
-        // Verificar se código não expirou e não foi usado
-        if (codeData.expiryTime > now && !codeData.used) {
-          // Marcar código como usado no Firebase
-          await set(dbRef(db, `portfolioCodes/${sanitizedCode}/used`), true)
-          await set(dbRef(db, `portfolioCodes/${sanitizedCode}/usedAt`), now)
+        // MUDANÇA: Nova lógica de validação
+        // 1. Se código já foi usado, verificar se ainda está válido
+        if (codeData.used) {
+          if (codeData.expiryTime && codeData.expiryTime > now) {
+            // Código ainda válido, restaurar acesso
+            isAuthenticated.value = true
+            accessExpiry.value = codeData.expiryTime
+
+            safeLocalStorage.setItem('portfolioAccessCode', codeToCheck, COOKIE_CATEGORIES.FUNCTIONAL)
+            safeLocalStorage.setItem('portfolioAccessExpiry', codeData.expiryTime.toString(), COOKIE_CATEGORIES.FUNCTIONAL)
+
+            // Disparar eventos
+            setTimeout(() => {
+              window.dispatchEvent(new CustomEvent('portfolio-access-granted'))
+              window.dispatchEvent(new CustomEvent('portfolio-access-state-changed'))
+              window.dispatchEvent(new CustomEvent('vue-force-update'))
+            }, 100)
+
+            const timeLeft = Math.floor((codeData.expiryTime - now) / (1000 * 60))
+            return {
+              success: true,
+              type: 'user',
+              message: `Acesso restaurado! Válido por mais ${timeLeft} minutos`,
+              duration: codeData.duration,
+              email: codeData.email
+            }
+          } else {
+            return { success: false, message: 'Este código já expirou.' }
+          }
+        }
+
+        // 2. Código nunca foi usado - ATIVAR AGORA
+        if (!codeData.used) {
+          // Calcular expiryTime baseado na duration
+          let durationMs
+          switch (codeData.duration) {
+            case '1h':
+              durationMs = 1 * 60 * 60 * 1000
+              break
+            case '4h':
+              durationMs = 4 * 60 * 60 * 1000
+              break
+            case '1d':
+              durationMs = 24 * 60 * 60 * 1000
+              break
+            default:
+              durationMs = 1 * 60 * 60 * 1000
+          }
+
+          const expiryTime = now + durationMs
+
+          // Marcar código como usado e definir expiryTime
+          await set(codeRef, {
+            ...codeData,
+            used: true,
+            activatedAt: now,
+            usedAt: now,
+            expiryTime: expiryTime
+          })
 
           // Dar acesso
           isAuthenticated.value = true
-          accessExpiry.value = codeData.expiryTime
+          accessExpiry.value = expiryTime
 
           safeLocalStorage.setItem('portfolioAccessCode', codeToCheck, COOKIE_CATEGORIES.FUNCTIONAL)
-          safeLocalStorage.setItem('portfolioAccessExpiry', codeData.expiryTime.toString(), COOKIE_CATEGORIES.FUNCTIONAL)
+          safeLocalStorage.setItem('portfolioAccessExpiry', expiryTime.toString(), COOKIE_CATEGORIES.FUNCTIONAL)
 
           // Disparar eventos
           setTimeout(() => {
@@ -334,14 +394,10 @@ export function useAccessControlSimple() {
           return {
             success: true,
             type: 'user',
-            message: `Acesso concedido! Válido até ${new Date(codeData.expiryTime).toLocaleString()}`,
+            message: `Código ativado! Válido até ${new Date(expiryTime).toLocaleString()}`,
             duration: codeData.duration,
             email: codeData.email
           }
-        } else if (codeData.used) {
-          return { success: false, message: 'Este código já foi utilizado.' }
-        } else {
-          return { success: false, message: 'Este código expirou.' }
         }
       }
     } catch (error) {
