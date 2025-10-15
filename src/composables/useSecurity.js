@@ -3,15 +3,15 @@ export function useSecurity() {
 
   // Detectar ferramentas de desenvolvimento
   const detectDevTools = () => {
-    const threshold = 160
+    // Desabilitado para não interferir com debugging
+    // const threshold = 160
 
-    setInterval(() => {
-      if (window.outerHeight - window.innerHeight > threshold ||
-          window.outerWidth - window.innerWidth > threshold) {
-        // DevTools detectado - não fazer nada óbvio, apenas log silencioso
-        console.clear()
-      }
-    }, 1000)
+    // setInterval(() => {
+    //   if (window.outerHeight - window.innerHeight > threshold ||
+    //       window.outerWidth - window.innerWidth > threshold) {
+    //     console.clear()
+    //   }
+    // }, 1000)
   }
 
   // Proteger contra copy-paste de código no console
@@ -90,24 +90,24 @@ export function useSecurity() {
 
   // Detectar debugging attempts
   const antiDebug = () => {
-    setInterval(() => {
-      const start = performance.now()
-      console.log('%c ', 'background: transparent')
-      const end = performance.now()
+    // Desabilitado para não interferir com debugging
+    // setInterval(() => {
+    //   const start = performance.now()
+    //   console.log('%c ', 'background: transparent')
+    //   const end = performance.now()
 
-      // Se demorou muito tempo, DevTools pode estar aberto
-      if (end - start > 10) {
-        console.clear()
-      }
-    }, 2000)
+    //   if (end - start > 10) {
+    //     console.clear()
+    //   }
+    // }, 2000)
   }
 
   // Proteger contexto de clique direito
   const protectRightClick = () => {
-    document.addEventListener('contextmenu', () => {
-      // Permitir clique direito normal, mas limpar console
-      setTimeout(() => console.clear(), 100)
-    })
+    // Desabilitado para não interferir com debugging
+    // document.addEventListener('contextmenu', () => {
+    //   setTimeout(() => console.clear(), 100)
+    // })
   }
 
   // Detectar tentativas de bypass
