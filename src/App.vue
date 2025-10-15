@@ -7,6 +7,9 @@
     <!-- Terminal de Autenticação -->
     <MiniTerminal />
 
+    <!-- WhatsApp Chat Widget -->
+    <WhatsAppChat />
+
     <!-- Cookie Banner -->
     <CookieBanner />
   </div>
@@ -17,6 +20,7 @@ import '../firebase.js';
 import PageHeader from './components/PageHeader';
 import FooterPage from './components/FooterPage.vue';
 import MiniTerminal from './components/MiniTerminal.vue';
+import WhatsAppChat from './components/WhatsAppChat.vue';
 import CookieBanner from './components/CookieBanner.vue';
 import { useCookieConsent } from './composables/useCookieConsent';
 
@@ -26,6 +30,7 @@ export default {
     PageHeader,
     FooterPage,
     MiniTerminal,
+    WhatsAppChat,
     CookieBanner,
   },
   setup() {

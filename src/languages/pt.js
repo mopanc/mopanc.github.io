@@ -770,5 +770,33 @@ export default {
   back_home: "Voltar ao Início",
   clear_data_confirm: "Tem certeza que quer limpar todos os dados armazenados? Isto irá repor todas as preferências.",
   data_cleared: "Todos os dados foram limpos.",
-  clear_error: "Erro ao limpar dados. Por favor limpe manualmente nas configurações do navegador."
+  clear_error: "Erro ao limpar dados. Por favor limpe manualmente nas configurações do navegador.",
+
+  // WhatsApp Chat Widget
+  whatsapp_title: "Conversar no WhatsApp",
+  whatsapp_welcome: "👋 Olá! Sou o Jorge Morais, Full Stack Developer.",
+  whatsapp_intro: "Como posso ajudar hoje?",
+  usually_replies: "Normalmente responde em horas",
+  type_message: "Digite uma mensagem...",
+  powered_by: "Powered by WhatsApp",
+
+  // Meeting Schedule
+  schedule_meeting: "Agendar Reunião",
+  send_email_cta: "Enviar Email",
+  schedule_modal_title: "Agendar uma Reunião",
+  schedule_calendly_desc: "Selecione um horário conveniente do meu calendário:",
+  open_calendar: "Abrir Calendário",
+  schedule_form_desc: "Preencha os seus dados e horário preferido, e entrarei em contacto em breve:",
+  meeting_name_label: "O seu Nome *",
+  meeting_email_label: "Email *",
+  meeting_company_label: "Empresa/Organização",
+  meeting_date_label: "Data Preferida *",
+  meeting_time_label: "Hora Preferida *",
+  meeting_select_time: "Selecionar hora",
+  meeting_duration_label: "Duração",
+  meeting_30min: "30 minutos",
+  meeting_60min: "60 minutos",
+  meeting_topic_label: "Tema da Reunião *",
+  submit_meeting: "Solicitar Reunião",
+  meeting_success: "Pedido de reunião enviado com sucesso! Entrarei em contacto em 24 horas."
 }
