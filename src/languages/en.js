@@ -766,5 +766,33 @@ export default {
   back_home: "Back to Home",
   clear_data_confirm: "Are you sure you want to clear all stored data? This will reset all preferences.",
   data_cleared: "All data has been cleared.",
-  clear_error: "Error clearing data. Please clear manually in browser settings."
+  clear_error: "Error clearing data. Please clear manually in browser settings.",
+
+  // WhatsApp Chat Widget
+  whatsapp_title: "Chat on WhatsApp",
+  whatsapp_welcome: "👋 Hi there! I'm Jorge Morais, Full Stack Developer.",
+  whatsapp_intro: "How can I help you today?",
+  usually_replies: "Usually replies within hours",
+  type_message: "Type a message...",
+  powered_by: "Powered by WhatsApp",
+
+  // Meeting Schedule
+  schedule_meeting: "Schedule a Meeting",
+  send_email_cta: "Send Email",
+  schedule_modal_title: "Schedule a Meeting",
+  schedule_calendly_desc: "Select a convenient time slot from my calendar:",
+  open_calendar: "Open Calendar",
+  schedule_form_desc: "Fill in your details and preferred time, and I'll get back to you shortly:",
+  meeting_name_label: "Your Name *",
+  meeting_email_label: "Email *",
+  meeting_company_label: "Company/Organization",
+  meeting_date_label: "Preferred Date *",
+  meeting_time_label: "Preferred Time *",
+  meeting_select_time: "Select time",
+  meeting_duration_label: "Duration",
+  meeting_30min: "30 minutes",
+  meeting_60min: "60 minutes",
+  meeting_topic_label: "Meeting Topic *",
+  submit_meeting: "Request Meeting",
+  meeting_success: "Meeting request sent successfully! I'll get back to you within 24 hours."
 }
