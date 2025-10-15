@@ -8,15 +8,15 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Jorge Morais - Full Stack Developer | React Vue Node'
+      default: 'Jorge Morais - Full Stack Developer | React Vue Node | Europe Remote'
     },
     description: {
       type: String,
-      default: 'Full Stack Developer with 4+ years experience in React, Vue.js, Node.js & TypeScript. Available for freelance projects.'
+      default: 'Senior Full Stack Developer based in Portugal, available for remote work across Europe (UK, Spain, France, Belgium, Netherlands, Germany, Nordics). 4+ years experience in React, Vue.js, Node.js & TypeScript.'
     },
     keywords: {
       type: String,
-      default: 'full stack developer, react developer, vue.js developer, nodejs developer, typescript developer, web developer, javascript expert, freelancer developer, remote developer, software engineer'
+      default: 'full stack developer europe, react developer remote, vue.js developer portugal, nodejs developer europe, typescript developer, freelancer europe, remote developer EU, developer spain, developer france, developer belgium, developer netherlands, developer germany, developer uk, developer nordics, european tech talent, software engineer europe'
     },
     ogImage: {
       type: String,
