@@ -38,14 +38,16 @@
                 </div>
             </nav>
         </div>
+  </header>
 
-    <!-- Terminal Modal -->
+  <!-- Terminal Modal - Teleport to body to avoid CSS conflicts -->
+  <Teleport to="body">
     <TerminalModal
       :isOpen="showTerminalModal"
       @close="closeTerminalModal"
       @downloadPDF="handleDownload"
     />
-  </header>
+  </Teleport>
 </template>
 <script setup>
 import LogoVue from "./LogoVue-v2-minimalist.vue"

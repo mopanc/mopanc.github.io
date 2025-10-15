@@ -61,25 +61,30 @@
         </div>
       </div>
 
-      <!-- Success/Error Toast -->
-      <div v-if="showToast" class="download-toast" :class="toastType">
-        <div class="toast-content">
-          <i :class="toastIcon"></i>
-          <span>{{ toastMessage }}</span>
-          <button @click="closeToast" class="toast-close">
-            <i class="ri-close-line"></i>
-          </button>
-        </div>
+    </div>
+  </section>
+
+  <!-- Success/Error Toast - Teleport to body for fixed positioning -->
+  <Teleport to="body">
+    <div v-if="showToast" class="download-toast" :class="toastType">
+      <div class="toast-content">
+        <i :class="toastIcon"></i>
+        <span>{{ toastMessage }}</span>
+        <button @click="closeToast" class="toast-close">
+          <i class="ri-close-line"></i>
+        </button>
       </div>
     </div>
+  </Teleport>
 
-    <!-- Terminal Modal -->
+  <!-- Terminal Modal - Teleport to body to avoid CSS conflicts -->
+  <Teleport to="body">
     <TerminalModal
       :isOpen="showTerminalModal"
       @close="closeTerminalModal"
       @downloadPDF="handleDownload"
     />
-  </section>
+  </Teleport>
 </template>
 
 <script setup>

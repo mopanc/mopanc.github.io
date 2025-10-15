@@ -39,6 +39,7 @@
 
           <iframe
             v-show="!isLoading"
+            ref="terminalIframe"
             :src="cvUrl"
             class="terminal-iframe"
             @load="handleFrameLoad"
@@ -82,7 +83,9 @@ export default {
     return {
       isLoading: true,
       loadingProgress: 0,
-      isFullscreen: false
+      isFullscreen: false,
+      originalOverflow: '',
+      originalPosition: ''
     }
   },
   computed: {
@@ -96,11 +99,18 @@ export default {
         if (newValue) {
           this.isLoading = true
           this.startLoadingAnimation()
-          // Prevent body scroll
+          // Prevent body scroll - save original values
+          this.originalOverflow = document.body.style.overflow
+          this.originalPosition = document.body.style.position
+          // Lock scroll
           document.body.style.overflow = 'hidden'
+          document.body.style.position = 'relative'
+          document.documentElement.style.overflow = 'hidden'
         } else {
           // Restore body scroll
-          document.body.style.overflow = ''
+          document.body.style.overflow = this.originalOverflow || ''
+          document.body.style.position = this.originalPosition || ''
+          document.documentElement.style.overflow = ''
         }
       },
       immediate: true
@@ -112,7 +122,9 @@ export default {
   unmounted() {
     document.removeEventListener('keydown', this.handleKeyDown)
     // Restore body scroll
-    document.body.style.overflow = ''
+    document.body.style.overflow = this.originalOverflow || ''
+    document.body.style.position = this.originalPosition || ''
+    document.documentElement.style.overflow = ''
   },
   methods: {
     closeModal() {
@@ -138,8 +150,8 @@ export default {
 
     setupAutoScroll() {
       // Enable auto scroll for iframe content - but only when user is at bottom
-      const iframe = this.$el.querySelector('.terminal-iframe')
-      if (iframe) {
+      const iframe = this.$refs.terminalIframe
+      if (iframe && iframe instanceof HTMLIFrameElement) {
         let isUserScrolling = false
         let scrollTimeout = null
 
@@ -236,8 +248,9 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 99999;
   padding: 2rem;
+  overflow-y: auto;
 }
 
 /* Terminal Window */
@@ -255,6 +268,9 @@ export default {
   flex-direction: column;
   overflow: hidden;
   font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  position: relative;
+  z-index: 100000;
+  margin: auto;
 }
 
 /* Terminal Header */
