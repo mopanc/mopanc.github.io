@@ -1,2 +1,2 @@
 "use strict";(self["webpackChunkJorgeMopanc"]=self["webpackChunkJorgeMopanc"]||[]).push([[874],{7874:function(s,c,n){n.r(c),n.d(c,{default:function(){return d}});var e=n(3396);const a={class:"container-success"},r=(0,e._)("div",{class:"content"},[(0,e._)("div",{class:"checkmark"}),(0,e._)("h1",{class:"title--success"},"Formulário enviado com sucesso!"),(0,e._)("a",{href:"/",target:"_blank",class:"btn btn--secondary"},"Voltar")],-1),t=[r];function o(s,c){return(0,e.wg)(),(0,e.iD)("div",a,t)}var u=n(89);const i={},l=(0,u.Z)(i,[["render",o]]);var d=l}}]);
-//# sourceMappingURL=874.84ab68d3.js.map
+//# sourceMappingURL=874.1aa84d38.js.map

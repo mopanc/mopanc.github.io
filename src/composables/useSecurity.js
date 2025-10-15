@@ -16,26 +16,25 @@ export function useSecurity() {
 
   // Proteger contra copy-paste de código no console
   const protectConsole = () => {
-    // Sobrescrever console comum
-    const originalLog = console.log
-    const originalWarn = console.warn
-    const originalError = console.error
+    // Desabilitado temporariamente para não interferir com debugging
+    // const originalLog = console.log
+    // const originalWarn = console.warn
+    // const originalError = console.error
 
-    console.log = (...args) => {
-      // Manter logs legítimos mas limpar após um tempo
-      originalLog(...args)
-      setTimeout(() => console.clear(), 3000)
-    }
+    // console.log = (...args) => {
+    //   originalLog(...args)
+    //   setTimeout(() => console.clear(), 3000)
+    // }
 
-    console.warn = (...args) => {
-      originalWarn(...args)
-      setTimeout(() => console.clear(), 3000)
-    }
+    // console.warn = (...args) => {
+    //   originalWarn(...args)
+    //   setTimeout(() => console.clear(), 3000)
+    // }
 
-    console.error = (...args) => {
-      originalError(...args)
-      setTimeout(() => console.clear(), 3000)
-    }
+    // console.error = (...args) => {
+    //   originalError(...args)
+    //   setTimeout(() => console.clear(), 3000)
+    // }
   }
 
   // Detectar tentativas de manipulação do DOM
