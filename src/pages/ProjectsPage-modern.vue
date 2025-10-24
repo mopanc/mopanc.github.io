@@ -2,7 +2,7 @@
   <div class="projects-page">
     <!-- Professional Compact Header -->
     <section class="projects-hero-modern">
-      <div class="container">
+      <div class="container-wide">
         <div class="hero-layout-compact">
           <!-- Left Side - Title & Description -->
           <div class="hero-content-compact">
@@ -33,7 +33,7 @@
 
     <!-- Advanced Filters Section -->
     <section class="filters-section">
-      <div class="container">
+      <div class="container-wide">
         <div class="filters-inline">
           <!-- Category Filter -->
           <div class="filter-group-inline">
@@ -83,7 +83,7 @@
 
     <!-- Projects Grid -->
     <section class="projects-grid">
-      <div class="container">
+      <div class="container-wide">
         <div class="grid">
           <div
             v-for="(project, index) in displayedProjects"

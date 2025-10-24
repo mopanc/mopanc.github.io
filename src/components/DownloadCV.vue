@@ -1,6 +1,6 @@
 <template>
   <section class="download-cv-section">
-    <div class="container">
+    <div class="container-wide">
       <div class="cv-download-card">
         <div class="cv-content">
           <div class="cv-icon">

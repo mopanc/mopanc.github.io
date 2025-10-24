@@ -1,6 +1,6 @@
 <template>
   <section class="cta-section">
-    <div class="container">
+    <div class="container-wide">
       <div class="cta-card">
         <div class="cta-content">
           <div class="cta-icon">

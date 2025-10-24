@@ -2,7 +2,7 @@
   <div class="about-page">
     <!-- Hero Section -->
     <section class="about-hero">
-      <div class="container">
+      <div class="container-wide">
         <div class="hero-content">
           <div class="hero-text">
 <!--            <h1 class="hero-title">Jorge Morais</h1>-->
@@ -37,7 +37,7 @@
 
     <!-- Navigation Tabs -->
     <section class="about-navigation">
-      <div class="container">
+      <div class="container-wide">
         <div class="nav-tabs">
           <button
             v-for="tab in tabs"
@@ -74,7 +74,7 @@
 
     <!-- Tab Content -->
     <section class="about-content">
-      <div class="container">
+      <div class="container-wide">
         <!-- Technical Expertise -->
         <div v-if="activeTab === 'technical'" class="tab-content">
           <div class="content-header">

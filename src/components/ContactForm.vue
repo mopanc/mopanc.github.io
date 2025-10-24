@@ -1,6 +1,6 @@
 <template>
   <section id="contact" class="contact-form-section">
-    <div class="container">
+    <div class="container-narrow">
       <form
         @submit.prevent="handleSubmit"
         class="contact-form"

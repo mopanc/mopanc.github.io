@@ -2,7 +2,7 @@
   <div class="certificates-page">
     <!-- Hero Section -->
     <section class="certificates-hero">
-      <div class="container">
+      <div class="container-wide">
         <div class="hero-content">
           <h1 class="hero-title">Professional Certifications</h1>
           <p class="hero-subtitle">Continuous learning journey in software development</p>
@@ -26,7 +26,7 @@
 
     <!-- Filters & Search -->
     <section class="certificates-controls">
-      <div class="container">
+      <div class="container-wide">
         <div class="controls-wrapper">
           <!-- Search -->
           <div class="search-container">
@@ -72,7 +72,7 @@
 
     <!-- Certificates Showcase -->
     <section class="certificates-showcase">
-      <div class="container">
+      <div class="container-wide">
         <!-- Grid View -->
         <div v-if="viewMode === 'grid'" class="certificates-grid">
           <div
@@ -199,7 +199,7 @@
 
     <!-- Skills Summary -->
     <section class="skills-summary">
-      <div class="container">
+      <div class="container-wide">
         <h2 class="section-title">Skills & Expertise</h2>
         <div class="skills-categories">
           <div class="skill-category" v-for="category in skillsCategories" :key="category.name">

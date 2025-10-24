@@ -7,7 +7,7 @@
     :ogImage="caseStudy.heroImage"
   />
   <div class="project-detail-page">
-    <div class="container">
+    <div class="container-wide">
       <!-- Loading State -->
       <div v-if="loading" class="loading-state">
         <div class="spinner"></div>
