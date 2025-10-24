@@ -1,6 +1,6 @@
 <template>
   <footer id="footer" class="footer">
-    <div class="container">
+    <div class="container-wide">
       <!-- Main Footer Content -->
       <div class="footer__main">
         <div class="footer__grid">

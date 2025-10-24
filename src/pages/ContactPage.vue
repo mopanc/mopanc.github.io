@@ -1,6 +1,6 @@
 <template>
   <div class="contact-page">
-    <div class="container">
+    <div class="container-wide">
       <!-- Header Section -->
       <div class="contact-header">
         <h1 class="contact-title" ref="contact_title">Get In Touch</h1>

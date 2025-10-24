@@ -1,7 +1,7 @@
  <!-- eslint-disable vue/multi-word-component-names -->
 <template>
   <header id="header" class="header">
-        <div class="container">
+        <div class="container-wide">
             <nav class="nav">
                 <a href="/" class="nav__brand">
                     <LogoVue />

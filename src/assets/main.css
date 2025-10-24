@@ -197,7 +197,9 @@ font-family: 'Stalinist One', cursive;
 
   /* With & Height
   ------------------*/
-  --width-container: 98rem;
+  --width-container: 98rem; /* Legacy - mantido para compatibilidade */
+  --width-container-wide: 140rem; /* 1400px - container moderno e espaçoso */
+  --width-container-narrow: 80rem; /* 800px - para formulários e leitura */
   --height-header: 8rem;
   --height-header--scroll: 8rem;
 
@@ -271,6 +273,30 @@ body {
   width: 90%;
   max-width: var(--width-container);
   margin: auto;
+}
+
+/* Modern Container System - Hybrid Approach */
+.container-wide {
+  width: 90%;
+  max-width: var(--width-container-wide);
+  margin: auto;
+  padding: 0 2rem;
+}
+
+.container-narrow {
+  width: 90%;
+  max-width: var(--width-container-narrow);
+  margin: auto;
+  padding: 0 2rem;
+}
+
+/* Responsivo: em telas pequenas todos se comportam igual */
+@media screen and (max-width: 768px) {
+  .container-wide,
+  .container-narrow {
+    width: 90%;
+    padding: 0 1.5rem;
+  }
 }
 
 .section {
@@ -567,7 +593,7 @@ body {
 /* About
 --------------------------------------------------------------*/
 .about__content {
-  max-width: 43rem;
+  max-width: 50rem;
   margin: auto;
   margin-bottom: 2rem;
   text-align: center;

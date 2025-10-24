@@ -3,7 +3,7 @@
     <main class="main">
         <!--xxxxxxxxxxxx home xxxxxxxxxxxx-->
         <section id="home" class="home">
-            <div class="container">
+            <div class="container-wide">
                 <div class="d-grid home__wrapper">
                     <div class="home__content">
                         <h1 class="home__title" ref="title"></h1>
@@ -72,7 +72,7 @@
 
         <!--xxxxxxxxxxxx About xxxxxxxxxxxx-->
         <section id="about" class="section about">
-            <div class="container">
+            <div class="container-wide">
                 <div class="section__header">
                     <h2 class="section__title about_me" ref="about_me"></h2>
                     <span class="section__subtitle" ref="who_i_am"></span>
@@ -156,7 +156,7 @@
 
         <!--xxxxxxxxxxxx Qualification xxxxxxxxxxxx-->
         <section id="qualification" class="section qualification">
-            <div class="container">
+            <div class="container-wide">
                 <div class="section__header">
                     <h2 class="section__title experience-title" ref="title_experience"></h2>
                     <span class="section__subtitle" ref="subtitle_experience"></span>
@@ -199,7 +199,7 @@
 
         <!--xxxxxxxxxxxx services xxxxxxxxxxxx-->
         <section id="service" class="section service">
-            <div class="container">
+            <div class="container-wide">
                 <div class="section__header">
                     <h2 class="section__title_service" ref="services"></h2>
                     <span class="section__subtitle_service" ref="what_i_do"></span>
@@ -239,7 +239,7 @@
 
         <!-- Testimonials -->
         <section id="testimonial" class="section testimonial">
-            <div class="container slick_container">
+            <div class="container-wide slick_container">
                 <div class="section__header">
                     <h2 class="section__title service-title" ref="my_projects"></h2>
                     <span class="section__subtitle" ref="recent_work"></span>

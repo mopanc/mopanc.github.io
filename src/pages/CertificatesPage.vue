@@ -1,7 +1,7 @@
 <template>
 <main class="main">
         <section id="contact" class="section contact">
-            <div class="container">
+            <div class="container-wide">
               <div class="section__header">
                 <h2 class="section__title"></h2>
                 <span class="section__subtitle"></span>

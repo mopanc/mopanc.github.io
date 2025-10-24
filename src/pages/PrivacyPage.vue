@@ -1,6 +1,6 @@
 <template>
   <div class="privacy-page">
-    <div class="container">
+    <div class="container-narrow">
       <div class="privacy-header">
         <h1>{{ translations.privacy_policy || 'Privacy Policy' }}</h1>
         <p class="last-updated">{{ translations.last_updated || 'Last updated' }}: {{ lastUpdated }}</p>
