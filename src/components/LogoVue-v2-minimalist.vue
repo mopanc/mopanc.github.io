@@ -1,7 +1,7 @@
 <!-- Minimalist Clean Version -->
 <template>
   <div class="logo">
-    <div class="logo-container">
+    <div class="logo-container" :class="{ 'logo-container--scrolled': isScrolled }">
       <div class="logo-text">
         <span class="first-name">Jorge</span>
         <span class="tag-wrapper">
@@ -9,14 +9,20 @@
         </span>
         <span class="last-name">Morais</span>
       </div>
-      <div class="subtitle">Full Stack Developer</div>
+      <div class="subtitle" :class="{ 'subtitle--hidden': isScrolled }">Full Stack Developer</div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'LogoVueMinimalist'
+  name: 'LogoVueMinimalist',
+  props: {
+    isScrolled: {
+      type: Boolean,
+      default: false
+    }
+  }
 }
 </script>
 
@@ -30,7 +36,7 @@ export default {
 
 .logo-container {
   text-align: center;
-  transition: all 0.3s ease;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .logo-text {
@@ -42,12 +48,15 @@ export default {
   letter-spacing: -0.5px;
   margin-bottom: 2px;
   text-shadow: 0 0 10px rgba(79, 172, 254, 0.1);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .first-name, .last-name {
-  color: var(--color-white);
-  transition: all 0.3s ease;
+  color: var(--color-primary);
+  text-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+  display: inline-block;
 }
 
 
@@ -60,14 +69,16 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .tag {
-  color: var(--color-primary);
+  color: #4facfe;
   font-weight: 700;
   font-size: 28px;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   transform-origin: center;
+  transform: rotateY(0deg);
 }
 
 .subtitle {
@@ -77,10 +88,19 @@ export default {
   color: var(--color-primary);
   letter-spacing: 2px;
   text-transform: uppercase;
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.3s ease 0.1s;
+  opacity: 1;
+  max-height: 20px;
+  transform: translateY(0);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
+}
+
+/* Hide subtitle when scrolled */
+.subtitle--hidden {
+  opacity: 0;
+  max-height: 0;
+  transform: translateY(-10px);
+  margin-top: 0;
 }
 
 .subtitle::before {
@@ -104,7 +124,6 @@ export default {
 /* Hover Effects */
 .logo-container:hover .tag {
   transform: rotateY(720deg);
-  color: #4facfe;
   transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
@@ -114,15 +133,41 @@ export default {
   text-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
 }
 
-
-
-.logo-container:hover .subtitle {
-  opacity: 1;
-  transform: translateY(0);
-}
-
+/* Hover effects */
 .logo-container:hover {
   transform: translateY(-2px);
+}
+
+/* Scrolled state - professional compact appearance */
+.logo-container--scrolled {
+  transform: scale(0.88);
+}
+
+.logo-container--scrolled .logo-text {
+  font-size: 24px;
+  margin-bottom: 0;
+}
+
+.logo-container--scrolled .first-name,
+.logo-container--scrolled .last-name {
+  color: var(--color-white);
+  text-shadow: none;
+}
+
+.logo-container--scrolled .tag {
+  transform: rotateY(180deg);
+  font-size: 20px;
+  color: #4facfe;
+}
+
+.logo-container--scrolled .tag-wrapper {
+  width: 32px;
+  height: 24px;
+}
+
+.logo-container--scrolled:hover .tag {
+  transform: rotateY(360deg);
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Responsive */
@@ -143,6 +188,23 @@ export default {
   .subtitle {
     font-size: 10px;
   }
+
+  .logo-container--scrolled {
+    transform: scale(0.85);
+  }
+
+  .logo-container--scrolled .logo-text {
+    font-size: 22px;
+  }
+
+  .logo-container--scrolled .tag {
+    font-size: 18px;
+  }
+
+  .logo-container--scrolled .tag-wrapper {
+    width: 28px;
+    height: 22px;
+  }
 }
 
 @media screen and (max-width: 320px) {
@@ -158,6 +220,23 @@ export default {
     width: 28px;
     height: 22px;
     margin: 0 6px;
+  }
+
+  .logo-container--scrolled {
+    transform: scale(0.82);
+  }
+
+  .logo-container--scrolled .logo-text {
+    font-size: 18px;
+  }
+
+  .logo-container--scrolled .tag {
+    font-size: 14px;
+  }
+
+  .logo-container--scrolled .tag-wrapper {
+    width: 22px;
+    height: 18px;
   }
 }
 </style>

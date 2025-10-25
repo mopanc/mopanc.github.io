@@ -5,7 +5,7 @@
             <nav class="nav">
                 <!-- Logo Left -->
                 <a href="/" class="nav__brand">
-                    <LogoVue />
+                    <LogoVue :isScrolled="isScrolled" />
                 </a>
 
                 <!-- Center Navigation -->
@@ -70,6 +70,7 @@ import { useLanguage } from '../composables/useLanguage.js'
 const { initialize } = useLanguage()
 const isNavMenuOpen = ref(false)
 const showTerminalModal = ref(false)
+const isScrolled = ref(false)
 
 const currentRoute = reactive({
   home: false,
@@ -101,8 +102,10 @@ const handleScroll = () => {
 
   if (scrollPosition > 40) {
     header?.classList.add("header--scroll")
+    isScrolled.value = true
   } else {
     header?.classList.remove("header--scroll")
+    isScrolled.value = false
   }
 }
 
