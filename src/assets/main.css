@@ -201,7 +201,7 @@ font-family: 'Stalinist One', cursive;
   --width-container-wide: 140rem; /* 1400px - container moderno e espaçoso */
   --width-container-narrow: 80rem; /* 800px - para formulários e leitura */
   --height-header: 8rem;
-  --height-header--scroll: 8rem;
+  --height-header--scroll: 5.5rem;
 
   /* Transition and box shadow*/
   --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
