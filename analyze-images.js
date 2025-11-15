@@ -157,11 +157,11 @@ if (unusedImages.length === 0) {
 console.log('\n\n💡 RECOMMENDATIONS:\n');
 
 if (folders['src/assets/img-backup'].length > 0) {
-  console.log('  1. ⚠️  img-backup folder has images - verify if needed, then delete');
+  console.log('  1. ⚠️  imgs-bck-backup folder has images - verify if needed, then delete');
 }
 
 if (folders['src/assets/img-optimized'].length > folders['src/assets/img'].length) {
-  console.log('  2. 💡 img-optimized has MORE images than img - consider using optimized versions');
+  console.log('  2. 💡 imgs-bck-optimized has MORE images than imgs-bck - consider using optimized versions');
 }
 
 if (unusedImages.length > 10) {

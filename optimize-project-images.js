@@ -159,9 +159,15 @@ rl.question('', () => {
 
   console.log('\n\n📊 RESULTS:\n');
   console.log(`  Images processed: ${results.length}`);
-  console.log(`  Original total: ${(totalOriginal / (1024 * 1024)).toFixed(2)} MB`);
-  console.log(`  Optimized total: ${(totalNew / (1024 * 1024)).toFixed(2)} MB`);
-  console.log(`  Saved: ${(totalOriginal - totalNew) / (1024 * 1024)).toFixed(2)} MB (${((1 - totalNew / totalOriginal) * 100).toFixed(0)}%)`);
+
+  const originalMB = (totalOriginal / (1024 * 1024)).toFixed(2);
+  const optimizedMB = (totalNew / (1024 * 1024)).toFixed(2);
+  const savedMB = ((totalOriginal - totalNew) / (1024 * 1024)).toFixed(2);
+  const savedPercent = ((1 - totalNew / totalOriginal) * 100).toFixed(0);
+
+  console.log(`  Original total: ${originalMB} MB`);
+  console.log(`  Optimized total: ${optimizedMB} MB`);
+  console.log(`  Saved: ${savedMB} MB (${savedPercent}%)`);
 
   console.log('\n\n📝 NEXT STEPS:\n');
   console.log('1. Update your JSON files to use .jpg instead of .png');

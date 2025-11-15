@@ -8,7 +8,7 @@
               </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/48-coursera.png" alt="Sql">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/48-coursera.png" alt="Sql">
                         <div>
                           <h2 class="contact__title-cert">Certificate Sql</h2>
                           <p class="contact__description-cert">Coursera - IBM <br/> A Practical Introduction for Querying Databases - Finished with Honors </p>
@@ -20,7 +20,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/1-cursoemvideohtml5.png" alt="html5">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/1-cursoemvideohtml5.png" alt="html5">
                         <div>
                           <h2 class="contact__title-cert certificate_html"></h2>
                           <p class="contact__description-cert certificate_html_description"></p>
@@ -32,7 +32,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/2-dowhile.png" alt="DoWhile">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/2-dowhile.png" alt="DoWhile">
                         <div>
                           <h2 class="contact__title-cert certificate_dowhile"></h2>
                           <p class="contact__description-cert certificate_dowhile_description"></p>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/3-arquiteturasistemasavancada.png" alt="Advanced systems architecture">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/3-arquiteturasistemasavancada.png" alt="Advanced systems architecture">
                         <div>
                           <h2 class="contact__title-cert certificate_arq_advanced"></h2>
                           <p class="contact__description-cert certificate_arq_advanced_description"></p>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/4-androidstudio.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/4-androidstudio.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_android_studio"></h2>
                           <p class="contact__description-cert certificate_android_studio_description"></p>
@@ -68,7 +68,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/5-estruturadedadosalgoritmos.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/5-estruturadedadosalgoritmos.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_data_structures"></h2>
                           <p class="contact__description-cert certificate_data_structures_description"></p>
@@ -80,7 +80,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/6-fundamentosarquiteturasistemas.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/6-fundamentosarquiteturasistemas.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_arq_fund"></h2>
                           <p class="contact__description-cert certificate_arq_fund_description"></p>
@@ -92,7 +92,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/7-debuggingcatcherrorsexeptions.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/7-debuggingcatcherrorsexeptions.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_debug"></h2>
                           <p class="contact__description-cert certificate_debug_description"></p>
@@ -104,7 +104,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/8-es6essencial.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/8-es6essencial.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_ecmascript_essential"></h2>
                           <p class="contact__description-cert certificate_ecmascript_essential_description"></p>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/9-es6avancado.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/9-es6avancado.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_ecmascript_advanced"></h2>
                           <p class="contact__description-cert certificate_ecmascript_advanced_description"></p>
@@ -128,7 +128,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/10-introducaojavascript.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/10-introducaojavascript.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_ecmascript_introduction"></h2>
                           <p class="contact__description-cert certificate_ecmascript_introduction_description"></p>
@@ -140,7 +140,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/12-introducaoreactjs.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/12-introducaoreactjs.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_reactjs"></h2>
                           <p class="contact__description-cert certificate_reactjs_description"></p>
@@ -152,7 +152,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/13-intrreact.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/13-intrreact.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_reactjs_intro"></h2>
                           <p class="contact__description-cert certificate_reactjs_description_intro"></p>
@@ -164,7 +164,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/14-intrvuejs.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/14-intrvuejs.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_vuejs_intro"></h2>
                           <p class="contact__description-cert certificate_vuejs_description_intro"></p>
@@ -176,7 +176,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/15-intrjquery.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/15-intrjquery.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_jquery_intro"></h2>
                           <p class="contact__description-cert certificate_jquery_description_intro"></p>
@@ -188,7 +188,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/16-javascript.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/16-javascript.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_web_js"></h2>
                           <p class="contact__description-cert certificate_web_js_description"></p>
@@ -200,7 +200,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/17-logicadeprogramacao.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/17-logicadeprogramacao.png" alt="Android Studio">
                         <div>
                           <h2 class="contact__title-cert certificate_logic"></h2>
                           <p class="contact__description-cert certificate_logic_description"></p>
@@ -212,7 +212,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/18-logicaprogramacaoessencial.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/18-logicaprogramacaoessencial.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_logic_essential"></h2>
                             <p class="contact__description-cert certificate_logic_essential_description"></p>
@@ -224,7 +224,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/19-primeirospassospregramacao.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/19-primeirospassospregramacao.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_first_steps"></h2>
                             <p class="contact__description-cert certificate_first_steps_description"></p>
@@ -236,7 +236,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/20-intrjavascript.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/20-intrjavascript.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_javascript_introduction"></h2>
                             <p class="contact__description-cert certificate_javascript_introduction_description"></p>
@@ -248,7 +248,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/21-intrgitgithub.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/21-intrgitgithub.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_github_introduction"></h2>
                             <p class="contact__description-cert certificate_github_introduction_description"></p>
@@ -260,7 +260,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/22-htmlwebdeveloper.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/22-htmlwebdeveloper.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_html_web"></h2>
                             <p class="contact__description-cert certificate_html_web_description"></p>
@@ -272,7 +272,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/23-asyncawait.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/23-asyncawait.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_async"></h2>
                             <p class="contact__description-cert certificate_async_description"></p>
@@ -284,7 +284,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/24-becameremote.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/24-becameremote.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_remote"></h2>
                             <p class="contact__description-cert certificate_remote_description"></p>
@@ -296,7 +296,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/25-bootcampsantander.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/25-bootcampsantander.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_santander"></h2>
                             <p class="contact__description-cert certificate_santander_description"></p>
@@ -308,7 +308,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/26-colectionsarrayslistas.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/26-colectionsarrayslistas.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_arrays"></h2>
                             <p class="contact__description-cert certificate_arrays_description"></p>
@@ -320,7 +320,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/27-componentesmetodoslifecyclesvuejs.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/27-componentesmetodoslifecyclesvuejs.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_cycles_vue"></h2>
                             <p class="contact__description-cert certificate_cycles_vue_description"></p>
@@ -332,7 +332,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/28-conceitosappsandroid.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/28-conceitosappsandroid.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_apps_android"></h2>
                             <p class="contact__description-cert certificate_apps_android_description"></p>
@@ -344,7 +344,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/29-conseitosUX.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/29-conseitosUX.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_ux"></h2>
                             <p class="contact__description-cert certificate_ux_description"></p>
@@ -356,7 +356,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/30-fetchAPI.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/30-fetchAPI.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_fetch"></h2>
                             <p class="contact__description-cert certificate_fetch_description"></p>
@@ -368,7 +368,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/31-git.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/31-git.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_git"></h2>
                             <p class="contact__description-cert certificate_git_description"></p>
@@ -380,7 +380,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/32-htmlecss.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/32-htmlecss.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_htmlcss"></h2>
                             <p class="contact__description-cert certificate_htmlcss_description"></p>
@@ -392,7 +392,7 @@
                 </div>
                 <div class="d-grid contact__wrapper-cert">
                     <div class="contact__content-cert">
-                        <img class="contact__img-cert" src="../assets/img/certificates/33-intrkotlin.png" alt="Android Studio">
+                        <img class="contact__img-cert" src="../assets/imgs-bck/certificates/33-intrkotlin.png" alt="Android Studio">
                         <div>
                             <h2 class="contact__title-cert certificate_kotlin"></h2>
                             <p class="contact__description-cert certificate_kotlin_description"></p>

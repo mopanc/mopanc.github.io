@@ -47,7 +47,7 @@ Cada case study tem estas secções:
   subtitle: 'Resumo em 1 linha',
 
   // 2. HERO (Topo da página)
-  heroImage: '../assets/img/foto-projeto',
+  heroImage: '../assets/imgs-bck/foto-projeto',
   tech: ['Vue.js', 'Node.js', 'etc'],
   duration: '3 meses',
   role: 'Full Stack Developer',
@@ -127,7 +127,7 @@ Aqui está um template **minimalista** que podes usar:
   metaDescription: 'Como construí uma loja online com Vue.js, Node.js e Stripe. 5k vendas/mês.',
 
   // HERO
-  heroImage: '../assets/img/meu-projeto', // ← Nome da tua imagem (sem extensão)
+  heroImage: '../assets/imgs-bck/meu-projeto', // ← Nome da tua imagem (sem extensão)
   tech: ['Vue.js', 'Node.js', 'Stripe', 'PostgreSQL'],
   duration: '4 meses',
   role: 'Full Stack Developer',
@@ -249,7 +249,7 @@ Só precisas disto para começar:
   title: 'Nome do Projeto',
   subtitle: 'Resumo em 1 linha',
 
-  heroImage: '../assets/img/foto',
+  heroImage: '../assets/imgs-bck/foto',
   tech: ['Vue.js', 'Node.js'],
   duration: '3 meses',
   role: 'Full Stack Developer',
@@ -322,7 +322,7 @@ Ver todos: https://remixicon.com/
 
 ### **Opção 1: Usar Imagem Existente**
 ```javascript
-heroImage: '../assets/img/calculator' // ← Sem extensão!
+heroImage: '../assets/imgs-bck/calculator' // ← Sem extensão!
 ```
 
 ### **Opção 2: Adicionar Nova Imagem**
@@ -330,7 +330,7 @@ heroImage: '../assets/img/calculator' // ← Sem extensão!
 2. Nome: `meu-projeto.png` (ou .jpg)
 3. Referencia sem extensão:
 ```javascript
-heroImage: '../assets/img/meu-projeto'
+heroImage: '../assets/imgs-bck/meu-projeto'
 ```
 
 **Nota:** As imagens já estão otimizadas automaticamente (WebP + lazy loading)!
@@ -380,7 +380,7 @@ Vou criar templates específicos para os teus projetos mais comuns.
   title: 'AI-Powered Trading System',
   subtitle: 'Machine learning para previsão de mercados',
 
-  heroImage: '../assets/img/trading', // ← Adiciona esta imagem
+  heroImage: '../assets/imgs-bck/trading', // ← Adiciona esta imagem
   tech: ['Python', 'TensorFlow', 'Node.js', 'WebSockets'],
   duration: '6 meses',
   role: 'Full Stack Developer',
@@ -439,7 +439,7 @@ Vou criar templates específicos para os teus projetos mais comuns.
   title: 'E-commerce Platform',
   subtitle: 'Loja online com 10k+ produtos e pagamentos',
 
-  heroImage: '../assets/img/ecommerce',
+  heroImage: '../assets/imgs-bck/ecommerce',
   tech: ['Vue.js', 'Node.js', 'Stripe', 'PostgreSQL'],
   duration: '4 meses',
   role: 'Full Stack Developer',

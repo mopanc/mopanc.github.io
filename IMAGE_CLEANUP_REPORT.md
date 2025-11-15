@@ -83,7 +83,7 @@
 ### ✅ PASSO 1: Apagar img-backup (100% SEGURO)
 
 ```bash
-rm -rf src/assets/img-backup
+rm -rf src/assets/imgs-bck-backup
 ```
 
 **Resultado:**
@@ -99,18 +99,18 @@ As imagens otimizadas são **80-97% mais leves**!
 **Opção A: Substituir tudo (requer testar)**
 ```bash
 # Backup primeiro
-cp -r src/assets/img src/assets/img-original-backup
+cp -r src/assets/imgs-bck src/assets/imgs-bck-original-backup
 
 # Usar optimized
-rm -rf src/assets/img
-mv src/assets/img-optimized src/assets/img
+rm -rf src/assets/imgs-bck
+mv src/assets/imgs-bck-optimized src/assets/imgs-bck
 ```
 
 **Opção B: Só certificados (mais seguro)**
 ```bash
 # Substituir só certificados
-rm -rf src/assets/img/certificates
-cp -r src/assets/img-optimized/certificates src/assets/img/
+rm -rf src/assets/imgs-bck/certificates
+cp -r src/assets/imgs-bck-optimized/certificates src/assets/imgs-bck/
 ```
 
 **Resultado:**
@@ -125,7 +125,7 @@ cp -r src/assets/img-optimized/certificates src/assets/img/
 Estes projetos NÃO aparecem nos JSON files:
 
 ```bash
-# EM src/assets/img/ (CONFIRMAR ANTES!)
+# EM src/assets/imgs-bck/ (CONFIRMAR ANTES!)
 calc.png              # 115 KB
 calculator.png        # 1.39 MB
 covid.png             # 2.17 MB
@@ -156,7 +156,7 @@ social.png            # 355 KB
 
 ```bash
 # 1. Apagar backup (100% seguro)
-rm -rf src/assets/img-backup
+rm -rf src/assets/imgs-bck-backup
 
 # 2. Rebuild e verificar
 npm run build
@@ -174,11 +174,11 @@ npm run build
 1. **Testar img-optimized localmente:**
    ```bash
    # Backup
-   cp -r src/assets/img src/assets/img-BACKUP-TEMP
+   cp -r src/assets/imgs-bck src/assets/imgs-bck-BACKUP-TEMP
 
    # Substituir
-   rm -rf src/assets/img
-   cp -r src/assets/img-optimized src/assets/img
+   rm -rf src/assets/imgs-bck
+   cp -r src/assets/imgs-bck-optimized src/assets/imgs-bck
 
    # Testar
    npm run serve
@@ -201,13 +201,13 @@ npm run build
 
 ```bash
 # OPÇÃO 1: Só apagar backup (RECOMENDADO AGORA)
-rm -rf src/assets/img-backup
+rm -rf src/assets/imgs-bck-backup
 echo "✅ Backup apagado! Libertou ~40 MB"
 
 # OPÇÃO 2: Backup + screenshots antigos
-rm -rf src/assets/img-backup
-rm src/assets/img/Screenshot*.png
-rm src/assets/img/artbreeder*.jpeg
+rm -rf src/assets/imgs-bck-backup
+rm src/assets/imgs-bck/Screenshot*.png
+rm src/assets/imgs-bck/artbreeder*.jpeg
 echo "✅ Backup e screenshots apagados! Libertou ~42 MB"
 ```
 
@@ -288,5 +288,5 @@ chmod +x cleanup-images-safe.sh
 **DECISÃO FÁCIL: Começa por apagar `img-backup`! É 100% seguro e liberta 40 MB! 🚀**
 
 ```bash
-rm -rf src/assets/img-backup && echo "✅ Done! Libertou 40 MB"
+rm -rf src/assets/imgs-bck-backup && echo "✅ Done! Libertou 40 MB"
 ```

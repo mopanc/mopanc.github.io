@@ -14,7 +14,7 @@
 
 **How to Use:**
 ```bash
-# Images are already optimized in img-optimized folder
+# Images are already optimized in imgs-bck-optimized folder
 # To use optimized images in components:
 <OptimizedImage
   src="../assets/img/project-name"
@@ -94,16 +94,16 @@ public/
 ### Step 1: Replace Original Images (OPTIONAL but RECOMMENDED)
 ```bash
 # Current state:
-# - Original images: src/assets/img/ (56 MB)
-# - Optimized images: src/assets/img-optimized/ (12 MB)
+# - Original images: src/assets/imgs-bck/ (56 MB)
+# - Optimized images: src/assets/imgs-bck-optimized/ (12 MB)
 
 # Option A: Keep both folders (safe, uses more disk space)
-# Do nothing - OptimizedImage component uses img-optimized by default
+# Do nothing - OptimizedImage component uses imgs-bck-optimized by default
 
 # Option B: Replace originals with optimized (recommended)
 cd src/assets
-mv img img-original-backup
-mv img-optimized img
+mv imgs-bck imgs-bck-original-backup
+mv imgs-bck-optimized imgs-bck
 
 # Then update OptimizedImage.vue:
 # Change line: useOptimized: { type: Boolean, default: true }

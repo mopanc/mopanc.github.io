@@ -166,7 +166,7 @@ export const caseStudies = {
 
     // Hero
     hero: {
-      image: '../assets/img/company-bm',
+      image: '../assets/imgs-bck/company-bm',
       tech: ['Node.js', 'Vue.js', 'MQTT', 'ccTalk Protocol', 'WebSockets', 'C'],
       duration: '3 months',
       role: 'Full Stack Developer',
@@ -202,7 +202,7 @@ export const caseStudies = {
     // Solution Architecture
     solution: {
       architecture: {
-        image: '../assets/img/architecture-diagram',
+        image: '../assets/imgs-bck/architecture-diagram',
         alt: 'System architecture diagram showing MQTT broker, Node.js backend, and Vue.js frontend'
       },
 

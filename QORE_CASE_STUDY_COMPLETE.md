@@ -180,7 +180,7 @@ http://localhost:8080/projects/qore-multi-tenant-rbac-system
 
 O case study está configurado para usar:
 ```javascript
-heroImage: '../assets/img/qore-system'
+heroImage: '../assets/imgs-bck/qore-system'
 ```
 
 **Tens 3 opções:**
@@ -188,7 +188,7 @@ heroImage: '../assets/img/qore-system'
 ### Opção 1: Adicionar Nova Imagem (Recomendado)
 ```bash
 # 1. Coloca uma screenshot do Qore em:
-src/assets/img/qore-system.png
+src/assets/imgs-bck/qore-system.png
 # (ou .jpg)
 
 # 2. As imagens já serão otimizadas automaticamente!
@@ -197,7 +197,7 @@ src/assets/img/qore-system.png
 ### Opção 2: Usar Imagem Existente
 ```javascript
 // Edita em case-studies.js:
-heroImage: '../assets/img/company-bm'  // Usa imagem existente
+heroImage: '../assets/imgs-bck/company-bm'  // Usa imagem existente
 ```
 
 ### Opção 3: Sem Imagem (Temporário)

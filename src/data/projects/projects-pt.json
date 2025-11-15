@@ -12,47 +12,47 @@
       "description": "Sistema empresarial completo para gestão centralizada de negócios multi-loja, desenvolvido com stack tecnológico avançado: Node.js, Express.js, TypeScript, TypeORM e SQL Server no backend, React com TypeScript no frontend, e Socket.IO para comunicação em tempo real. Inclui gestão de lojas, análise de vendas com dashboards estatísticos, controlo de stocks, gestão de utilizadores com permissões granulares, e automação de processos. Funcionalidades principais: configuração remota de dispositivos via protocolo ETPROXY proprietário, sincronização de dados empresariais, análises comparativas, rankings de produtos, exportação PDF/CSV, gestão inteligente de preços, backups automáticos e licenciamento controlado por dispositivos.",
       "images": [
         {
-          "src": "qore/Grafics.png",
+          "src": "qore/Grafics.jpg",
           "alt": "Gráfico interativo com estatísticas de vendas e métricas empresariais",
           "title": "Estatísticas de Vendas"
         },
         {
-          "src": "qore/Chart.png",
+          "src": "qore/Chart.jpg",
           "alt": "Painel com gráficos comparativos de desempenho e evolução de vendas",
           "title": "Gráficos de Desempenho"
         },
         {
-          "src": "qore/Database.png",
+          "src": "qore/Database.jpg",
           "alt": "Visualização de base de dados com listagem estruturada de artigos e transações",
           "title": "Base de Dados"
         },
         {
-          "src": "qore/Receive.png",
+          "src": "qore/Receive.jpg",
           "alt": "Ecrã de receção de artigos com controlo de stocks e entradas em armazém",
           "title": "Receção de Stocks"
         },
         {
-          "src": "qore/report.png",
+          "src": "qore/report.jpg",
           "alt": "Relatório detalhado com listagem de utilizadores e permissões atribuídas",
           "title": "Relatórios de Utilizadores"
         },
         {
-          "src": "qore/Stores.png",
+          "src": "qore/Stores.jpg",
           "alt": "Interface de gestão de lojas com configuração de secções, grupos e dispositivos",
           "title": "Gestão de Lojas"
         },
         {
-          "src": "qore/Tasks.png",
+          "src": "qore/Tasks.jpg",
           "alt": "Lista de tarefas automáticas do sistema com estados e prioridades",
           "title": "Gestão de Tarefas"
         },
         {
-          "src": "qore/VAT.png",
+          "src": "qore/VAT.jpg",
           "alt": "Configuração de perfis de IVA com regras fiscais aplicadas a artigos e serviços",
           "title": "Configuração de IVA"
         },
         {
-          "src": "qore/VAT1.png",
+          "src": "qore/VAT1.jpg",
           "alt": "Tabela de taxas de IVA com percentagens e categorias aplicáveis",
           "title": "Tabela de IVA"
         }
@@ -86,37 +86,37 @@
       "description": "Webservice backend para máquina de pagamentos automatizada Alice4Cash, desenvolvido em C puro para controlo de hardware complexo incluindo hoppers, validadores de moedas/notas, reciclador e cofre de segurança. Utiliza protocolos especializados CCTalk e EID003 para comunicação com periféricos, e MQTT para integração com aplicações móveis. Principais desafios: gestão rigorosa de memória em ambiente restrito, prevenção de memory leaks, manipulação de dados binários e sincronização em tempo real. Funcionalidades: validação automática de valores, cálculo de troco, controlo LED, monitoramento remoto via MQTT e logging detalhado de transações.",
       "images": [
         {
-          "src": "alice4cash/homepage.png",
+          "src": "alice4cash/homepage.jpg",
           "alt": "Máquina Alice4Cash mostrando design moderno com interface digital e compartimentos para processamento de dinheiro",
           "title": "Máquina Alice4Cash"
         },
         {
-          "src": "alice4cash/black.png",
+          "src": "alice4cash/black.jpg",
           "alt": "Vista dos componentes internos incluindo hoppers, validadores, reciclador e sistema de controlo",
           "title": "Componentes Hardware"
         },
         {
-          "src": "alice4cash/white.png",
+          "src": "alice4cash/white.jpg",
           "alt": "Interface de desenvolvimento do webservice backend mostrando código C e configurações MQTT",
           "title": "Backend Development"
         },
         {
-          "src": "alice4cash/desc1.png",
+          "src": "alice4cash/desc1.jpg",
           "alt": "Diagrama de comunicação CCTalk e EID003 entre componentes da máquina",
           "title": "Protocolos de Comunicação"
         },
         {
-          "src": "alice4cash/desc2.png",
+          "src": "alice4cash/desc2.jpg",
           "alt": "Aplicação móvel conectada via MQTT para monitoramento e controlo remoto da máquina",
           "title": "Integração Mobile MQTT"
         },
         {
-          "src": "alice4cash/desc3.png",
+          "src": "alice4cash/desc3.jpg",
           "alt": "Ambiente de testes com debugging de memory leaks e análise de performance",
           "title": "Testing & Debugging"
         },
         {
-          "src": "alice4cash/desc4.png",
+          "src": "alice4cash/desc4.jpg",
           "alt": "Ambiente de testes com debugging de memory leaks e análise de performance",
           "title": "Testing & Debugging"
         }
@@ -147,42 +147,42 @@
       "description": "Plataforma avançada de trading algorítmico que combina IA com análise técnica moderna. Integra engine quântico NEURO-IA-CORE v4.0, análise multi-timeframe e Elliott Wave Theory para decisões automatizadas. Inclui dashboard em tempo real, gestão de risco dinâmica e integração completa com Binance API através de WebSocket e autenticação JWT.",
       "images": [
         {
-          "src": "q-scope-ai/login.png",
+          "src": "q-scope-ai/login.jpg",
           "alt": "Sistema de gestão de risco dinâmico",
           "title": "Dynamic Risk Management"
         },
         {
-          "src": "q-scope-ai/dashboard.png",
+          "src": "q-scope-ai/dashboard.jpg",
           "alt": "Dashboard principal com análise IA em tempo real",
           "title": "AI Trading Dashboard"
         },
         {
-          "src": "q-scope-ai/live_signals.png",
+          "src": "q-scope-ai/live_signals.jpg",
           "alt": "Sinais de IA ao vivo com Elliott Wave e Fibonacci",
           "title": "Live AI Signals"
         },
         {
-          "src": "q-scope-ai/active_positions.png",
+          "src": "q-scope-ai/active_positions.jpg",
           "alt": "Análise multi-timeframe e confluências quânticas",
           "title": "Multi-Timeframe Analysis"
         },
         {
-          "src": "q-scope-ai/how_ai_works.png",
+          "src": "q-scope-ai/how_ai_works.jpg",
           "alt": "Sistema de gestão de risco dinâmico",
           "title": "Dynamic Risk Management"
         },
         {
-          "src": "q-scope-ai/license.png",
+          "src": "q-scope-ai/license.jpg",
           "alt": "Sistema de gestão de risco dinâmico",
           "title": "Dynamic Risk Management"
         },
         {
-          "src": "q-scope-ai/pair_setup.png",
+          "src": "q-scope-ai/pair_setup.jpg",
           "alt": "Sistema de gestão de risco dinâmico",
           "title": "Dynamic Risk Management"
         },
         {
-          "src": "q-scope-ai/training.png",
+          "src": "q-scope-ai/training.jpg",
           "alt": "Sistema de gestão de risco dinâmico",
           "title": "Dynamic Risk Management"
         }
@@ -217,22 +217,22 @@
       "description": "Sistema de inteligência artificial avançado para análise de gráficos de cryptomoedas que combina múltiplas tecnologias de machine learning. Integra algoritmos Quantum based, Fibonacci, Elliott Waves, análise multi-timeframe e otimização de portfólio com modelos Random Forest e Gradient Boosting. Inclui gestão de risco adaptativa que processa mais de 50 indicadores técnicos em tempo real, substituindo decisões manuais por análise contextual baseada em padrões Elliott Wave e confiança da IA.",
       "images": [
         {
-          "src": "crypto_ai_analyser/dashboard.png",
+          "src": "crypto_ai_analyser/dashboard.jpg",
           "alt": "Dashboard da análise IA em tempo real",
           "title": "IA Dashboard"
         },
         {
-          "src": "crypto_ai_analyser/elliot_waves.png",
+          "src": "crypto_ai_analyser/elliot_waves.jpg",
           "alt": "Visualização dos modelos ML e Elliott Wave",
           "title": "Modelos ML"
         },
         {
-          "src": "crypto_ai_analyser/fibonacci.png",
+          "src": "crypto_ai_analyser/fibonacci.jpg",
           "alt": "Quantum Elliott Wave e Multi-Timeframe Analysis",
           "title": "Quantum Analysis"
         },
         {
-          "src": "crypto_ai_analyser/how_ai_works.png",
+          "src": "crypto_ai_analyser/how_ai_works.jpg",
           "alt": "Quantum Portfolio Optimizer e Risk Manager",
           "title": "AI Risk Management"
         }
@@ -260,27 +260,27 @@
       "description": "Plataforma SaaS para automatização de processamento de dados corporativos com sistema multi-tenant. Combina extração inteligente de tabelas PDF através de IA (tabula-py + pdfplumber) com mapeamento visual de colunas e conversão automatizada para CSV/JSON. Inclui sistema de templates personalizados, dashboard analítico, gestão de planos (Free/Personal/Enterprise) e upload drag-and-drop.",
       "images": [
         {
-          "src": "data-convert/Landing_page.png",
+          "src": "data-convert/Landing_page.jpg",
           "alt": "Registo com seleção de planos e multi-tenancy",
           "title": "User Registration"
         },
         {
-          "src": "data-convert/dashboard.png",
+          "src": "data-convert/dashboard.jpg",
           "alt": "Dashboard principal com estatísticas e templates recentes",
           "title": "Analytics Dashboard"
         },
         {
-          "src": "data-convert/my_templates.png",
+          "src": "data-convert/my_templates.jpg",
           "alt": "Gestão de templates com filtros e pesquisa avançada",
           "title": "Template Management"
         },
         {
-          "src": "data-convert/import.png",
+          "src": "data-convert/import.jpg",
           "alt": "Interface de upload com drag-and-drop e processamento em lote",
           "title": "File Import System"
         },
         {
-          "src": "data-convert/subscriptions.png",
+          "src": "data-convert/subscriptions.jpg",
           "alt": "Interface de autenticação com sistema JWT",
           "title": "Authentication System"
         }
@@ -320,22 +320,22 @@
       "description": "Redesign moderno do meu primeiro projeto web sobre Google Glass, originalmente criado no curso do Gustavo Guanabara. Transformei o design clássico numa experiência contemporânea com design system premium, paleta terrosa sofisticada e navegação avançada. Inclui responsividade completa, animações fluidas, formulário com validação em tempo real e galeria interativa.",
       "images": [
         {
-          "src": "google_glass/homepage.png",
+          "src": "google_glass/homepage.jpg",
           "alt": "Página inicial com header glassmorphism e design premium",
           "title": "Homepage Premium Design"
         },
         {
-          "src": "google_glass/fotos.png",
+          "src": "google_glass/fotos.jpg",
           "alt": "Menu de navegação moderno com hover effects sofisticados",
           "title": "Advanced Navigation"
         },
         {
-          "src": "google_glass/multimidia.png",
+          "src": "google_glass/multimidia.jpg",
           "alt": "Layout responsivo com grid moderno e tipografia premium",
           "title": "Modern Content Layout"
         },
         {
-          "src": "google_glass/specs.png",
+          "src": "google_glass/specs.jpg",
           "alt": "Formulário de contato modernizado com validação em tempo real",
           "title": "Modern Contact Form"
         }
@@ -365,27 +365,27 @@
       "description": "Sistema moderno e profissional de gestão de oficina construído com React.js e Ant Design. Oferece gestão completa de serviços automotivos com reservas online, gestão de clientes e controles administrativos. Inclui homepage com tema Ferrari, sistema de reservas com operações CRUD e painel administrativo. Construído com padrões React modernos e design responsivo.",
       "images": [
         {
-          "src": "garage/banner.png",
+          "src": "garage/banner.jpg",
           "alt": "Homepage showing Digital Garage hero banner with Ferrari theme and service features",
           "title": "Digital Garage Homepage"
         },
         {
-          "src": "garage/features.png",
+          "src": "garage/features.jpg",
           "alt": "Booking management interface with table, filters and CRUD operations",
           "title": "Booking Management System"
         },
         {
-          "src": "garage/tipos.png",
+          "src": "garage/tipos.jpg",
           "alt": "Administrator",
           "title": "Administrative Panel"
         },
         {
-          "src": "garage/admin1.png",
+          "src": "garage/admin1.jpg",
           "alt": "Administrator",
           "title": "Booking Forms Interface"
         },
         {
-          "src": "garage/admin2.png",
+          "src": "garage/admin2.jpg",
           "alt": "Administrator",
           "title": "Booking Forms Interface"
         }
@@ -415,32 +415,32 @@
       "description": "Website corporativo profissional desenvolvido para a CapitalGes, empresa portuguesa especializada em consultoria empresarial para PMEs. Focado em contabilidade, fiscalidade, apoio à gestão e recursos humanos. Desenvolvido com PHP puro e Nginx, oferece experiência moderna com design minimalista, sistema de newsletter, área de notícias, integração com redes sociais e otimização SEO completa.",
       "images": [
         {
-          "src": "capitalges/homepage.png",
+          "src": "capitalges/homepage.jpg",
           "alt": "Homepage da CapitalGes mostrando serviços de consultoria empresarial com design minimalista",
           "title": "Página Principal"
         },
         {
-          "src": "capitalges/news.png",
+          "src": "capitalges/news.jpg",
           "alt": "Página de serviços detalhando contabilidade, fiscalidade e apoio à gestão",
           "title": "Serviços Empresariais"
         },
         {
-          "src": "capitalges/aboutus.png",
+          "src": "capitalges/aboutus.jpg",
           "alt": "Página sobre a empresa com missão e valores da CapitalGes",
           "title": "Sobre a Empresa"
         },
         {
-          "src": "capitalges/contacts.png",
+          "src": "capitalges/contacts.jpg",
           "alt": "Página de contactos com formulário e informações de localização",
           "title": "Contactos e Localização"
         },
         {
-          "src": "capitalges/mobile1.png",
+          "src": "capitalges/mobile1.jpg",
           "alt": "Área de notícias e atualizações sobre consultoria empresarial",
           "title": "Centro de Notícias"
         },
         {
-          "src": "capitalges/mobile2.png",
+          "src": "capitalges/mobile2.jpg",
           "alt": "Área de notícias e atualizações sobre consultoria empresarial",
           "title": "Centro de Notícias"
         }
@@ -472,27 +472,27 @@
       "description": "Website corporativo desenvolvido para a AMF Safety Shoes, empresa portuguesa líder em calçado técnico de segurança (650.000 pares/ano, €20M faturação). Plataforma digital premium multilingue (PT/EN) que combina storytelling corporativo com funcionalidades e-commerce. Desenvolvido com PHP, Nginx e foco em sustentabilidade, inovação I&D e certificações de qualidade.",
       "images": [
         {
-          "src": "amf/homepage.png",
+          "src": "amf/homepage.jpg",
           "alt": "Homepage da AMF Safety Shoes com hero section e apresentação da empresa líder em calçado de segurança",
           "title": "Homepage Corporativa"
         },
         {
-          "src": "amf/page1.png",
+          "src": "amf/page1.jpg",
           "alt": "Página interna da AMF mostrando conteúdo detalhado sobre produtos e serviços",
           "title": "Página de Conteúdo"
         },
         {
-          "src": "amf/page2.png",
+          "src": "amf/page2.jpg",
           "alt": "Segunda página interna com informações sobre a empresa e processos",
           "title": "Informações da Empresa"
         },
         {
-          "src": "amf/mobile1.png",
+          "src": "amf/mobile1.jpg",
           "alt": "Versão mobile do site AMF mostrando design responsivo e navegação otimizada",
           "title": "Interface Mobile 1"
         },
         {
-          "src": "amf/mobile2.png",
+          "src": "amf/mobile2.jpg",
           "alt": "Segunda interface mobile demonstrando adaptabilidade do design para dispositivos móveis",
           "title": "Interface Mobile 2"
         }
@@ -526,37 +526,37 @@
       "description": "Plataforma e-commerce B2C completa desenvolvida para a Toworkfor, especializada em calçado de segurança profissional. O projeto apresenta uma loja online moderna e funcional com catálogo extenso de produtos de segurança laboral, sistema de gestão de utilizadores, e experiência de compra otimizada. Desenvolvido com PHP puro e arquitetura robusta, o site oferece funcionalidades avançadas de e-commerce incluindo carrinho de compras inteligente, sistema de checkout seguro, gestão de stock em tempo real, múltiplos métodos de pagamento, e sistema de tracking de encomendas. A plataforma conta com design responsivo premium, suporte multilingue (Português, Inglês, Espanhol, Francês, Alemão), sistema de filtros avançados por categoria, tamanho, marca e preço, pesquisa inteligente de produtos, sistema de reviews e avaliações, programa de fidelização, e integração com redes sociais. O desenvolvimento técnico inclui PHP para backend robusto, JavaScript e jQuery para interatividade, HTML5 semântico para SEO otimizado, CSS3 responsivo com design mobile-first, integração com Google Analytics e Tag Manager, Facebook Pixel para remarketing, sistema de gestão de cookies GDPR compliant, e otimização de performance. A interface destaca navegação intuitiva por categorias, visualização de produtos com zoom, sistema de wishlist, comparador de produtos, calculadora de fretes, chat de suporte integrado, e área de cliente personalizada. Este projeto representa uma solução e-commerce completa que combina funcionalidade empresarial com experiência de utilizador superior, posicionando a Toworkfor como líder digital no mercado de equipamentos de proteção individual e calçado de segurança profissional.",
       "images": [
         {
-          "src": "toworkfor/homepage.png",
+          "src": "toworkfor/homepage.jpg",
           "alt": "Homepage da Toworkfor mostrando catálogo de calçado de segurança com design moderno e navegação intuitiva",
           "title": "Homepage E-commerce"
         },
         {
-          "src": "toworkfor/products.png",
+          "src": "toworkfor/products.jpg",
           "alt": "Página de produtos com filtros avançados, grid responsivo e informações detalhadas de calçado de segurança",
           "title": "Catálogo de Produtos"
         },
         {
-          "src": "toworkfor/shoes.png",
+          "src": "toworkfor/shoes.jpg",
           "alt": "Página de detalhes do produto mostrando especificações técnicas, imagens e opções de compra",
           "title": "Detalhes do Produto"
         },
         {
-          "src": "toworkfor/login.png",
+          "src": "toworkfor/login.jpg",
           "alt": "Interface de login e registro com design moderno e validação de formulários",
           "title": "Sistema de Autenticação"
         },
         {
-          "src": "toworkfor/menu.png",
+          "src": "toworkfor/menu.jpg",
           "alt": "Menu de navegação com categorias organizadas e sistema de pesquisa avançada",
           "title": "Navegação e Menu"
         },
         {
-          "src": "toworkfor/mobile1.png",
+          "src": "toworkfor/mobile1.jpg",
           "alt": "Interface mobile otimizada mostrando responsividade e adaptação para dispositivos móveis",
           "title": "Interface Mobile 1"
         },
         {
-          "src": "toworkfor/mobile2.png",
+          "src": "toworkfor/mobile2.jpg",
           "alt": "Segunda tela mobile demonstrando carrinho de compras e processo de checkout móvel",
           "title": "Interface Mobile 2"
         }
@@ -593,17 +593,17 @@
       "description": "Plataforma e-commerce sofisticada desenvolvida para a Louças Falcão, empresa portuguesa especializada em porcelana, cerâmica e artigos decorativos sediada em Barcelos. O projeto apresenta uma solução digital completa que combina vendas B2B e B2C, oferecendo um catálogo extenso de produtos de decoração, utilidades domésticas e artigos colecionáveis. Desenvolvido com tecnologias web modernas, o site serve tanto clientes profissionais quanto consumidores finais, com funcionalidades adaptadas para ambos os segmentos. A plataforma oferece navegação avançada por múltiplas categorias incluindo porcelana/cerâmica, marfinites/resinas, vidro, flores/plantas artificiais, vime/madeira, bonecas de porcelana, brinquedos/peluches, têxteis/calçado e decorações temáticas. O sistema de e-commerce inclui motor de pesquisa avançado com filtros específicos, distinção entre produtos nacionais e importados, separação entre artigos decorativos e utilitários, sistema de login profissional para clientes B2B, suporte multilingue completo (Português, Inglês, Francês, Espanhol), e integração com sistemas de pagamento e logística. O desenvolvimento técnico emprega arquitetura robusta para gestão de inventário complexo, sistema de preços diferenciados B2B/B2C, otimização SEO para múltiplos idiomas, design responsivo para todos os dispositivos, integração com Google Analytics para análise detalhada, e interface administrativa para gestão de produtos e encomendas. A experiência do utilizador destaca navegação intuitiva por extensas categorias, visualização profissional de produtos com zoom, sistema de wishlist e comparação, calculadora de quantidades para encomendas profissionais, e área de cliente personalizada com histórico de compras. Este projeto representa uma solução e-commerce especializada que posiciona a Louças Falcão como referência digital no mercado português de decoração e utilidades domésticas, combinando tradição artesanal com tecnologia moderna.",
       "images": [
         {
-          "src": "falcao/homepage.png",
+          "src": "falcao/homepage.jpg",
           "alt": "Homepage da Louças Falcão mostrando catálogo de porcelana, cerâmica e artigos decorativos com navegação profissional",
           "title": "Homepage E-commerce"
         },
         {
-          "src": "falcao/products.png",
+          "src": "falcao/products.jpg",
           "alt": "Página de produtos com grid organizado, filtros avançados e categorização detalhada de louças e decoração",
           "title": "Catálogo de Produtos"
         },
         {
-          "src": "falcao/toys.png",
+          "src": "falcao/toys.jpg",
           "alt": "Seção de brinquedos e artigos colecionáveis mostrando diversidade do catálogo e organização por categorias",
           "title": "Categoria Brinquedos e Colecionáveis"
         }
@@ -640,32 +640,32 @@
       "description": "Coleção de projetos de treino frontend desenvolvidos durante a minha jornada autodidacta, demonstrando dedicação ao domínio de HTML5, CSS3 e JavaScript vanilla através da reprodução de interfaces populares. Inclui recriações pixel-perfect de Facebook, Instagram, Netflix, Game of Thrones e calculadora moderna. Cada projeto foca diferentes aspetos do desenvolvimento frontend sem frameworks.",
       "images": [
         {
-          "src": "frontend/insta.png",
+          "src": "frontend/insta.jpg",
           "alt": "Instagram login interface recreation with gradient backgrounds",
           "title": "Instagram Login Clone"
         },
         {
-          "src": "frontend/facebook.png",
+          "src": "frontend/facebook.jpg",
           "alt": "Facebook login page clone with authentic blue theme and form layout",
           "title": "Facebook Login Clone"
         },
         {
-          "src": "frontend/netflix.png",
+          "src": "frontend/netflix.jpg",
           "alt": "Netflix main page clone with movie grid and responsive design",
           "title": "Netflix Homepage Clone"
         },
         {
-          "src": "frontend/gameofthrones.png",
+          "src": "frontend/gameofthrones.jpg",
           "alt": "Game of Thrones website clone with dark medieval theme",
           "title": "Game of Thrones Website Clone"
         },
         {
-          "src": "frontend/calc.png",
+          "src": "frontend/calc.jpg",
           "alt": "Custom modern calculator with sleek design and full functionality",
           "title": "Modern Calculator (Original Design)"
         },
         {
-          "src": "frontend/maccalc.png",
+          "src": "frontend/maccalc.jpg",
           "alt": "Custom modern calculator with sleek design and full functionality",
           "title": "Modern Calculator (Original Design)"
         }
@@ -694,17 +694,17 @@
       "description": "Aplicação web full-stack desenvolvida durante o bootcamp Maratona Discover da Rocketseat para cálculo de orçamentos e gestão de horas de trabalho freelancer. Inclui gestão completa de projetos com operações CRUD, cálculos automáticos baseados em taxa horária, acompanhamento de status e dashboard profissional com métricas em tempo real. Construída com Node.js, Express, EJS e SQLite.",
       "images": [
         {
-          "src": "jobs_calc/dashboard.png",
+          "src": "jobs_calc/dashboard.jpg",
           "alt": "Professional dashboard showing project overview with status cards and metrics",
           "title": "Project Dashboard"
         },
         {
-          "src": "jobs_calc/profile.png",
+          "src": "jobs_calc/profile.jpg",
           "alt": "Profile management page with hourly rate calculator and work planning",
           "title": "Profile & Rate Configuration"
         },
         {
-          "src": "jobs_calc/create.png",
+          "src": "jobs_calc/create.jpg",
           "alt": "Job creation form with automatic budget calculation",
           "title": "New Project Creation"
         }
@@ -738,22 +738,22 @@
       "description": "Aplicação web moderna e interativa para explorar o universo Marvel, apresentando comics e personagens através da API oficial Marvel. Construída com JavaScript vanilla e CSS moderno, oferece experiência premium com design glassmorphism, pesquisa em tempo real, filtragem avançada e sistema de carrinho de compras funcional. Inclui sistema de favoritos com localStorage e arquitetura JavaScript modular.",
       "images": [
         {
-          "src": "marvel/home.png",
+          "src": "marvel/home.jpg",
           "alt": "Homepage showing Marvel comics grid with search bar and filters",
           "title": "Comics Catalog Homepage"
         },
         {
-          "src": "marvel/characteres.png",
+          "src": "marvel/characteres.jpg",
           "alt": "Characters page displaying Marvel heroes and villains with stats",
           "title": "Marvel Characters Gallery"
         },
         {
-          "src": "marvel/cart.png",
+          "src": "marvel/cart.jpg",
           "alt": "Shopping cart interface with item management and checkout",
           "title": "Shopping Cart System"
         },
         {
-          "src": "marvel/detail.png",
+          "src": "marvel/detail.jpg",
           "alt": "Detail interface with information detailed",
           "title": "Detailed modal"
         }
@@ -782,17 +782,17 @@
       "description": "Aplicação web educativa interativa que demonstra o famoso paradoxo de probabilidade de Monty Hall através de uma interface de jogo envolvente. Recria o cenário clássico do game show onde jogadores escolhem entre três portas para ilustrar o conceito contra-intuitivo que trocar de porta aumenta as hipóteses de ganhar de 33.3% para 66.7%. Construída com Vue.js 2 e interface visualmente apelativa com portas 3D.",
       "images": [
         {
-          "src": "monthy_hall/home.png",
+          "src": "monthy_hall/home.jpg",
           "alt": "Monty Hall game interface showing three doors with instructions and probability explanation",
           "title": "Main Game Interface"
         },
         {
-          "src": "monthy_hall/door.png",
+          "src": "monthy_hall/door.jpg",
           "alt": "Monty Hall game with door selection and probability cards visible",
           "title": "Door Selection State"
         },
         {
-          "src": "monthy_hall/open.png",
+          "src": "monthy_hall/open.jpg",
           "alt": "Monty Hall game showing opened door with animated gift reveal",
           "title": "Prize Reveal Animation"
         }

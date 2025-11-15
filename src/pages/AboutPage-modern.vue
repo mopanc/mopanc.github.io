@@ -166,7 +166,7 @@
 
                 <div class="story-image">
                   <div class="military-photo-placeholder">
-                    <img src="../assets/img/exercito.png" alt="Jorge Mopanc - Exército Português" class="military-photo">
+                    <img src="../assets/imgs-bck/exercito.png" alt="Jorge Mopanc - Exército Português" class="military-photo">
                     <div class="photo-caption">
                       <span ref="military_photo_caption">{{ militaryContent.photoCaption }}</span>
                       <small>2006</small>
@@ -271,7 +271,7 @@
 
                 <div class="story-image">
                   <div class="manager-photo-placeholder">
-                    <img src="../assets/img/mcdonalds.png" alt="Jorge Mopanc - McDonald's Manager" class="manager-photo">
+                    <img src="../assets/imgs-bck/mcdonalds.png" alt="Jorge Mopanc - McDonald's Manager" class="manager-photo">
                     <div class="photo-caption">
                       <span ref="mcdonalds_photo_caption">{{ mcdonaldsContent.photoCaption }}</span>
                       <small>2010-2015</small>
@@ -356,7 +356,7 @@
 
                 <div class="story-image">
                   <div class="realestate-photo-placeholder">
-                    <img src="../assets/img/realstate.png" alt="Jorge Mopanc - Corretor Imobiliário" class="realestate-photo">
+                    <img src="../assets/imgs-bck/realstate.png" alt="Jorge Mopanc - Corretor Imobiliário" class="realestate-photo">
                     <div class="photo-caption">
                       <span ref="realestate_photo_caption">{{ realestateContent.photoCaption }}</span>
                       <small>2015-2019</small>
@@ -811,7 +811,7 @@
                 <div class="story-image">
                   <div class="fullstack-visual">
                     <div class="fullstack-photo-placeholder">
-                      <img src="../assets/img/company-bm.png" alt="Jorge Mopanc - FullStack Developer" class="fullstack-photo">
+                      <img src="../assets/imgs-bck/company-bm.png" alt="Jorge Mopanc - FullStack Developer" class="fullstack-photo">
                       <div class="photo-caption">
                         <span ref="fullstack_photo_caption">{{ fullstackContent.photoCaption }}</span>
                         <small>2023 - Presente</small>

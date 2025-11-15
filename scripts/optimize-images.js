@@ -188,10 +188,10 @@ async function main() {
 
   // Generate migration guide
   console.log('📝 Next steps:');
-  console.log('1. Review optimized images in src/assets/img-optimized/');
+  console.log('1. Review optimized images in src/assets/imgs-bck-optimized/');
   console.log('2. Run: node scripts/update-image-refs.js (to update Vue components)');
   console.log('3. Test the site thoroughly');
-  console.log('4. If satisfied, replace src/assets/img with img-optimized');
+  console.log('4. If satisfied, replace src/assets/imgs-bck with imgs-bck-optimized');
   console.log('\n✨ Optimization complete!');
 }
 

@@ -6,7 +6,7 @@
       <!-- Project 1: Q-scope AI Trading Platform -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="100">
         <div class="project-image">
-          <img src="../assets/img/login.png" alt="Q-scope AI Trading Platform" />
+          <img src="../assets/imgs-bck/login.png" alt="Q-scope AI Trading Platform" />
           <div class="project-overlay">
             <div class="project-category">AI Trading Platform</div>
           </div>
@@ -37,7 +37,7 @@
       <!-- Project 2: DataConvert -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="200">
         <div class="project-image">
-          <img src="../assets/img/Landing_page.png" alt="DataConvert Platform" />
+          <img src="../assets/imgs-bck/Landing_page.png" alt="DataConvert Platform" />
           <div class="project-overlay">
             <div class="project-category">SaaS Platform</div>
           </div>

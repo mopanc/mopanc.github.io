@@ -19,7 +19,7 @@
     <swiper-slide>
         <div class="">
               <h3 class="testimonial__name" ref="apple_calculator"></h3>
-          <img src="../assets/img/calculator.png" alt="Apple calculator" class="testimonial__img">
+          <img src="../assets/imgs-bck/calculator.png" alt="Apple calculator" class="testimonial__img">
           <div class="testimonial__content">
               <p class="testimonial__description" ref="apple_calculator_description"></p>
           </div>
@@ -28,7 +28,7 @@
     <swiper-slide>
         <div class="">
                 <h3 class="testimonial__name" ref="covid_19"></h3>
-            <img src="../assets/img/covid.png" alt="Covid-19 Tracker" class="testimonial__img">
+            <img src="../assets/imgs-bck/covid.png" alt="Covid-19 Tracker" class="testimonial__img">
             <div class="testimonial__content">
                 <p class="testimonial__description" ref="covid_19_description"></p>
             </div>
@@ -37,7 +37,7 @@
     <swiper-slide>
         <div class="">
                 <h3 class="testimonial__name" ref="santander"></h3>
-            <img src="../assets/img/santander.png" alt="Freelance jobs calculator" class="testimonial__img">
+            <img src="../assets/imgs-bck/santander.png" alt="Freelance jobs calculator" class="testimonial__img">
             <div class="testimonial__content">
                 <p class="testimonial__description" ref="santander_description"></p>
             </div>
@@ -46,7 +46,7 @@
     <swiper-slide>
         <div class="">
                 <h3 class="testimonial__name" ref="google_glass"></h3>
-            <img src="../assets/img/googleGlass.png" alt="Google glass page" class="testimonial__img">
+            <img src="../assets/imgs-bck/googleGlass.png" alt="Google glass page" class="testimonial__img">
             <div class="testimonial__content">
                 <p class="testimonial__description" ref="google_glass_description"></p>
             </div>
@@ -55,7 +55,7 @@
         <swiper-slide>
         <div class="">
                 <h3 class="testimonial__name" ref="got"></h3>
-            <img src="../assets/img/got.png" alt="GOT page" class="testimonial__img">
+            <img src="../assets/imgs-bck/got.png" alt="GOT page" class="testimonial__img">
             <div class="testimonial__content">
                 <p class="testimonial__description" ref="got_description"></p>
             </div>
@@ -64,7 +64,7 @@
         <swiper-slide>
         <div class="">
                 <h3 class="testimonial__name" ref="freela_calc"></h3>
-            <img src="../assets/img/discover.png" alt="Santander app" class="testimonial__img">
+            <img src="../assets/imgs-bck/discover.png" alt="Santander app" class="testimonial__img">
             <div class="testimonial__content">
                 <p class="testimonial__description" ref="freela_calc_description"></p>
             </div>

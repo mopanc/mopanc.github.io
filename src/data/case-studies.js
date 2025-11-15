@@ -17,7 +17,7 @@ const caseStudies = {
     metaDescription: 'How I built a real-time IoT monitoring system for 15 vending machines using Node.js, MQTT, and ccTalk protocol. Reduced maintenance time by 40%.',
 
     // Hero
-    heroImage: '../assets/img/company-bm',
+    heroImage: '../assets/imgs-bck/company-bm',
     tech: ['Node.js', 'Vue.js 3', 'MQTT', 'ccTalk Protocol', 'WebSockets', 'C', 'PostgreSQL'],
     duration: '3 months',
     role: 'Full Stack Developer',
@@ -264,7 +264,7 @@ class CcTalkMQTTBridge {
     metaDescription: 'Built real-time POS synchronization for Malta supermarkets with independent sections (bakery, butcher, fishmonger). Automatic .dat generation enables instant central checkout. 99.7% success rate.',
 
     // Hero
-    heroImage: '../assets/img/pos-sync',
+    heroImage: '../assets/imgs-bck/pos-sync',
     tech: ['TypeScript', 'Node.js', 'Event-Driven Architecture', 'TypeORM', 'SQL Server', 'File Watcher', 'HMAC-SHA1'],
     duration: '2 months (MVP + continuous maintenance)',
     role: 'Backend Engineer & System Architect',
@@ -632,7 +632,7 @@ export class FiscalFileGenerator {
     metaDescription: 'Built SaaS data processing platform with reusable templates for CSV/Excel/PDF/TXT conversion. Dual AI extraction (tabula-py + pdfplumber) with visual column mapping. 90% time reduction for recurring conversions.',
 
     // Hero
-    heroImage: '../assets/img/dataconvert',
+    heroImage: '../assets/imgs-bck/dataconvert',
     tech: ['TypeScript', 'React', 'Node.js', 'Python', 'FastAPI', 'TypeORM', 'PostgreSQL', 'Tabula-py', 'PDFplumber'],
     duration: '4 months (MVP + iterative improvements)',
     role: 'Full Stack Developer & System Architect',
@@ -1067,7 +1067,7 @@ def calculate_confidence(df: pd.DataFrame) -> float:
     metaDescription: 'Built quantum-inspired trading AI combining Elliott Wave theory, fractal analysis, multi-timeframe confluence, and quantum portfolio optimization. 65%+ win rate with risk-adjusted position sizing across BTC/ETH/SOL markets.',
 
     // Hero
-    heroImage: '../assets/img/qscope',
+    heroImage: '../assets/imgs-bck/qscope',
     tech: ['Python', 'Scikit-learn', 'NumPy', 'Pandas', 'TA-Lib', 'TypeScript', 'Node.js', 'Machine Learning'],
     duration: '6 months (MVP + continuous evolution)',
     role: 'AI/ML Engineer & System Architect',
