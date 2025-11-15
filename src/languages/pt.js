@@ -6,7 +6,7 @@ export default {
   projects: 'Projetos',
   certificates: 'Sobre mim',
   title: `Jorge Morais<br><span class="home__title-subtitle">Full Stack Developer</span>`,
-  presentation: "Full Stack Developer com mais de 4 anos de experiência profissional no desenvolvimento de aplicações web modernas utilizando React, Vue.js, Node.js e TypeScript. Experiência comprovada em interfaces frontend responsivas, APIs backend robustas e arquitetura de bases de dados. Histórico de trabalho em setores diversificados, incluindo e-commerce, projetos governamentais e sistemas industriais com integração de hardware. Competências técnicas complementadas por soft skills em gestão de equipas e comunicação empresarial, desenvolvidas através de cargos de liderança. Especialização em código limpo, boas práticas de desenvolvimento e implementação de soluções escaláveis.",
+  presentation: "Full Stack Developer com mais de 5 anos de experiência profissional no desenvolvimento de aplicações web modernas utilizando React, Vue.js, Node.js e TypeScript. Experiência comprovada em interfaces frontend responsivas, APIs backend robustas e arquitetura de bases de dados. Histórico de trabalho em setores diversificados, incluindo e-commerce, projetos governamentais e sistemas industriais com integração de hardware. Competências técnicas complementadas por soft skills em gestão de equipas e comunicação empresarial, desenvolvidas através de cargos de liderança. Especialização em código limpo, boas práticas de desenvolvimento e implementação de soluções escaláveis.",
   experience: "Anos de experiência",
   projects_completed: "Projetos terminados",
   companies: "Empresas que trabalhei",
@@ -22,16 +22,16 @@ export default {
   subtitle_experience: "Trabalho profissional",
   profissional_experience: "Experiência profissional",
   
-  title_balancas: "Full Stack Developer na Balanças Marques",
-  description_balancas: "Fullstack Developer a trabalhar dedicado em dois projetos principais: um software para gestão de balanças e POS, typescript com backend em Node.js/SQL Server e frontend em React, e uma máquina de pagamentos programada em C com protocolo ccTalk e diversos componentes de hardware.",
+  title_balancas: "Senior Full Stack Developer na Balanças Marques",
+  description_balancas: "Desenvolvimento da plataforma Qore (Node.js/React/TypeScript) para gestão de POS e negócios, otimizando consumo de memória de 3GB para 850MB. Construção da API Alice Payment Machine em C com protocolos CCTalk/ID003 para validadores de notas e mecanismos de moedas. Melhoria do pipeline de processamento massivo de dados de 2 dias para 2 horas através de processamento concorrente. Desenvolvimento de sistema de monitorização IoT em tempo real usando MQTT e Socket.IO.",
   dates_balancas: "2023 - Present",
 
   title_frontkom: "Frontend Developer na Frontkom",
-  description_frontkom: "Trabalhei como Frontend Developer em projetos corporativos e governamentais, principalmente com React, Next.js e Vue.js. Também colaborei na manutenção e atualização de sites em Drupal e arquiteturas Headless CMS.",
+  description_frontkom: "Desenvolvimento de websites empresariais para clientes noruegueses usando React, Next.js e Vue.js com Drupal headless CMS. Implementação de componentes responsivos e conformes com WCAG AA com otimização de performance via code splitting e lazy loading. Colaboração remota com equipas internacionais usando metodologias Agile.",
   dates_frontkom: "2022 - 2023",
 
-  title_netgocio: "Desenvolvedor web na Netgócio",
-  description_netgocio: "Trabalhei como Web Developer em projetos de e-commerce B2C, landing pages e websites institucionais, utilizando PHP, MySQL e Bootstrap. Colaborei também na gestão de hospedagens em cPanel, gestão de dominios e certificados SSL e na configuração de servidores com Nginx.",
+  title_netgocio: "Web Developer na Netgócio",
+  description_netgocio: "Desenvolvimento de plataformas e-commerce B2C, landing pages e websites institucionais usando PHP, MySQL e Bootstrap. Otimização de página de catálogo de produtos com grandes conjuntos de dados, reduzindo tempo de carregamento de 3.5s para 0.8s através de implementação de paginação e lazy loading. Gestão de mais de 400 hospedagens com cPanel, configuração de domínios, certificados SSL e otimização de servidores Nginx.",
   dates_netgocio: "2021 - 2022",
 
 
