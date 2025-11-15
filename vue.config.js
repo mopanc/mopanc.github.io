@@ -1,6 +1,6 @@
 const { defineConfig } = require('@vue/cli-service')
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
-const Renderer = PrerenderSPAPlugin.PuppeteerRenderer
+const PrerenderPlugin = require('@prerenderer/webpack-plugin')
+const PuppeteerRenderer = require('@prerenderer/renderer-puppeteer')
 const path = require('path')
 
 module.exports = defineConfig({
@@ -11,7 +11,7 @@ module.exports = defineConfig({
     if (process.env.NODE_ENV === 'production') {
       return {
         plugins: [
-          new PrerenderSPAPlugin({
+          new PrerenderPlugin({
             // Required - The path to the webpack-outputted app to prerender.
             staticDir: path.join(__dirname, 'dist'),
 
@@ -29,31 +29,32 @@ module.exports = defineConfig({
               '/privacy'
             ],
 
-            renderer: new Renderer({
-              // Optional - Wait to render until the specified event is dispatched on the document.
+            // Renderer configuration
+            renderer: new PuppeteerRenderer({
+              // Wait for render event
               renderAfterDocumentEvent: 'render-event',
 
-              // Optional - Wait for this amount of time
+              // Additional wait time
               renderAfterTime: 5000,
 
-              // Other puppeteer options
+              // Puppeteer options
               headless: true,
 
-              // Inject custom values into window object for SEO
+              // Inject property to detect prerendering
               injectProperty: '__PRERENDER_INJECTED',
               inject: {
                 prerendered: true
               }
             }),
 
-            // Post-processing to inject meta tags correctly
-            postProcess (renderedRoute) {
-              // Clean up JavaScript-injected CSS
-              renderedRoute.html = renderedRoute.html
-                .replace(/<script (.*?)>/gi, '<script $1 defer>')
-                .replace('id="app"', 'id="app" data-server-rendered="true"')
-
-              return renderedRoute
+            // Post-processing
+            postProcess(context) {
+              // Add server-rendered attribute
+              context.html = context.html.replace(
+                'id="app"',
+                'id="app" data-server-rendered="true"'
+              )
+              return context
             }
           })
         ]
@@ -66,27 +67,30 @@ module.exports = defineConfig({
 
   // Performance optimizations
   chainWebpack: config => {
-    // Preload optimization
-    config.plugin('preload').tap(options => {
-      options[0] = {
-        rel: 'preload',
-        as(entry) {
-          if (/\.css$/.test(entry)) return 'style'
-          if (/\.woff$/.test(entry)) return 'font'
-          if (/\.png$/.test(entry)) return 'image'
-          return 'script'
-        },
-        include: 'initial',
-        fileBlacklist: [/\.map$/, /hot-update\.js$/]
-      }
-      return options
-    })
+    // Only apply optimizations if plugins exist
+    if (config.plugins.has('preload')) {
+      config.plugin('preload').tap(options => {
+        options[0] = {
+          rel: 'preload',
+          as(entry) {
+            if (/\.css$/.test(entry)) return 'style'
+            if (/\.woff$/.test(entry)) return 'font'
+            if (/\.png$/.test(entry)) return 'image'
+            return 'script'
+          },
+          include: 'initial',
+          fileBlacklist: [/\.map$/, /hot-update\.js$/]
+        }
+        return options
+      })
+    }
 
-    // Prefetch optimization
-    config.plugin('prefetch').tap(options => {
-      options[0].fileBlacklist = options[0].fileBlacklist || []
-      options[0].fileBlacklist.push(/\.map$/, /hot-update\.js$/)
-      return options
-    })
+    if (config.plugins.has('prefetch')) {
+      config.plugin('prefetch').tap(options => {
+        options[0].fileBlacklist = options[0].fileBlacklist || []
+        options[0].fileBlacklist.push(/\.map$/, /hot-update\.js$/)
+        return options
+      })
+    }
   }
 })

@@ -1,10 +1,10 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './VueRouter';
-import { createHead } from '@unhead/vue';
+import { createUnhead } from '@unhead/vue';
 
 const app = createApp(App);
-const head = createHead();
+const head = createUnhead();
 
 // Global error handler
 app.config.errorHandler = (error, instance, info) => {
