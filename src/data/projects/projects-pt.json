@@ -12,47 +12,47 @@
       "description": "Sistema empresarial completo para gestão centralizada de negócios multi-loja, desenvolvido com stack tecnológico avançado: Node.js, Express.js, TypeScript, TypeORM e SQL Server no backend, React com TypeScript no frontend, e Socket.IO para comunicação em tempo real. Inclui gestão de lojas, análise de vendas com dashboards estatísticos, controlo de stocks, gestão de utilizadores com permissões granulares, e automação de processos. Funcionalidades principais: configuração remota de dispositivos via protocolo ETPROXY proprietário, sincronização de dados empresariais, análises comparativas, rankings de produtos, exportação PDF/CSV, gestão inteligente de preços, backups automáticos e licenciamento controlado por dispositivos.",
       "images": [
         {
-          "src": "qore/Grafics.jpg",
+          "src": "qore/Grafics.png",
           "alt": "Gráfico interativo com estatísticas de vendas e métricas empresariais",
           "title": "Estatísticas de Vendas"
         },
         {
-          "src": "qore/Chart.jpg",
+          "src": "qore/Chart.png",
           "alt": "Painel com gráficos comparativos de desempenho e evolução de vendas",
           "title": "Gráficos de Desempenho"
         },
         {
-          "src": "qore/Database.jpg",
+          "src": "qore/Database.png",
           "alt": "Visualização de base de dados com listagem estruturada de artigos e transações",
           "title": "Base de Dados"
         },
         {
-          "src": "qore/Receive.jpg",
+          "src": "qore/Receive.png",
           "alt": "Ecrã de receção de artigos com controlo de stocks e entradas em armazém",
           "title": "Receção de Stocks"
         },
         {
-          "src": "qore/report.jpg",
+          "src": "qore/report.png",
           "alt": "Relatório detalhado com listagem de utilizadores e permissões atribuídas",
           "title": "Relatórios de Utilizadores"
         },
         {
-          "src": "qore/Stores.jpg",
+          "src": "qore/Stores.png",
           "alt": "Interface de gestão de lojas com configuração de secções, grupos e dispositivos",
           "title": "Gestão de Lojas"
         },
         {
-          "src": "qore/Tasks.jpg",
+          "src": "qore/Tasks.png",
           "alt": "Lista de tarefas automáticas do sistema com estados e prioridades",
           "title": "Gestão de Tarefas"
         },
         {
-          "src": "qore/VAT.jpg",
+          "src": "qore/VAT.png",
           "alt": "Configuração de perfis de IVA com regras fiscais aplicadas a artigos e serviços",
           "title": "Configuração de IVA"
         },
         {
-          "src": "qore/VAT1.jpg",
+          "src": "qore/VAT1.png",
           "alt": "Tabela de taxas de IVA com percentagens e categorias aplicáveis",
           "title": "Tabela de IVA"
         }
@@ -435,12 +435,12 @@
           "title": "Contactos e Localização"
         },
         {
-          "src": "capitalges/mobile1.jpg",
+          "src": "def.png",
           "alt": "Área de notícias e atualizações sobre consultoria empresarial",
           "title": "Centro de Notícias"
         },
         {
-          "src": "capitalges/mobile2.jpg",
+          "src": "def.png",
           "alt": "Área de notícias e atualizações sobre consultoria empresarial",
           "title": "Centro de Notícias"
         }
@@ -487,12 +487,12 @@
           "title": "Informações da Empresa"
         },
         {
-          "src": "amf/mobile1.jpg",
+          "src": "def.png",
           "alt": "Versão mobile do site AMF mostrando design responsivo e navegação otimizada",
           "title": "Interface Mobile 1"
         },
         {
-          "src": "amf/mobile2.jpg",
+          "src": "def.png",
           "alt": "Segunda interface mobile demonstrando adaptabilidade do design para dispositivos móveis",
           "title": "Interface Mobile 2"
         }
@@ -551,7 +551,7 @@
           "title": "Navegação e Menu"
         },
         {
-          "src": "toworkfor/mobile1.jpg",
+          "src": "def.png",
           "alt": "Interface mobile otimizada mostrando responsividade e adaptação para dispositivos móveis",
           "title": "Interface Mobile 1"
         },
@@ -660,7 +660,7 @@
           "title": "Game of Thrones Website Clone"
         },
         {
-          "src": "frontend/calc.jpg",
+          "src": "frontend/maccalc.jpg",
           "alt": "Custom modern calculator with sleek design and full functionality",
           "title": "Modern Calculator (Original Design)"
         },
@@ -704,7 +704,7 @@
           "title": "Profile & Rate Configuration"
         },
         {
-          "src": "jobs_calc/create.jpg",
+          "src": "def.png",
           "alt": "Job creation form with automatic budget calculation",
           "title": "New Project Creation"
         }
