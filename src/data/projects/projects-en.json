@@ -12,47 +12,47 @@
       "description": "Complete enterprise system for centralized multi-store business management, developed with advanced technology stack: Node.js, Express.js, TypeScript, TypeORM and SQL Server on backend, React with TypeScript on frontend, and Socket.IO for real-time communication. Includes store management, sales analysis with statistical dashboards, inventory control, user management with granular permissions, and process automation. Key features: remote device configuration via proprietary ETPROXY protocol, business data synchronization, comparative analysis, product rankings, PDF/CSV export, intelligent price management, automatic backups and device-controlled licensing.",
       "images": [
         {
-          "src": "qore/Grafics.jpg",
+          "src": "qore/Grafics.png",
           "alt": "Interactive chart with sales statistics and business metrics",
           "title": "Sales Statistics"
         },
         {
-          "src": "qore/Chart.jpg",
+          "src": "qore/Chart.png",
           "alt": "Dashboard with comparative performance charts and sales evolution",
           "title": "Performance Charts"
         },
         {
-          "src": "qore/Database.jpg",
+          "src": "qore/Database.png",
           "alt": "Database visualization with structured listing of articles and transactions",
           "title": "Database View"
         },
         {
-          "src": "qore/Receive.jpg",
+          "src": "qore/Receive.png",
           "alt": "Article reception screen with inventory control and warehouse entries",
           "title": "Stock Reception"
         },
         {
-          "src": "qore/report.jpg",
+          "src": "qore/report.png",
           "alt": "Detailed report with user listing and assigned permissions",
           "title": "User Reports"
         },
         {
-          "src": "qore/Stores.jpg",
+          "src": "qore/Stores.png",
           "alt": "Store management interface with section, group and device configuration",
           "title": "Store Management"
         },
         {
-          "src": "qore/Tasks.jpg",
+          "src": "qore/Tasks.png",
           "alt": "System automatic task list with states and priorities",
           "title": "Task Management"
         },
         {
-          "src": "qore/VAT.jpg",
+          "src": "qore/VAT.png",
           "alt": "VAT profile configuration with tax rules applied to articles and services",
           "title": "VAT Configuration"
         },
         {
-          "src": "qore/VAT1.jpg",
+          "src": "qore/VAT1.png",
           "alt": "VAT rate table with percentages and applicable categories",
           "title": "VAT Table"
         }
@@ -435,12 +435,12 @@
           "title": "Contacts and Location"
         },
         {
-          "src": "capitalges/mobile1.jpg",
+          "src": "def.png",
           "alt": "News and updates area about business consulting",
           "title": "News Center"
         },
         {
-          "src": "capitalges/mobile2.jpg",
+          "src": "def.png",
           "alt": "News and updates area about business consulting",
           "title": "News Center"
         }
@@ -487,12 +487,12 @@
           "title": "Company Information"
         },
         {
-          "src": "amf/mobile1.jpg",
+          "src": "def.png",
           "alt": "AMF mobile site version showing responsive design and optimized navigation",
           "title": "Mobile Interface 1"
         },
         {
-          "src": "amf/mobile2.jpg",
+          "src": "def.png",
           "alt": "Second mobile interface demonstrating design adaptability for mobile devices",
           "title": "Mobile Interface 2"
         }
@@ -551,7 +551,7 @@
           "title": "Navigation and Menu"
         },
         {
-          "src": "toworkfor/mobile1.jpg",
+          "src": "def.png",
           "alt": "Optimized mobile interface showing responsiveness and mobile device adaptation",
           "title": "Mobile Interface 1"
         },
@@ -660,7 +660,7 @@
           "title": "Game of Thrones Website Clone"
         },
         {
-          "src": "frontend/calc.jpg",
+          "src": "frontend/maccalc.jpg",
           "alt": "Custom modern calculator with sleek design and full functionality",
           "title": "Modern Calculator (Original Design)"
         },
@@ -704,7 +704,7 @@
           "title": "Profile & Rate Configuration"
         },
         {
-          "src": "jobs_calc/create.jpg",
+          "src": "def.png",
           "alt": "Job creation form with automatic budget calculation",
           "title": "New Project Creation"
         }
