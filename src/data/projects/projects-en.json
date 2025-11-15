@@ -260,7 +260,7 @@
       "description": "Complete SaaS platform for corporate data processing automation. Multi-tenant system with custom template creation, intelligent PDF table extraction using dual AI (tabula-py + pdfplumber), visual column mapping, and automated PDF→CSV/JSON conversion. Full-stack architecture with Node.js/TypeScript/Express backend, React/TypeScript frontend, JWT authentication, plan system (Free/Personal/Enterprise), and Python FastAPI service for PDF processing. Includes analytics dashboard, template management, drag-&-drop upload, and multi-tenancy system for enterprises.",
       "images": [
         {
-          "src": "data-convert/Landing_page.jpg",
+          "src": "data-convert/landing_page.jpg",
           "alt": "Registration with plan selection and multi-tenancy",
           "title": "User Registration"
         },
