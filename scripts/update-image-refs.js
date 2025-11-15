@@ -4,10 +4,10 @@
  * Update Image References Script
  *
  * Updates all Vue components to use optimized WebP images with JPG fallback
- * Converts: <img src="image.png" alt="...">
+ * Converts: <imgs-bck src="image.png" alt="...">
  * To:       <picture>
  *             <source srcset="image.webp" type="image/webp">
- *             <img src="image.jpg" alt="...">
+ *             <imgs-bck src="image.jpg" alt="...">
  *           </picture>
  *
  * Usage: node scripts/update-image-refs.js
@@ -38,20 +38,20 @@ const stats = {
 function findImageReferences(content) {
   const references = [];
 
-  // Find img tags: <img src="..." alt="...">
+  // Find imgs-bck tags: <imgs-bck src="..." alt="...">
   const imgTagRegex = /<img\s+[^>]*src=["']([^"']+\.(png|jpg|jpeg))["'][^>]*>/gi;
   let match;
 
   while ((match = imgTagRegex.exec(content)) !== null) {
     references.push({
-      type: 'img-tag',
+      type: 'imgs-bck-tag',
       original: match[0],
       src: match[1],
       extension: match[2]
     });
   }
 
-  // Find import statements: import image from '../assets/img/...'
+  // Find import statements: import image from '../assets/imgs-bck/...'
   const importRegex = /import\s+(\w+)\s+from\s+['"]([^'"]+\.(png|jpg|jpeg))['"]/gi;
   while ((match = importRegex.exec(content)) !== null) {
     references.push({
@@ -78,10 +78,10 @@ function findImageReferences(content) {
 }
 
 /**
- * Convert img tag to picture element with WebP and fallback
+ * Convert imgs-bck tag to picture element with WebP and fallback
  */
 function convertToPictureTag(imgTag, src) {
-  // Extract attributes from original img tag
+  // Extract attributes from original imgs-bck tag
   const altMatch = imgTag.match(/alt=["']([^"']*)["']/);
   const classMatch = imgTag.match(/class=["']([^"']*)["']/);
   const loadingMatch = imgTag.match(/loading=["']([^"']*)["']/);
@@ -134,7 +134,7 @@ async function processFile(filePath) {
   let newContent = content;
 
   for (const ref of references) {
-    if (ref.type === 'img-tag') {
+    if (ref.type === 'imgs-bck-tag') {
       const pictureTag = convertToPictureTag(ref.original, ref.src);
       newContent = newContent.replace(ref.original, pictureTag);
       console.log(`   ✅ Converted <img> to <picture> for: ${ref.src}`);

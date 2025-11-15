@@ -39,7 +39,7 @@
         <!-- Hero Section -->
         <header class="case-study-hero">
           <div class="hero-content">
-            <h1 class="hero-title">{{ caseStudy.title }}</h1>
+            <h2 class="hero-title">{{ caseStudy.title }}</h2>
             <p class="hero-subtitle">{{ caseStudy.subtitle }}</p>
 
             <div class="hero-meta">

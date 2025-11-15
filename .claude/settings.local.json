@@ -5,7 +5,13 @@
       "Bash(npm run serve:*)",
       "Bash(npm cache clean:*)",
       "Bash(pkill:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(for img in garage/banner.png marvel/characteres.png toworkfor/homepage.png marvel/home.png marvel/detail.png capitalges/homepage.png monthy_hall/door.png monthy_hall/home.png monthy_hall/open.png)",
+      "Bash(do if [ -f \"src/data/projects/images/$img\" ])",
+      "Bash(then echo \"Optimizing $img...\")",
+      "Bash(convert:*)",
+      "Bash(fi)",
+      "Bash(done)"
     ],
     "deny": [],
     "ask": []

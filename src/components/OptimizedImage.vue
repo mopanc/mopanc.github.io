@@ -34,7 +34,7 @@ export default {
   props: {
     /**
      * Image source path (without extension)
-     * Example: '../assets/img/project-image'
+     * Example: '../assets/imgs-bck/project-image'
      */
     src: {
       type: String,
@@ -84,7 +84,7 @@ export default {
     },
 
     /**
-     * CSS class for <img> element
+     * CSS class for <imgs-bck> element
      */
     imgClass: {
       type: String,
@@ -131,9 +131,9 @@ export default {
     basePath() {
       const path = this.src.replace(/\.(png|jpg|jpeg|webp)$/i, '');
 
-      // If useOptimized, replace img path with img-optimized
+      // If useOptimized, replace imgs-bck path with imgs-bck-optimized
       if (this.useOptimized) {
-        return path.replace('/img/', '/img-optimized/');
+        return path.replace('/img/', '/imgs-bck-optimized/');
       }
 
       return path;

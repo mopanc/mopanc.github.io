@@ -57,7 +57,7 @@ export function useProjects() {
       } catch (defError) {
         // Se def.png também não existir, usar placeholder da pasta assets
         console.warn('Imagem padrão def.png não encontrada, usando placeholder')
-        return require('@/assets/img/placeholder-project.jpg')
+        return require('@/assets/imgs-bck/placeholder-project.jpg')
       }
     }
   }
@@ -74,14 +74,14 @@ export function useProjects() {
         status: 'Completed',
         projectName: 'Projeto de Exemplo',
         projectDescription: 'Este é um projeto de exemplo enquanto configuramos o sistema de projetos dinâmicos.',
-        imageSrc: require('@/assets/img/discover.png'),
+        imageSrc: require('@/assets/imgs-bck/discover.png'),
         imageAlt: 'Projeto de exemplo',
         githubLink: 'https://github.com/mopanc',
         websiteLink: null,
         gallery: [
-          { src: require('@/assets/img/discover.png'), alt: 'Exemplo 1', title: 'Tela 1' },
-          { src: require('@/assets/img/discover.png'), alt: 'Exemplo 2', title: 'Tela 2' },
-          { src: require('@/assets/img/discover.png'), alt: 'Exemplo 3', title: 'Tela 3' }
+          { src: require('@/assets/imgs-bck/discover.png'), alt: 'Exemplo 1', title: 'Tela 1' },
+          { src: require('@/assets/imgs-bck/discover.png'), alt: 'Exemplo 2', title: 'Tela 2' },
+          { src: require('@/assets/imgs-bck/discover.png'), alt: 'Exemplo 3', title: 'Tela 3' }
         ],
         technologies: [
           { name: "Vue.js", icon: "vuejs-icon.svg" },

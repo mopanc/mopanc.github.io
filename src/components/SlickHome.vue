@@ -17,7 +17,7 @@
           </div>
         </div>
         <div>
-        <img src="../assets/img/discover.png" alt="Santander app" class="testimonial__img" />
+        <img src="../assets/imgs-bck/discover.png" alt="Santander app" class="testimonial__img" />
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
     <div>
       <div class="projects-cards-content-left">
         <div>
-          <img src="../assets/img/covid.png" alt="Covid-19 Tracker" class="testimonial__img"/>
+          <img src="../assets/imgs-bck/covid.png" alt="Covid-19 Tracker" class="testimonial__img"/>
         </div>
         <div class="testimonial__content">
           <h3 class="testimonial__name" ref="covid_19"></h3>
@@ -57,7 +57,7 @@
           </div>
         </div>
         <div>
-          <img src="../assets/img/calculator.png" alt="Apple calculator" class="testimonial__img" />
+          <img src="../assets/imgs-bck/calculator.png" alt="Apple calculator" class="testimonial__img" />
         </div>
       </div>
     </div>
@@ -65,16 +65,16 @@
     <!-- <div>
       <div class="projects-cards-content-left">
         <div>
-        <img src="../assets/img/googleGlass.png" alt="Google glass page" class="testimonial__img" />
+        <imgs-bck src="../assets/imgs-bck/googleGlass.png" alt="Google glass page" class="testimonial__img" />
         </div>
         <div class="testimonial__content">
         <h3 class="testimonial__name" ref="google_glass"></h3>
           <div class="transparent-box-left">
             <p class="testimonial__description" ref="google_glass_description"></p>
               <ul class="tecnologies-used">
-                <li class="skills__item"><img src="../assets/icons/js.svg" height="16px" width="16px" alt="javaScript icon"></li>
-                <li class="skills__item"><img src="../assets/icons/w3_html5-icon.svg" height="16px" width="16px" alt="html5 icon"></li>
-                <li class="skills__item"><img src="../assets/icons/w3_css-icon.svg" height="16px" width="16px" alt="css3 icon"></li>
+                <li class="skills__item"><imgs-bck src="../assets/icons/js.svg" height="16px" width="16px" alt="javaScript icon"></li>
+                <li class="skills__item"><imgs-bck src="../assets/icons/w3_html5-icon.svg" height="16px" width="16px" alt="html5 icon"></li>
+                <li class="skills__item"><imgs-bck src="../assets/icons/w3_css-icon.svg" height="16px" width="16px" alt="css3 icon"></li>
               </ul>
           </div>
         </div>
@@ -87,13 +87,13 @@
           <div class="transparent-box">
             <p class="testimonial__description" ref="santander_description"></p>
               <ul class="tecnologies-used">
-                <li class="skills__item"><img src="../assets/icons/kotlin1.svg" height="16px" width="16px" alt="kotlin icon"></li>
-                <li class="skills__item"><img src="../assets/icons/Android2021.svg" height="18px" width="18px" alt="android studio icon"></li>
+                <li class="skills__item"><imgs-bck src="../assets/icons/kotlin1.svg" height="16px" width="16px" alt="kotlin icon"></li>
+                <li class="skills__item"><imgs-bck src="../assets/icons/Android2021.svg" height="18px" width="18px" alt="android studio icon"></li>
               </ul>
           </div>
         </div>
         <div>
-        <img src="../assets/img/santander.png" alt="Freelance jobs calculator" class="testimonial__img"/>
+        <imgs-bck src="../assets/imgs-bck/santander.png" alt="Freelance jobs calculator" class="testimonial__img"/>
         </div>
       </div>
     </div> -->
