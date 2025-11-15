@@ -37,7 +37,7 @@
       <!-- Project 2: DataConvert -->
       <div class="project-card" data-aos="fade-up" data-aos-delay="200">
         <div class="project-image">
-          <img src="../assets/imgs-bck/Landing_page.png" alt="DataConvert Platform" />
+          <img src="../assets/imgs-bck/Landing_page.jpg" alt="DataConvert Platform" />
           <div class="project-overlay">
             <div class="project-category">SaaS Platform</div>
           </div>
