@@ -660,14 +660,14 @@
           "title": "Game of Thrones Website Clone"
         },
         {
-          "src": "frontend/maccalc.jpg",
-          "alt": "Custom modern calculator with sleek design and full functionality",
-          "title": "Modern Calculator (Original Design)"
+          "src": "frontend/calc.jpg",
+          "alt": "Calculadora moderna personalizada com design elegante e funcionalidade completa",
+          "title": "Calculadora Moderna (Design Original)"
         },
         {
           "src": "frontend/maccalc.jpg",
-          "alt": "Custom modern calculator with sleek design and full functionality",
-          "title": "Modern Calculator (Original Design)"
+          "alt": "Calculadora estilo Mac com funcionalidades avançadas e design",
+          "title": "Clone Calculadora Mac"
         }
       ],
       "technologies": [
