@@ -260,7 +260,7 @@
       "description": "Plataforma SaaS para automatização de processamento de dados corporativos com sistema multi-tenant. Combina extração inteligente de tabelas PDF através de IA (tabula-py + pdfplumber) com mapeamento visual de colunas e conversão automatizada para CSV/JSON. Inclui sistema de templates personalizados, dashboard analítico, gestão de planos (Free/Personal/Enterprise) e upload drag-and-drop.",
       "images": [
         {
-          "src": "data-convert/Landing_page.jpg",
+          "src": "data-convert/landing_page.jpg",
           "alt": "Registo com seleção de planos e multi-tenancy",
           "title": "User Registration"
         },
