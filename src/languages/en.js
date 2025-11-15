@@ -6,7 +6,7 @@ export default {
   projects: 'Projects',
   certificates: 'About',
   title: `Jorge Morais<br><span class="home__title-subtitle">Full Stack Developer</span>`,
-  presentation: "Full Stack Developer with 4+ years of professional experience building modern web applications using React, Vue.js, Node.js, and TypeScript. Proven expertise in responsive frontend interfaces, robust backend APIs, and database architecture. Track record of delivering solutions across diverse sectors, including e-commerce, government projects, and industrial systems with hardware integration. Technical competencies enhanced by leadership experience in team management and business communication. Specialization in clean code, development best practices, and scalable solutions.",
+  presentation: "Full Stack Developer with 5+ years of professional experience building modern web applications using React, Vue.js, Node.js, and TypeScript. Proven expertise in responsive frontend interfaces, robust backend APIs, and database architecture. Track record of delivering solutions across diverse sectors, including e-commerce, government projects, and industrial systems with hardware integration. Technical competencies enhanced by leadership experience in team management and business communication. Specialization in clean code, development best practices, and scalable solutions.",
   experience: "Years Experience",
   projects_completed: "Projects Completed",
   companies: "Companies Worked",
@@ -23,16 +23,16 @@ export default {
   subtitle_experience: "Profissional jobs",
   profissional_experience: "Professional Experience",
 
-  title_balancas: "Full Stack Developer at Balanças Marques",
-  description_balancas: "Fullstack Developer working dedicatedly on two main projects: a scales and POS management software, typescript with Node.js/SQL Server backend and React frontend, and a payment machine programmed in C with ccTalk protocol and various hardware components.",
+  title_balancas: "Senior Full Stack Developer at Balanças Marques",
+  description_balancas: "Developing Qore platform (Node.js/React/TypeScript) for POS and business management, optimized memory consumption from 3GB to 850MB. Building Alice Payment Machine API in C with CCTalk/ID003 protocols for bill validators and coin mechanisms. Improved mass data processing pipeline performance from 2 days to 2 hours through concurrent processing. Developed real-time IoT monitoring system using MQTT and Socket.IO.",
   dates_balancas: "2023 - Present",
 
   title_frontkom: "Frontend Developer at Frontkom",
-  description_frontkom: "Worked as Frontend Developer on corporate and governmental projects, mainly with React, Next.js and Vue.js. Also collaborated in maintaining and updating Drupal sites and Headless CMS architectures.",
+  description_frontkom: "Developed enterprise websites for Norwegian clients using React, Next.js, and Vue.js with Drupal headless CMS. Implemented responsive, WCAG AA compliant components with performance optimization via code splitting and lazy loading. Remote collaboration with international teams using Agile methodologies.",
   dates_frontkom: "2022 - 2023",
 
-  title_netgocio: "Web developer at Netgócio",
-  description_netgocio: "Worked as Web Developer on B2C e-commerce projects, landing pages and institutional websites, using PHP, MySQL and Bootstrap. Also collaborated in hosting management with cPanel, domain management and SSL certificates and server configuration with Nginx.",
+  title_netgocio: "Web Developer at Netgócio",
+  description_netgocio: "Developed B2C e-commerce platforms, landing pages and institutional websites using PHP, MySQL and Bootstrap. Optimized product catalog page with large datasets, reducing load time from 3.5s to 0.8s through pagination and lazy loading implementation. Managed 400+ hosting deployments with cPanel, domain configuration, SSL certificates and Nginx server optimization.",
   dates_netgocio: "2021 - 2022",
   //service section
   services: "Work experience",

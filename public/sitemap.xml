@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
     <!-- Homepage - English -->
     <url>
         <loc>https://jorgemopanc.com/</loc>
-        <lastmod>2025-09-30</lastmod>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="pt" href="https://jorgemopanc.com/?lang=pt"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://jorgemopanc.com/?lang=en"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://jorgemopanc.com/"/>
+        <image:image>
+            <image:loc>https://avatars.githubusercontent.com/u/45471030?v=4</image:loc>
+            <image:title>Jorge Morais - Senior Full Stack Developer</image:title>
+        </image:image>
     </url>
 
     <!-- Homepage - Portuguese -->
     <url>
         <loc>https://jorgemopanc.com/?lang=pt</loc>
-        <lastmod>2025-09-30</lastmod>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <xhtml:link rel="alternate" hreflang="pt" href="https://jorgemopanc.com/?lang=pt"/>
@@ -24,56 +29,124 @@
         <xhtml:link rel="alternate" hreflang="x-default" href="https://jorgemopanc.com/"/>
     </url>
 
+    <!-- About Page -->
+    <url>
+        <loc>https://jorgemopanc.com/about</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://jorgemopanc.com/about?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://jorgemopanc.com/about?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://jorgemopanc.com/about"/>
+    </url>
+
     <!-- Projects Page -->
     <url>
         <loc>https://jorgemopanc.com/projects</loc>
-        <lastmod>2025-09-30</lastmod>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
+        <priority>0.9</priority>
         <xhtml:link rel="alternate" hreflang="pt" href="https://jorgemopanc.com/projects?lang=pt"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://jorgemopanc.com/projects?lang=en"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://jorgemopanc.com/projects"/>
     </url>
 
+    <!-- Individual Project Case Studies -->
+    <url>
+        <loc>https://jorgemopanc.com/projects/balanca-marques-iot-system</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://jorgemopanc.com/projects/balanca-marques-iot-system?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://jorgemopanc.com/projects/balanca-marques-iot-system?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://jorgemopanc.com/projects/balanca-marques-iot-system"/>
+    </url>
+
+    <url>
+        <loc>https://jorgemopanc.com/projects/pos-sync-fiscal-compliance</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://jorgemopanc.com/projects/pos-sync-fiscal-compliance?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://jorgemopanc.com/projects/pos-sync-fiscal-compliance?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://jorgemopanc.com/projects/pos-sync-fiscal-compliance"/>
+    </url>
+
+    <url>
+        <loc>https://jorgemopanc.com/projects/dataconvert-template-processing</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://jorgemopanc.com/projects/dataconvert-template-processing?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://jorgemopanc.com/projects/dataconvert-template-processing?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://jorgemopanc.com/projects/dataconvert-template-processing"/>
+    </url>
+
+    <url>
+        <loc>https://jorgemopanc.com/projects/qscope-quantum-elliott-wave-ai</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://jorgemopanc.com/projects/qscope-quantum-elliott-wave-ai?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://jorgemopanc.com/projects/qscope-quantum-elliott-wave-ai?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://jorgemopanc.com/projects/qscope-quantum-elliott-wave-ai"/>
+    </url>
+
     <!-- Certificates Page -->
     <url>
         <loc>https://jorgemopanc.com/certificates</loc>
-        <lastmod>2025-09-30</lastmod>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.7</priority>
         <xhtml:link rel="alternate" hreflang="pt" href="https://jorgemopanc.com/certificates?lang=pt"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://jorgemopanc.com/certificates?lang=en"/>
         <xhtml:link rel="alternate" hreflang="x-default" href="https://jorgemopanc.com/certificates"/>
     </url>
 
-    <!-- Contact Section (anchor link) -->
+    <!-- Contact Page -->
+    <url>
+        <loc>https://jorgemopanc.com/contact</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="pt" href="https://jorgemopanc.com/contact?lang=pt"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://jorgemopanc.com/contact?lang=en"/>
+        <xhtml:link rel="alternate" hreflang="x-default" href="https://jorgemopanc.com/contact"/>
+    </url>
+
+    <!-- Privacy Policy Page -->
+    <url>
+        <loc>https://jorgemopanc.com/privacy</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.3</priority>
+    </url>
+
+    <!-- Anchor sections (for reference, but better to use dedicated pages above) -->
     <url>
         <loc>https://jorgemopanc.com/#contact</loc>
-        <lastmod>2025-09-30</lastmod>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>yearly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.5</priority>
     </url>
 
-    <!-- About Section (anchor link) -->
     <url>
         <loc>https://jorgemopanc.com/#about</loc>
-        <lastmod>2025-09-30</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
-    </url>
-
-    <!-- Experience Section (anchor link) -->
-    <url>
-        <loc>https://jorgemopanc.com/#qualification</loc>
-        <lastmod>2025-09-30</lastmod>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.5</priority>
     </url>
 
-    <!-- Services Section (anchor link) -->
+    <url>
+        <loc>https://jorgemopanc.com/#qualification</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+
     <url>
         <loc>https://jorgemopanc.com/#service</loc>
-        <lastmod>2025-09-30</lastmod>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>yearly</changefreq>
         <priority>0.4</priority>
     </url>

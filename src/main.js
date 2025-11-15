@@ -1,8 +1,10 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './VueRouter';
+import { createHead } from '@unhead/vue';
 
 const app = createApp(App);
+const head = createHead();
 
 // Global error handler
 app.config.errorHandler = (error, instance, info) => {
@@ -18,8 +20,22 @@ window.addEventListener('unhandledrejection', (event) => {
   // You could send to monitoring service here
 })
 
+app.use(head);
 app.use(router);
 app.mount('#app');
+
+// Emit prerender event for prerender-spa-plugin
+if (window.__PRERENDER_INJECTED && window.__PRERENDER_INJECTED.prerendered) {
+  // Already prerendered, emit event immediately
+  document.dispatchEvent(new Event('render-event'));
+} else {
+  // Wait for app to be fully mounted, then emit
+  router.isReady().then(() => {
+    setTimeout(() => {
+      document.dispatchEvent(new Event('render-event'));
+    }, 100);
+  });
+}
 
 // Defer ScrollReveal initialization using requestIdleCallback for better INP
 const initScrollReveal = () => {
