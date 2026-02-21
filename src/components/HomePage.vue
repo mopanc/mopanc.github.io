@@ -6,8 +6,12 @@
             <div class="container-wide">
                 <div class="d-grid home__wrapper">
                     <div class="home__content">
-                        <h1 class="home__title" ref="title"></h1>
-                        <p class="home__description" ref="presentation"></p>
+                        <h1 class="home__title" ref="title">
+                            Jorge Morais<br><span class="home__title-subtitle">Full Stack Developer</span>
+                        </h1>
+                        <p class="home__description" ref="presentation">
+                            Senior Full Stack Developer specializing in React, Vue.js, Node.js, and TypeScript. Experience in high‑performance systems and industrial integration.
+                        </p>
                         <div class="home__info">
                             <div class="home__info-wrapper">
                                 <p class="home__info-number" ref="countup1">04</p>
@@ -28,7 +32,28 @@
                     </div>
                     <div>
                         <div class="portfolio-item home__img">
-                            <img src="https://avatars.githubusercontent.com/u/45471030?v=4" alt="Jorge">
+                            <picture class="avatar avatar--dark">
+                                <source srcset="/avatar.webp" type="image/webp">
+                                <img
+                                    src="/avatar.jpg"
+                                    alt="Jorge Morais"
+                                    width="400"
+                                    height="400"
+                                    decoding="async"
+                                    fetchpriority="high"
+                                >
+                            </picture>
+                            <picture class="avatar avatar--light">
+                                <source srcset="/avatar_white_3.webp" type="image/webp">
+                                <img
+                                    src="/avatar_white_3.jpg"
+                                    alt="Jorge Morais"
+                                    width="400"
+                                    height="400"
+                                    decoding="async"
+                                    fetchpriority="high"
+                                >
+                            </picture>
                         </div>
                         <div class="footer__content social_links">
                             <h4 class="footer__title"></h4>
@@ -349,7 +374,6 @@ export default {
                     setTextContent('my_projects', expressions.my_projects);
                     setTextContent('recent_work', expressions.recent_work);
                     setTextContent('see_all', expressions.see_all);
-                    setTextContent('see_projects', expressions.see_projects);
                     setTextContent('work_together', expressions.work_together);
                 });
             }
@@ -398,13 +422,33 @@ export default {
     overflow: hidden;
     border-radius: 50%;
     border: 3px solid var(--color-primary);
-    transition: transform 0.5s ease-out;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 0 0 12px rgba(195, 176, 145, 0.08);
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.06), transparent 50%);
+    transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
+}
+
+.avatar {
+    position: absolute;
+    inset: 0;
+}
+
+.avatar--light {
+    display: none;
+}
+
+.theme-light .avatar--dark {
+    display: none;
+}
+
+.theme-light .avatar--light {
+    display: block;
 }
 
 @media screen and (max-width: 1024px) {
   .portfolio-item {
     width: 320px;
     height: 320px;
+    box-shadow: 0 16px 50px rgba(0, 0, 0, 0.4), 0 0 0 10px rgba(195, 176, 145, 0.08);
   }
 }
 @media screen and (max-width: 374px) {
