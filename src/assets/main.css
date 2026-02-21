@@ -1,21 +1,33 @@
 :root {
-  /* Colors - Active Theme: Dark Khaki
+  /* Colors - Active Theme: Slate + Teal (Clean Engineering)
   ____________________*/
-  --color-primary: #c3b091; /* Khaki médio - cor principal */
-  --color-primary-dark: #8b7a5e; /* Khaki escuro - cor complementadora */
-  --color-bg-primary: #121212; /* Preto profundo para fundo principal */
-  --color-bg-primary-bk: #0a0a0a; /* Preto mais intenso para contraste */
-  --color-bg-secondary: #2d2d2d; /* Cinza escuro para elementos secundários */
-  --color-bg-footer: #1f1f1f; /* Preto médio para rodapés */
-  --color-white: #fdfbee; /* Branco bege claro para contraste - combina com khaki */
-  --color-text: #d2b48c; /* Bege claro / khaki como cor de texto (subtle highlight) */
-  --color-border: #8b7a5e; /* Khaki escuro para bordas e separadores */
+  --color-primary: #4a86e8; /* Steel blue - primary */
+  --color-primary-dark: #2f5fb3; /* Deep steel */
+  --color-accent: #77a7ff; /* Soft accent */
+  --color-bg-primary: #0c1118; /* Deep slate */
+  --color-bg-primary-bk: #0a0e14; /* Deeper slate */
+  --color-bg-secondary: #141c26; /* Card surface */
+  --color-bg-footer: #0f151d; /* Footer */
+  --color-white: #f3f6fb; /* Off-white */
+  --color-text: #d2d9e6; /* Muted light text */
+  --color-border: #243246; /* Subtle border */
+  --color-success: #34c38f;
+  --color-success-dark: #279a6f;
+  --color-warning: #f5b744;
+  --color-warning-dark: #d9961a;
+  --color-danger: #ff6b6b;
+  --color-danger-dark: #e05353;
+  --color-info: #4a86e8;
+  --color-info-dark: #2f5fb3;
+  --color-purple: #7c5cff;
+  --color-purple-dark: #5a43c6;
+  --color-muted: #8a94a6;
 
   /* Accessibility & Animation Variables
   ____________________*/
   --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  --focus-ring: 0 0 0 3px rgba(195, 176, 145, 0.5);
+  --focus-ring: 0 0 0 3px rgba(59, 183, 163, 0.45);
   --border-radius: 6px;
 
   /* Typography Variables
@@ -63,12 +75,145 @@
 
 /* High Contrast Mode */
 .high-contrast {
-  --color-primary: #ffffff;
-  --color-text: #ffffff;
-  --color-border: #ffffff;
+  --color-primary: var(--color-white);
+  --color-text: var(--color-white);
+  --color-border: var(--color-white);
   --color-bg-primary: #000000;
   --color-bg-secondary: #000000;
 }
+
+/* Light Theme (optional) */
+.theme-light {
+  --color-primary: #3f76d2;
+  --color-primary-dark: #2d5cad;
+  --color-accent: #7aa6ff;
+  --color-bg-primary: #f3f5f8;
+  --color-bg-primary-bk: #edf1f6;
+  --color-bg-secondary: #e7ecf3;
+  --color-bg-footer: #e2e8f0;
+  --color-white: #1e2a38;
+  --color-text: #2b3a4a;
+  --color-border: #c7d1de;
+  --color-success: #2ba17a;
+  --color-success-dark: #1f7e5e;
+  --color-warning: #c98a1c;
+  --color-warning-dark: #a96f12;
+  --color-danger: #c85252;
+  --color-danger-dark: #a64545;
+  --color-info: #3f76d2;
+  --color-info-dark: #2d5cad;
+  --color-purple: #6a4df6;
+  --color-purple-dark: #4f38c4;
+  --color-muted: #6a7586;
+}
+
+
+/* Theme Morph (Directional, phased transformation) */
+.theme-morph {
+  --morph-duration: 1600ms;
+}
+
+.theme-morph .morph-item {
+  transform-origin: center;
+  animation: morphShift var(--morph-duration) cubic-bezier(0.22, 1, 0.36, 1);
+  animation-delay: var(--morph-delay, 0ms);
+  will-change: filter, opacity;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes morphShift {
+  0% {
+    filter: saturate(0.95) brightness(0.95);
+    opacity: 0.9;
+  }
+  35% {
+    filter: saturate(1.05) brightness(1.02);
+    opacity: 1;
+  }
+  100% {
+    filter: none;
+    opacity: 1;
+  }
+}
+
+.theme-morph .morph-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  opacity: 0.15;
+  transform: translateX(-100%);
+  animation: morphWipe var(--morph-duration) ease-in-out;
+  animation-delay: var(--morph-delay, 0ms);
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
+.theme-morph .morph-item[data-morph-dir="right"]::after {
+  transform: translateX(100%);
+  background: linear-gradient(270deg, var(--color-primary), var(--color-accent));
+}
+
+.theme-morph .morph-item[data-morph-dir="top"]::after {
+  transform: translateY(-100%);
+  background: linear-gradient(180deg, var(--color-primary), var(--color-accent));
+}
+
+.theme-morph .morph-item[data-morph-dir="bottom"]::after {
+  transform: translateY(100%);
+  background: linear-gradient(0deg, var(--color-primary), var(--color-accent));
+}
+
+@keyframes morphWipe {
+  0% { opacity: 0.05; }
+  50% { opacity: 0.35; }
+  100% { opacity: 0; transform: translate(0, 0); }
+}
+
+/* Logo transformer (trapdoor) */
+.logo-mark.logo-transformer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.logo-mark.logo-transformer::before,
+.logo-mark.logo-transformer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: var(--door-color, var(--color-bg-primary));
+  z-index: 2;
+  pointer-events: none;
+}
+
+.logo-mark.logo-transformer::before {
+  top: 0;
+  transform: translateY(0);
+  animation: logoDoorTop var(--morph-duration) ease-in-out;
+}
+
+.logo-mark.logo-transformer::after {
+  bottom: 0;
+  transform: translateY(0);
+  animation: logoDoorBottom var(--morph-duration) ease-in-out;
+}
+
+@keyframes logoDoorTop {
+  0% { transform: translateY(0); }
+  40% { transform: translateY(-70%); }
+  100% { transform: translateY(-110%); }
+}
+
+@keyframes logoDoorBottom {
+  0% { transform: translateY(0); }
+  40% { transform: translateY(70%); }
+  100% { transform: translateY(110%); }
+}
+
 
 .high-contrast * {
   border-color: var(--color-border) !important;
@@ -1178,8 +1323,8 @@ body {
   border: 1px solid #1a1a1a;
   /* background-image: linear-gradient(to  right, hsl(210, 78%, 56%) , hsl(146,    68%, 55%)); */
   background: #283048;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #4facfe, #ffffff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #4facfe, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, var(--color-accent), var(--color-white));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, var(--color-accent), var(--color-white)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   transition: .2s;
   border-radius: 34px;
@@ -1200,8 +1345,8 @@ body {
 input:checked + .slider {
  /* background-image: linear-gradient(to  right, hsl(210, 78%, 56%) , hsl(146,    68%, 55%)); */
   background: #283048;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #4facfe, #ffffff);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #4facfe, #ffffff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right, var(--color-accent), var(--color-white));  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, var(--color-accent), var(--color-white)); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
 
 }
@@ -1212,7 +1357,7 @@ input:checked + .slider:before {
 }
 
 .about_me, .experience-title, .service-title {
-  color: #4facfe;
+  color: var(--color-accent);
 }
 
 
@@ -1343,13 +1488,6 @@ input:checked + .slider:before {
     width: 14px;
     height: 14px;
   }
-  .swiper-slide {
-    width: 125px;
-    font-size: 12px;
-  }
-  .swiper-slide img {
-    max-width: 75%;
-  }
   .slick_container {
     width: 100%;
   }
@@ -1369,14 +1507,6 @@ input:checked + .slider:before {
   .skills__item img {
     width: 14px;
     height: 14px;
-  }
-  .swiper-slide {
-    width: 125px;
-    height: 320px;
-    font-size: 12px;
-  }
-  .swiper-slide img {
-    max-width: 75%;
   }
   .slick_container {
     width: 100%;
@@ -1398,14 +1528,6 @@ input:checked + .slider:before {
   .skills__item img {
     width: 14px;
     height: 14px;
-  }
-  .swiper-slide {
-    width: 125px;
-    height: 320px;
-    font-size: 12px;
-  }
-  .swiper-slide img {
-    max-width: 75%;
   }
   .slick_container {
     width: 100%;
@@ -1431,13 +1553,6 @@ input:checked + .slider:before {
   .home__content {
     width: 280px;
     font-size: 14px;
-  }
-  .swiper-slide {
-    width: 115px;
-    font-size: 12px;
-  }
-  .swiper-slide img {
-    max-width: 75%;
   }
   .slick_container {
     width: 100%;

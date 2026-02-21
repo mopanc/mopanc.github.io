@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Advanced Drag & Drop Column Mapper</title>
+  <style>
+    /* ========================================
+       ADVANCED COLUMN MAPPER COMPONENT
+       Author: Jorge Morais
+       GitHub: @mopanc
+       Portfolio: jorgemopanc.com
+
+       Professional data mapping interface
+       for ETL, CSV imports, and data processing.
+       ======================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bg-primary: #0f172a;
+      --bg-secondary: #1e293b;
+      --bg-card: #334155;
+      --bg-hover: #475569;
+
+      --color-primary: #3b82f6;
+      --color-success: #10b981;
+      --color-warning: #f59e0b;
+      --color-danger: #ef4444;
+      --color-info: #06b6d4;
+
+      --text-primary: #f1f5f9;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+
+      --border-color: #475569;
+      --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    .mapper-container {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .mapper-header {
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .mapper-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .mapper-subtitle {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+    }
+
+    /* Steps Indicator */
+    .steps-container {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+
+    .steps-container::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--border-color);
+      z-index: 0;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      position: relative;
+      z-index: 1;
+      flex: 1;
+    }
+
+    .step-circle {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-secondary);
+      border: 2px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      transition: all 0.3s ease;
+    }
+
+    .step.active .step-circle {
+      background: var(--color-primary);
+      border-color: var(--color-primary);
+      box-shadow: 0 0 20px rgba(59, 130, 246, 0.5);
+    }
+
+    .step.completed .step-circle {
+      background: var(--color-success);
+      border-color: var(--color-success);
+    }
+
+    .step-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .step.active .step-label {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    /* Main Content */
+    .mapper-content {
+      background: var(--bg-secondary);
+      border-radius: 16px;
+      padding: 2rem;
+      border: 1px solid var(--border-color);
+      min-height: 600px;
+    }
+
+    /* CSV Preview */
+    .csv-preview {
+      background: var(--bg-primary);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .csv-preview-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .csv-preview-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .csv-stats {
+      display: flex;
+      gap: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .csv-table-wrapper {
+      overflow-x: auto;
+      border-radius: 8px;
+    }
+
+    .csv-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.85rem;
+    }
+
+    .csv-table th {
+      background: var(--bg-card);
+      padding: 0.75rem;
+      text-align: left;
+      font-weight: 600;
+      border-bottom: 2px solid var(--border-color);
+      position: sticky;
+      top: 0;
+    }
+
+    .csv-table td {
+      padding: 0.75rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .csv-table tr:hover {
+      background: var(--bg-hover);
+    }
+
+    /* Mapping Grid */
+    .mapping-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    .mapping-column {
+      background: var(--bg-primary);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .mapping-column-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .mapping-column-badge {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 12px;
+      background: var(--bg-card);
+      color: var(--text-secondary);
+    }
+
+    /* Draggable Items */
+    .mapping-items {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-height: 400px;
+    }
+
+    .mapping-item {
+      background: var(--bg-card);
+      border: 2px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      cursor: grab;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    .mapping-item:hover {
+      border-color: var(--color-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .mapping-item.dragging {
+      opacity: 0.5;
+      cursor: grabbing;
+    }
+
+    .mapping-item.mapped {
+      border-color: var(--color-success);
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .item-name {
+      font-weight: 600;
+      color: var(--text-primary);
+      font-size: 0.95rem;
+    }
+
+    .item-type {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    .type-string {
+      background: rgba(59, 130, 246, 0.2);
+      color: var(--color-primary);
+    }
+
+    .type-number {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--color-success);
+    }
+
+    .type-date {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--color-warning);
+    }
+
+    .item-sample {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-family: 'Monaco', 'Courier New', monospace;
+    }
+
+    /* Connection Arrow */
+    .mapping-connector {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 2rem;
+    }
+
+    /* Drop Zone */
+    .drop-zone {
+      border: 2px dashed var(--border-color);
+      border-radius: 8px;
+      padding: 1rem;
+      text-align: center;
+      color: var(--text-muted);
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+    }
+
+    .drop-zone.drag-over {
+      border-color: var(--color-primary);
+      background: rgba(59, 130, 246, 0.1);
+      color: var(--color-primary);
+    }
+
+    .drop-zone.has-item {
+      border-style: solid;
+      background: rgba(16, 185, 129, 0.1);
+      border-color: var(--color-success);
+    }
+
+    /* Transformation Rules */
+    .transformation-panel {
+      background: var(--bg-primary);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1.5rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .transformation-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .transformation-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+
+    .transformation-option {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .transformation-option input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+      accent-color: var(--color-primary);
+    }
+
+    .transformation-option label {
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+
+    /* Action Buttons */
+    .action-buttons {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-color);
+    }
+
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: none;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    }
+
+    .btn-secondary {
+      background: var(--bg-card);
+      color: var(--text-primary);
+      border: 1px solid var(--border-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--bg-hover);
+    }
+
+    .btn-success {
+      background: var(--color-success);
+      color: white;
+    }
+
+    .btn-success:hover {
+      background: #059669;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Progress Bar */
+    .progress-bar {
+      height: 8px;
+      background: var(--bg-card);
+      border-radius: 4px;
+      overflow: hidden;
+      margin: 1rem 0;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-primary), var(--color-info));
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    /* Mapping Summary */
+    .mapping-summary {
+      background: var(--bg-primary);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 1px solid var(--border-color);
+      margin-bottom: 1.5rem;
+    }
+
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+    }
+
+    .summary-item {
+      text-align: center;
+      padding: 1rem;
+      background: var(--bg-secondary);
+      border-radius: 8px;
+    }
+
+    .summary-value {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .summary-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      margin-top: 0.25rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .mapping-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mapping-connector {
+        transform: rotate(90deg);
+        margin: 1rem 0;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .mapping-item {
+      animation: fadeIn 0.3s ease backwards;
+    }
+
+    .mapping-item:nth-child(1) { animation-delay: 0.05s; }
+    .mapping-item:nth-child(2) { animation-delay: 0.1s; }
+    .mapping-item:nth-child(3) { animation-delay: 0.15s; }
+    .mapping-item:nth-child(4) { animation-delay: 0.2s; }
+    .mapping-item:nth-child(5) { animation-delay: 0.25s; }
+  </style>
+</head>
+<body>
+  <div class="mapper-container">
+    <!-- Header -->
+    <div class="mapper-header">
+      <h1 class="mapper-title">Advanced Column Mapper</h1>
+      <p class="mapper-subtitle">Drag & Drop Data Mapping Interface • Built for ETL & Data Processing</p>
+    </div>
+
+    <!-- Steps Indicator -->
+    <div class="steps-container">
+      <div class="step completed">
+        <div class="step-circle">✓</div>
+        <span class="step-label">Upload Data</span>
+      </div>
+      <div class="step active">
+        <div class="step-circle">2</div>
+        <span class="step-label">Map Columns</span>
+      </div>
+      <div class="step">
+        <div class="step-circle">3</div>
+        <span class="step-label">Configure</span>
+      </div>
+      <div class="step">
+        <div class="step-circle">4</div>
+        <span class="step-label">Export</span>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="mapper-content">
+
+      <!-- CSV Preview -->
+      <div class="csv-preview">
+        <div class="csv-preview-header">
+          <h3 class="csv-preview-title">📄 Data Preview</h3>
+          <div class="csv-stats">
+            <span>📊 <strong>1,247</strong> rows</span>
+            <span>📋 <strong>8</strong> columns</span>
+            <span>💾 <strong>2.4</strong> MB</span>
+          </div>
+        </div>
+        <div class="csv-table-wrapper">
+          <table class="csv-table" id="csvTable">
+            <thead>
+              <tr>
+                <th>customer_id</th>
+                <th>full_name</th>
+                <th>email_address</th>
+                <th>phone_number</th>
+                <th>registration_date</th>
+                <th>total_purchases</th>
+                <th>country_code</th>
+                <th>is_active</th>
+              </tr>
+            </thead>
+            <tbody id="csvBody">
+              <!-- Table rows will be generated by JavaScript -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Mapping Summary -->
+      <div class="mapping-summary">
+        <div class="summary-grid">
+          <div class="summary-item">
+            <div class="summary-value" id="mappedCount">0</div>
+            <div class="summary-label">Mapped</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-value" id="unmappedCount">8</div>
+            <div class="summary-label">Unmapped</div>
+          </div>
+          <div class="summary-item">
+            <div class="summary-value" id="progressPercent">0%</div>
+            <div class="summary-label">Progress</div>
+          </div>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <!-- Mapping Grid -->
+      <div class="mapping-grid">
+
+        <!-- Source Columns (Left) -->
+        <div class="mapping-column">
+          <div class="mapping-column-title">
+            📤 Source Columns
+            <span class="mapping-column-badge">CSV File</span>
+          </div>
+          <div class="mapping-items" id="sourceColumns">
+            <!-- Source columns will be generated by JavaScript -->
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="mapping-connector">
+          →
+        </div>
+
+        <!-- Target Columns (Right) -->
+        <div class="mapping-column">
+          <div class="mapping-column-title">
+            📥 Target Schema
+            <span class="mapping-column-badge">Database</span>
+          </div>
+          <div class="mapping-items" id="targetColumns">
+            <!-- Target columns will be generated by JavaScript -->
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Transformation Rules -->
+      <div class="transformation-panel">
+        <h3 class="transformation-title">⚙️ Transformation Rules</h3>
+        <div class="transformation-options">
+          <div class="transformation-option">
+            <input type="checkbox" id="trimWhitespace" checked>
+            <label for="trimWhitespace">Trim whitespace</label>
+          </div>
+          <div class="transformation-option">
+            <input type="checkbox" id="convertCase">
+            <label for="convertCase">Convert to uppercase</label>
+          </div>
+          <div class="transformation-option">
+            <input type="checkbox" id="removeSpecialChars">
+            <label for="removeSpecialChars">Remove special characters</label>
+          </div>
+          <div class="transformation-option">
+            <input type="checkbox" id="validateEmail" checked>
+            <label for="validateEmail">Validate email format</label>
+          </div>
+          <div class="transformation-option">
+            <input type="checkbox" id="formatDates" checked>
+            <label for="formatDates">Auto-format dates</label>
+          </div>
+          <div class="transformation-option">
+            <input type="checkbox" id="normalizeNumbers" checked>
+            <label for="normalizeNumbers">Normalize numbers</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <div>
+          <button class="btn btn-secondary">← Back</button>
+          <button class="btn btn-secondary" onclick="resetMappings()">🔄 Reset</button>
+        </div>
+        <div style="display: flex; gap: 1rem;">
+          <button class="btn btn-secondary">💾 Save Template</button>
+          <button class="btn btn-success" id="continueBtn" disabled>Continue →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ========================================
+    // COLUMN MAPPER COMPONENT
+    // Drag & Drop data mapping logic
+    // ========================================
+
+    // Sample CSV data
+    const sampleData = [
+      { customer_id: '12345', full_name: 'John Smith', email_address: 'john.smith@example.com', phone_number: '+1-555-0123', registration_date: '2023-01-15', total_purchases: '1250.50', country_code: 'US', is_active: 'true' },
+      { customer_id: '12346', full_name: 'Maria Garcia', email_address: 'maria.g@example.com', phone_number: '+34-600-123456', registration_date: '2023-02-20', total_purchases: '890.25', country_code: 'ES', is_active: 'true' },
+      { customer_id: '12347', full_name: 'Wei Zhang', email_address: 'wei.zhang@example.com', phone_number: '+86-138-0000-1234', registration_date: '2023-03-10', total_purchases: '2100.00', country_code: 'CN', is_active: 'false' },
+      { customer_id: '12348', full_name: 'Anna Müller', email_address: 'a.muller@example.de', phone_number: '+49-172-1234567', registration_date: '2023-04-05', total_purchases: '650.75', country_code: 'DE', is_active: 'true' },
+    ];
+
+    // Source columns from CSV
+    const sourceColumns = [
+      { name: 'customer_id', type: 'number', sample: '12345' },
+      { name: 'full_name', type: 'string', sample: 'John Smith' },
+      { name: 'email_address', type: 'string', sample: 'john@example.com' },
+      { name: 'phone_number', type: 'string', sample: '+1-555-0123' },
+      { name: 'registration_date', type: 'date', sample: '2023-01-15' },
+      { name: 'total_purchases', type: 'number', sample: '1250.50' },
+      { name: 'country_code', type: 'string', sample: 'US' },
+      { name: 'is_active', type: 'string', sample: 'true' },
+    ];
+
+    // Target schema
+    const targetColumns = [
+      { name: 'id', type: 'number', required: true },
+      { name: 'name', type: 'string', required: true },
+      { name: 'email', type: 'string', required: true },
+      { name: 'phone', type: 'string', required: false },
+      { name: 'created_at', type: 'date', required: true },
+      { name: 'revenue', type: 'number', required: false },
+      { name: 'country', type: 'string', required: false },
+      { name: 'active', type: 'string', required: false },
+    ];
+
+    // Mappings storage
+    let mappings = {};
+
+    // Initialize
+    function init() {
+      renderCSVTable();
+      renderSourceColumns();
+      renderTargetColumns();
+      updateProgress();
+    }
+
+    // Render CSV table
+    function renderCSVTable() {
+      const tbody = document.getElementById('csvBody');
+      tbody.innerHTML = sampleData.map(row => `
+        <tr>
+          ${Object.values(row).map(value => `<td>${value}</td>`).join('')}
+        </tr>
+      `).join('');
+    }
+
+    // Render source columns
+    function renderSourceColumns() {
+      const container = document.getElementById('sourceColumns');
+      container.innerHTML = sourceColumns.map(col => `
+        <div class="mapping-item" draggable="true" data-column="${col.name}" data-source="true">
+          <div class="item-header">
+            <span class="item-name">${col.name}</span>
+            <span class="item-type type-${col.type}">${col.type}</span>
+          </div>
+          <div class="item-sample">Sample: "${col.sample}"</div>
+        </div>
+      `).join('');
+
+      // Add drag event listeners
+      document.querySelectorAll('#sourceColumns .mapping-item').forEach(item => {
+        item.addEventListener('dragstart', handleDragStart);
+        item.addEventListener('dragend', handleDragEnd);
+      });
+    }
+
+    // Render target columns
+    function renderTargetColumns() {
+      const container = document.getElementById('targetColumns');
+      container.innerHTML = targetColumns.map(col => `
+        <div class="drop-zone" data-target="${col.name}" data-required="${col.required}">
+          <div class="item-header" style="width: 100%;">
+            <span class="item-name">${col.name}</span>
+            <span class="item-type type-${col.type}">${col.type}${col.required ? ' *' : ''}</span>
+          </div>
+        </div>
+      `).join('');
+
+      // Add drop event listeners
+      document.querySelectorAll('.drop-zone').forEach(zone => {
+        zone.addEventListener('dragover', handleDragOver);
+        zone.addEventListener('dragleave', handleDragLeave);
+        zone.addEventListener('drop', handleDrop);
+      });
+    }
+
+    // Drag handlers
+    let draggedElement = null;
+
+    function handleDragStart(e) {
+      draggedElement = e.target;
+      e.target.classList.add('dragging');
+      e.dataTransfer.effectAllowed = 'move';
+      e.dataTransfer.setData('text/html', e.target.innerHTML);
+    }
+
+    function handleDragEnd(e) {
+      e.target.classList.remove('dragging');
+    }
+
+    function handleDragOver(e) {
+      if (e.preventDefault) {
+        e.preventDefault();
+      }
+      e.dataTransfer.dropEffect = 'move';
+      e.target.closest('.drop-zone').classList.add('drag-over');
+      return false;
+    }
+
+    function handleDragLeave(e) {
+      e.target.closest('.drop-zone').classList.remove('drag-over');
+    }
+
+    function handleDrop(e) {
+      if (e.stopPropagation) {
+        e.stopPropagation();
+      }
+
+      const dropZone = e.target.closest('.drop-zone');
+      dropZone.classList.remove('drag-over');
+
+      if (draggedElement) {
+        const sourceColumn = draggedElement.dataset.column;
+        const targetColumn = dropZone.dataset.target;
+
+        // Create mapping
+        mappings[targetColumn] = sourceColumn;
+
+        // Update drop zone
+        dropZone.classList.add('has-item');
+        dropZone.innerHTML = draggedElement.innerHTML;
+
+        // Mark source as mapped
+        draggedElement.classList.add('mapped');
+
+        // Update progress
+        updateProgress();
+
+        console.log('Mapped:', sourceColumn, '→', targetColumn);
+      }
+
+      return false;
+    }
+
+    // Update progress
+    function updateProgress() {
+      const totalColumns = targetColumns.length;
+      const mappedColumns = Object.keys(mappings).length;
+      const unmappedColumns = totalColumns - mappedColumns;
+      const percentage = Math.round((mappedColumns / totalColumns) * 100);
+
+      document.getElementById('mappedCount').textContent = mappedColumns;
+      document.getElementById('unmappedCount').textContent = unmappedColumns;
+      document.getElementById('progressPercent').textContent = percentage + '%';
+      document.getElementById('progressFill').style.width = percentage + '%';
+
+      // Enable/disable continue button
+      const requiredMapped = targetColumns
+        .filter(col => col.required)
+        .every(col => mappings[col.name]);
+
+      document.getElementById('continueBtn').disabled = !requiredMapped;
+    }
+
+    // Reset mappings
+    function resetMappings() {
+      mappings = {};
+      renderSourceColumns();
+      renderTargetColumns();
+      updateProgress();
+    }
+
+    // Initialize on load
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>

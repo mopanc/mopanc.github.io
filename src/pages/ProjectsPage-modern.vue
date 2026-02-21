@@ -1127,7 +1127,7 @@ export default {
 }
 
 .title-highlight-compact {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #4facfe 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1372,7 +1372,7 @@ export default {
   font-weight: 700;
   color: var(--color-white);
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1506,7 +1506,7 @@ export default {
 .category-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -1624,13 +1624,13 @@ export default {
 /* Locked project elements */
 .locked-badge {
   background: rgba(255, 193, 7, 0.1) !important;
-  color: #ffc107 !important;
+  color: var(--color-warning) !important;
   border: 1px solid rgba(255, 193, 7, 0.2);
 }
 
 .locked-tech {
   background: rgba(108, 117, 125, 0.1) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
   border: 1px solid rgba(108, 117, 125, 0.2);
 }
 
@@ -1641,7 +1641,7 @@ export default {
 
 .locked-btn {
   background: rgba(108, 117, 125, 0.1) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
   border: 1px solid rgba(108, 117, 125, 0.2) !important;
   cursor: not-allowed;
   opacity: 0.6;
@@ -1676,7 +1676,7 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  color: #6c757d;
+  color: var(--color-muted);
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -1688,7 +1688,7 @@ export default {
 
 .locked-category {
   background: rgba(255, 193, 7, 0.1) !important;
-  color: #ffc107 !important;
+  color: var(--color-warning) !important;
   border: 1px solid rgba(255, 193, 7, 0.2);
 }
 
@@ -1711,7 +1711,7 @@ export default {
 
 .locked-tech-item {
   background: rgba(108, 117, 125, 0.1) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
   border: 1px solid rgba(108, 117, 125, 0.2);
 }
 
@@ -1723,7 +1723,7 @@ export default {
 .locked-tech-note {
   margin-top: 15px;
   font-style: italic;
-  color: #6c757d;
+  color: var(--color-muted);
   text-align: center;
 }
 
@@ -1736,7 +1736,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #6c757d;
+  color: var(--color-muted);
   font-size: 1rem;
   font-weight: 600;
   gap: 10px;
@@ -1749,7 +1749,7 @@ export default {
 
 .locked-overlay {
   background: rgba(108, 117, 125, 0.1) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
 }
 
 .project-card.featured {
@@ -1820,7 +1820,7 @@ export default {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   color: #333;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -1869,7 +1869,7 @@ export default {
 }
 
 .badge-personal {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
 }
 
 .badge-commercial {
@@ -1877,7 +1877,7 @@ export default {
 }
 
 .badge-academic {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
 }
 
 .badge-games {
@@ -1885,7 +1885,7 @@ export default {
 }
 
 .badge-default {
-  background: linear-gradient(135deg, #6c757d, #495057);
+  background: linear-gradient(135deg, var(--color-muted), #495057);
 }
 
 .project-title {
@@ -1964,7 +1964,7 @@ export default {
 }
 
 .btn-view:hover {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(106, 90, 205, 0.3);
 }
@@ -2004,7 +2004,7 @@ export default {
 }
 
 .locked-title {
-  color: #6c757d;
+  color: var(--color-muted);
   opacity: 0.8;
 }
 
@@ -2042,7 +2042,7 @@ export default {
 
 .locked-tech-clean {
   background: rgba(108, 117, 125, 0.1) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
   border-color: rgba(108, 117, 125, 0.2) !important;
 }
 
@@ -2072,7 +2072,7 @@ export default {
 }
 
 .btn-view-clean:hover {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   transform: translateY(-1px);
   box-shadow: 0 4px 15px rgba(106, 90, 205, 0.3);
 }
@@ -2108,7 +2108,7 @@ export default {
 
 .locked-btn-clean {
   background: rgba(108, 117, 125, 0.2) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -2490,7 +2490,7 @@ export default {
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, #ffc107, #ff9800);
+  background: linear-gradient(180deg, var(--color-warning), var(--color-warning-dark));
 }
 
 .disclaimer-header {
@@ -2498,12 +2498,12 @@ export default {
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.75rem;
-  color: #ff9800;
+  color: var(--color-warning-dark);
 }
 
 .disclaimer-header i {
   font-size: 1.25rem;
-  color: #ff9800;
+  color: var(--color-warning-dark);
 }
 
 .disclaimer-header h4 {
@@ -2539,7 +2539,7 @@ export default {
 
 .disclaimer-note i {
   font-size: 1rem;
-  color: #ff9800;
+  color: var(--color-warning-dark);
   margin-top: 0.1rem;
   flex-shrink: 0;
 }
@@ -2644,7 +2644,7 @@ export default {
 }
 
 .website-btn:hover {
-  background: linear-gradient(135deg, #4facfe, #00c6ff);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   color: var(--color-bg-primary);
 }
 
@@ -2942,7 +2942,7 @@ export default {
 .modal-category {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   color: white;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -3067,7 +3067,7 @@ export default {
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(106, 90, 205, 0.3);
 }

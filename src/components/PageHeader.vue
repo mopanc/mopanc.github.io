@@ -38,6 +38,7 @@
                 <!-- Right Actions -->
                 <div class="nav__actions">
                     <language-selector />
+                    <ThemeToggle />
                     <button @click="openTerminalCV" class="terminal-btn-header">
                         <i class="ri-terminal-line"></i>
                     </button>
@@ -63,7 +64,7 @@
 <script setup>
 import LogoVue from "./LogoVue-v2-minimalist.vue"
 import LanguageSelector from "./LanguageSelector.vue"
-// import ThemeToggle from "./ThemeToggle.vue"
+import ThemeToggle from "./ThemeToggle.vue"
 import TerminalModal from "./TerminalModal.vue"
 import { ref, onMounted, reactive, computed, onUnmounted } from "vue"
 import { useLanguage } from '../composables/useLanguage.js'
@@ -186,6 +187,7 @@ onUnmounted(() => {
   justify-self: start;
 }
 
+
 .nav__menu {
   justify-self: center;
 }
@@ -194,7 +196,7 @@ onUnmounted(() => {
   justify-self: end;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 /* Hide mobile items on desktop */
