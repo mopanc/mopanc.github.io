@@ -14,9 +14,21 @@ export function useAccessControlSimple() {
   const accessExpiry = globalAccessExpiry
   const isAdmin = globalIsAdmin
 
-  // Código MASTER para admin (só tu sabes este)
-  const MASTER_CODE = 'JM.gjpm!23A83g4x31'
-
+  const verifyMasterCode = async (code) => {
+    try {
+      const response = await fetch('/.netlify/functions/verify-master-code', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code })
+      })
+      if (!response.ok) return false
+      const data = await response.json()
+      return data?.valid === true
+    } catch (error) {
+      console.error('Erro ao verificar código master:', error)
+      return false
+    }
+  }
 
   const isAccessValid = computed(() => {
     if (!isAuthenticated.value || !accessExpiry.value) return false
@@ -188,11 +200,8 @@ export function useAccessControlSimple() {
     }
 
     // Verificação adicional de segurança
-    const storedCode = safeLocalStorage.getItem('portfolioAccessCode', COOKIE_CATEGORIES.FUNCTIONAL)
     const storedAdmin = safeLocalStorage.getItem('portfolioAdminAccess', COOKIE_CATEGORIES.FUNCTIONAL)
-    const masterCode = 'JM.gjpm!23A83g4x31'
-
-    if (storedCode !== masterCode || storedAdmin !== 'true') {
+    if (storedAdmin !== 'true') {
       throw new Error('Acesso não autorizado - apenas admin MASTER')
     }
 
@@ -272,8 +281,9 @@ export function useAccessControlSimple() {
   const validateAccessCode = async (code) => {
     const codeToCheck = code.trim()
 
-    // Verificar se é o código MASTER (sem converter para uppercase)
-    if (codeToCheck === MASTER_CODE) {
+    // Verificar se é o código MASTER via função serverless
+    const isMaster = await verifyMasterCode(codeToCheck)
+    if (isMaster) {
       console.log('🔥 CÓDIGO MASTER RECONHECIDO!')
 
       isAdmin.value = true
