@@ -1,33 +1,36 @@
 <template>
   <div class="about-page">
-    <!-- Hero Section -->
+    <!-- Professional Compact Header -->
     <section class="about-hero">
       <div class="container-wide">
-        <div class="hero-content">
-          <div class="hero-text">
-<!--            <h1 class="hero-title">Jorge Morais</h1>-->
-            <h1 class="hero-title" ref="about_hero_title">Experience & Skills</h1>
-            <p class="hero-description">
-              <span ref="about_hero_description">From military leadership to software innovation. A journey of continuous learning, technical excellence, and diverse professional experience that brings unique value to every development project.</span>
+        <div class="about-hero-layout">
+          <!-- Left Side - Title & Description -->
+          <div class="about-hero-content">
+            <h1 class="about-hero-title" ref="about_hero_title">
+              {{ translations.about_hero_title || 'Experiência' }} & <span class="about-title-highlight">Skills</span>
+            </h1>
+            <p class="about-hero-description" ref="about_hero_description">
+              {{ translations.about_hero_description || 'Da liderança militar à inovação em software.' }}
             </p>
           </div>
 
-          <div class="hero-stats">
-            <div class="stat-item">
-              <span class="stat-number">4+</span>
-              <span class="stat-label" ref="years_dev">Years Dev</span>
+          <!-- Right Side - Stats -->
+          <div class="about-hero-stats">
+            <div class="about-stat-item">
+              <span class="about-stat-number">4+</span>
+              <span class="about-stat-label" ref="years_dev">{{ translations.years_dev || 'Anos Dev' }}</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">20+</span>
-              <span class="stat-label" ref="years_experience">Years Experience</span>
+            <div class="about-stat-item">
+              <span class="about-stat-number">20+</span>
+              <span class="about-stat-label" ref="years_experience">{{ translations.years_experience || 'Anos Exp.' }}</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">3</span>
-              <span class="stat-label" ref="career_paths">Career Paths</span>
+            <div class="about-stat-item">
+              <span class="about-stat-number">3</span>
+              <span class="about-stat-label" ref="career_paths">{{ translations.career_paths || 'Carreiras' }}</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">26+</span>
-              <span class="stat-label" ref="certifications">Certifications</span>
+            <div class="about-stat-item">
+              <span class="about-stat-number">26+</span>
+              <span class="about-stat-label" ref="certifications">{{ translations.certifications || 'Certificações' }}</span>
             </div>
           </div>
         </div>
@@ -110,37 +113,11 @@
 
         <!-- Militar 2004-2008 -->
         <div v-if="activeTab === 'military'" class="tab-content">
-          <!-- Show real content only if access is valid -->
-          <template v-if="isAccessValid">
-            <div class="content-header">
-              <h2 class="section-title" ref="military_experience">{{ militaryTitle }}</h2>
-              <p class="section-subtitle" ref="military_subtitle">{{ militarySubtitle }}</p>
-            </div>
-          </template>
+          <div class="content-header">
+            <h2 class="section-title" ref="military_experience">{{ militaryTitle }}</h2>
+            <p class="section-subtitle" ref="military_subtitle">{{ militarySubtitle }}</p>
+          </div>
 
-          <!-- Show locked content -->
-          <template v-else>
-            <div class="content-header">
-              <h2 class="section-title" ref="locked_military_title">🔒 Military Experience</h2>
-              <p class="section-subtitle" ref="locked_military_subtitle">Professional military background - Access required</p>
-            </div>
-            <div class="locked-content">
-              <div class="access-warning">
-                <i class="ri-lock-line"></i>
-                <h3 ref="access_required">Access Required</h3>
-                <p ref="access_required_description">This section contains detailed military experience and achievements. Please authenticate to view complete information.</p>
-                <div class="access-features">
-                  <span class="feature-tag" ref="military_service"></span>
-                  <span class="feature-tag" ref="international_missions"></span>
-                  <span class="feature-tag" ref="specialized_training"></span>
-                  <span class="feature-tag" ref="achievements"></span>
-                </div>
-              </div>
-            </div>
-          </template>
-
-          <!-- Military Experience - Only show if access is valid -->
-          <template v-if="isAccessValid">
           <div class="military-experience">
 
             <!-- Main Story Section -->
@@ -238,7 +215,6 @@
             </div>
 
           </div>
-          </template>
         </div>
 
         <!-- McDonald's Gerente 2008-2015 -->
@@ -1380,7 +1356,7 @@ export default {
           label: this.tabTranslations.military.label,
           years: this.tabTranslations.military.years,
           icon: 'ri-shield-star-line',
-          requiresAccess: true
+          requiresAccess: false
         },
         {
           id: 'manager',
@@ -1742,17 +1718,9 @@ export default {
         return false
       }
 
-      // Only allow technical skills without authentication
-      if (tabId !== 'technical' && !this.isAccessValid) {
-        console.log('Requesting access for tab:', tabId)
-        this.showAccessRequestModal(tabId)
-        this.showUnlockTerminal()
-        return false
-      }
-
-      // Additional runtime verification
+      // Block only tabs that explicitly require access
       if (tab.requiresAccess && !this.isAccessValid) {
-        console.warn('Security: Access denied - authentication required')
+        this.showAccessRequestModal(tabId)
         this.showUnlockTerminal()
         return false
       }
@@ -2225,6 +2193,11 @@ export default {
 .about-page {
   min-height: 100vh;
   padding-top: 2rem;
+  background-image:
+    radial-gradient(circle at 12% 25%, rgba(119, 167, 255, 0.15), transparent 35%),
+    radial-gradient(circle at 88% 20%, rgba(74, 134, 232, 0.2), transparent 38%),
+    radial-gradient(circle at 75% 70%, rgba(74, 134, 232, 0.12), transparent 45%);
+  background-repeat: no-repeat;
 }
 
 .container {
@@ -2233,71 +2206,81 @@ export default {
   padding: 0 1rem;
 }
 
-/* Hero Section */
+/* Hero Section - Compact Professional */
 .about-hero {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
-  border-radius: 20px;
-  margin-bottom: 2rem;
+  background: linear-gradient(135deg, rgba(8, 12, 18, 0.95), rgba(6, 9, 14, 0.85));
+  padding: 2.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
 }
 
-.hero-content {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
+.about-hero-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
 }
 
-.hero-title {
-  font-size: 3.5rem;
+.about-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  max-width: 600px;
+  text-align: left;
+}
+
+.about-hero-title {
+  font-size: clamp(2.6rem, 4vw, 3.8rem);
   font-weight: 700;
   color: var(--color-white);
-  margin: 0 0 0.5rem 0;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.about-title-highlight {
   background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.hero-subtitle {
-  font-size: 1.5rem;
-  color: var(--color-primary);
-  margin: 0 0 1.5rem 0;
-  font-weight: 600;
-}
-
-.hero-description {
-  font-size: 1.2rem;
-  color: var(--color-text);
-  margin: 0 0 3rem 0;
+.about-hero-description {
+  font-size: 1.1rem;
+  color: rgba(210, 217, 230, 0.8);
   line-height: 1.6;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0;
+  text-align: left;
 }
 
-.hero-stats {
+.about-hero-stats {
   display: flex;
-  justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  flex-shrink: 0;
 }
 
-.stat-item {
+.about-stat-item {
   text-align: center;
 }
 
-.stat-number {
+.about-stat-number {
   display: block;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: 0.5rem;
+  line-height: 1.1;
 }
 
-.stat-label {
-  color: var(--color-text);
-  font-size: 0.9rem;
+.about-stat-label {
+  display: block;
+  color: rgba(210, 217, 230, 0.7);
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin-top: 0.2rem;
 }
 
 /* Technical Skills Button */
@@ -2423,35 +2406,51 @@ export default {
   margin-bottom: 3rem;
 }
 
+
 .nav-tabs {
   display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
   padding: 1rem;
-  border-bottom: 2px solid var(--color-border);
 }
 
 .nav-tab {
-  padding: 1rem 1.5rem;
-  background: transparent;
-  border: 2px solid var(--color-border);
+  padding: 0.85rem 1.6rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--color-text);
-  border-radius: 15px;
+  border-radius: 999px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  font-weight: 500;
-  min-width: 140px;
+  font-weight: 600;
+  min-width: 130px;
+}
+
+.nav-tab i {
+  font-size: 1.3rem;
+  color: var(--color-primary);
+}
+
+.nav-tab.active {
+  background: rgba(74, 134, 232, 0.2);
+  border-color: rgba(74, 134, 232, 0.5);
+  box-shadow: 0 12px 30px rgba(74, 134, 232, 0.35);
+  transform: translateY(-2px);
+}
+
+.nav-tab.locked {
+  opacity: 0.5;
 }
 
 .tab-info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.2rem;
+  gap: 0.1rem;
 }
 
 .tab-label {
@@ -2581,6 +2580,30 @@ export default {
   font-weight: 600;
 }
 
+.theme-light .section-title,
+.theme-light .section-subtitle {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .skill-category {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(63, 118, 210, 0.2);
+  box-shadow: 0 18px 35px rgba(43, 58, 74, 0.08);
+}
+
+.theme-light .category-title {
+  color: var(--color-bg-primary);
+  border-color: rgba(63, 118, 210, 0.2);
+}
+
+.theme-light .skill-name {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .skill-bar {
+  background: rgba(43, 58, 74, 0.08);
+}
+
 .skill-bar {
   flex: 1;
   height: 8px;
@@ -2620,6 +2643,42 @@ export default {
   color: var(--color-primary);
   font-size: 0.9rem;
   font-weight: 600;
+}
+
+.theme-light .skills-summary {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .skill-item,
+.theme-light .skill-name,
+.theme-light .skill-name-with-icon .skill-name,
+.theme-light .skill-percentage {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .skill-progress {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+.theme-light .skill-progress::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+}
+
+.theme-light .about-hero {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(238, 240, 244, 0.9));
+  border-bottom-color: rgba(60, 100, 160, 0.15);
+}
+
+.theme-light .about-hero-title {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .about-hero-description {
+  color: rgba(43, 58, 74, 0.75);
+}
+
+.theme-light .about-stat-label {
+  color: rgba(43, 58, 74, 0.6);
 }
 
 /* Military Section */
@@ -4125,33 +4184,69 @@ export default {
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
+  .about-hero {
+    padding: 1rem 0;
   }
 
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    justify-items: center;
+  .about-hero-layout {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .about-hero-content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .about-hero-title {
+    font-size: 2rem;
+  }
+
+  .about-hero-description {
+    font-size: 0.85rem;
+  }
+
+  .about-hero-stats {
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
   }
 
   .nav-tabs {
     overflow-x: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    padding-bottom: 0.5rem;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0.5rem 0 0.75rem;
+    gap: 0.5rem;
+    justify-content: flex-start;
   }
 
   .nav-tabs::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+    display: none;
   }
 
   .nav-tab {
     white-space: nowrap;
     min-width: fit-content;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
+    flex-shrink: 0;
+    padding: 0.6rem 1rem;
+    font-size: 0.82rem;
+    gap: 0.5rem;
+    border-radius: 999px;
+  }
+
+  .nav-tab i {
+    font-size: 1rem;
+  }
+
+  .tab-years {
+    display: none;
+  }
+
+  .tab-lock-enhanced {
+    display: none;
   }
 
   .certifications-grid {
@@ -4171,7 +4266,6 @@ export default {
     grid-template-columns: 1fr;
   }
 
-  /* Timeline Responsive */
   .timeline-expanded {
     width: 90vw;
     max-width: 450px;
@@ -4182,37 +4276,43 @@ export default {
   .journey-stats {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
-@media screen and (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem;
-    line-height: 1.2;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-    margin: 1.5rem 0;
-  }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+@media screen and (max-width: 640px) {
+  .about-hero-layout {
     gap: 1rem;
+  }
+
+  .about-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 0.75rem;
     justify-items: center;
   }
 
-  .stat-item {
-    text-align: center;
+  .about-stat-number {
+    font-size: 1.6rem;
   }
 
-  .stat-number {
-    font-size: 1.5rem;
+  .about-stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-hero-title {
+    font-size: 1.6rem;
+    line-height: 1.2;
   }
 
-  .stat-label {
+  .about-hero-description {
     font-size: 0.8rem;
+  }
+
+  .about-stat-label {
+    font-size: 0.7rem;
   }
 
   .timeline-item {
@@ -6339,6 +6439,38 @@ export default {
 
 .tech-group-clean:last-child {
   margin-bottom: 0;
+}
+
+.theme-light .about-page,
+.theme-light .about-page h1,
+.theme-light .about-page h2,
+.theme-light .about-page h3,
+.theme-light .about-page h4,
+.theme-light .about-page h5,
+.theme-light .about-page h6,
+.theme-light .about-page p,
+.theme-light .about-page span,
+.theme-light .about-page button,
+.theme-light .about-page a {
+  color: var(--color-text) !important;
+}
+
+.theme-light .skills-button-icon,
+.theme-light .skills-button-content h3,
+.theme-light .skills-button-content p {
+  color: var(--color-text) !important;
+}
+
+.theme-light .skill-category,
+.theme-light .skill-percentage,
+.theme-light .skill-name,
+.theme-light .skill-name-with-icon .skill-name,
+.theme-light .tech-pill {
+  color: var(--color-text) !important;
+}
+
+.theme-light .skills-button-icon {
+  background: linear-gradient(135deg, rgba(63, 118, 210, 0.15), rgba(63, 118, 210, 0.25));
 }
 
 /* Responsive adjustments */

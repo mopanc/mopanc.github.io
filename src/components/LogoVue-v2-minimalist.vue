@@ -43,20 +43,33 @@ export default {
 .logo-mark {
   width: 44px;
   height: 44px;
-  border-radius: 12px;
-  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  border: 1px solid rgba(74, 134, 232, 0.25);
   display: grid;
   place-items: center;
-  background: linear-gradient(135deg, rgba(59, 183, 163, 0.16), rgba(34, 138, 121, 0.05));
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+  background: linear-gradient(160deg, #141c26, #0c1118);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  position: relative;
   transition: all 0.35s ease;
 }
 
+.logo-mark::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 18%;
+  width: 64%;
+  height: 2.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #77a7ff, #4a86e8);
+}
+
 .logo-initials {
-  font-family: 'Goldman', sans-serif;
-  font-size: 18px;
-  letter-spacing: 1px;
-  color: var(--color-primary);
+  font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #f3f6fb;
 }
 
 .logo-text {
@@ -71,6 +84,16 @@ export default {
   font-weight: 600;
   color: var(--color-white);
   letter-spacing: 0.2px;
+  transition: color 0.3s ease;
+}
+
+:global(.theme-light) .logo-name {
+  color: var(--color-text);
+}
+
+:global(.theme-light) .logo-mark {
+  background: linear-gradient(135deg, rgba(74, 134, 232, 0.12), rgba(47, 95, 179, 0.04));
+  box-shadow: 0 4px 12px rgba(74, 134, 232, 0.12);
 }
 
 .logo-tag {

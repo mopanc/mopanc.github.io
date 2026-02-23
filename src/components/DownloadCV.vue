@@ -14,14 +14,14 @@
         <div class="cv-actions">
           <button
             @click="openTerminalCV"
-            class="btn btn--primary cv-btn terminal-btn"
+            class="btn btn--outline btn--sm"
           >
             <i class="ri-terminal-line"></i>
             {{ translations.view_terminal || 'View CV' }}
           </button>
           <button
             @click="handleDownload"
-            class="btn btn--secondary cv-btn"
+            class="btn btn--secondary btn--sm"
             :disabled="isDownloading"
           >
             <span v-if="!isDownloading">
@@ -164,21 +164,34 @@ onMounted(async () => {
 
 <style scoped>
 .download-cv-section {
-  padding: 3rem 0;
-  background: var(--color-bg-secondary);
+  padding: 4rem 0;
+  background: transparent;
 }
 
 .cv-download-card {
-  background: var(--color-bg-primary);
-  border: 2px solid var(--color-border);
-  border-radius: 12px;
+  position: relative;
+  background: linear-gradient(160deg, rgba(20, 28, 38, 0.9), rgba(10, 14, 20, 0.95));
+  border: 1px solid rgba(74, 134, 232, 0.25);
+  border-radius: 18px;
   padding: 3rem;
-  max-width: 700px;
+  max-width: 860px;
   margin: 0 auto;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
   gap: 2rem;
   transition: var(--transition);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+}
+
+.cv-download-card::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(circle at 20% 20%, rgba(74, 134, 232, 0.25), transparent 45%);
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 .cv-download-card:hover {
@@ -195,83 +208,42 @@ onMounted(async () => {
 }
 
 .cv-icon {
-  font-size: 3rem;
+  font-size: 2.6rem;
   color: var(--color-primary);
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: rgba(74, 134, 232, 0.15);
+  border: 1px solid rgba(74, 134, 232, 0.25);
 }
 
 .cv-text h3 {
   color: var(--color-white);
-  font-size: var(--fs-xl);
+  font-size: clamp(1.4rem, 2.2vw, 1.8rem);
   margin-bottom: 0.5rem;
 }
 
 .cv-text p {
   color: var(--color-text);
-  font-size: var(--fs-md);
-  line-height: 1.5;
+  font-size: 1.1rem;
+  line-height: 1.6;
 }
 
 .cv-actions {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  min-width: 200px;
+  min-width: 220px;
 }
 
-.cv-btn {
-  padding: 1rem 1.5rem;
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-semibold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  white-space: nowrap;
-}
-
-.cv-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.terminal-btn {
-  background: linear-gradient(135deg, #1e1e1e 0%, #2d2d2d 100%);
-  border: 1px solid #4facfe;
-  color: #4facfe;
-  position: relative;
-  overflow: hidden;
-}
-
-.terminal-btn:hover {
-  background: linear-gradient(135deg, #2d2d2d 0%, #1e1e1e 100%);
-  border-color: #4facfe;
-  box-shadow: 0 0 20px rgba(66, 146, 168, 0.3);
-  transform: translateY(-1px);
-}
-
-.terminal-btn:active {
-  transform: translateY(0);
-}
-
-.terminal-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 196, 255, 0.1), transparent);
-  transition: left 0.5s;
-}
-
-.terminal-btn:hover::before {
-  left: 100%;
-}
+/* btn--outline and btn--secondary styles from global design system */
 
 /* Alternatives */
 .cv-alternatives {
   text-align: center;
-  margin-top: 2rem;
+  margin-top: 2.5rem;
 }
 
 .alternatives-text {
@@ -296,15 +268,39 @@ onMounted(async () => {
   font-size: var(--fs-sm);
   font-weight: var(--fw-medium);
   transition: var(--transition);
+  padding: 0.6rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: rgba(255, 255, 255, 0.03);
 }
 
 .alternative-link:hover {
   color: var(--color-white);
   transform: translateY(-1px);
+  border-color: var(--color-primary);
 }
 
 .alternative-link i {
   font-size: 1.2rem;
+}
+
+.theme-light .cv-download-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(237, 241, 246, 0.92));
+  border-color: rgba(63, 118, 210, 0.2);
+  box-shadow: 0 26px 50px rgba(30, 42, 56, 0.12);
+}
+
+.theme-light .cv-icon {
+  background: rgba(63, 118, 210, 0.12);
+  border-color: rgba(63, 118, 210, 0.25);
+  color: var(--color-primary);
+}
+
+
+.theme-light .alternative-link {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(63, 118, 210, 0.18);
+  color: var(--color-primary);
 }
 
 /* Toast Notification */
@@ -383,7 +379,7 @@ onMounted(async () => {
 /* Responsive Design */
 @media screen and (max-width: 768px) {
   .cv-download-card {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     text-align: center;
     padding: 2rem;
   }

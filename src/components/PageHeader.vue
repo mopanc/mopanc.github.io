@@ -236,6 +236,19 @@ onUnmounted(() => {
 }
 
 
+/* Light mode terminal button */
+:global(.theme-light) .terminal-btn-header {
+  background: rgba(63, 118, 210, 0.06);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+:global(.theme-light) .terminal-btn-header:hover {
+  background: var(--color-primary);
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(63, 118, 210, 0.3);
+}
+
 /* Pulse animation for access required */
 @keyframes pulse {
   0% { transform: scale(1); }

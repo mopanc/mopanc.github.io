@@ -1,5 +1,5 @@
 <template>
-  <button class="theme-toggle" @click="toggleTheme" :aria-pressed="isLight">
+  <button class="theme-toggle" @click="toggleTheme($event)" :aria-pressed="isLight">
     <i :class="isLight ? 'ri-moon-line' : 'ri-sun-line'"></i>
     <span>{{ isLight ? 'Dark' : 'Light' }}</span>
   </button>
@@ -20,9 +20,20 @@ export default {
       localStorage.setItem('theme', light ? 'light' : 'dark')
     }
 
-    const toggleTheme = () => {
+    const toggleTheme = (event) => {
       const nextLight = !isLight.value
-      applyTheme(nextLight)
+
+      // Set the circle origin to the button center
+      const btn = event.currentTarget
+      const rect = btn.getBoundingClientRect()
+      document.documentElement.style.setProperty('--vt-x', `${Math.round(rect.left + rect.width / 2)}px`)
+      document.documentElement.style.setProperty('--vt-y', `${Math.round(rect.top + rect.height / 2)}px`)
+
+      if (!document.startViewTransition) {
+        applyTheme(nextLight)
+        return
+      }
+      document.startViewTransition(() => applyTheme(nextLight))
     }
 
     onMounted(() => {

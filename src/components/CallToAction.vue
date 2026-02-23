@@ -12,11 +12,11 @@
           </div>
         </div>
         <div class="cta-actions">
-          <a href="/contact" class="btn btn--primary cta-btn">
+          <a href="/contact" class="btn btn--primary btn--lg">
             <i class="ri-message-line"></i>
             {{ translations.get_in_touch || 'Get in Touch' }}
           </a>
-          <a href="/projects" class="btn btn--secondary cta-btn">
+          <a href="/projects" class="btn btn--secondary btn--lg">
             <i class="ri-folder-line"></i>
             {{ translations.view_projects || 'View Projects' }}
           </a>
@@ -97,36 +97,24 @@ onMounted(async () => {
 <style scoped>
 .cta-section {
   padding: 5rem 0;
-  background: linear-gradient(135deg, var(--color-bg-primary) 0%, var(--color-bg-secondary) 100%);
+  background: transparent;
   position: relative;
-  overflow: hidden;
-}
-
-.cta-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9InJnYmEoMTk1LCAxNzYsIDE0NSwgMC4wNSkiIGZpbGwtcnVsZT0ibm9uemVybyI+PGNpcmNsZSBjeD0iMzAiIGN5PSIzMCIgcj0iNCIvPjwvZz48L2c+PC9zdmc+');
-  opacity: 0.3;
-  pointer-events: none;
 }
 
 /* Main CTA Card */
 .cta-card {
-  background: var(--color-bg-primary);
-  border: 2px solid var(--color-primary);
-  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(20, 28, 38, 0.92), rgba(10, 14, 20, 0.98));
+  border: 1px solid rgba(74, 134, 232, 0.25);
+  border-radius: 20px;
   padding: 3rem;
-  margin-bottom: 3rem;
-  display: flex;
+  margin-bottom: 2rem;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
   gap: 2rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.3);
 }
 
 .cta-card::before {
@@ -141,28 +129,33 @@ onMounted(async () => {
 }
 
 .cta-content {
-  flex: 1;
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
 
 .cta-icon {
-  font-size: 4rem;
+  font-size: 2.6rem;
   color: var(--color-primary);
-  animation: pulse 2s ease-in-out infinite;
+  width: 64px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: rgba(74, 134, 232, 0.15);
+  border: 1px solid rgba(74, 134, 232, 0.25);
 }
 
 .cta-title {
   color: var(--color-white);
-  font-size: var(--fs-xxl);
+  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
   margin-bottom: 0.5rem;
   font-weight: var(--fw-bold);
 }
 
 .cta-description {
   color: var(--color-text);
-  font-size: var(--fs-md);
+  font-size: 1.1rem;
   line-height: 1.6;
 }
 
@@ -170,18 +163,10 @@ onMounted(async () => {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  min-width: 200px;
+  min-width: 220px;
 }
 
-.cta-btn {
-  padding: 1rem 2rem;
-  font-weight: var(--fw-semibold);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  white-space: nowrap;
-}
+/* btn sizing handled by global btn--lg modifier */
 
 /* Services Highlight */
 .services-highlight {
@@ -301,7 +286,7 @@ onMounted(async () => {
 /* Responsive Design */
 @media screen and (max-width: 968px) {
   .cta-card {
-    flex-direction: column;
+    grid-template-columns: 1fr;
     text-align: center;
     padding: 2rem;
   }
@@ -313,6 +298,18 @@ onMounted(async () => {
   .services-grid {
     grid-template-columns: 1fr;
   }
+}
+
+.theme-light .cta-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(237, 241, 246, 0.92));
+  border-color: rgba(63, 118, 210, 0.2);
+  box-shadow: 0 26px 50px rgba(30, 42, 56, 0.12);
+}
+
+.theme-light .cta-icon {
+  background: rgba(63, 118, 210, 0.12);
+  border-color: rgba(63, 118, 210, 0.25);
+  color: var(--color-primary);
 }
 
 @media screen and (max-width: 768px) {
@@ -349,7 +346,7 @@ onMounted(async () => {
     gap: 0.75rem;
   }
 
-  .cta-btn {
+  .btn--lg {
     padding: 0.8rem 1.5rem;
     font-size: var(--fs-sm);
   }

@@ -10,11 +10,11 @@
 
         <!-- Call to Action Buttons -->
         <div class="cta-buttons">
-          <button @click="openSchedule" class="cta-btn cta-primary">
+          <button @click="openSchedule" class="btn btn--primary btn--pill">
             <i class="ri-calendar-line"></i>
             <span ref="schedule_meeting">Schedule a Meeting</span>
           </button>
-          <a href="mailto:jorgemopanc@icloud.com" class="cta-btn cta-secondary">
+          <a href="mailto:jorgemopanc@icloud.com" class="btn btn--secondary btn--pill">
             <i class="ri-mail-line"></i>
             <span ref="send_email_cta">Send Email</span>
           </a>
@@ -29,6 +29,26 @@
             <p class="form-subtitle" ref="form_subtitle">Let's discuss your project and how I can help bring it to life.</p>
           </div>
           <ContactForm />
+        </div>
+
+        <!-- Mobile Social Strip (visible only on mobile) -->
+        <div class="mobile-social-strip">
+          <a href="https://www.linkedin.com/in/jorge-mopanc/" class="mobile-social-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-linkedin-fill"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a href="https://github.com/mopanc" class="mobile-social-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-github-fill"></i>
+            <span>GitHub</span>
+          </a>
+          <a href="https://codepen.io/mopanc" class="mobile-social-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-codepen-line"></i>
+            <span>CodePen</span>
+          </a>
+          <a href="https://twitter.com/JorgeMo56542670" class="mobile-social-link" target="_blank" rel="noopener noreferrer">
+            <i class="ri-twitter-fill"></i>
+            <span>Twitter</span>
+          </a>
         </div>
 
         <!-- Secondary Information Grid -->
@@ -152,7 +172,7 @@
               <!-- Option 1: Calendly Integration (if you have a Calendly account) -->
               <div class="schedule-option" v-if="calendlyUrl">
                 <p ref="schedule_calendly_desc">Select a convenient time slot from my calendar:</p>
-                <a :href="calendlyUrl" target="_blank" rel="noopener noreferrer" class="schedule-calendly-btn">
+                <a :href="calendlyUrl" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
                   <i class="ri-calendar-check-line"></i>
                   <span ref="open_calendar">Open Calendar</span>
                 </a>
@@ -253,7 +273,7 @@
                     ></textarea>
                   </div>
 
-                  <button type="submit" class="submit-meeting-btn" :disabled="isSubmitting">
+                  <button type="submit" class="btn btn--primary" style="width:100%;margin-top:0.5rem" :disabled="isSubmitting">
                     <i v-if="!isSubmitting" class="ri-send-plane-fill"></i>
                     <i v-else class="ri-loader-4-line animate-spin"></i>
                     <span ref="submit_meeting">{{ isSubmitting ? 'Sending...' : 'Request Meeting' }}</span>
@@ -446,105 +466,91 @@ export default {
 
 <style scoped>
 .contact-page {
-  padding: 4rem 0;
+  padding: 5rem 0 3rem;
   min-height: 100vh;
+  position: relative;
+  background: var(--color-bg-primary);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(119, 167, 255, 0.18), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(74, 134, 232, 0.25), transparent 45%),
+    radial-gradient(circle at 70% 80%, rgba(63, 118, 210, 0.13), transparent 55%);
+}
+
+.contact-page::after {
+  content: "";
+  position: absolute;
+  inset: 10% 5% 20% 5%;
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.3);
 }
 
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 2rem;
+  position: relative;
+  z-index: 1;
 }
 
 .contact-header {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .contact-title {
-  font-size: 3.5rem;
+  font-size: clamp(2.8rem, 4.5vw, 3.8rem);
   font-weight: var(--fw-bold);
   color: var(--color-white);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
 }
 
 .contact-subtitle {
-  font-size: 1.25rem;
-  color: var(--color-text);
-  max-width: 600px;
-  margin: 0 auto 2rem;
-  line-height: 1.6;
+  font-size: 1.2rem;
+  color: rgba(210, 217, 230, 0.85);
+  max-width: 620px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
 }
 
 /* CTA Buttons */
 .cta-buttons {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 2rem;
-}
-
-.cta-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  border-radius: 12px;
-  font-size: 1.1rem;
-  font-weight: var(--fw-semibold);
-  text-decoration: none;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  border: none;
-  font-family: inherit;
-}
-
-.cta-primary {
-  background: linear-gradient(135deg, var(--color-primary), #9d8660);
-  color: var(--color-bg-primary);
-  box-shadow: 0 4px 20px rgba(195, 176, 145, 0.3);
-}
-
-.cta-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 30px rgba(195, 176, 145, 0.4);
-}
-
-.cta-secondary {
-  background: var(--color-bg-secondary);
-  color: var(--color-white);
-  border: 2px solid var(--color-border);
-}
-
-.cta-secondary:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
-
-.cta-btn i {
-  font-size: 1.3rem;
-}
-
-.cta-btn:active {
-  transform: translateY(0);
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .contact-content {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
+  gap: 2.25rem;
   margin-bottom: 4rem;
 }
 
-/* Main Contact Form - Prominent */
 .main-contact-form {
-  background: var(--color-bg-secondary);
-  border-radius: 20px;
+  background: linear-gradient(160deg, rgba(12, 15, 20, 0.96), rgba(10, 12, 18, 0.9));
+  border-radius: 24px;
   padding: 3rem;
-  border: 1px solid var(--color-border);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.55);
+  position: relative;
+  overflow: hidden;
+}
+
+.main-contact-form::after {
+  content: "";
+  position: absolute;
+  inset: 1.5rem;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+  box-shadow: inset 0 0 40px rgba(74, 134, 232, 0.15);
 }
 
 .form-header {
@@ -554,37 +560,38 @@ export default {
 
 .form-header h2 {
   color: var(--color-white);
-  font-size: 2rem;
+  font-size: 2.2rem;
   font-weight: var(--fw-bold);
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
 .form-subtitle {
-  color: var(--color-text);
+  color: rgba(210, 217, 230, 0.85);
   font-size: 1.1rem;
-  line-height: 1.5;
-  max-width: 500px;
+  line-height: 1.6;
+  max-width: 540px;
   margin: 0 auto;
 }
 
 /* Information Grid - Compact */
 .info-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
 }
 
 .info-card {
-  background: var(--color-bg-secondary);
-  border-radius: 12px;
-  padding: 1.5rem;
-  border: 1px solid var(--color-border);
-  transition: var(--transition);
+  background: linear-gradient(160deg, rgba(15, 18, 28, 0.92), rgba(12, 13, 18, 0.95));
+  border-radius: 20px;
+  padding: 1.75rem;
+  border: 1px solid rgba(74, 134, 232, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
 }
 
 .info-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transform: translateY(-4px);
+  box-shadow: 0 30px 55px rgba(74, 134, 232, 0.25);
 }
 
 .info-header {
@@ -595,13 +602,13 @@ export default {
 }
 
 .info-header i {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   color: var(--color-primary);
 }
 
 .info-header h4 {
   color: var(--color-white);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: var(--fw-semibold);
   margin: 0;
 }
@@ -630,7 +637,7 @@ export default {
 /* Social Links - Compact */
 .social-compact-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
 }
 
@@ -638,18 +645,18 @@ export default {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem;
-  background: rgba(195, 176, 145, 0.05);
-  border-radius: 8px;
+  padding: 0.9rem 1rem;
+  border-radius: 12px;
   text-decoration: none;
-  transition: var(--transition);
-  border: 1px solid transparent;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
 }
 
 .social-compact:hover {
-  background: rgba(195, 176, 145, 0.1);
-  border-color: var(--color-primary);
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 15px 25px rgba(74, 134, 232, 0.25);
 }
 
 .social-compact i {
@@ -659,7 +666,7 @@ export default {
 
 .social-compact span {
   color: var(--color-white);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: var(--fw-medium);
 }
 
@@ -672,22 +679,24 @@ export default {
 
 .service-compact {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1rem;
-  padding: 0.75rem;
-  background: rgba(195, 176, 145, 0.03);
-  border-radius: 8px;
-  transition: var(--transition);
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.3s ease, border-color 0.3s ease;
 }
 
 .service-compact:hover {
-  background: rgba(195, 176, 145, 0.08);
+  transform: translateY(-3px);
+  border-color: rgba(74, 134, 232, 0.4);
+  box-shadow: 0 10px 30px rgba(74, 134, 232, 0.2);
 }
 
 .service-compact i {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   color: var(--color-primary);
-  margin-top: 0.1rem;
   flex-shrink: 0;
 }
 
@@ -705,9 +714,13 @@ export default {
 
 .service-tech {
   display: block;
-  color: var(--color-text);
-  font-size: 0.8rem;
-  opacity: 0.9;
+  color: rgba(210, 217, 230, 0.8);
+  font-size: 0.85rem;
+}
+
+/* Mobile Social Strip */
+.mobile-social-strip {
+  display: none;
 }
 
 /* Map Section */
@@ -718,20 +731,25 @@ export default {
 .map-section h3 {
   color: var(--color-white);
   font-size: 1.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .map-container {
   background: var(--color-bg-secondary);
-  border-radius: 16px;
+  border-radius: 18px;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
   .info-grid {
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   }
 }
 
@@ -741,36 +759,108 @@ export default {
   }
 
   .contact-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .contact-subtitle {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin-bottom: 1.8rem;
+  }
+
+  .contact-header {
+    margin-bottom: 2rem;
   }
 
   .main-contact-form {
-    padding: 2rem;
+    padding: 1.5rem;
   }
 
-  .form-header h2 {
-    font-size: 1.75rem;
+  .info-grid {
+    display: none;
   }
 
-  .form-subtitle {
-    font-size: 1rem;
+  .map-section {
+    display: none;
+  }
+
+  .contact-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  /* Mobile Social Strip */
+  .mobile-social-strip {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.75rem;
+  }
+
+  .mobile-social-link {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.9rem 0.5rem;
+    border-radius: 14px;
+    text-decoration: none;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+
+  .mobile-social-link:hover {
+    transform: translateY(-2px);
+    border-color: rgba(74, 134, 232, 0.4);
+  }
+
+  .mobile-social-link i {
+    font-size: 1.3rem;
+    color: var(--color-primary);
+  }
+
+  .mobile-social-link span {
+    font-size: 0.75rem;
+    color: var(--color-text);
+    font-weight: 500;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-title {
+    font-size: 1.8rem;
+  }
+
+  .contact-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .contact-header {
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .cta-buttons .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .main-contact-form {
+    padding: 1.25rem;
+    border-radius: 16px;
   }
 
   .info-grid {
     grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-
-  .info-card {
-    padding: 1.25rem;
   }
 
   .social-compact-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -784,11 +874,11 @@ export default {
   }
 
   .form-header h2 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 
-  .info-header h4 {
-    font-size: 1rem;
+  .contact-content {
+    gap: 1.5rem;
   }
 
   .service-compact {
@@ -803,21 +893,89 @@ export default {
 }
 
 /* Theme adjustments */
-.theme-light .info-card,
-.theme-light .main-contact-form,
+.theme-light .contact-page {
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(63, 118, 210, 0.08), transparent 40%),
+    radial-gradient(circle at 80% 10%, rgba(63, 118, 210, 0.1), transparent 45%),
+    radial-gradient(circle at 70% 80%, rgba(63, 118, 210, 0.06), transparent 55%);
+}
+
+/* Hardcoded light-gray texts: contact subtitle, form subtitle, service tech */
+.theme-light .contact-subtitle,
+.theme-light .form-subtitle,
+.theme-light .service-tech {
+  color: #6a7586;
+}
+
+
+.theme-light .main-contact-form {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(240, 244, 250, 0.9));
+  border-color: rgba(74, 134, 232, 0.2);
+  box-shadow: 0 20px 45px rgba(15, 23, 33, 0.15);
+}
+
+.theme-light .info-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(195, 203, 216, 0.6);
+  box-shadow: 0 10px 25px rgba(18, 25, 38, 0.1);
+}
+
 .theme-light .map-container {
-  background: var(--color-bg-secondary);
-  border-color: var(--color-border);
+  border-color: rgba(195, 203, 216, 0.6);
+  box-shadow: 0 20px 40px rgba(15, 23, 33, 0.15);
 }
 
 .theme-light .social-compact,
 .theme-light .service-compact {
-  background: rgba(139, 122, 94, 0.05);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(195, 203, 216, 0.5);
 }
 
 .theme-light .social-compact:hover,
 .theme-light .service-compact:hover {
-  background: rgba(139, 122, 94, 0.1);
+  box-shadow: 0 8px 18px rgba(15, 23, 33, 0.15);
+}
+
+.theme-light .mobile-social-link {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(195, 203, 216, 0.5);
+}
+
+.theme-light .mobile-social-link span {
+  color: var(--color-text);
+}
+
+/* Fix: form group inputs — color was var(--color-bg-primary) = #f3f5f8 in lightmode (invisible) */
+.theme-light .form-group input,
+.theme-light .form-group select,
+.theme-light .form-group textarea {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(195, 203, 216, 0.8);
+  color: var(--color-text);
+  box-shadow: none;
+}
+
+.theme-light .form-group label {
+  color: #1e2a38;
+}
+
+.theme-light .form-group input::placeholder,
+.theme-light .form-group textarea::placeholder {
+  color: rgba(43, 58, 74, 0.5);
+}
+
+/* Schedule modal header in lightmode */
+.theme-light .schedule-header {
+  background: linear-gradient(135deg, rgba(240, 244, 250, 0.98), rgba(228, 235, 245, 0.95));
+  border-bottom-color: rgba(195, 203, 216, 0.6);
+}
+
+.theme-light .schedule-option p {
+  color: #6a7586;
+}
+
+.theme-light .close-modal-btn:hover {
+  background: rgba(63, 118, 210, 0.1);
 }
 
 /* Schedule Meeting Modal */
@@ -839,13 +997,13 @@ export default {
 
 .schedule-modal {
   background: var(--color-bg-secondary);
-  border-radius: 20px;
-  max-width: 600px;
+  border-radius: 24px;
+  max-width: 640px;
   width: 100%;
   max-height: 90vh;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-  border: 1px solid var(--color-border);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   z-index: 100000;
   display: flex;
@@ -860,7 +1018,7 @@ export default {
   justify-content: space-between;
   position: sticky;
   top: 0;
-  background: var(--color-bg-secondary);
+  background: linear-gradient(135deg, rgba(12, 16, 24, 0.95), rgba(10, 12, 18, 0.9));
   z-index: 1;
 }
 
@@ -901,36 +1059,15 @@ export default {
 }
 
 .schedule-option p {
-  color: var(--color-text);
+  color: rgba(210, 217, 230, 0.9);
   margin-bottom: 1.5rem;
   font-size: 1rem;
   line-height: 1.6;
 }
 
-/* Calendly Button */
-.schedule-calendly-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--color-primary), #9d8660);
-  color: var(--color-bg-primary);
-  text-decoration: none;
-  border-radius: 12px;
-  font-weight: var(--fw-semibold);
-  font-size: 1.1rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(195, 176, 145, 0.3);
-}
+/* calendly btn now uses global btn--primary */
 
-.schedule-calendly-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 30px rgba(195, 176, 145, 0.4);
-}
-
-.schedule-calendly-btn i {
-  font-size: 1.3rem;
-}
+/* submit-meeting-btn now uses global btn--primary */
 
 /* Meeting Request Form */
 .meeting-request-form {
@@ -954,14 +1091,15 @@ export default {
 .form-group input,
 .form-group select,
 .form-group textarea {
-  padding: 0.875rem 1.25rem;
-  background: var(--color-bg-primary);
-  border: 1px solid var(--color-border);
-  border-radius: 10px;
+  padding: 0.95rem 1.35rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
   color: var(--color-white);
   font-size: 1rem;
   font-family: inherit;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
 }
 
 .form-group input:focus,
@@ -974,8 +1112,7 @@ export default {
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-  color: var(--color-text);
-  opacity: 0.6;
+  color: rgba(210, 217, 230, 0.7);
 }
 
 .form-group textarea {
@@ -989,37 +1126,7 @@ export default {
   gap: 1rem;
 }
 
-.submit-meeting-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  background: linear-gradient(135deg, var(--color-primary), #9d8660);
-  color: var(--color-bg-primary);
-  border: none;
-  border-radius: 12px;
-  font-weight: var(--fw-semibold);
-  font-size: 1.1rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 0.5rem;
-  box-shadow: 0 4px 20px rgba(195, 176, 145, 0.3);
-}
-
-.submit-meeting-btn:hover:not(:disabled) {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 30px rgba(195, 176, 145, 0.4);
-}
-
-.submit-meeting-btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-.submit-meeting-btn i {
-  font-size: 1.2rem;
-}
+/* submit-meeting-btn replaced with global btn--primary */
 
 /* Success Message */
 .success-message {
@@ -1108,7 +1215,7 @@ export default {
     align-items: stretch;
   }
 
-  .cta-btn {
+  .cta-buttons .btn {
     width: 100%;
     justify-content: center;
   }
