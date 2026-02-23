@@ -6,6 +6,9 @@ export default {
   projects: 'Projetos',
   certificates: 'Sobre mim',
   title: `Jorge Morais<br><span class="home__title-subtitle">Full Stack Developer</span>`,
+  eyebrow: "Engenharia × Produto",
+  btn_view_projects: "Ver Projetos",
+  btn_lets_talk: "Falar Comigo",
   presentation: "Full Stack Developer com mais de 5 anos de experiência profissional no desenvolvimento de aplicações web modernas utilizando React, Vue.js, Node.js e TypeScript. Experiência comprovada em interfaces frontend responsivas, APIs backend robustas e arquitetura de bases de dados. Histórico de trabalho em setores diversificados, incluindo e-commerce, projetos governamentais e sistemas industriais com integração de hardware. Competências técnicas complementadas por soft skills em gestão de equipas e comunicação empresarial, desenvolvidas através de cargos de liderança. Especialização em código limpo, boas práticas de desenvolvimento e implementação de soluções escaláveis.",
   experience: "Anos de experiência",
   projects_completed: "Projetos terminados",
@@ -13,7 +16,7 @@ export default {
 
   about_me: "Sobre mim",
   who_i_am: "Quem eu sou!",
-  Technologies: "Tecnologias que tenho trabalhado recentemente:",
+  Technologies: "Tecnologias recentes",
   title_about_me: "FullStack Developer",
   description_about_me: "Sou programador fullstack com experiência sólida em Node.js e React.js, com ou sem TypeScript. Trabalho também com C, em particular na integração de hardware e protocolos como ccTalk e também REST, Socket.IO e MQTT. Já desenvolvi projetos em PHP, explorei frameworks como Vue.js, AngularJS, Next.js, Vite e Svelte, e também experimentei Kotlin em contextos específicos. Além disso, utilizo Python para resolver problemas práticos, automatizar tarefas e explorar áreas como IA/ML. Gosto de experimentar novas tecnologias, não só pela curiosidade, mas porque cada experiência ajuda-me a ser melhor nas ferramentas que uso no dia a dia.",
   know_more: "Saiba mais",
@@ -22,17 +25,17 @@ export default {
   subtitle_experience: "Trabalho profissional",
   profissional_experience: "Experiência profissional",
   
-  title_balancas: "Senior Full Stack Developer na Balanças Marques",
-  description_balancas: "Desenvolvimento da plataforma Qore (Node.js/React/TypeScript) para gestão de POS e negócios, otimizando consumo de memória de 3GB para 850MB. Construção da API Alice Payment Machine em C com protocolos CCTalk/ID003 para validadores de notas e mecanismos de moedas. Melhoria do pipeline de processamento massivo de dados de 2 dias para 2 horas através de processamento concorrente. Desenvolvimento de sistema de monitorização IoT em tempo real usando MQTT e Socket.IO.",
-  dates_balancas: "2023 - Present",
+  title_balancas: "Senior FullStack Developer na Balanças Marques",
+  description_balancas: `<li>Desenvolvimento da <strong>API Alice Payment Machine</strong> em C com gestão manual de memória (malloc/free), validada com Valgrind para zero memory leaks, implementando protocolos CCTalk/ID003 para validadores de notas e placas de controlo</li><li>Otimização do footprint de memória da <strong>plataforma Qore</strong>, reduzindo o consumo de <strong>3GB para 850MB (redução de 72%)</strong> através de estruturas de dados eficientes e memory profiling</li><li>Otimização do pipeline de processamento massivo de dados para <strong>900k+ documentos POS</strong>, reduzindo o tempo de execução de <strong>2 dias para 2h (96% mais rápido)</strong> via processamento concorrente e multithreading</li><li>Desenvolvimento de <strong>plataforma de AI empresarial</strong> com permissões RBAC e níveis de acesso a documentação técnica e base de conhecimento de produtos — sistema RAG com embeddings, pesquisa vetorial e recuperação semântica que entrega guias passo a passo, imagens e vídeos no chat a clientes, suporte técnico, técnicos, comercial e desenvolvimento; inclui gestão de cache para controlo de custos, privacidade e insights de conversas</li>`,
+  dates_balancas: "Jun 2023 - Presente",
 
   title_frontkom: "Frontend Developer na Frontkom",
-  description_frontkom: "Desenvolvimento de websites empresariais para clientes noruegueses usando React, Next.js e Vue.js com Drupal headless CMS. Implementação de componentes responsivos e conformes com WCAG AA com otimização de performance via code splitting e lazy loading. Colaboração remota com equipas internacionais usando metodologias Agile.",
-  dates_frontkom: "2022 - 2023",
+  description_frontkom: `<li>Desenvolvimento de <strong>10+ websites empresariais</strong> para clientes noruegueses usando React e Drupal headless CMS</li><li>Implementação de componentes responsivos e conformes com <strong>WCAG AA</strong> com otimização de performance via code splitting e lazy loading</li><li>Colaboração com equipa internacional em <strong>3 fusos horários</strong> usando metodologias Agile/Scrum</li>`,
+  dates_frontkom: "Out 2022 - Mai 2023",
 
   title_netgocio: "Web Developer na Netgócio",
-  description_netgocio: "Desenvolvimento de plataformas e-commerce B2C, landing pages e websites institucionais usando PHP, MySQL e Bootstrap. Otimização de página de catálogo de produtos com grandes conjuntos de dados, reduzindo tempo de carregamento de 3.5s para 0.8s através de implementação de paginação e lazy loading. Gestão de mais de 400 hospedagens com cPanel, configuração de domínios, certificados SSL e otimização de servidores Nginx.",
-  dates_netgocio: "2021 - 2022",
+  description_netgocio: `<li>Gestão de <strong>400+ deployments de hosting</strong> para plataformas e-commerce B2B/B2C com 10k+ utilizadores mensais e 99.9% de uptime</li><li>Otimização de queries MySQL, reduzindo o carregamento de página de <strong>3.5s para 0.8s (77%)</strong>, e desenvolvimento de componentes Vue.js personalizados</li><li>Implementação de sistema de design responsivo usando Sass e Bootstrap com abordagem mobile-first</li>`,
+  dates_netgocio: "Ago 2021 - Out 2022",
 
 
   services: "Experiência de trabalho",
@@ -105,7 +108,8 @@ export default {
   calc_title: "Calculadora",
   calc_description: "Calculadora feita em javascript, foi um projeto simples mas também gostei de fazer e o design ficou interessante.",
   view_project: "Ver projeto",
-  view_case_study: "Ver Case Study",
+  view_case_study: "Ver caso de estudo",
+  view_details: "Ver detalhes",
 
   not_found_title: "Página não encontrada",
   not_found_description: "Pedimos desculpa, a página que procura não foi encontrada, o link que endereço que tentou aceder ou está errado ou não existe mais. Por favor tente novamente ou volte a página principal.",
@@ -236,32 +240,32 @@ export default {
   dataconvert_description: "Plataforma SaaS para automatização de processamento de dados corporativos com sistema multi-tenant. Combina extração inteligente de tabelas PDF através de IA com mapeamento visual de colunas.",
 
   // Call to Action section
-  cta_title: "Pronto para Começar o Seu Projeto?",
-  cta_description: "Vamos trabalhar juntos para dar vida às suas ideias com tecnologias web modernas.",
-  get_in_touch: "Entrar em Contacto",
+  cta_title: "Precisa de um engenheiro sénior?",
+  cta_description: "Construo sistemas web de produção com requisitos claros, entrega disciplinada e manutenção a longo prazo.",
+  get_in_touch: "Contacto",
   view_projects: "Ver Projetos",
 
   // Contact Form
   lets_work_together: "Vamos trabalhar juntos",
   name: "Nome",
-  name_placeholder: "O seu nome completo",
+  name_placeholder: "Nome completo",
   email: "Email",
-  email_placeholder: "o.seu.email@exemplo.com",
+  email_placeholder: "Email profissional",
   subject: "Assunto",
-  select_subject: "Selecione um assunto",
+  select_subject: "Selecionar tema",
   portfolio_access: "Pedido de Acesso ao Portfólio",
-  job_opportunity: "Oportunidade de Trabalho",
-  project_discussion: "Discussão de Projeto",
-  collaboration: "Colaboração",
+  job_opportunity: "Recrutamento",
+  project_discussion: "Pedido de projeto",
+  collaboration: "Parceria",
   other: "Outro",
   message: "Mensagem",
-  message_placeholder: "Conte-me sobre o seu projeto ou como posso ajudá-lo...",
-  send_message: "Enviar Mensagem",
+  message_placeholder: "Descreva brevemente o âmbito, prazos e constraints.",
+  send_message: "Enviar",
   sending: "A enviar...",
 
   // Access Request Form
   access_request_title: "Pedido de Acesso ao Portfólio",
-  access_request_info: "Para proteger informações sensíveis, o conteúdo detalhado do portfólio requer verificação.",
+  access_request_info: "O conteúdo detalhado do portfólio requer verificação.",
   company: "Empresa/Organização",
   company_placeholder: "A sua empresa ou organização",
   position: "O seu Cargo",
@@ -272,7 +276,7 @@ export default {
   project_evaluation: "Avaliação de Projeto",
   partnership: "Discussão de Parceria",
   reference_check: "Verificação de Referências",
-  access_message_placeholder: "Por favor, forneça contexto adicional sobre o seu pedido e cronograma...",
+  access_message_placeholder: "Forneça contexto adicional sobre o pedido e o cronograma.",
 
   // Form Validation
   name_required: "Nome é obrigatório",
@@ -290,9 +294,9 @@ export default {
   error_title: "Erro",
   message_sent: "Mensagem enviada com sucesso! Entrarei em contacto em breve.",
   message_error: "Desculpe, houve um erro ao enviar a sua mensagem. Por favor, tente novamente.",
-  access_request_sent: "Pedido de acesso enviado com sucesso!",
-  access_request_confirmation: "O seu pedido foi enviado. Receberá um código de acesso por email se aprovado.",
-  access_request_note: "Por favor, verifique o seu email em 24-48 horas para uma resposta.",
+  access_request_sent: "Pedido de acesso enviado com sucesso.",
+  access_request_confirmation: "O pedido foi registado. Receberá um código de acesso por email se for aprovado.",
+  access_request_note: "Resposta prevista em 24-48 horas úteis.",
 
   // Footer
   footer_tagline: "Full Stack Developer",
@@ -657,12 +661,12 @@ export default {
   access_required_title: "🔐 Conteúdo Profissional Restrito",
   access_required_subtitle: "Projetos empresariais e experiência detalhada disponíveis",
   access_required_description: "Este conteúdo inclui projetos desenvolvidos em ambiente empresarial e detalhes técnicos específicos. Por questões de confidencialidade e propriedade intelectual, requer autorização prévia.",
-  access_request_instructions: "💡 Como solicitar acesso:",
+  access_request_instructions: "Como solicitar acesso:",
   access_instruction_1: "1. Envie um email para jorge.morais.dev@gmail.com",
   access_instruction_2: "2. Inclua uma breve apresentação e o motivo da solicitação",
   access_instruction_3: "3. Receberá um código de acesso temporário",
-  request_access_cta: "📧 Solicitar Código de Acesso",
-  unlock_access_btn: "🔓 Inserir Código de Acesso",
+  request_access_cta: "Solicitar Código de Acesso",
+  unlock_access_btn: "Inserir Código de Acesso",
   highlight: "Destaque",
 
   // Contact page translations

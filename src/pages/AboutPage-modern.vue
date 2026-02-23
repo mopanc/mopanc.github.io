@@ -1,33 +1,36 @@
 <template>
   <div class="about-page">
-    <!-- Hero Section -->
+    <!-- Professional Compact Header -->
     <section class="about-hero">
       <div class="container-wide">
-        <div class="hero-content">
-          <div class="hero-text">
-<!--            <h1 class="hero-title">Jorge Morais</h1>-->
-            <h1 class="hero-title" ref="about_hero_title">Experience & Skills</h1>
-            <p class="hero-description">
-              <span ref="about_hero_description">From military leadership to software innovation. A journey of continuous learning, technical excellence, and diverse professional experience that brings unique value to every development project.</span>
+        <div class="about-hero-layout">
+          <!-- Left Side - Title & Description -->
+          <div class="about-hero-content">
+            <h1 class="about-hero-title" ref="about_hero_title">
+              {{ translations.about_hero_title || 'Experiência' }} & <span class="about-title-highlight">Skills</span>
+            </h1>
+            <p class="about-hero-description" ref="about_hero_description">
+              {{ translations.about_hero_description || 'Da liderança militar à inovação em software.' }}
             </p>
           </div>
 
-          <div class="hero-stats">
-            <div class="stat-item">
-              <span class="stat-number">4+</span>
-              <span class="stat-label" ref="years_dev">Years Dev</span>
+          <!-- Right Side - Stats -->
+          <div class="about-hero-stats">
+            <div class="about-stat-item">
+              <span class="about-stat-number">4+</span>
+              <span class="about-stat-label" ref="years_dev">{{ translations.years_dev || 'Anos Dev' }}</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">20+</span>
-              <span class="stat-label" ref="years_experience">Years Experience</span>
+            <div class="about-stat-item">
+              <span class="about-stat-number">20+</span>
+              <span class="about-stat-label" ref="years_experience">{{ translations.years_experience || 'Anos Exp.' }}</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">3</span>
-              <span class="stat-label" ref="career_paths">Career Paths</span>
+            <div class="about-stat-item">
+              <span class="about-stat-number">3</span>
+              <span class="about-stat-label" ref="career_paths">{{ translations.career_paths || 'Carreiras' }}</span>
             </div>
-            <div class="stat-item">
-              <span class="stat-number">26+</span>
-              <span class="stat-label" ref="certifications">Certifications</span>
+            <div class="about-stat-item">
+              <span class="about-stat-number">26+</span>
+              <span class="about-stat-label" ref="certifications">{{ translations.certifications || 'Certificações' }}</span>
             </div>
           </div>
         </div>
@@ -110,37 +113,11 @@
 
         <!-- Militar 2004-2008 -->
         <div v-if="activeTab === 'military'" class="tab-content">
-          <!-- Show real content only if access is valid -->
-          <template v-if="isAccessValid">
-            <div class="content-header">
-              <h2 class="section-title" ref="military_experience">{{ militaryTitle }}</h2>
-              <p class="section-subtitle" ref="military_subtitle">{{ militarySubtitle }}</p>
-            </div>
-          </template>
+          <div class="content-header">
+            <h2 class="section-title" ref="military_experience">{{ militaryTitle }}</h2>
+            <p class="section-subtitle" ref="military_subtitle">{{ militarySubtitle }}</p>
+          </div>
 
-          <!-- Show locked content -->
-          <template v-else>
-            <div class="content-header">
-              <h2 class="section-title" ref="locked_military_title">🔒 Military Experience</h2>
-              <p class="section-subtitle" ref="locked_military_subtitle">Professional military background - Access required</p>
-            </div>
-            <div class="locked-content">
-              <div class="access-warning">
-                <i class="ri-lock-line"></i>
-                <h3 ref="access_required">Access Required</h3>
-                <p ref="access_required_description">This section contains detailed military experience and achievements. Please authenticate to view complete information.</p>
-                <div class="access-features">
-                  <span class="feature-tag" ref="military_service"></span>
-                  <span class="feature-tag" ref="international_missions"></span>
-                  <span class="feature-tag" ref="specialized_training"></span>
-                  <span class="feature-tag" ref="achievements"></span>
-                </div>
-              </div>
-            </div>
-          </template>
-
-          <!-- Military Experience - Only show if access is valid -->
-          <template v-if="isAccessValid">
           <div class="military-experience">
 
             <!-- Main Story Section -->
@@ -166,7 +143,10 @@
 
                 <div class="story-image">
                   <div class="military-photo-placeholder">
-                    <img src="../assets/imgs-bck/exercito.png" alt="Jorge Mopanc - Exército Português" class="military-photo">
+                    <picture>
+                      <source srcset="../assets/imgs-bck/exercito.webp" type="image/webp">
+                      <img src="../assets/imgs-bck/exercito.jpg" alt="Jorge Mopanc - Exército Português" class="military-photo">
+                    </picture>
                     <div class="photo-caption">
                       <span ref="military_photo_caption">{{ militaryContent.photoCaption }}</span>
                       <small>2006</small>
@@ -235,7 +215,6 @@
             </div>
 
           </div>
-          </template>
         </div>
 
         <!-- McDonald's Gerente 2008-2015 -->
@@ -271,7 +250,10 @@
 
                 <div class="story-image">
                   <div class="manager-photo-placeholder">
-                    <img src="../assets/imgs-bck/mcdonalds.png" alt="Jorge Mopanc - McDonald's Manager" class="manager-photo">
+                    <picture>
+                      <source srcset="../assets/imgs-bck/mcdonalds.webp" type="image/webp">
+                      <img src="../assets/imgs-bck/mcdonalds.jpg" alt="Jorge Mopanc - McDonald's Manager" class="manager-photo">
+                    </picture>
                     <div class="photo-caption">
                       <span ref="mcdonalds_photo_caption">{{ mcdonaldsContent.photoCaption }}</span>
                       <small>2010-2015</small>
@@ -356,7 +338,10 @@
 
                 <div class="story-image">
                   <div class="realestate-photo-placeholder">
-                    <img src="../assets/imgs-bck/realstate.png" alt="Jorge Mopanc - Corretor Imobiliário" class="realestate-photo">
+                    <picture>
+                      <source srcset="../assets/imgs-bck/realstate.webp" type="image/webp">
+                      <img src="../assets/imgs-bck/realstate.jpg" alt="Jorge Mopanc - Corretor Imobiliário" class="realestate-photo">
+                    </picture>
                     <div class="photo-caption">
                       <span ref="realestate_photo_caption">{{ realestateContent.photoCaption }}</span>
                       <small>2015-2019</small>
@@ -811,7 +796,10 @@
                 <div class="story-image">
                   <div class="fullstack-visual">
                     <div class="fullstack-photo-placeholder">
-                      <img src="../assets/imgs-bck/company-bm.png" alt="Jorge Mopanc - FullStack Developer" class="fullstack-photo">
+                      <picture>
+                        <source srcset="../assets/imgs-bck/company-bm.webp" type="image/webp">
+                        <img src="../assets/imgs-bck/company-bm.jpg" alt="Jorge Mopanc - FullStack Developer" class="fullstack-photo">
+                      </picture>
                       <div class="photo-caption">
                         <span ref="fullstack_photo_caption">{{ fullstackContent.photoCaption }}</span>
                         <small>2023 - Presente</small>
@@ -1368,7 +1356,7 @@ export default {
           label: this.tabTranslations.military.label,
           years: this.tabTranslations.military.years,
           icon: 'ri-shield-star-line',
-          requiresAccess: true
+          requiresAccess: false
         },
         {
           id: 'manager',
@@ -1730,17 +1718,9 @@ export default {
         return false
       }
 
-      // Only allow technical skills without authentication
-      if (tabId !== 'technical' && !this.isAccessValid) {
-        console.log('Requesting access for tab:', tabId)
-        this.showAccessRequestModal(tabId)
-        this.showUnlockTerminal()
-        return false
-      }
-
-      // Additional runtime verification
+      // Block only tabs that explicitly require access
       if (tab.requiresAccess && !this.isAccessValid) {
-        console.warn('Security: Access denied - authentication required')
+        this.showAccessRequestModal(tabId)
         this.showUnlockTerminal()
         return false
       }
@@ -2213,6 +2193,11 @@ export default {
 .about-page {
   min-height: 100vh;
   padding-top: 2rem;
+  background-image:
+    radial-gradient(circle at 12% 25%, rgba(119, 167, 255, 0.15), transparent 35%),
+    radial-gradient(circle at 88% 20%, rgba(74, 134, 232, 0.2), transparent 38%),
+    radial-gradient(circle at 75% 70%, rgba(74, 134, 232, 0.12), transparent 45%);
+  background-repeat: no-repeat;
 }
 
 .container {
@@ -2221,71 +2206,81 @@ export default {
   padding: 0 1rem;
 }
 
-/* Hero Section */
+/* Hero Section - Compact Professional */
 .about-hero {
-  padding: 4rem 0;
-  background: linear-gradient(135deg, rgba(79, 172, 254, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
-  border-radius: 20px;
-  margin-bottom: 2rem;
+  background: linear-gradient(135deg, rgba(8, 12, 18, 0.95), rgba(6, 9, 14, 0.85));
+  padding: 2.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
 }
 
-.hero-content {
-  text-align: center;
-  max-width: 900px;
-  margin: 0 auto;
+.about-hero-layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  gap: 3rem;
 }
 
-.hero-title {
-  font-size: 3.5rem;
+.about-hero-content {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+  max-width: 600px;
+  text-align: left;
+}
+
+.about-hero-title {
+  font-size: clamp(2.6rem, 4vw, 3.8rem);
   font-weight: 700;
   color: var(--color-white);
-  margin: 0 0 0.5rem 0;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  line-height: 1.15;
+  margin: 0;
+}
+
+.about-title-highlight {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.hero-subtitle {
-  font-size: 1.5rem;
-  color: var(--color-primary);
-  margin: 0 0 1.5rem 0;
-  font-weight: 600;
-}
-
-.hero-description {
-  font-size: 1.2rem;
-  color: var(--color-text);
-  margin: 0 0 3rem 0;
+.about-hero-description {
+  font-size: 1.1rem;
+  color: rgba(210, 217, 230, 0.8);
   line-height: 1.6;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0;
+  text-align: left;
 }
 
-.hero-stats {
+.about-hero-stats {
   display: flex;
-  justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
+  align-items: center;
+  gap: 2rem;
+  flex-shrink: 0;
 }
 
-.stat-item {
+.about-stat-item {
   text-align: center;
 }
 
-.stat-number {
+.about-stat-number {
   display: block;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: 0.5rem;
+  line-height: 1.1;
 }
 
-.stat-label {
-  color: var(--color-text);
-  font-size: 0.9rem;
+.about-stat-label {
+  display: block;
+  color: rgba(210, 217, 230, 0.7);
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  margin-top: 0.2rem;
 }
 
 /* Technical Skills Button */
@@ -2331,20 +2326,20 @@ export default {
 
 .skills-main-button:hover {
   transform: translateY(-5px);
-  border-color: #4facfe;
+  border-color: var(--color-accent);
   box-shadow: 0 15px 35px rgba(79, 172, 254, 0.2);
 }
 
 .skills-main-button.active {
   background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(79, 172, 254, 0.15));
-  border-color: #4facfe;
+  border-color: var(--color-accent);
   box-shadow: 0 10px 25px rgba(79, 172, 254, 0.3);
 }
 
 .skills-button-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2411,35 +2406,51 @@ export default {
   margin-bottom: 3rem;
 }
 
+
 .nav-tabs {
   display: flex;
   justify-content: center;
   gap: 1rem;
   flex-wrap: wrap;
   padding: 1rem;
-  border-bottom: 2px solid var(--color-border);
 }
 
 .nav-tab {
-  padding: 1rem 1.5rem;
-  background: transparent;
-  border: 2px solid var(--color-border);
+  padding: 0.85rem 1.6rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   color: var(--color-text);
-  border-radius: 15px;
+  border-radius: 999px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, border-color 0.3s ease;
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  font-weight: 500;
-  min-width: 140px;
+  font-weight: 600;
+  min-width: 130px;
+}
+
+.nav-tab i {
+  font-size: 1.3rem;
+  color: var(--color-primary);
+}
+
+.nav-tab.active {
+  background: rgba(74, 134, 232, 0.2);
+  border-color: rgba(74, 134, 232, 0.5);
+  box-shadow: 0 12px 30px rgba(74, 134, 232, 0.35);
+  transform: translateY(-2px);
+}
+
+.nav-tab.locked {
+  opacity: 0.5;
 }
 
 .tab-info {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.2rem;
+  gap: 0.1rem;
 }
 
 .tab-label {
@@ -2569,6 +2580,30 @@ export default {
   font-weight: 600;
 }
 
+.theme-light .section-title,
+.theme-light .section-subtitle {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .skill-category {
+  background: rgba(255, 255, 255, 0.92);
+  border-color: rgba(63, 118, 210, 0.2);
+  box-shadow: 0 18px 35px rgba(43, 58, 74, 0.08);
+}
+
+.theme-light .category-title {
+  color: var(--color-bg-primary);
+  border-color: rgba(63, 118, 210, 0.2);
+}
+
+.theme-light .skill-name {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .skill-bar {
+  background: rgba(43, 58, 74, 0.08);
+}
+
 .skill-bar {
   flex: 1;
   height: 8px;
@@ -2580,7 +2615,7 @@ export default {
 
 .skill-progress {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-primary), #4facfe);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
   border-radius: 4px;
   transition: width 1.2s ease;
   position: relative;
@@ -2610,6 +2645,42 @@ export default {
   font-weight: 600;
 }
 
+.theme-light .skills-summary {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .skill-item,
+.theme-light .skill-name,
+.theme-light .skill-name-with-icon .skill-name,
+.theme-light .skill-percentage {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .skill-progress {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+}
+
+.theme-light .skill-progress::after {
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+}
+
+.theme-light .about-hero {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(238, 240, 244, 0.9));
+  border-bottom-color: rgba(60, 100, 160, 0.15);
+}
+
+.theme-light .about-hero-title {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .about-hero-description {
+  color: rgba(43, 58, 74, 0.75);
+}
+
+.theme-light .about-stat-label {
+  color: rgba(43, 58, 74, 0.6);
+}
+
 /* Military Section */
 .military-content {
   max-width: 800px;
@@ -2632,7 +2703,7 @@ export default {
   flex-shrink: 0;
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2721,7 +2792,7 @@ export default {
   top: 0;
   width: 50px;
   height: 50px;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -2773,7 +2844,7 @@ export default {
 
 .role-badge.manager {
   background: rgba(255, 95, 87, 0.2);
-  color: #ff5f57;
+  color: var(--color-danger);
 }
 
 .role-badge.coordinator {
@@ -2783,12 +2854,12 @@ export default {
 
 .role-badge.trainer {
   background: rgba(40, 202, 66, 0.2);
-  color: #28ca42;
+  color: var(--color-success);
 }
 
 .role-badge.sales {
   background: rgba(255, 193, 7, 0.2);
-  color: #ffc107;
+  color: var(--color-warning);
 }
 
 .timeline-content p {
@@ -2913,7 +2984,7 @@ export default {
   top: 0;
   left: 0;
   height: 100%;
-  background: linear-gradient(90deg, var(--color-primary), #4facfe);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
   border-radius: 2px;
   transition: width 2s ease;
 }
@@ -2961,15 +3032,15 @@ export default {
 }
 
 .timeline-point.military {
-  background: linear-gradient(135deg, #28ca42, #20a832);
+  background: linear-gradient(135deg, var(--color-success), var(--color-success-dark));
 }
 
 .timeline-point.corporate {
-  background: linear-gradient(135deg, #ffc107, #e0a800);
+  background: linear-gradient(135deg, var(--color-warning), var(--color-warning-dark));
 }
 
 .timeline-point.sales {
-  background: linear-gradient(135deg, #ff5f57, #e53e3e);
+  background: linear-gradient(135deg, var(--color-danger), var(--color-danger-dark));
 }
 
 .timeline-point.education {
@@ -2977,7 +3048,7 @@ export default {
 }
 
 .timeline-point.tech {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
 }
 
 .timeline-point.tech-international {
@@ -2985,7 +3056,7 @@ export default {
 }
 
 .timeline-point.tech-current {
-  background: linear-gradient(135deg, #ff9800, #f57722);
+  background: linear-gradient(135deg, var(--color-warning-dark), #f57722);
   box-shadow: 0 0 20px rgba(255, 152, 0, 0.4);
 }
 
@@ -3261,15 +3332,15 @@ export default {
 }
 
 .cert-icon.military {
-  background: linear-gradient(135deg, #28ca42, #20a832);
+  background: linear-gradient(135deg, var(--color-success), var(--color-success-dark));
 }
 
 .cert-icon.professional {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
 }
 
 .cert-icon.management {
-  background: linear-gradient(135deg, #ffc107, #e0a800);
+  background: linear-gradient(135deg, var(--color-warning), var(--color-warning-dark));
 }
 
 .cert-icon.education {
@@ -3281,7 +3352,7 @@ export default {
 }
 
 .cert-icon.award {
-  background: linear-gradient(135deg, #ff5f57, #e53e3e);
+  background: linear-gradient(135deg, var(--color-danger), var(--color-danger-dark));
 }
 
 .cert-name {
@@ -3477,7 +3548,7 @@ export default {
 .step-icon {
   width: 60px;
   height: 60px;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -3585,7 +3656,7 @@ export default {
 
 .skill-badge.leadership {
   background: rgba(255, 95, 87, 0.2);
-  color: #ff5f57;
+  color: var(--color-danger);
   border-color: rgba(255, 95, 87, 0.3);
 }
 
@@ -3597,13 +3668,13 @@ export default {
 
 .skill-badge.training {
   background: rgba(40, 202, 66, 0.2);
-  color: #28ca42;
+  color: var(--color-success);
   border-color: rgba(40, 202, 66, 0.3);
 }
 
 .skill-badge.service {
   background: rgba(255, 193, 7, 0.2);
-  color: #ffc107;
+  color: var(--color-warning);
   border-color: rgba(255, 193, 7, 0.3);
 }
 
@@ -3642,7 +3713,7 @@ export default {
 .transition-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -3784,7 +3855,7 @@ export default {
 .journey-icon, .intl-flag, .role-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -3795,7 +3866,7 @@ export default {
 }
 
 .role-icon.current {
-  background: linear-gradient(135deg, #ff9800, #f57722);
+  background: linear-gradient(135deg, var(--color-warning-dark), #f57722);
   box-shadow: 0 0 20px rgba(255, 152, 0, 0.4);
 }
 
@@ -3960,7 +4031,7 @@ export default {
 
 .tech-badge.sql {
   background: rgba(255, 152, 0, 0.2);
-  color: #ff9800;
+  color: var(--color-warning-dark);
   border-color: rgba(255, 152, 0, 0.3);
 }
 
@@ -4113,33 +4184,69 @@ export default {
 
 /* Responsive */
 @media screen and (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
+  .about-hero {
+    padding: 1rem 0;
   }
 
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    justify-items: center;
+  .about-hero-layout {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .about-hero-content {
+    width: 100%;
+    max-width: none;
+  }
+
+  .about-hero-title {
+    font-size: 2rem;
+  }
+
+  .about-hero-description {
+    font-size: 0.85rem;
+  }
+
+  .about-hero-stats {
+    width: 100%;
+    justify-content: space-between;
+    gap: 1rem;
   }
 
   .nav-tabs {
     overflow-x: auto;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-    padding-bottom: 0.5rem;
+    flex-wrap: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 0.5rem 0 0.75rem;
+    gap: 0.5rem;
+    justify-content: flex-start;
   }
 
   .nav-tabs::-webkit-scrollbar {
-    display: none; /* Chrome/Safari */
+    display: none;
   }
 
   .nav-tab {
     white-space: nowrap;
     min-width: fit-content;
-    padding: 0.75rem 1.5rem;
-    font-size: 0.9rem;
+    flex-shrink: 0;
+    padding: 0.6rem 1rem;
+    font-size: 0.82rem;
+    gap: 0.5rem;
+    border-radius: 999px;
+  }
+
+  .nav-tab i {
+    font-size: 1rem;
+  }
+
+  .tab-years {
+    display: none;
+  }
+
+  .tab-lock-enhanced {
+    display: none;
   }
 
   .certifications-grid {
@@ -4159,7 +4266,6 @@ export default {
     grid-template-columns: 1fr;
   }
 
-  /* Timeline Responsive */
   .timeline-expanded {
     width: 90vw;
     max-width: 450px;
@@ -4170,37 +4276,43 @@ export default {
   .journey-stats {
     grid-template-columns: repeat(2, 1fr);
   }
-
 }
 
-@media screen and (max-width: 480px) {
-  .hero-title {
-    font-size: 2rem;
-    line-height: 1.2;
-  }
-
-  .hero-description {
-    font-size: 1rem;
-    margin: 1.5rem 0;
-  }
-
-  .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+@media screen and (max-width: 640px) {
+  .about-hero-layout {
     gap: 1rem;
+  }
+
+  .about-hero-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 0.75rem;
     justify-items: center;
   }
 
-  .stat-item {
-    text-align: center;
+  .about-stat-number {
+    font-size: 1.6rem;
   }
 
-  .stat-number {
-    font-size: 1.5rem;
+  .about-stat-label {
+    font-size: 0.7rem;
+    letter-spacing: 0.5px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .about-hero-title {
+    font-size: 1.6rem;
+    line-height: 1.2;
   }
 
-  .stat-label {
+  .about-hero-description {
     font-size: 0.8rem;
+  }
+
+  .about-stat-label {
+    font-size: 0.7rem;
   }
 
   .timeline-item {
@@ -4414,8 +4526,8 @@ export default {
 }
 
 .timeline-milestone.highlight .milestone-marker {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
-  border-color: #4facfe;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-color: var(--color-accent);
   box-shadow: 0 0 20px rgba(79, 172, 254, 0.5);
 }
 
@@ -4564,7 +4676,7 @@ export default {
 }
 
 .manager-intro strong {
-  color: #ffc107;
+  color: var(--color-warning);
   font-weight: 600;
 }
 
@@ -4608,7 +4720,7 @@ export default {
 }
 
 .manager-photo:hover {
-  border-color: #ffc107;
+  border-color: var(--color-warning);
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(255, 193, 7, 0.2);
 }
@@ -4626,7 +4738,7 @@ export default {
 }
 
 .manager-story .photo-caption small {
-  color: #ffc107;
+  color: var(--color-warning);
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -4684,18 +4796,18 @@ export default {
 }
 
 .progression-marker.employee {
-  background: linear-gradient(135deg, #6c757d, #5a6268);
-  border: 3px solid #6c757d;
+  background: linear-gradient(135deg, var(--color-muted), #5a6268);
+  border: 3px solid var(--color-muted);
 }
 
 .progression-marker.coordinator {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border: 3px solid var(--color-primary);
 }
 
 .progression-marker.manager {
-  background: linear-gradient(135deg, #ffc107, #e0a800);
-  border: 3px solid #ffc107;
+  background: linear-gradient(135deg, var(--color-warning), var(--color-warning-dark));
+  border: 3px solid var(--color-warning);
   box-shadow: 0 0 20px rgba(255, 193, 7, 0.4);
 }
 
@@ -4714,13 +4826,13 @@ export default {
 }
 
 .progression-milestone.highlight .progression-content {
-  border-color: #ffc107;
+  border-color: var(--color-warning);
   background: linear-gradient(135deg, var(--color-bg-primary), rgba(255, 193, 7, 0.05));
 }
 
 .progression-content:hover {
   transform: translateY(-5px);
-  border-color: #ffc107;
+  border-color: var(--color-warning);
   box-shadow: 0 10px 25px rgba(255, 193, 7, 0.15);
 }
 
@@ -4732,12 +4844,12 @@ export default {
 }
 
 .progression-milestone.highlight .progression-content h4 {
-  color: #ffc107;
+  color: var(--color-warning);
 }
 
 .timeline-period {
   display: block;
-  color: #ffc107;
+  color: var(--color-warning);
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -4757,7 +4869,7 @@ export default {
   top: 40px;
   bottom: -40px;
   width: 2px;
-  background: linear-gradient(180deg, #6c757d, var(--color-primary), #ffc107);
+  background: linear-gradient(180deg, var(--color-muted), var(--color-primary), var(--color-warning));
   z-index: 1;
 }
 
@@ -4856,7 +4968,7 @@ export default {
 }
 
 .realestate-intro strong {
-  color: #28ca42;
+  color: var(--color-success);
   font-weight: 600;
 }
 
@@ -4901,7 +5013,7 @@ export default {
 }
 
 .realestate-photo:hover {
-  border-color: #28ca42;
+  border-color: var(--color-success);
   transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(40, 202, 66, 0.2);
 }
@@ -4919,7 +5031,7 @@ export default {
 }
 
 .realestate-story .photo-caption small {
-  color: #28ca42;
+  color: var(--color-success);
   font-size: 0.8rem;
   font-weight: 500;
 }
@@ -4977,18 +5089,18 @@ export default {
 }
 
 .development-marker.negotiation {
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  border: 3px solid #007bff;
+  background: linear-gradient(135deg, var(--color-info), var(--color-info-dark));
+  border: 3px solid var(--color-info);
 }
 
 .development-marker.prospection {
-  background: linear-gradient(135deg, #6f42c1, #5a32a3);
-  border: 3px solid #6f42c1;
+  background: linear-gradient(135deg, var(--color-purple), var(--color-purple-dark));
+  border: 3px solid var(--color-purple);
 }
 
 .development-marker.relationship {
-  background: linear-gradient(135deg, #28ca42, #20a832);
-  border: 3px solid #28ca42;
+  background: linear-gradient(135deg, var(--color-success), var(--color-success-dark));
+  border: 3px solid var(--color-success);
   box-shadow: 0 0 20px rgba(40, 202, 66, 0.4);
 }
 
@@ -5007,13 +5119,13 @@ export default {
 }
 
 .development-milestone.highlight .development-content {
-  border-color: #28ca42;
+  border-color: var(--color-success);
   background: linear-gradient(135deg, var(--color-bg-primary), rgba(40, 202, 66, 0.05));
 }
 
 .development-content:hover {
   transform: translateY(-5px);
-  border-color: #28ca42;
+  border-color: var(--color-success);
   box-shadow: 0 10px 25px rgba(40, 202, 66, 0.15);
 }
 
@@ -5025,12 +5137,12 @@ export default {
 }
 
 .development-milestone.highlight .development-content h4 {
-  color: #28ca42;
+  color: var(--color-success);
 }
 
 .development-focus {
   display: block;
-  color: #28ca42;
+  color: var(--color-success);
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 1rem;
@@ -5051,7 +5163,7 @@ export default {
   top: 40px;
   bottom: -40px;
   width: 2px;
-  background: linear-gradient(180deg, #007bff, #6f42c1, #28ca42);
+  background: linear-gradient(180deg, var(--color-info), var(--color-purple), var(--color-success));
   z-index: 1;
 }
 
@@ -5178,7 +5290,7 @@ export default {
   flex-direction: row;
   padding: 0.75rem 1rem;
   border-radius: 20px;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border: none;
   color: white;
 }
@@ -5277,7 +5389,7 @@ export default {
 
 .skill-fill {
   height: 100%;
-  background: linear-gradient(90deg, var(--color-primary), #4facfe);
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
   border-radius: 3px;
   transition: width 0.3s ease;
 }
@@ -5410,7 +5522,7 @@ export default {
 
 .tech-list.old span {
   background: rgba(255, 152, 0, 0.1);
-  color: #ff9800;
+  color: var(--color-warning-dark);
   border: 1px solid rgba(255, 152, 0, 0.2);
 }
 
@@ -5519,7 +5631,7 @@ export default {
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   padding: 1rem 2rem;
   border-radius: 12px;
   color: white;
@@ -5688,7 +5800,7 @@ export default {
 
 .tech-item.iot {
   background: rgba(255, 152, 0, 0.15);
-  color: #ff9800;
+  color: var(--color-warning-dark);
   border: 1px solid rgba(255, 152, 0, 0.3);
 }
 
@@ -5745,7 +5857,7 @@ export default {
 }
 
 .project-card.hardware {
-  border-left: 4px solid #ff9800;
+  border-left: 4px solid var(--color-warning-dark);
 }
 
 .project-header {
@@ -5855,7 +5967,7 @@ export default {
 }
 
 .tech-stack-project .tech-item.featured {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   color: white;
   border: none;
   font-weight: 600;
@@ -6018,7 +6130,7 @@ export default {
 }
 
 .lock-icon {
-  background: linear-gradient(135deg, #ffc107, #ff9800);
+  background: linear-gradient(135deg, var(--color-warning), var(--color-warning-dark));
   color: white;
   width: 24px;
   height: 24px;
@@ -6073,7 +6185,7 @@ export default {
   font-size: 0.9rem;
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: #ffc107;
+  color: var(--color-warning);
 }
 
 .tooltip-subtitle {
@@ -6085,7 +6197,7 @@ export default {
 
 .tooltip-action {
   font-size: 0.75rem;
-  color: #ff9800;
+  color: var(--color-warning-dark);
   font-weight: 500;
   font-style: italic;
 }
@@ -6141,13 +6253,13 @@ export default {
 
 .access-warning i {
   font-size: 4rem;
-  color: #ffc107;
+  color: var(--color-warning);
   margin-bottom: 1rem;
   opacity: 0.8;
 }
 
 .access-warning h3 {
-  color: #ffc107;
+  color: var(--color-warning);
   margin-bottom: 1rem;
   font-size: 1.5rem;
 }
@@ -6167,7 +6279,7 @@ export default {
 
 .feature-tag {
   background: rgba(108, 117, 125, 0.1);
-  color: #6c757d;
+  color: var(--color-muted);
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   font-size: 0.9rem;
@@ -6277,7 +6389,7 @@ export default {
 }
 
 .tech-pill.primary {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   color: white;
   box-shadow: 0 2px 8px rgba(79, 172, 254, 0.15);
 }
@@ -6327,6 +6439,38 @@ export default {
 
 .tech-group-clean:last-child {
   margin-bottom: 0;
+}
+
+.theme-light .about-page,
+.theme-light .about-page h1,
+.theme-light .about-page h2,
+.theme-light .about-page h3,
+.theme-light .about-page h4,
+.theme-light .about-page h5,
+.theme-light .about-page h6,
+.theme-light .about-page p,
+.theme-light .about-page span,
+.theme-light .about-page button,
+.theme-light .about-page a {
+  color: var(--color-text) !important;
+}
+
+.theme-light .skills-button-icon,
+.theme-light .skills-button-content h3,
+.theme-light .skills-button-content p {
+  color: var(--color-text) !important;
+}
+
+.theme-light .skill-category,
+.theme-light .skill-percentage,
+.theme-light .skill-name,
+.theme-light .skill-name-with-icon .skill-name,
+.theme-light .tech-pill {
+  color: var(--color-text) !important;
+}
+
+.theme-light .skills-button-icon {
+  background: linear-gradient(135deg, rgba(63, 118, 210, 0.15), rgba(63, 118, 210, 0.25));
 }
 
 /* Responsive adjustments */

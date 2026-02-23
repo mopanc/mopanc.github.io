@@ -403,12 +403,17 @@ onMounted(async () => {
 <style scoped>
 /* Contact Form Section */
 .contact-form-section {
-  padding: 6rem 0;
+  padding: 6rem 0 7rem;
 }
 
 .contact-form {
-  max-width: 700px;
+  max-width: 820px;
   margin: 0 auto;
+  padding: 2.5rem;
+  border-radius: 20px;
+  background: linear-gradient(160deg, rgba(20, 28, 38, 0.92), rgba(10, 14, 20, 0.98));
+  border: 1px solid rgba(74, 134, 232, 0.25);
+  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.3);
   transition: var(--transition);
 }
 
@@ -439,17 +444,18 @@ onMounted(async () => {
   font-weight: var(--fw-medium);
   margin-bottom: 0.5rem;
   font-size: var(--fs-sm);
+  letter-spacing: 0.04em;
 }
 
 .form-input,
 .form-textarea {
   width: 100%;
   padding: 1rem 1.5rem;
-  border: 2px solid var(--color-border);
-  border-radius: 6px;
-  background: var(--color-bg-secondary);
+  border: 1px solid rgba(74, 134, 232, 0.2);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
   color: var(--color-white);
-  font-size: var(--fs-md);
+  font-size: 1rem;
   font-family: var(--ff-body);
   transition: var(--transition);
 }
@@ -458,7 +464,7 @@ onMounted(async () => {
 .form-textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(195, 176, 145, 0.1);
+  box-shadow: 0 0 0 3px rgba(74, 134, 232, 0.15);
 }
 
 .form-input::placeholder,
@@ -470,7 +476,7 @@ onMounted(async () => {
 .form-input.error,
 .form-textarea.error {
   border-color: #e74c3c;
-  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1);
+  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.12);
 }
 
 .form-textarea {
@@ -623,16 +629,16 @@ onMounted(async () => {
 
 /* Access Request Section */
 .access-request-section {
-  background: linear-gradient(135deg, rgba(106, 90, 205, 0.1), rgba(106, 90, 205, 0.05));
-  border: 2px solid rgba(106, 90, 205, 0.2);
-  border-radius: 12px;
+  background: rgba(74, 134, 232, 0.08);
+  border: 1px solid rgba(74, 134, 232, 0.2);
+  border-radius: 16px;
   padding: 2rem;
   margin: 1.5rem 0;
 }
 
 .access-info-card {
-  background: rgba(106, 90, 205, 0.1);
-  border-radius: 8px;
+  background: rgba(74, 134, 232, 0.12);
+  border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 2rem;
   border-left: 4px solid var(--color-primary);
@@ -649,7 +655,7 @@ onMounted(async () => {
   color: var(--color-text);
   margin: 0;
   line-height: 1.6;
-  font-size: 0.95rem;
+  font-size: 1rem;
 }
 
 .access-request-section .form-field {
@@ -692,11 +698,43 @@ onMounted(async () => {
   letter-spacing: 1px;
 }
 
+.theme-light .contact-form {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(237, 241, 246, 0.92));
+  border-color: rgba(63, 118, 210, 0.2);
+  box-shadow: 0 26px 50px rgba(30, 42, 56, 0.12);
+}
+
+.theme-light .form-label {
+  color: #1e2a38;
+}
+
+.theme-light .form-input,
+.theme-light .form-textarea,
+.theme-light .form-select {
+  background: rgba(255, 255, 255, 0.9);
+  color: #1e2a38;
+  border-color: rgba(63, 118, 210, 0.2);
+}
+
+.theme-light .form-input::placeholder,
+.theme-light .form-textarea::placeholder {
+  color: rgba(30, 42, 56, 0.6);
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
+  .contact-form-section {
+    padding: 0;
+  }
+
+  .contact-form {
+    padding: 1.5rem;
+    border-radius: 14px;
+  }
+
   .form-grid {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
+    gap: 1.25rem;
   }
 
   .access-request-section {
@@ -735,10 +773,6 @@ onMounted(async () => {
 }
 
 @media screen and (max-width: 480px) {
-  .contact-form-section {
-    padding: 3rem 0;
-  }
-
   .btn--large {
     width: 100%;
     padding: 1rem 2rem;

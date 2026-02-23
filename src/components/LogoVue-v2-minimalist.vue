@@ -1,15 +1,14 @@
-<!-- Minimalist Clean Version -->
+<!-- Minimalist Engineering Logo -->
 <template>
   <div class="logo">
     <div class="logo-container" :class="{ 'logo-container--scrolled': isScrolled }">
-      <div class="logo-text">
-        <span class="first-name">Jorge</span>
-        <span class="tag-wrapper">
-          <span class="tag">&lt;/&gt;</span>
-        </span>
-        <span class="last-name">Morais</span>
+      <div class="logo-mark" aria-hidden="true">
+        <span class="logo-initials">JM</span>
       </div>
-      <div class="subtitle" :class="{ 'subtitle--hidden': isScrolled }">Full Stack Developer</div>
+      <div class="logo-text">
+        <span class="logo-name">Jorge Morais</span>
+        <span class="logo-tag" :class="{ 'logo-tag--hidden': isScrolled }">Full Stack Developer</span>
+      </div>
     </div>
   </div>
 </template>
@@ -35,208 +34,113 @@ export default {
 }
 
 .logo-container {
-  text-align: center;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transition: all 0.4s ease;
+}
+
+.logo-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  border: 1px solid rgba(74, 134, 232, 0.25);
+  display: grid;
+  place-items: center;
+  background: linear-gradient(160deg, #141c26, #0c1118);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+  position: relative;
+  transition: all 0.35s ease;
+}
+
+.logo-mark::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 18%;
+  width: 64%;
+  height: 2.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #77a7ff, #4a86e8);
+}
+
+.logo-initials {
+  font-family: 'Space Grotesk', -apple-system, system-ui, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #f3f6fb;
 }
 
 .logo-text {
   display: flex;
-  align-items: center;
-  font-family: 'JetBrains Mono', 'Fira Code', 'Source Code Pro', 'Courier New', monospace;
-  font-size: 32px;
-  font-weight: 500;
-  letter-spacing: -0.5px;
-  margin-bottom: 2px;
-  text-shadow: 0 0 10px rgba(79, 172, 254, 0.1);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
-.first-name, .last-name {
-  color: var(--color-primary);
-  text-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
-  display: inline-block;
+.logo-name {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--color-white);
+  letter-spacing: 0.2px;
+  transition: color 0.3s ease;
 }
 
-
-.tag-wrapper {
-  margin: 0 8px;
-  position: relative;
-  overflow: hidden;
-  width: 40px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+:global(.theme-light) .logo-name {
+  color: var(--color-text);
 }
 
-.tag {
-  color: #4facfe;
-  font-weight: 700;
-  font-size: 28px;
-  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
-  transform-origin: center;
-  transform: rotateY(0deg);
+:global(.theme-light) .logo-mark {
+  background: linear-gradient(135deg, rgba(74, 134, 232, 0.12), rgba(47, 95, 179, 0.04));
+  box-shadow: 0 4px 12px rgba(74, 134, 232, 0.12);
 }
 
-.subtitle {
-  font-family: 'JetBrains Mono', 'Fira Code', monospace;
+.logo-tag {
   font-size: 11px;
-  font-weight: 400;
-  color: var(--color-primary);
   letter-spacing: 2px;
   text-transform: uppercase;
-  opacity: 1;
-  max-height: 20px;
-  transform: translateY(0);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  position: relative;
+  color: var(--color-text);
+  opacity: 0.85;
+  transition: all 0.35s ease;
 }
 
-/* Hide subtitle when scrolled */
-.subtitle--hidden {
+.logo-tag--hidden {
   opacity: 0;
+  transform: translateY(-6px);
   max-height: 0;
-  transform: translateY(-10px);
-  margin-top: 0;
 }
 
-.subtitle::before {
-  content: '> ';
-  color: #4facfe;
-  font-weight: 600;
-}
-
-.subtitle::after {
-  content: '_';
-  color: var(--color-primary);
-  animation: blink 1.5s infinite;
-  margin-left: 4px;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-/* Hover Effects */
-.logo-container:hover .tag {
-  transform: rotateY(720deg);
-  transition: all 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.logo-container:hover .first-name,
-.logo-container:hover .last-name {
-  color: var(--color-primary);
-  text-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
-}
-
-/* Hover effects */
-.logo-container:hover {
+.logo-container:hover .logo-mark {
   transform: translateY(-2px);
+  border-color: var(--color-primary);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
 }
 
-/* Scrolled state - professional compact appearance */
 .logo-container--scrolled {
-  transform: scale(0.88);
+  transform: scale(0.92);
 }
 
-.logo-container--scrolled .logo-text {
-  font-size: 24px;
-  margin-bottom: 0;
+.logo-container--scrolled .logo-mark {
+  width: 38px;
+  height: 38px;
 }
 
-.logo-container--scrolled .first-name,
-.logo-container--scrolled .last-name {
-  color: var(--color-white);
-  text-shadow: none;
+.logo-container--scrolled .logo-name {
+  font-size: 18px;
 }
 
-.logo-container--scrolled .tag {
-  transform: rotateY(180deg);
-  font-size: 20px;
-  color: #4facfe;
-}
-
-.logo-container--scrolled .tag-wrapper {
-  width: 32px;
-  height: 24px;
-}
-
-.logo-container--scrolled:hover .tag {
-  transform: rotateY(360deg);
-  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Responsive */
 @media screen and (max-width: 425px) {
-  .logo-text {
-    font-size: 26px;
+  .logo-mark {
+    width: 38px;
+    height: 38px;
   }
-
-  .tag {
-    font-size: 22px;
+  .logo-name {
+    font-size: 18px;
   }
-
-  .tag-wrapper {
-    width: 32px;
-    height: 26px;
-  }
-
-  .subtitle {
+  .logo-tag {
+    letter-spacing: 1.5px;
     font-size: 10px;
-  }
-
-  .logo-container--scrolled {
-    transform: scale(0.85);
-  }
-
-  .logo-container--scrolled .logo-text {
-    font-size: 22px;
-  }
-
-  .logo-container--scrolled .tag {
-    font-size: 18px;
-  }
-
-  .logo-container--scrolled .tag-wrapper {
-    width: 28px;
-    height: 22px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .logo-text {
-    font-size: 22px;
-  }
-
-  .tag {
-    font-size: 18px;
-  }
-
-  .tag-wrapper {
-    width: 28px;
-    height: 22px;
-    margin: 0 6px;
-  }
-
-  .logo-container--scrolled {
-    transform: scale(0.82);
-  }
-
-  .logo-container--scrolled .logo-text {
-    font-size: 18px;
-  }
-
-  .logo-container--scrolled .tag {
-    font-size: 14px;
-  }
-
-  .logo-container--scrolled .tag-wrapper {
-    width: 22px;
-    height: 18px;
   }
 }
 </style>

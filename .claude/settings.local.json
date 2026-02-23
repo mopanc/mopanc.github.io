@@ -11,7 +11,9 @@
       "Bash(then echo \"Optimizing $img...\")",
       "Bash(convert:*)",
       "Bash(fi)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nfix: Corrigir referências de imagens em falta nos projetos\n\nAlterações:\n- QORE: Corrigir extensões de .jpg para .png (9 imagens)\n- AMF: Substituir mobile1.jpg e mobile2.jpg inexistentes por def.png\n- Capitalges: Substituir mobile1.jpg e mobile2.jpg inexistentes por def.png\n- Toworkfor: Substituir mobile1.jpg inexistente por def.png\n- Frontend: Corrigir calc.jpg para maccalc.jpg\n- Jobs Calc: Substituir create.jpg inexistente por def.png\n\n✅ Todas as imagens agora existem (0 referências quebradas)\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")"
     ],
     "deny": [],
     "ask": []

@@ -3,16 +3,14 @@ const PrerenderPlugin = require('@prerenderer/webpack-plugin')
 const PuppeteerRenderer = require('@prerenderer/renderer-puppeteer')
 const path = require('path')
 
-// Check if running on Netlify
-const isNetlify = process.env.NETLIFY === 'true'
-
 module.exports = defineConfig({
   transpileDependencies: true,
   publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
 
   configureWebpack: config => {
-    // Only enable prerendering in production AND not on Netlify
-    if (process.env.NODE_ENV === 'production' && !isNetlify) {
+    const shouldPrerender = process.env.NODE_ENV === 'production' && process.env.PRERENDER !== 'false'
+    // Only enable prerendering in production (allow opt-out for local builds)
+    if (shouldPrerender) {
       return {
         plugins: [
           new PrerenderPlugin({
@@ -43,6 +41,7 @@ module.exports = defineConfig({
 
               // Puppeteer options
               headless: true,
+              args: ['--no-sandbox', '--disable-setuid-sandbox'],
 
               // Inject property to detect prerendering
               injectProperty: '__PRERENDER_INJECTED',

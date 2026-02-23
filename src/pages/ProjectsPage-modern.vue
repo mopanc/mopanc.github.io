@@ -34,7 +34,16 @@
     <!-- Advanced Filters Section -->
     <section class="filters-section">
       <div class="container-wide">
-        <div class="filters-inline">
+
+        <!-- Mobile Toggle Button -->
+        <button class="filters-mobile-toggle" @click="mobileFiltersOpen = !mobileFiltersOpen">
+          <i class="ri-filter-3-line"></i>
+          <span>{{ translations.filters || 'Filtros' }}</span>
+          <span v-if="selectedCategory !== 'all' || selectedStatus !== 'all' || showFeaturedOnly" class="filters-active-dot"></span>
+          <i :class="mobileFiltersOpen ? 'ri-arrow-up-s-line' : 'ri-arrow-down-s-line'" class="filters-toggle-icon"></i>
+        </button>
+
+        <div class="filters-inline" :class="{ 'filters-mobile-open': mobileFiltersOpen }">
           <!-- Category Filter -->
           <div class="filter-group-inline">
             <span class="filter-group-label">{{ translations.category_label || 'Categoria:' }}</span>
@@ -155,7 +164,7 @@
 
                 <!-- Single Action Button -->
                 <button class="btn-view-clean" @click.stop="openProjectModal(project)">
-                  View Details
+                  {{ translations.view_details || 'View Details' }}
                 </button>
                 </div>
 
@@ -571,6 +580,7 @@ export default {
       selectedStatus: 'all',
       showFeaturedOnly: false,
       showRestrictedModal: false,
+      mobileFiltersOpen: false,
     };
   },
   computed: {
@@ -1079,6 +1089,12 @@ export default {
 .projects-page {
   min-height: 100vh;
   background: var(--color-bg-primary);
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(119, 167, 255, 0.18), transparent 35%),
+    radial-gradient(circle at 85% 25%, rgba(74, 134, 232, 0.22), transparent 38%),
+    radial-gradient(circle at 82% 78%, rgba(74, 134, 232, 0.16), transparent 45%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .container {
@@ -1091,10 +1107,9 @@ export default {
    PROFESSIONAL COMPACT HEADER - MAX 90PX HEIGHT
 ======================================== */
 .projects-hero-modern {
-  background: linear-gradient(135deg, var(--color-bg-primary) 0%, rgba(195, 176, 145, 0.02) 100%);
-  padding: 1.5rem 0;
-  max-height: 90px;
-  border-bottom: 1px solid rgba(195, 176, 145, 0.1);
+  background: linear-gradient(135deg, rgba(8, 12, 18, 0.95), rgba(6, 9, 14, 0.85));
+  padding: 2.5rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   align-items: center;
 }
@@ -1118,28 +1133,72 @@ export default {
 }
 
 .hero-title-compact {
-  font-size: 2.4rem;
+  font-size: clamp(2.6rem, 4vw, 3.8rem);
   font-weight: 700;
   color: var(--color-white);
-  line-height: 1.2;
+  line-height: 1.15;
   margin: 0;
   text-align: left;
+  font-family: var(--ff-heading);
 }
 
 .title-highlight-compact {
-  background: linear-gradient(135deg, var(--color-primary) 0%, #4facfe 100%);
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .hero-description-compact {
-  font-size: 0.9rem;
-  color: var(--color-text);
-  line-height: 1.4;
-  opacity: 0.8;
+  font-size: 1.1rem;
+  color: rgba(210, 217, 230, 0.8);
+  line-height: 1.6;
   margin: 0;
   text-align: left;
+}
+
+.theme-light .projects-hero-modern {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(238, 240, 244, 0.9));
+  border-bottom-color: rgba(60, 100, 160, 0.15);
+}
+
+.theme-light .hero-title-compact {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .hero-description-compact {
+  color: rgba(43, 58, 74, 0.75);
+}
+
+.theme-light .badge-status-modern {
+  color: #0b1220;
+  border-color: rgba(63, 118, 210, 0.15);
+  background: rgba(255, 255, 255, 0.85);
+}
+
+.theme-light .badge-status-modern.status-development {
+  background: rgba(74, 134, 232, 0.18);
+  color: #0b1220;
+  border-color: rgba(74, 134, 232, 0.3);
+}
+
+.theme-light .badge-status-modern.status-progress {
+  background: rgba(255, 215, 0, 0.15);
+  color: var(--color-bg-primary);
+  border-color: rgba(255, 215, 0, 0.4);
+}
+
+.theme-light .badge-status-modern.status-planning,
+.theme-light .badge-status-modern.status-default {
+  background: rgba(63, 118, 210, 0.12);
+  color: #0b1220;
+  border-color: rgba(63, 118, 210, 0.25);
+}
+
+.theme-light .badge-status-modern.status-restricted {
+  background: rgba(255, 99, 132, 0.18);
+  color: var(--color-bg-primary);
+  border-color: rgba(255, 99, 132, 0.35);
 }
 
 /* Right Side - Search & Filters */
@@ -1255,6 +1314,24 @@ export default {
   border-bottom: 1px solid rgba(195, 176, 145, 0.1);
 }
 
+/* Mobile toggle button — hidden on desktop */
+.filters-mobile-toggle {
+  display: none;
+}
+
+.filters-active-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  flex-shrink: 0;
+}
+
+.filters-toggle-icon {
+  margin-left: auto;
+  font-size: 1.1rem;
+}
+
 .filters-inline {
   display: flex;
   align-items: center;
@@ -1306,6 +1383,24 @@ export default {
   box-shadow: 0 4px 12px rgba(195, 176, 145, 0.3);
 }
 
+.theme-light .filter-btn-modern.active {
+  color: var(--color-bg-primary);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-color: var(--color-primary);
+}
+
+.theme-light .filter-btn-modern {
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(43, 58, 74, 0.2);
+  color: var(--color-text);
+}
+
+.theme-light .filter-btn-modern:hover {
+  background: rgba(255, 255, 255, 1);
+  color: var(--color-text);
+  border-color: var(--color-primary);
+}
+
 .filter-btn-modern i {
   font-size: 1rem;
 }
@@ -1325,25 +1420,28 @@ export default {
 
 /* Filter Type Variations */
 .filter-btn-modern.status-filter.active {
-  background: #00c896;
-  border-color: #00c896;
+  background: linear-gradient(135deg, rgba(74, 134, 232, 0.25), rgba(74, 134, 232, 0.08));
+  border-color: rgba(74, 134, 232, 0.6);
+  color: var(--color-primary);
+  box-shadow: 0 10px 20px rgba(74, 134, 232, 0.25);
 }
 
 .filter-btn-modern.featured-filter.active {
-  background: #ffd700;
-  border-color: #ffd700;
-  color: #1a1a1a;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  border-color: var(--color-primary);
+  color: var(--color-bg-primary);
+  box-shadow: 0 12px 24px rgba(74, 134, 232, 0.35);
 }
 
 .filter-btn-modern.status-filter:hover {
-  border-color: #00c896;
+  border-color: rgba(0, 200, 150, 0.6);
   background: rgba(0, 200, 150, 0.1);
   color: var(--color-white);
 }
 
 .filter-btn-modern.featured-filter:hover {
-  border-color: #ffd700;
-  background: rgba(255, 215, 0, 0.1);
+  border-color: var(--color-primary);
+  background: rgba(74, 134, 232, 0.15);
   min-width: 20px;
   text-align: center;
 }
@@ -1372,7 +1470,7 @@ export default {
   font-weight: 700;
   color: var(--color-white);
   margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1506,7 +1604,7 @@ export default {
 .category-icon {
   width: 80px;
   height: 80px;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   border-radius: 20px;
   display: flex;
   align-items: center;
@@ -1600,20 +1698,30 @@ export default {
 ======================================== */
 .project-card {
   position: relative;
-  background: var(--color-bg-secondary);
+  background: linear-gradient(160deg, rgba(15, 18, 28, 0.95), rgba(10, 13, 20, 0.9));
   border-radius: 20px;
   overflow: hidden;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: var(--transition);
+  border: 1px solid rgba(74, 134, 232, 0.2);
   cursor: pointer;
-  height: auto;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.65);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border-radius: 16px;
+  border: 1px solid rgba(123, 176, 255, 0.2);
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 /* Clean card hover effect - subtle like CV button */
 .project-card:hover {
-  transform: translateY(-1px);
+  transform: translateY(-6px);
   border-color: var(--color-primary);
-  box-shadow: 0 0 20px rgba(79, 172, 254, 0.3);
+  box-shadow: 0 30px 55px rgba(74, 134, 232, 0.35);
 }
 
 .project-card.locked {
@@ -1624,13 +1732,13 @@ export default {
 /* Locked project elements */
 .locked-badge {
   background: rgba(255, 193, 7, 0.1) !important;
-  color: #ffc107 !important;
+  color: var(--color-warning) !important;
   border: 1px solid rgba(255, 193, 7, 0.2);
 }
 
 .locked-tech {
   background: rgba(108, 117, 125, 0.1) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
   border: 1px solid rgba(108, 117, 125, 0.2);
 }
 
@@ -1641,7 +1749,7 @@ export default {
 
 .locked-btn {
   background: rgba(108, 117, 125, 0.1) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
   border: 1px solid rgba(108, 117, 125, 0.2) !important;
   cursor: not-allowed;
   opacity: 0.6;
@@ -1676,7 +1784,7 @@ export default {
   flex-direction: column;
   align-items: center;
   gap: 10px;
-  color: #6c757d;
+  color: var(--color-muted);
   font-size: 1.2rem;
   font-weight: 600;
 }
@@ -1688,7 +1796,7 @@ export default {
 
 .locked-category {
   background: rgba(255, 193, 7, 0.1) !important;
-  color: #ffc107 !important;
+  color: var(--color-warning) !important;
   border: 1px solid rgba(255, 193, 7, 0.2);
 }
 
@@ -1711,7 +1819,7 @@ export default {
 
 .locked-tech-item {
   background: rgba(108, 117, 125, 0.1) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
   border: 1px solid rgba(108, 117, 125, 0.2);
 }
 
@@ -1723,7 +1831,7 @@ export default {
 .locked-tech-note {
   margin-top: 15px;
   font-style: italic;
-  color: #6c757d;
+  color: var(--color-muted);
   text-align: center;
 }
 
@@ -1736,7 +1844,7 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #6c757d;
+  color: var(--color-muted);
   font-size: 1rem;
   font-weight: 600;
   gap: 10px;
@@ -1749,16 +1857,36 @@ export default {
 
 .locked-overlay {
   background: rgba(108, 117, 125, 0.1) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
 }
 
 .project-card.featured {
-  border: 2px solid var(--color-primary);
-  box-shadow: 0 0 30px rgba(106, 90, 205, 0.2);
+  border: 1px solid rgba(74, 134, 232, 0.4);
+  box-shadow: 0 18px 40px rgba(74, 134, 232, 0.25);
 }
 
 .project-card.featured:hover {
-  box-shadow: 0 20px 60px rgba(106, 90, 205, 0.4);
+  box-shadow: 0 25px 55px rgba(74, 134, 232, 0.3);
+}
+
+.theme-light .project-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(241, 244, 248, 0.92));
+  border-color: rgba(74, 134, 232, 0.12);
+  box-shadow: 0 18px 40px rgba(15, 23, 33, 0.1);
+}
+
+.theme-light .project-card::before {
+  border-color: rgba(74, 134, 232, 0.15);
+  opacity: 0.9;
+}
+
+.theme-light .project-card.featured {
+  border: 1px solid rgba(74, 134, 232, 0.25);
+  box-shadow: 0 14px 30px rgba(74, 134, 232, 0.25);
+}
+
+.theme-light .project-card.featured:hover {
+  box-shadow: 0 18px 36px rgba(74, 134, 232, 0.28);
 }
 
 /* Lock Overlay */
@@ -1774,7 +1902,7 @@ export default {
   position: relative;
   height: 200px;
   overflow: hidden;
-  background: linear-gradient(135deg, #1a1a1a, #2d2d2d);
+  background: linear-gradient(135deg, rgba(20, 28, 38, 0.9), rgba(10, 14, 20, 0.9));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1820,7 +1948,7 @@ export default {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   color: #333;
   padding: 0.5rem 1rem;
   border-radius: 20px;
@@ -1845,12 +1973,11 @@ export default {
 
 /* Project Info */
 .project-info {
-  padding: 1.5rem;
+  padding: 1.6rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  height: 180px;
-  justify-content: space-between;
+  min-height: 220px;
 }
 
 .project-category {
@@ -1869,7 +1996,7 @@ export default {
 }
 
 .badge-personal {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
 }
 
 .badge-commercial {
@@ -1877,7 +2004,7 @@ export default {
 }
 
 .badge-academic {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
 }
 
 .badge-games {
@@ -1885,7 +2012,7 @@ export default {
 }
 
 .badge-default {
-  background: linear-gradient(135deg, #6c757d, #495057);
+  background: linear-gradient(135deg, var(--color-muted), #495057);
 }
 
 .project-title {
@@ -1964,7 +2091,7 @@ export default {
 }
 
 .btn-view:hover {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(106, 90, 205, 0.3);
 }
@@ -2004,7 +2131,7 @@ export default {
 }
 
 .locked-title {
-  color: #6c757d;
+  color: var(--color-muted);
   opacity: 0.8;
 }
 
@@ -2017,8 +2144,8 @@ export default {
 
 .tech-tag-clean {
   padding: 0.3rem 0.7rem;
-  background: rgba(106, 90, 205, 0.1);
-  border: 1px solid rgba(106, 90, 205, 0.3);
+  background: rgba(74, 134, 232, 0.12);
+  border: 1px solid rgba(74, 134, 232, 0.3);
   border-radius: 12px;
   color: var(--color-text);
   font-size: 0.75rem;
@@ -2042,7 +2169,7 @@ export default {
 
 .locked-tech-clean {
   background: rgba(108, 117, 125, 0.1) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
   border-color: rgba(108, 117, 125, 0.2) !important;
 }
 
@@ -2072,9 +2199,22 @@ export default {
 }
 
 .btn-view-clean:hover {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   transform: translateY(-1px);
   box-shadow: 0 4px 15px rgba(106, 90, 205, 0.3);
+}
+
+.theme-light .btn-view-clean {
+  background: rgba(63, 118, 210, 0.12);
+  color: var(--color-primary);
+  border: 1px solid rgba(63, 118, 210, 0.45);
+  box-shadow: none;
+}
+
+.theme-light .btn-view-clean:hover {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
+  color: var(--color-bg-primary);
+  box-shadow: 0 4px 15px rgba(63, 118, 210, 0.35);
 }
 
 .btn-case-study {
@@ -2108,7 +2248,7 @@ export default {
 
 .locked-btn-clean {
   background: rgba(108, 117, 125, 0.2) !important;
-  color: #6c757d !important;
+  color: var(--color-muted) !important;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -2209,6 +2349,36 @@ export default {
   border-color: rgba(195, 176, 145, 0.3);
 }
 
+.badge-status-modern.status-development {
+  background: rgba(74, 134, 232, 0.2);
+  color: #0b1220;
+  border-color: rgba(74, 134, 232, 0.35);
+}
+
+.badge-status-modern.status-progress {
+  background: rgba(255, 215, 0, 0.2);
+  color: rgba(10, 13, 20, 0.95);
+  border-color: rgba(255, 215, 0, 0.35);
+}
+
+.badge-status-modern.status-planning {
+  background: rgba(255, 255, 255, 0.12);
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.badge-status-modern.status-restricted {
+  background: rgba(255, 99, 132, 0.18);
+  color: var(--color-white);
+  border-color: rgba(255, 99, 132, 0.35);
+}
+
+.badge-status-modern.status-default {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--color-white);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
 .badge-type-modern {
   background: rgba(195, 176, 145, 0.1);
   color: var(--color-text);
@@ -2257,6 +2427,36 @@ export default {
   color: var(--color-white);
   transform: scale(1.1);
   border-color: var(--color-primary);
+}
+
+.theme-light .modern-modal-overlay {
+  background: rgba(30, 38, 52, 0.65);
+}
+
+.theme-light .modern-modal-container {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(247, 249, 252, 0.9));
+  border-color: rgba(74, 134, 232, 0.2);
+  box-shadow: 0 18px 55px rgba(15, 23, 33, 0.12);
+}
+
+.theme-light .modern-modal-header {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom-color: rgba(74, 134, 232, 0.2);
+}
+
+.theme-light .modern-modal-title {
+  color: var(--color-bg-primary);
+}
+
+.theme-light .modern-modal-close {
+  background: rgba(63, 118, 210, 0.1);
+  border-color: rgba(63, 118, 210, 0.3);
+  color: var(--color-primary);
+}
+
+.theme-light .modern-modal-close:hover {
+  background: rgba(63, 118, 210, 0.2);
+  color: var(--color-bg-primary);
 }
 
 /* Modal Content Layout */
@@ -2490,7 +2690,7 @@ export default {
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(180deg, #ffc107, #ff9800);
+  background: linear-gradient(180deg, var(--color-warning), var(--color-warning-dark));
 }
 
 .disclaimer-header {
@@ -2498,12 +2698,12 @@ export default {
   align-items: center;
   gap: 0.75rem;
   margin-bottom: 0.75rem;
-  color: #ff9800;
+  color: var(--color-warning-dark);
 }
 
 .disclaimer-header i {
   font-size: 1.25rem;
-  color: #ff9800;
+  color: var(--color-warning-dark);
 }
 
 .disclaimer-header h4 {
@@ -2539,9 +2739,46 @@ export default {
 
 .disclaimer-note i {
   font-size: 1rem;
-  color: #ff9800;
+  color: var(--color-warning-dark);
   margin-top: 0.1rem;
   flex-shrink: 0;
+}
+
+.theme-light .professional-disclaimer {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(63, 118, 210, 0.2);
+  box-shadow: 0 10px 25px rgba(43, 58, 74, 0.12);
+}
+
+.theme-light .professional-disclaimer::before {
+  background: linear-gradient(180deg, var(--color-primary), var(--color-primary-dark));
+}
+
+.theme-light .disclaimer-header,
+.theme-light .disclaimer-header h4,
+.theme-light .disclaimer-content p,
+.theme-light .disclaimer-note {
+  color: #0b1220;
+}
+
+.theme-light .disclaimer-note {
+  background: rgba(74, 134, 232, 0.08);
+  color: #0b1220 !important;
+}
+
+.theme-light .disclaimer-note i {
+  color: var(--color-primary-dark);
+}
+
+/* Modal secondary button in lightmode */
+.theme-light .btn-secondary {
+  border-color: rgba(63, 118, 210, 0.3);
+  color: var(--color-text);
+}
+.theme-light .btn-secondary:hover {
+  background: rgba(63, 118, 210, 0.08);
+  border-color: var(--color-primary);
+  color: var(--color-text);
 }
 
 /* Technologies Section */
@@ -2644,7 +2881,7 @@ export default {
 }
 
 .website-btn:hover {
-  background: linear-gradient(135deg, #4facfe, #00c6ff);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   color: var(--color-bg-primary);
 }
 
@@ -2942,7 +3179,7 @@ export default {
 .modal-category {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   color: white;
   border-radius: 20px;
   font-size: 0.8rem;
@@ -2962,7 +3199,7 @@ export default {
 
 .modal-description {
   color: var(--color-text);
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   line-height: 1.6;
   opacity: 0.9;
 }
@@ -3067,7 +3304,7 @@ export default {
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
+  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(106, 90, 205, 0.3);
 }
@@ -3325,16 +3562,49 @@ export default {
     font-size: 0.75rem;
   }
 
-  /* Advanced Filters Responsive */
+  /* Advanced Filters — collapsible on mobile */
+  .filters-mobile-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    color: var(--color-text);
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .filters-mobile-toggle:hover {
+    background: rgba(255, 255, 255, 0.09);
+  }
+
+  .theme-light .filters-mobile-toggle {
+    background: rgba(0, 0, 0, 0.04);
+    border-color: rgba(0, 0, 0, 0.1);
+    color: var(--color-bg-primary);
+  }
+
   .filters-inline {
+    display: none;
     flex-direction: column;
     align-items: flex-start;
     gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .filters-inline.filters-mobile-open {
+    display: flex;
   }
 
   .filter-group-inline {
     flex-wrap: wrap;
     gap: 0.5rem;
+    width: 100%;
   }
 
   .filter-group-label {
@@ -3354,7 +3624,6 @@ export default {
     height: 12px;
   }
 
-  /* Filters Section Responsive */
   .filters-layout {
     flex-direction: column;
     gap: 1rem;
@@ -3364,10 +3633,31 @@ export default {
   .filters-buttons {
     gap: 0.6rem;
   }
+}
 
-  .filter-btn-modern {
-    padding: 0.5rem 1rem;
+@media (max-width: 640px) {
+  .hero-title-compact {
+    font-size: 1.7rem;
+  }
+
+  .hero-description-compact {
     font-size: 0.8rem;
+  }
+
+  .hero-controls-compact {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .search-compact {
+    width: 100%;
+  }
+
+  .search-input-compact {
+    width: 100%;
+    flex: 1;
   }
 }
 
