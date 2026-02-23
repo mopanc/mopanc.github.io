@@ -68,7 +68,7 @@ import ThemeToggle from "./ThemeToggle.vue"
 import TerminalModal from "./TerminalModal.vue"
 import { ref, onMounted, reactive, computed, onUnmounted } from "vue"
 import { useLanguage } from '../composables/useLanguage.js'
-const { initialize } = useLanguage()
+const { initialize, loadTranslations } = useLanguage()
 const isNavMenuOpen = ref(false)
 const showTerminalModal = ref(false)
 const isScrolled = ref(false)
@@ -134,41 +134,40 @@ const handleDownload = async () => {
 }
 
 
-onMounted(async () => {
+const updateNavText = async (language) => {
   try {
-    // Load language translations using optimized composable
-    const expressions = await initialize()
-
-    // Update navigation text
-    document.querySelector('#home').textContent = expressions.home;
-    document.querySelector('#projects').textContent = expressions.projects;
-    document.querySelector('#certificates').textContent = expressions.certificates;
-    document.querySelector('#contact').textContent = expressions.contact;
-
-    // Update current route highlighting
-    const path = window.location.pathname;
-    if (path === '/') {
-      currentRoute.home = true;
-    } else if (path === '/projects') {
-      currentRoute.projects = true;
-    } else if (path === '/certificates') {
-      currentRoute.certificates = true;
-    } else if (path === '/contact') {
-      currentRoute.contact = true;
-    } else {
-      currentRoute.home = true;
-    }
+    const expressions = language ? await loadTranslations(language) : await initialize()
+    document.querySelector('#home').textContent = expressions.home
+    document.querySelector('#projects').textContent = expressions.projects
+    document.querySelector('#certificates').textContent = expressions.certificates
+    document.querySelector('#contact').textContent = expressions.contact
   } catch (error) {
     console.error('Failed to load navigation translations:', error)
   }
+}
 
-  // Add scroll event listener
+let handleLanguageChange
+
+onMounted(async () => {
+  await updateNavText()
+
+  // Update current route highlighting
+  const path = window.location.pathname
+  if (path === '/') currentRoute.home = true
+  else if (path === '/projects') currentRoute.projects = true
+  else if (path === '/certificates') currentRoute.certificates = true
+  else if (path === '/contact') currentRoute.contact = true
+  else currentRoute.home = true
+
+  // React to language changes
+  handleLanguageChange = (e) => updateNavText(e.detail?.language)
+  window.addEventListener('languageChanged', handleLanguageChange)
   window.addEventListener('scroll', handleScroll)
 })
 
 onUnmounted(() => {
-  // Cleanup event listener
   window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('languageChanged', handleLanguageChange)
 })
 </script>
 
