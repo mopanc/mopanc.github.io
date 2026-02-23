@@ -233,6 +233,9 @@ export default {
   cv_downloaded: "CV descarregado com sucesso!",
   download_error: "PDF ainda não disponível. Por favor veja o CV no terminal ou contacte-me diretamente.",
 
+  // Tech cards
+  try_again: "Tente novamente",
+
   // Homepage featured projects
   qscope_ai_title: "Q-Scope AI Trading Platform",
   qscope_ai_description: "Plataforma avançada de trading algorítmico que combina IA com análise técnica moderna. Integra engine quântico NEURO-IA-CORE v4.0, análise multi-timeframe e Elliott Wave Theory para decisões automatizadas.",

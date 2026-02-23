@@ -145,7 +145,7 @@
                                 </div>
                                 <div class="face face2" @click="handleShot($event, 0)">
                                     <div v-for="(s, i) in shots[0]" :key="i" class="bullet-hole" :style="{ left: s.x + '%', top: s.y + '%' }"></div>
-                                    <div class="miss-message" v-if="showMissMsg[0]">Tente novamente</div>
+                                    <div class="miss-message" v-if="showMissMsg[0]">{{ tryAgainText }}</div>
                                     <svg class="card-target" :class="{ 'is-miss': missCards[0] }" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="30" cy="30" r="20" stroke="currentColor" stroke-width="1.2"/>
                                         <circle cx="30" cy="30" r="12" stroke="currentColor" stroke-width="1"/>
@@ -175,7 +175,7 @@
                                 </div>
                                 <div class="face face2" @click="handleShot($event, 1)">
                                     <div v-for="(s, i) in shots[1]" :key="i" class="bullet-hole" :style="{ left: s.x + '%', top: s.y + '%' }"></div>
-                                    <div class="miss-message" v-if="showMissMsg[1]">Tente novamente</div>
+                                    <div class="miss-message" v-if="showMissMsg[1]">{{ tryAgainText }}</div>
                                     <svg class="card-target" :class="{ 'is-miss': missCards[1] }" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="30" cy="30" r="20" stroke="currentColor" stroke-width="1.2"/>
                                         <circle cx="30" cy="30" r="12" stroke="currentColor" stroke-width="1"/>
@@ -206,7 +206,7 @@
                                 </div>
                                 <div class="face face2" @click="handleShot($event, 2)">
                                     <div v-for="(s, i) in shots[2]" :key="i" class="bullet-hole" :style="{ left: s.x + '%', top: s.y + '%' }"></div>
-                                    <div class="miss-message" v-if="showMissMsg[2]">Tente novamente</div>
+                                    <div class="miss-message" v-if="showMissMsg[2]">{{ tryAgainText }}</div>
                                     <svg class="card-target" :class="{ 'is-miss': missCards[2] }" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <circle cx="30" cy="30" r="20" stroke="currentColor" stroke-width="1.2"/>
                                         <circle cx="30" cy="30" r="12" stroke="currentColor" stroke-width="1"/>
@@ -343,10 +343,11 @@ export default {
         },
         data() {
             return {
-                openCards:   [false, false, false],
-                missCards:   [false, false, false],
-                shots:       [[], [], []],
-                showMissMsg: [false, false, false],
+                openCards:    [false, false, false],
+                missCards:    [false, false, false],
+                shots:        [[], [], []],
+                showMissMsg:  [false, false, false],
+                tryAgainText: '{{ tryAgainText }}',
             };
         },
         methods: {
@@ -530,6 +531,7 @@ export default {
                     setTextContent('eyebrow', expressions.eyebrow);
                     setTextContent('btn_view_projects', expressions.btn_view_projects);
                     setTextContent('btn_lets_talk', expressions.btn_lets_talk);
+                    this.tryAgainText = expressions.try_again;
                 });
             }
         },
