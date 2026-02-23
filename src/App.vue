@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <MagneticCursor />
     <LoadingScreen :visible="isLoading" />
     <PageHeader />
     <router-view></router-view>
@@ -24,6 +25,7 @@ import MiniTerminal from './components/MiniTerminal.vue';
 import WhatsAppChat from './components/WhatsAppChat.vue';
 import CookieBanner from './components/CookieBanner.vue';
 import LoadingScreen from './components/LoadingScreen.vue';
+import MagneticCursor from './components/MagneticCursor.vue';
 import { useCookieConsent } from './composables/useCookieConsent';
 import { ref, onMounted } from 'vue';
 
@@ -36,6 +38,7 @@ export default {
     WhatsAppChat,
     CookieBanner,
     LoadingScreen,
+    MagneticCursor,
   },
   setup() {
     const { initializeConsent } = useCookieConsent()
@@ -78,6 +81,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #fff;
-  margin-top: 60px;
 }
 </style>

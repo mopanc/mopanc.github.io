@@ -76,7 +76,7 @@
 
     <!-- View All Projects Link -->
     <div class="projects-footer">
-      <a href="/projects" class="view-all-btn">
+      <a href="/projects" class="btn btn--outline">
         <span>View All Projects</span>
         <i class="ri-arrow-right-line"></i>
       </a>
@@ -117,28 +117,29 @@ export default {
 
 <style scoped>
 .projects-showcase {
-  padding: 2rem 0;
+  padding: 2.5rem 0;
 }
 
 /* Projects Grid */
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 3rem;
-  max-width: 1000px;
+  gap: 2.5rem;
+  max-width: 1080px;
   margin: 0 auto;
   padding: 0 1rem;
 }
 
 /* Project Card */
 .project-card {
-  background: var(--color-bg-primary);
-  border-radius: 16px;
+  background: linear-gradient(160deg, rgba(20, 28, 38, 0.92), rgba(10, 14, 20, 0.98));
+  border-radius: 20px;
   overflow: hidden;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(74, 134, 232, 0.2);
   position: relative;
   cursor: pointer;
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.28);
 }
 
 .project-card:hover {
@@ -154,7 +155,7 @@ export default {
   position: relative;
   height: 220px;
   overflow: hidden;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #1d2b3d 0%, #0f1724 100%);
 }
 
 .project-image img {
@@ -174,15 +175,10 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, rgba(79, 172, 254, 0.9), rgba(0, 0, 0, 0.3));
+  background: linear-gradient(180deg, rgba(5, 8, 12, 0.35), rgba(5, 8, 12, 0.8));
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 1.5rem;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.project-card:hover .project-overlay {
   opacity: 1;
 }
 
@@ -192,7 +188,7 @@ export default {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 1px;
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   padding: 0.5rem 1rem;
   border-radius: 20px;
   backdrop-filter: blur(10px);
@@ -200,21 +196,22 @@ export default {
 
 /* Project Content */
 .project-content {
-  padding: 2rem;
+  padding: 2rem 2.2rem 2.2rem;
 }
 
 .project-title {
-  font-size: 1.5rem;
+  font-size: clamp(1rem, 4.5vw, 1.6rem);
   font-weight: 700;
   color: var(--color-white);
   margin: 0 0 1rem 0;
   line-height: 1.3;
-  font-family: 'Inter', system-ui, sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
+  overflow-wrap: break-word;
 }
 
 .project-description {
   color: var(--color-text);
-  font-size: 0.95rem;
+  font-size: 1rem;
   line-height: 1.6;
   margin: 0 0 1.5rem 0;
   display: -webkit-box;
@@ -234,13 +231,13 @@ export default {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  background: rgba(79, 172, 254, 0.1);
+  background: rgba(79, 172, 254, 0.12);
   color: var(--color-primary);
   padding: 0.4rem 0.8rem;
   border-radius: 20px;
   font-size: 0.8rem;
   font-weight: 500;
-  border: 1px solid rgba(79, 172, 254, 0.2);
+  border: 1px solid rgba(79, 172, 254, 0.25);
   transition: all 0.2s ease;
 }
 
@@ -273,52 +270,7 @@ export default {
   margin-top: 3rem;
 }
 
-.view-all-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 1rem 2rem;
-  background: transparent;
-  color: var(--color-primary);
-  text-decoration: none;
-  border: 2px solid var(--color-primary);
-  border-radius: 50px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.view-all-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: var(--color-primary);
-  transition: left 0.3s ease;
-  z-index: -1;
-}
-
-.view-all-btn:hover::before {
-  left: 0;
-}
-
-.view-all-btn:hover {
-  color: var(--color-bg-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 20px rgba(79, 172, 254, 0.3);
-}
-
-.view-all-btn i {
-  transition: transform 0.3s ease;
-}
-
-.view-all-btn:hover i {
-  transform: translateX(4px);
-}
+/* view-all-btn replaced with global btn--outline */
 
 /* Responsive Design */
 @media screen and (max-width: 768px) {
@@ -373,35 +325,40 @@ export default {
     font-size: 1.2rem;
   }
 
-  .view-all-btn {
+  .btn--outline {
     padding: 0.8rem 1.5rem;
     font-size: 0.9rem;
   }
 }
 
-/* Dark/Light mode adjustments */
-[data-theme="light"] .project-card {
-  background: white;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+/* Light mode adjustments */
+.theme-light .project-card {
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(237, 241, 246, 0.92));
+  box-shadow: 0 10px 24px rgba(30, 42, 56, 0.12);
+  border-color: rgba(63, 118, 210, 0.2);
 }
 
-[data-theme="light"] .project-card:hover {
+.theme-light .project-card:hover {
   box-shadow:
-    0 20px 40px rgba(0, 0, 0, 0.12),
+    0 20px 40px rgba(30, 42, 56, 0.16),
     0 0 0 1px rgba(79, 172, 254, 0.1);
 }
 
-[data-theme="light"] .project-title {
-  color: var(--color-dark);
+.theme-light .project-title {
+  color: #1e2a38;
 }
 
-[data-theme="light"] .tech-badge--text {
+.theme-light .project-description {
+  color: #2b3a4a;
+}
+
+.theme-light .tech-badge--text {
   background: rgba(0, 0, 0, 0.05);
-  color: var(--color-dark);
+  color: #1e2a38;
   border-color: rgba(0, 0, 0, 0.1);
 }
 
-[data-theme="light"] .tech-badge--text:hover {
+.theme-light .tech-badge--text:hover {
   background: rgba(0, 0, 0, 0.1);
 }
 </style>
