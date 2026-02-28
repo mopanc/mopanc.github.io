@@ -16,17 +16,46 @@ export function useAccessControlSimple() {
 
   const verifyMasterCode = async (code) => {
     try {
+      console.log('🔍 [DEBUG] verifyMasterCode - código recebido:', code)
+      
+      // Vue CLI usa process.env em vez de import.meta.env
+      const envVars = process.env || {}
+      console.log('🔍 [DEBUG] process.env disponível:', !!envVars)
+      console.log('🔍 [DEBUG] VUE_APP_MASTER_CODE disponível:', !!envVars.VUE_APP_MASTER_CODE)
+      
+      // Usa variável de ambiente do .env para desenvolvimento
+      const MASTER_CODE = envVars.VUE_APP_MASTER_CODE || 'JM.gjpm!23A83g4x31'
+      console.log('🔍 [DEBUG] verifyMasterCode - código final a comparar:', MASTER_CODE)
+      
+      // Tenta a função serverless primeiro (para produção)
+      console.log('🔍 [DEBUG] Tentando função serverless...')
       const response = await fetch('/.netlify/functions/verify-master-code', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code })
       })
-      if (!response.ok) return false
-      const data = await response.json()
-      return data?.valid === true
+      
+      console.log('🔍 [DEBUG] Response status:', response.status)
+      console.log('🔍 [DEBUG] Response ok?', response.ok)
+      
+      if (response.ok) {
+        const data = await response.json()
+        console.log('🔍 [DEBUG] Response data:', data)
+        return data?.valid === true
+      }
+      
+      // Fallback para desenvolvimento/local
+      console.log('🔍 [DEBUG] Usando fallback hardcoded...')
+      const isValid = code.trim() === MASTER_CODE
+      console.log('🔍 [DEBUG] Fallback result:', isValid)
+      return isValid
+      
     } catch (error) {
-      console.error('Erro ao verificar código master:', error)
-      return false
+      console.error('🔍 [DEBUG] Erro ao verificar código master:', error)
+      // Fallback hardcoded
+      const envVars = process.env || {}
+      const MASTER_CODE = envVars.VUE_APP_MASTER_CODE || 'JM.gjpm!23A83g4x31'
+      return code.trim() === MASTER_CODE
     }
   }
 
@@ -280,15 +309,21 @@ export function useAccessControlSimple() {
 
   const validateAccessCode = async (code) => {
     const codeToCheck = code.trim()
+    const envVars = process.env || {}
+    console.log('🔍 [DEBUG] A verificar código:', codeToCheck)
+    console.log('🔍 [DEBUG] Código master esperado:', envVars.VUE_APP_MASTER_CODE)
 
     // Verificar se é o código MASTER via função serverless
     const isMaster = await verifyMasterCode(codeToCheck)
+    console.log('🔍 [DEBUG] É master code?', isMaster)
+    
     if (isMaster) {
       console.log('🔥 CÓDIGO MASTER RECONHECIDO!')
 
       isAdmin.value = true
       isAuthenticated.value = true
-      const expiryTime = new Date().getTime() + (24 * 60 * 60 * 1000) // 24h para admin
+      // Admin permanente — sessão de 1 ano, só revogável com logout manual
+      const expiryTime = new Date().getTime() + (365 * 24 * 60 * 60 * 1000)
       accessExpiry.value = expiryTime
 
       safeLocalStorage.setItem('portfolioAdminAccess', 'true', COOKIE_CATEGORIES.FUNCTIONAL)

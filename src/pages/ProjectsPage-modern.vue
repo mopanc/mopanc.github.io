@@ -134,6 +134,14 @@
               <template v-if="project.isPublic || isAccessValid">
                 <h3 class="project-title-clean">{{ project.projectName }}</h3>
 
+                <!-- Metrics strip -->
+                <div v-if="project.metrics && project.metrics.length" class="project-metrics">
+                  <div v-for="(metric, mIdx) in project.metrics" :key="mIdx" class="metric-item">
+                    <span class="metric-value">{{ metric.value }}</span>
+                    <span class="metric-label">{{ metric.label }}</span>
+                  </div>
+                </div>
+
                 <!-- Technologies (max 5) -->
                 <div class="project-technologies-clean">
                   <span
@@ -2133,6 +2141,50 @@ export default {
 .locked-title {
   color: var(--color-muted);
   opacity: 0.8;
+}
+
+/* Metrics Strip */
+.project-metrics {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.metric-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(74, 134, 232, 0.08);
+  border: 1px solid rgba(74, 134, 232, 0.2);
+  border-radius: 8px;
+  padding: 0.35rem 0.65rem;
+  min-width: 52px;
+  text-align: center;
+}
+
+.metric-value {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.2;
+}
+
+.metric-label {
+  font-size: 0.6rem;
+  color: rgba(210, 217, 230, 0.65);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.theme-light .metric-item {
+  background: rgba(63, 118, 210, 0.07);
+  border-color: rgba(63, 118, 210, 0.2);
+}
+
+.theme-light .metric-label {
+  color: rgba(43, 58, 74, 0.6);
 }
 
 .project-technologies-clean {

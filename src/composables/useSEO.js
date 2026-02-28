@@ -1,9 +1,9 @@
 import { useHead } from '@unhead/vue'
 
 export function useSEO({
-  title = 'Jorge Morais | Senior Full Stack Developer Portfolio',
-  description = 'Senior Full Stack Developer with 5+ years of experience specializing in React, Vue.js, Node.js, TypeScript, and embedded systems. Building high-performance web applications and industrial IoT solutions.',
-  keywords = 'full stack developer, react developer, vue.js developer, nodejs developer, typescript developer, embedded systems, IoT, C programming, senior developer, portugal developer',
+  title = 'Jorge Morais | Full Stack Developer Portfolio',
+  description = 'Full Stack Developer with 5+ years of experience specializing in React, Vue.js, Node.js, TypeScript, and embedded systems. Building high-performance web applications and industrial IoT solutions.',
+  keywords = 'full stack developer, react developer, vue.js developer, nodejs developer, typescript developer, embedded systems, IoT, C programming, portugal developer',
   ogImage = 'https://avatars.githubusercontent.com/u/45471030?v=4',
   ogType = 'website',
   canonical = null,
@@ -71,15 +71,15 @@ export function useSEO({
 // Predefined SEO configurations for common pages
 export const seoConfigs = {
   home: {
-    title: 'Jorge Morais | Senior Full Stack Developer Portfolio',
-    description: 'Senior Full Stack Developer with 5+ years building high-performance web applications and embedded systems. Specialized in React, Vue.js, Node.js, TypeScript, C programming, and industrial IoT. Available for remote opportunities.',
-    keywords: 'full stack developer, senior developer, react developer, vuejs developer, nodejs developer, typescript developer, embedded systems developer, IoT developer, C programming, industrial systems, remote developer, portugal developer, benelux developer, nordic developer',
+    title: 'Jorge Morais | Full Stack Developer Portfolio',
+    description: 'Full Stack Developer with 5+ years building high-performance web applications and embedded systems. Specialized in React, Vue.js, Node.js, TypeScript, C programming, and industrial IoT. Available for remote opportunities.',
+    keywords: 'full stack developer, react developer, vuejs developer, nodejs developer, typescript developer, embedded systems developer, IoT developer, C programming, industrial systems, remote developer, portugal developer, benelux developer, nordic developer',
     canonical: 'https://jorgemopanc.com/',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: 'Jorge Morais',
-      jobTitle: 'Senior Full Stack Developer',
+      jobTitle: 'Lead Full Stack Developer',
       url: 'https://jorgemopanc.com',
       sameAs: [
         'https://github.com/jorgemorais272',
@@ -109,8 +109,8 @@ export const seoConfigs = {
   },
 
   about: {
-    title: 'About Jorge Morais | Senior Developer Experience & Bio',
-    description: 'Learn about my journey from military service to senior full stack development. 5+ years of experience in web applications, embedded systems, and industrial IoT solutions.',
+    title: 'About Jorge Morais | Developer Experience & Bio',
+    description: 'Learn about my journey from military service to full stack development. 5+ years of experience in web applications, embedded systems, and industrial IoT solutions.',
     keywords: 'about, developer bio, full stack developer biography, career journey, professional experience, technical expertise',
     canonical: 'https://jorgemopanc.com/about'
   },

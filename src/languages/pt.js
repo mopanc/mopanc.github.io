@@ -5,8 +5,9 @@ export default {
   contact: 'Contatos',
   projects: 'Projetos',
   certificates: 'Sobre mim',
+  blog: 'Blog',
   title: `Jorge Morais<br><span class="home__title-subtitle">Full Stack Developer</span>`,
-  eyebrow: "Engenharia × Produto",
+  eyebrow: "Web · Sistemas Industriais · IoT",
   btn_view_projects: "Ver Projetos",
   btn_lets_talk: "Falar Comigo",
   presentation: "Full Stack Developer com mais de 5 anos de experiência profissional no desenvolvimento de aplicações web modernas utilizando React, Vue.js, Node.js e TypeScript. Experiência comprovada em interfaces frontend responsivas, APIs backend robustas e arquitetura de bases de dados. Histórico de trabalho em setores diversificados, incluindo e-commerce, projetos governamentais e sistemas industriais com integração de hardware. Competências técnicas complementadas por soft skills em gestão de equipas e comunicação empresarial, desenvolvidas através de cargos de liderança. Especialização em código limpo, boas práticas de desenvolvimento e implementação de soluções escaláveis.",
@@ -25,7 +26,7 @@ export default {
   subtitle_experience: "Trabalho profissional",
   profissional_experience: "Experiência profissional",
   
-  title_balancas: "Senior FullStack Developer na Balanças Marques",
+  title_balancas: "Lead Full Stack Developer na Balanças Marques",
   description_balancas: `<li>Desenvolvimento da <strong>API Alice Payment Machine</strong> em C com gestão manual de memória (malloc/free), validada com Valgrind para zero memory leaks, implementando protocolos CCTalk/ID003 para validadores de notas e placas de controlo</li><li>Otimização do footprint de memória da <strong>plataforma Qore</strong>, reduzindo o consumo de <strong>3GB para 850MB (redução de 72%)</strong> através de estruturas de dados eficientes e memory profiling</li><li>Otimização do pipeline de processamento massivo de dados para <strong>900k+ documentos POS</strong>, reduzindo o tempo de execução de <strong>2 dias para 2h (96% mais rápido)</strong> via processamento concorrente e multithreading</li><li>Desenvolvimento de <strong>plataforma de AI empresarial</strong> com permissões RBAC e níveis de acesso a documentação técnica e base de conhecimento de produtos — sistema RAG com embeddings, pesquisa vetorial e recuperação semântica que entrega guias passo a passo, imagens e vídeos no chat a clientes, suporte técnico, técnicos, comercial e desenvolvimento; inclui gestão de cache para controlo de custos, privacidade e insights de conversas</li>`,
   dates_balancas: "Jun 2023 - Presente",
 

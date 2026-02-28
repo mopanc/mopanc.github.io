@@ -30,10 +30,14 @@
     <meta property="og:description" content="Senior Full Stack Developer from Braga, Portugal. React, Vue.js, Node.js, TypeScript. Open to remote and relocation opportunities.">
     <meta property="og:url" content="https://jorgemopanc.com">
     <meta property="og:image" content="https://jorgemopanc.com/avatar.jpg">
+    <meta property="og:image:secure_url" content="https://jorgemopanc.com/avatar.jpg">
+    <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="400">
     <meta property="og:image:height" content="400">
+    <meta property="og:image:alt" content="Jorge Morais - Senior Full Stack Developer">
     <meta property="og:site_name" content="Jorge Morais - Full Stack Developer">
     <meta property="og:locale" content="en_GB">
+    <meta property="og:locale:alternate" content="pt_PT">
 
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image">
@@ -47,37 +51,94 @@
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Jorge Morais",
-      "jobTitle": "Senior Full Stack Developer",
-      "description": "Senior Full Stack Developer with 5+ years of experience specializing in React, Vue.js, Node.js, and TypeScript.",
-      "url": "https://jorgemopanc.com",
-      "image": "https://jorgemopanc.com/avatar.jpg",
-      "email": "jorgemopanc@icloud.com",
-      "telephone": "+351910559307",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Braga",
-        "addressRegion": "Braga",
-        "addressCountry": "PT"
-      },
-      "sameAs": [
-        "https://github.com/jorgemorais272",
-        "https://www.linkedin.com/in/jorge-mopanc/",
-        "https://twitter.com/JorgeMo56542670",
-        "https://www.instagram.com/jorgemopanc/",
-        "https://codepen.io/mopanc"
-      ],
-      "knowsAbout": [
-        "React.js",
-        "Vue.js",
-        "Node.js",
-        "TypeScript",
-        "JavaScript",
-        "REST APIs",
-        "Frontend Development",
-        "Backend Development",
-        "Full Stack Development"
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://jorgemopanc.com/#person",
+          "name": "Jorge Morais",
+          "givenName": "Jorge",
+          "familyName": "Morais",
+          "jobTitle": "Senior Full Stack Developer",
+          "description": "Senior Full Stack Developer with 5+ years of experience specializing in React, Vue.js, Node.js, TypeScript, and C programming for industrial systems. Previously worked remotely for Norwegian company Frontkom. EU citizen based in Braga, Portugal.",
+          "url": "https://jorgemopanc.com",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://jorgemopanc.com/avatar.jpg",
+            "width": 400,
+            "height": 400
+          },
+          "email": "jorgemopanc@icloud.com",
+          "telephone": "+351910559307",
+          "nationality": "Portuguese",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Braga",
+            "addressRegion": "Braga",
+            "addressCountry": "PT"
+          },
+          "worksFor": {
+            "@type": "Organization",
+            "name": "Balanças Marques"
+          },
+          "alumniOf": [
+            { "@type": "Organization", "name": "Frontkom", "url": "https://frontkom.com" },
+            { "@type": "Organization", "name": "Netgócio" }
+          ],
+          "hasOccupation": {
+            "@type": "Occupation",
+            "name": "Full Stack Developer",
+            "description": "Develops full stack web applications, industrial IoT systems, and payment machine firmware",
+            "skills": "React.js, Vue.js, Node.js, TypeScript, JavaScript, PostgreSQL, C, MQTT, CCTalk, Socket.IO"
+          },
+          "sameAs": [
+            "https://github.com/jorgemorais272",
+            "https://www.linkedin.com/in/jorge-mopanc/",
+            "https://twitter.com/JorgeMo56542670",
+            "https://www.instagram.com/jorgemopanc/",
+            "https://codepen.io/mopanc"
+          ],
+          "knowsAbout": [
+            "React.js", "Vue.js", "Node.js", "TypeScript", "JavaScript",
+            "REST APIs", "Frontend Development", "Backend Development",
+            "Full Stack Development", "C Programming", "Embedded Systems",
+            "IoT", "MQTT", "CCTalk Protocol", "PostgreSQL", "Docker",
+            "Industrial Systems", "Real-time Applications", "AI/ML Integration"
+          ],
+          "knowsLanguage": [
+            { "@type": "Language", "name": "Portuguese" },
+            { "@type": "Language", "name": "English" }
+          ]
+        },
+        {
+          "@type": "ProfilePage",
+          "@id": "https://jorgemopanc.com/#profilepage",
+          "url": "https://jorgemopanc.com",
+          "name": "Jorge Morais - Senior Full Stack Developer Portfolio",
+          "description": "Professional portfolio of Jorge Morais, Senior Full Stack Developer specializing in React, Vue.js, Node.js and industrial systems.",
+          "dateCreated": "2021-01-01",
+          "dateModified": "2025-11-15",
+          "inLanguage": ["en", "pt"],
+          "about": { "@id": "https://jorgemopanc.com/#person" },
+          "author": { "@id": "https://jorgemopanc.com/#person" },
+          "mainEntity": { "@id": "https://jorgemopanc.com/#person" }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://jorgemopanc.com/#website",
+          "url": "https://jorgemopanc.com",
+          "name": "Jorge Morais - Full Stack Developer",
+          "description": "Portfolio and professional profile of Jorge Morais, Senior Full Stack Developer",
+          "inLanguage": ["en", "pt"],
+          "author": { "@id": "https://jorgemopanc.com/#person" },
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://jorgemopanc.com/projects?search={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        }
       ]
     }
     </script>
@@ -86,6 +147,12 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.svg" type="image/svg+xml">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="<%= BASE_URL %>favicon.svg">
+    <!-- DNS Prefetch for external domains -->
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="preconnect" href="https://www.googletagmanager.com">
+
     <!--xxxxxxxxxxxx Google Fonts xxxxxxxxxxxx-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -99,8 +166,17 @@
     <!--xxxxxxxxxxxx DevIcons xxxxxxxxxxxx-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" crossorigin>
 
-        <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-E08VX9Z7F0"></script>
+<!-- <!--     <!-- Microsoft Clarity — replace YOUR_CLARITY_ID with your project ID from clarity.microsoft.com -->
+<!-- <!--     <script type="text/javascript">
+<!-- <!--       (function(c,l,a,r,i,t,y){
+<!-- <!--         c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+<!-- <!--         t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+<!-- <!--         y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+<!-- <!--       })(window,document,"clarity","script","YOUR_CLARITY_ID");
+<!-- <!--     </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E08VX9Z7F0"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}

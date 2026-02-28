@@ -11,6 +11,9 @@ const AboutPage = () => import('./pages/AboutPage-modern.vue');
 const ContactPage = () => import('./pages/ContactPage.vue');
 const PrivacyPage = () => import('./pages/PrivacyPage.vue');
 const SuccessPage = () => import('./pages/SuccessPage.vue');
+const BlogPage = () => import('./pages/BlogPage.vue');
+const ArticlePage = () => import('./pages/ArticlePage.vue');
+const BlogAdmin = () => import('./pages/BlogAdmin.vue');
 const NotFoundPage = () => import('./pages/404.vue');
 
 const routes = [
@@ -19,9 +22,9 @@ const routes = [
     name: 'Home',
     component: HomePage,
     meta: {
-      title: 'Jorge Morais | Senior Full Stack Developer Portfolio',
-      description: 'Senior Full Stack Developer with 5+ years building high-performance web applications and embedded systems. Specialized in React, Vue.js, Node.js, TypeScript, C programming, and industrial IoT.',
-      keywords: 'full stack developer, senior developer, react developer, vuejs developer, nodejs developer, typescript developer, embedded systems developer, IoT developer',
+      title: 'Jorge Morais | Full Stack Developer Portfolio',
+      description: 'Full Stack Developer with 5+ years building high-performance web applications and embedded systems. Specialized in React, Vue.js, Node.js, TypeScript, C programming, and industrial IoT.',
+      keywords: 'full stack developer, lead developer, react developer, vuejs developer, nodejs developer, typescript developer, embedded systems developer, IoT developer',
       ogType: 'profile',
       seoConfig: 'home'
     }
@@ -53,8 +56,8 @@ const routes = [
     name: 'About',
     component: AboutPage,
     meta: {
-      title: 'About Jorge Morais | Senior Developer Experience & Bio',
-      description: 'Learn about my journey from military service to senior full stack development. 5+ years of experience in web applications, embedded systems, and industrial IoT solutions.',
+      title: 'About Jorge Morais | Developer Experience & Bio',
+      description: 'Learn about my journey from military service to full stack development. 5+ years of experience in web applications, embedded systems, and industrial IoT solutions.',
       keywords: 'about, developer bio, full stack developer biography, career journey, professional experience',
       seoConfig: 'about'
     }
@@ -101,6 +104,40 @@ const routes = [
       title: 'Thank You - Jorge Morais',
       description: 'Thank you for getting in touch. I will respond to your message shortly.',
       keywords: 'contact success, thank you',
+      robots: 'noindex, nofollow'
+    }
+  },
+  {
+    path: '/blog',
+    name: 'Blog',
+    component: BlogPage,
+    meta: {
+      title: 'Blog & TIL | Jorge Morais — Node.js, C, Performance',
+      description: 'Technical notes on Node.js, embedded C, performance optimization, and industrial IoT systems. Real production insights from a full stack developer.',
+      keywords: 'blog, technical writing, nodejs, embedded c, performance optimization, iot, industrial systems, full stack developer blog',
+      ogType: 'website',
+      seoConfig: 'blog'
+    }
+  },
+  {
+    path: '/blog/:slug',
+    name: 'Article',
+    component: ArticlePage,
+    meta: {
+      title: 'Article - Jorge Morais Blog',
+      description: 'Technical article by Jorge Morais, Full Stack Developer.',
+      keywords: 'technical article, nodejs, embedded c, performance, iot',
+      ogType: 'article',
+      dynamicSeo: true
+    }
+  },
+  {
+    path: '/blog/admin',
+    name: 'BlogAdmin',
+    component: BlogAdmin,
+    meta: {
+      title: 'Blog Admin - Jorge Morais',
+      description: 'Painel administrativo do blog',
       robots: 'noindex, nofollow'
     }
   },

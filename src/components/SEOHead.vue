@@ -8,11 +8,11 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Jorge Morais | Senior Full Stack Developer Portfolio'
+      default: 'Jorge Morais | Full Stack Developer Portfolio'
     },
     description: {
       type: String,
-      default: 'Senior Full Stack Developer with 5+ years building high-performance web applications and embedded systems. Specialized in React, Vue.js, Node.js, TypeScript, C programming, and industrial IoT. Available for remote opportunities.'
+      default: 'Full Stack Developer with 5+ years building high-performance web applications and embedded systems. Specialized in React, Vue.js, Node.js, TypeScript, C programming, and industrial IoT. Available for remote opportunities.'
     },
     keywords: {
       type: String,

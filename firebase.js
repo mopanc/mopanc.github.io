@@ -1,11 +1,8 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-// import { getAnalytics } from "firebase/analytics";
 import { getDatabase, ref, push, set } from "firebase/database";
-// import { getDatabase, ref, set, push } from "firebase/database";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -24,16 +21,19 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 // eslint-disable-next-line no-unused-vars
 const analytics = getAnalytics(app);
-//console.log(analytics)
-// const analytics = getAnalytics(app);
 
-// obtenha uma referência para o Realtime Database
+// Realtime Database (used by useAccessControlSimple)
 const db = getDatabase(app);
+
+// Firestore (articles)
+export const firestore = getFirestore(app);
+
+// Storage (hero images)
+export const storage = getStorage(app);
 
 export function enviarPedidoContato(pedidoContato) {
   const pedidosRef = ref(db, "pedidos");
   const novoPedidoRef = push(pedidosRef);
-  
   return set(novoPedidoRef, pedidoContato);
 }
 
