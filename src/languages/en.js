@@ -5,8 +5,9 @@ export default {
   contact: 'Contact',
   projects: 'Projects',
   certificates: 'About',
+  blog: 'Blog',
   title: `Jorge Morais<br><span class="home__title-subtitle">Full Stack Developer</span>`,
-  eyebrow: "Engineering × Product",
+  eyebrow: "Web · Industrial Systems · IoT",
   btn_view_projects: "View Projects",
   btn_lets_talk: "Let's Talk",
   presentation: "Full Stack Developer with 5+ years of professional experience building modern web applications using React, Vue.js, Node.js, and TypeScript. Proven expertise in responsive frontend interfaces, robust backend APIs, and database architecture. Track record of delivering solutions across diverse sectors, including e-commerce, government projects, and industrial systems with hardware integration. Technical competencies enhanced by leadership experience in team management and business communication. Specialization in clean code, development best practices, and scalable solutions.",
@@ -26,7 +27,7 @@ export default {
   subtitle_experience: "Profissional jobs",
   profissional_experience: "Professional Experience",
 
-  title_balancas: "Senior FullStack Developer at Balanças Marques",
+  title_balancas: "Lead Full Stack Developer at Balanças Marques",
   description_balancas: `<li>Architected <strong>Alice Payment Machine API</strong> in C with manual memory management (malloc/free), validated with Valgrind for zero memory leaks, implementing CCTalk/ID003 protocols for bill validators and control boards</li><li>Engineered <strong>Qore platform</strong> memory footprint optimization, reducing consumption from <strong>3GB to 850MB (72% reduction)</strong> through efficient data structures and memory profiling</li><li>Optimized mass data processing pipeline for <strong>900k+ POS documents</strong>, reducing execution time from <strong>2 days to 2h (96% faster)</strong> via concurrent processing and multithreading</li><li>Developed enterprise <strong>AI chat platform</strong> with RBAC permissions and multi-level access to technical documentation and product knowledge base — RAG system with embeddings, vector search and semantic retrieval delivering step-by-step guides, images and videos to clients, support, technicians, commercial and dev teams; includes cache management for cost control, privacy compliance and chat insights</li>`,
   dates_balancas: "Jun 2023 - Present",
 

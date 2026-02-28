@@ -12,7 +12,7 @@
                             Jorge Morais<br><span class="home__title-subtitle">Full Stack Developer</span>
                         </h1>
                         <p class="home__description" ref="presentation">
-                            Senior Full Stack Developer specializing in React, Vue.js, Node.js, and TypeScript. Experience in high‑performance systems and industrial integration.
+                            Full Stack Developer specializing in React, Vue.js, Node.js, and TypeScript. Experience in high‑performance systems and industrial integration.
                         </p>
                         <div class="home__cta">
                             <a href="/projects" class="btn btn--primary" ref="btn_view_projects">View Projects</a>

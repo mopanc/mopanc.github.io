@@ -21,6 +21,9 @@
                             <a href="/certificates" class="nav__link" :class="{ 'green-text': currentRoute.certificates }" id="certificates"></a>
                         </li>
                         <li class="nav__item" @click="closeNavMenu">
+                            <a href="/blog" class="nav__link" :class="{ 'green-text': currentRoute.blog }" id="blog"></a>
+                        </li>
+                        <li class="nav__item" @click="closeNavMenu">
                             <a href="/contact" class="nav__link" :class="{ 'green-text': currentRoute.contact }" id="contact"></a>
                         </li>
                         <!-- Mobile only - Language and Terminal -->
@@ -77,7 +80,8 @@ const currentRoute = reactive({
   home: false,
   projects: false,
   certificates: false,
-  contact: false
+  contact: false,
+  blog: false
 })
 
 // Computed property for navigation toggle icon
@@ -141,6 +145,7 @@ const updateNavText = async (language) => {
     document.querySelector('#projects').textContent = expressions.projects
     document.querySelector('#certificates').textContent = expressions.certificates
     document.querySelector('#contact').textContent = expressions.contact
+    document.querySelector('#blog').textContent = expressions.blog
   } catch (error) {
     console.error('Failed to load navigation translations:', error)
   }
@@ -157,6 +162,7 @@ onMounted(async () => {
   else if (path === '/projects') currentRoute.projects = true
   else if (path === '/certificates') currentRoute.certificates = true
   else if (path === '/contact') currentRoute.contact = true
+  else if (path.startsWith('/blog')) currentRoute.blog = true
   else currentRoute.home = true
 
   // React to language changes

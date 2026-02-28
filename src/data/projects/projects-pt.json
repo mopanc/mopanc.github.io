@@ -73,7 +73,12 @@
       "links": {
         "repository": null,
         "website": null
-      }
+      },
+      "metrics": [
+        { "value": "72%", "label": "Memória Reduzida" },
+        { "value": "96%", "label": "Pipeline Rápido" },
+        { "value": "900k+", "label": "Docs POS" }
+      ]
     },
     {
       "id": "alice4cash-payment-machine",
@@ -133,7 +138,12 @@
       "links": {
         "repository": null,
         "website": "https://www.alice4cash.com/"
-      }
+      },
+      "metrics": [
+        { "value": "0", "label": "Memory Leaks" },
+        { "value": "3+", "label": "Protocolos HW" },
+        { "value": "Live", "label": "MQTT" }
+      ]
     },
     {
       "id": "q-scope-ai-trader",
@@ -204,7 +214,12 @@
       "links": {
         "repository": "https://github.com/mopanc/Q-scope-AI",
         "website": null
-      }
+      },
+      "metrics": [
+        { "value": "3", "label": "Modelos IA" },
+        { "value": "4x", "label": "Timeframes" },
+        { "value": "Live", "label": "Feed Binance" }
+      ]
     },
     {
       "id": "smarttrade-ai",
@@ -246,7 +261,12 @@
       "links": {
         "repository": "https://github.com/mopanc/trading-bot",
         "website": null
-      }
+      },
+      "metrics": [
+        { "value": "50+", "label": "Indicadores" },
+        { "value": "3", "label": "Modelos ML" },
+        { "value": "IA", "label": "Auto-Análise" }
+      ]
     },
     {
       "id": "dataconvert-saas-platform",
@@ -307,7 +327,12 @@
       "links": {
         "repository": "https://github.com/mopanc/dataconvert-platform",
         "website": null
-      }
+      },
+      "metrics": [
+        { "value": "2", "label": "Motores IA" },
+        { "value": "SaaS", "label": "Multi-tenant" },
+        { "value": "3", "label": "Planos" }
+      ]
     },
     {
       "id": "google-glass-website",
