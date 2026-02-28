@@ -320,6 +320,41 @@
             </div>
         </section>
 
+        <!-- Latest Blog Post -->
+        <section v-if="latestArticle" class="section latest-post">
+          <div class="container-wide">
+            <div class="section__header">
+              <h2 class="section__title">{{ isPt ? 'Do meu Blog' : 'From the Blog' }}</h2>
+              <span class="section__subtitle">{{ isPt ? 'Último artigo publicado' : 'Latest published article' }}</span>
+            </div>
+            <div class="latest-post__center">
+              <a :href="`/blog/${latestArticle.slug}`" class="latest-post__card">
+                <div class="latest-post__card-inner">
+                  <div class="latest-post__tags">
+                    <span v-for="tag in (latestArticle.tags || []).slice(0, 3)" :key="tag" class="latest-post__tag">{{ tag }}</span>
+                  </div>
+                  <h3 class="latest-post__title">{{ isPt ? latestArticle.titlePt : latestArticle.title }}</h3>
+                  <p class="latest-post__excerpt">{{ isPt ? latestArticle.excerptPt : latestArticle.excerpt }}</p>
+                  <div class="latest-post__meta">
+                    <span class="latest-post__meta-item">
+                      <i class="ri-calendar-line"></i>
+                      {{ formatArticleDate(latestArticle.date) }}
+                    </span>
+                    <span class="latest-post__meta-item">
+                      <i class="ri-time-line"></i>
+                      {{ isPt ? latestArticle.readTimePt : latestArticle.readTime }}
+                    </span>
+                  </div>
+                  <span class="latest-post__cta">
+                    {{ isPt ? 'Ler artigo' : 'Read article' }}
+                    <i class="ri-arrow-right-line"></i>
+                  </span>
+                </div>
+              </a>
+            </div>
+          </div>
+        </section>
+
         <!-- Call to Action -->
         <CallToAction />
 
@@ -332,7 +367,8 @@ import SlickHome from './SlickHome-modern.vue';
 import DownloadCV from './DownloadCV.vue';
 import CallToAction from './CallToAction.vue';
 import HomeBackground from './HomeBackground.vue';
-
+import { computed, ref, onMounted, onUnmounted } from 'vue';
+import { useArticles } from '../composables/useArticles.js';
 
 export default {
         components: {
@@ -341,6 +377,35 @@ export default {
             CallToAction,
             HomeBackground,
         },
+        setup() {
+            const { articles } = useArticles()
+
+            const lang = ref(
+                typeof localStorage !== 'undefined' ? (localStorage.getItem('language') || 'en') : 'en'
+            )
+
+            const isPt = computed(() => lang.value === 'pt')
+
+            const latestArticle = computed(() =>
+                articles.value
+                    .filter(a => a.status === 'published')
+                    .sort((a, b) => new Date(b.date) - new Date(a.date))[0] || null
+            )
+
+            const formatArticleDate = (dateStr) => {
+                if (!dateStr) return ''
+                return new Date(dateStr).toLocaleDateString(isPt.value ? 'pt-PT' : 'en-GB', {
+                    day: 'numeric', month: 'long', year: 'numeric'
+                })
+            }
+
+            const onLangChange = (e) => { lang.value = e.detail?.language || 'en' }
+            onMounted(() => window.addEventListener('languageChanged', onLangChange))
+            onUnmounted(() => window.removeEventListener('languageChanged', onLangChange))
+
+            return { isPt, latestArticle, formatArticleDate }
+        },
+
         data() {
             return {
                 openCards:    [false, false, false],
@@ -733,6 +798,143 @@ justify-content: center;
     .about__actions {
         flex-direction: column;
     }
+}
+
+/* ── Latest Blog Post ─────────────────────────────────── */
+.latest-post__center {
+    display: flex;
+    justify-content: center;
+}
+
+.latest-post__card {
+    display: block;
+    text-decoration: none;
+    max-width: 68rem;
+    width: 100%;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+}
+
+.latest-post__card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--color-primary), #7c3aed);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.latest-post__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    border-color: rgba(74, 134, 232, 0.4);
+}
+
+.latest-post__card:hover::before {
+    opacity: 1;
+}
+
+.latest-post__card-inner {
+    padding: 3.5rem 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+}
+
+.latest-post__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+}
+
+.latest-post__tag {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: rgba(74, 134, 232, 0.1);
+    border: 1px solid rgba(74, 134, 232, 0.2);
+    padding: 0.3rem 0.9rem;
+    border-radius: 999px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.latest-post__title {
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    font-weight: 700;
+    color: var(--color-white);
+    line-height: 1.3;
+    margin: 0;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+.latest-post__excerpt {
+    font-size: 1.6rem;
+    line-height: 1.7;
+    color: var(--color-muted);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.latest-post__meta {
+    display: flex;
+    gap: 1.8rem;
+    flex-wrap: wrap;
+}
+
+.latest-post__meta-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 1.3rem;
+    color: var(--color-muted);
+}
+
+.latest-post__meta-item i {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+}
+
+.latest-post__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin-top: 0.4rem;
+    transition: gap 0.2s ease;
+}
+
+.latest-post__card:hover .latest-post__cta {
+    gap: 0.9rem;
+}
+
+.latest-post__cta i { font-size: 1.5rem; }
+
+/* Light mode */
+:global(.theme-light) .latest-post__card {
+    background: #fff;
+    border-color: #e2e8f0;
+}
+
+:global(.theme-light) .latest-post__title {
+    color: #1a202c;
+}
+
+/* Mobile */
+@media screen and (max-width: 600px) {
+    .latest-post__card-inner { padding: 2.4rem 2rem; }
+    .latest-post__title { font-size: 2rem; }
+    .latest-post__excerpt { font-size: 1.45rem; }
 }
 
 </style>

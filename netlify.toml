@@ -1,6 +1,12 @@
 [build]
   publish = "dist"
   command = "npm run build"
+  edge_functions = "netlify/edge-functions"
+
+# Social media crawler OG tag injection for /blog/:slug
+[[edge_functions]]
+  function = "social-meta"
+  path = "/blog/*"
 
 # Custom form notifications
 [forms.contact-form]
