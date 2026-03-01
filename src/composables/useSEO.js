@@ -1,70 +1,74 @@
 import { useHead } from '@unhead/vue'
+import { computed } from 'vue'
 
-export function useSEO({
-  title = 'Jorge Morais | Full Stack Developer Portfolio',
-  description = 'Full Stack Developer with 5+ years of experience specializing in React, Vue.js, Node.js, TypeScript, and embedded systems. Building high-performance web applications and industrial IoT solutions.',
-  keywords = 'full stack developer, react developer, vue.js developer, nodejs developer, typescript developer, embedded systems, IoT, C programming, portugal developer',
-  ogImage = 'https://avatars.githubusercontent.com/u/45471030?v=4',
-  ogType = 'website',
-  canonical = null,
-  structuredData = null,
-  author = 'Jorge Morais',
-  twitterCard = 'summary_large_image',
-  twitterCreator = '@JorgeMo56542670'
-} = {}) {
+export function useSEO(optionsOrRef) {
+  const resolved = computed(() => {
+    const opts = typeof optionsOrRef === 'function' ? optionsOrRef()
+      : (optionsOrRef && optionsOrRef.value !== undefined) ? optionsOrRef.value
+      : optionsOrRef || {}
 
-  const canonicalUrl = canonical || `https://jorgemopanc.com${typeof window !== 'undefined' ? window.location.pathname : ''}`
+    const title = opts.title || 'Jorge Morais | Full Stack Developer Portfolio'
+    const description = opts.description || 'Full Stack Developer with 5+ years of experience specializing in React, Vue.js, Node.js, TypeScript, and embedded systems. Building high-performance web applications and industrial IoT solutions.'
+    const keywords = opts.keywords || 'full stack developer, react developer, vue.js developer, nodejs developer, typescript developer, embedded systems, IoT, C programming, portugal developer'
+    const ogImage = opts.ogImage || 'https://avatars.githubusercontent.com/u/45471030?v=4'
+    const ogType = opts.ogType || 'website'
+    const canonical = opts.canonical || `https://jorgemopanc.com${typeof window !== 'undefined' ? window.location.pathname : ''}`
+    const structuredData = opts.structuredData || null
+    const author = opts.author || 'Jorge Morais'
+    const twitterCard = opts.twitterCard || 'summary_large_image'
+    const twitterCreator = opts.twitterCreator || '@JorgeMo56542670'
 
-  const headConfig = {
-    title,
-    meta: [
-      // Basic SEO
-      { name: 'description', content: description },
-      { name: 'keywords', content: keywords },
-      { name: 'author', content: author },
-      { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
+    return { title, description, keywords, ogImage, ogType, canonical, structuredData, author, twitterCard, twitterCreator }
+  })
 
-      // Open Graph
-      { property: 'og:type', content: ogType },
-      { property: 'og:title', content: title },
-      { property: 'og:description', content: description },
-      { property: 'og:image', content: ogImage },
-      { property: 'og:url', content: canonicalUrl },
-      { property: 'og:site_name', content: 'Jorge Morais - Full Stack Developer' },
-      { property: 'og:locale', content: 'en_GB' },
+  useHead(computed(() => {
+    const { title, description, keywords, ogImage, ogType, canonical, structuredData, author, twitterCard, twitterCreator } = resolved.value
 
-      // Twitter Card
-      { name: 'twitter:card', content: twitterCard },
-      { name: 'twitter:title', content: title },
-      { name: 'twitter:description', content: description },
-      { name: 'twitter:image', content: ogImage },
-      { name: 'twitter:creator', content: twitterCreator },
-      { name: 'twitter:site', content: twitterCreator },
-    ],
-    link: [
-      { rel: 'canonical', href: canonicalUrl }
-    ],
-    htmlAttrs: {
-      lang: 'en'
-    }
-  }
-
-  // Add structured data if provided
-  if (structuredData) {
-    headConfig.script = [
-      {
-        type: 'application/ld+json',
-        children: JSON.stringify(structuredData)
+    const config = {
+      title,
+      meta: [
+        { name: 'description', content: description },
+        { name: 'keywords', content: keywords },
+        { name: 'author', content: author },
+        { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
+        { property: 'og:type', content: ogType },
+        { property: 'og:title', content: title },
+        { property: 'og:description', content: description },
+        { property: 'og:image', content: ogImage },
+        { property: 'og:url', content: canonical },
+        { property: 'og:site_name', content: 'Jorge Morais - Full Stack Developer' },
+        { property: 'og:locale', content: 'en_GB' },
+        { name: 'twitter:card', content: twitterCard },
+        { name: 'twitter:title', content: title },
+        { name: 'twitter:description', content: description },
+        { name: 'twitter:image', content: ogImage },
+        { name: 'twitter:creator', content: twitterCreator },
+        { name: 'twitter:site', content: twitterCreator },
+      ],
+      link: [
+        { rel: 'canonical', href: canonical }
+      ],
+      htmlAttrs: {
+        lang: 'en'
       }
-    ]
-  }
+    }
 
-  useHead(headConfig)
+    if (structuredData) {
+      config.script = [
+        {
+          type: 'application/ld+json',
+          children: JSON.stringify(structuredData)
+        }
+      ]
+    }
+
+    return config
+  }))
 
   return {
-    title,
-    description,
-    canonical: canonicalUrl
+    title: computed(() => resolved.value.title),
+    description: computed(() => resolved.value.description),
+    canonical: computed(() => resolved.value.canonical)
   }
 }
 

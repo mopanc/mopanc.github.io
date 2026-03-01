@@ -1,40 +1,43 @@
 import { useHead } from '@unhead/vue'
+import { computed } from 'vue'
 
 /**
  * Generate breadcrumb structured data for SEO
- * @param {Array} breadcrumbs - Array of breadcrumb objects {name, path}
- * @example
- * useBreadcrumbs([
- *   { name: 'Home', path: '/' },
- *   { name: 'Projects', path: '/projects' },
- *   { name: 'Project Name', path: '/projects/project-slug' }
- * ])
+ * Accepts a static array or a ref/computed/getter for reactive updates.
  */
-export function useBreadcrumbs(breadcrumbs = []) {
-  if (!breadcrumbs.length) return
-
-  const breadcrumbList = {
-    '@context': 'https://schema.org',
-    '@type': 'BreadcrumbList',
-    itemListElement: breadcrumbs.map((crumb, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      name: crumb.name,
-      item: `https://jorgemopanc.com${crumb.path}`
-    }))
-  }
-
-  useHead({
-    script: [
-      {
-        type: 'application/ld+json',
-        children: JSON.stringify(breadcrumbList),
-        key: 'breadcrumb-schema'
-      }
-    ]
+export function useBreadcrumbs(breadcrumbsOrRef = []) {
+  const resolved = computed(() => {
+    const crumbs = typeof breadcrumbsOrRef === 'function' ? breadcrumbsOrRef()
+      : (breadcrumbsOrRef && breadcrumbsOrRef.value !== undefined) ? breadcrumbsOrRef.value
+      : breadcrumbsOrRef || []
+    return crumbs
   })
 
-  return breadcrumbList
+  useHead(computed(() => {
+    const crumbs = resolved.value
+    if (!crumbs.length) return {}
+
+    return {
+      script: [
+        {
+          type: 'application/ld+json',
+          children: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: crumbs.map((crumb, index) => ({
+              '@type': 'ListItem',
+              position: index + 1,
+              name: crumb.name,
+              item: `https://jorgemopanc.com${crumb.path}`
+            }))
+          }),
+          key: 'breadcrumb-schema'
+        }
+      ]
+    }
+  }))
+
+  return resolved
 }
 
 // Predefined breadcrumbs for common pages
