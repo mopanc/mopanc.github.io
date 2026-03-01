@@ -1,7 +1,7 @@
 import { createApp } from 'vue';
 import App from './App.vue';
 import router from './VueRouter';
-import { createUnhead } from '@unhead/vue';
+import { createUnhead, headSymbol } from '@unhead/vue';
 
 const app = createApp(App);
 const head = createUnhead();
@@ -20,7 +20,7 @@ window.addEventListener('unhandledrejection', (event) => {
   // You could send to monitoring service here
 })
 
-app.use(head);
+app.provide(headSymbol, head);
 app.use(router);
 app.mount('#app');
 

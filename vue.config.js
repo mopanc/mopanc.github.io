@@ -1,4 +1,5 @@
 const { defineConfig } = require('@vue/cli-service')
+const { DefinePlugin } = require('webpack')
 const PrerenderPlugin = require('@prerenderer/webpack-plugin')
 const PuppeteerRenderer = require('@prerenderer/renderer-puppeteer')
 const path = require('path')
@@ -74,6 +75,10 @@ module.exports = defineConfig({
 
   // Performance optimizations
   chainWebpack: config => {
+    config.plugin('vue-feature-flags').use(DefinePlugin, [{
+      __VUE_PROD_HYDRATION_MISMATCH_DETAILS__: JSON.stringify(false)
+    }])
+
     // Only apply optimizations if plugins exist
     if (config.plugins.has('preload')) {
       config.plugin('preload').tap(options => {
