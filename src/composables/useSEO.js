@@ -135,5 +135,40 @@ export const seoConfigs = {
     keywords: 'privacy policy, data protection, gdpr, privacy',
     canonical: 'https://jorgemopanc.com/privacy',
     ogType: 'article'
-  }
+  },
+
+  blog: {
+    title: 'Blog & TIL | Jorge Morais — Full Stack Developer',
+    description: 'Technical articles on Node.js, Vue.js, React, embedded systems, performance optimization, and full stack development.',
+    keywords: 'blog, articles, tutorials, nodejs, vuejs, react, embedded systems, performance, full stack development',
+    canonical: 'https://jorgemopanc.com/blog',
+    ogType: 'website'
+  },
+
+  article: ({ title, description, slug, heroImage, date }) => ({
+    title: `${title} | Jorge Morais`,
+    description,
+    canonical: `https://jorgemopanc.com/blog/${slug}`,
+    ogType: 'article',
+    ogImage: heroImage || 'https://avatars.githubusercontent.com/u/45471030?v=4',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: title,
+      description,
+      url: `https://jorgemopanc.com/blog/${slug}`,
+      image: heroImage || undefined,
+      datePublished: date,
+      author: {
+        '@type': 'Person',
+        name: 'Jorge Morais',
+        url: 'https://jorgemopanc.com'
+      },
+      publisher: {
+        '@type': 'Person',
+        name: 'Jorge Morais',
+        url: 'https://jorgemopanc.com'
+      }
+    }
+  })
 }

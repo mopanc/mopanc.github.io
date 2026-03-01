@@ -195,10 +195,12 @@
 </template>
 
 <script>
-import { ref, computed, watch, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, computed, watch, onMounted, nextTick } from 'vue'
 import { useLanguage } from '../composables/useLanguage'
 import { useArticles } from '../composables/useArticles'
 import { useCookieConsent } from '../composables/useCookieConsent'
+import { useSEO, seoConfigs } from '../composables/useSEO'
+import { useBreadcrumbs, breadcrumbConfigs } from '../composables/useBreadcrumbs'
 import LikesSection from '../components/LikesSection.vue'
 import ShareButtons from '../components/ShareButtons.vue'
 import CommentsSection from '../components/CommentsSection.vue'
@@ -271,57 +273,19 @@ export default {
       return String(n)
     }
 
-    // ── Dynamic OG / Twitter meta tags ─────────────────
-    const updateArticleOgMeta = () => {
-      if (!article.value) return
-      const title     = isPt.value ? article.value.titlePt  : article.value.title
-      const desc      = isPt.value ? article.value.excerptPt : article.value.excerpt
-      const url       = `https://jorgemopanc.com/blog/${article.value.slug}`
-      const image     = article.value.heroImage || 'https://jorgemopanc.com/avatar.jpg'
-      const fullTitle = `${title} | Jorge Morais`
-
-      document.title = fullTitle
-
-      const setMeta = (attr, val, content) => {
-        let el = document.querySelector(`meta[${attr}="${val}"]`)
-        if (!el) {
-          el = document.createElement('meta')
-          el.setAttribute(attr, val)
-          document.head.appendChild(el)
-        }
-        el.setAttribute('content', content || '')
-      }
-
-      let canonical = document.querySelector('link[rel="canonical"]')
-      if (!canonical) {
-        canonical = document.createElement('link')
-        canonical.setAttribute('rel', 'canonical')
-        document.head.appendChild(canonical)
-      }
-      canonical.setAttribute('href', url)
-
-      setMeta('name',     'description',              desc)
-      setMeta('property', 'og:type',                  'article')
-      setMeta('property', 'og:title',                 fullTitle)
-      setMeta('property', 'og:description',           desc)
-      setMeta('property', 'og:url',                   url)
-      setMeta('property', 'og:image',                 image)
-      setMeta('property', 'og:image:alt',             title)
-      setMeta('property', 'og:site_name',             'Jorge Morais')
-      setMeta('property', 'og:locale',                isPt.value ? 'pt_PT' : 'en_GB')
-      setMeta('property', 'article:author',           'https://www.linkedin.com/in/jorge-mopanc/')
-      setMeta('property', 'article:published_time',   article.value.date || '')
-      setMeta('name',     'twitter:card',             'summary_large_image')
-      setMeta('name',     'twitter:title',            fullTitle)
-      setMeta('name',     'twitter:description',      desc)
-      setMeta('name',     'twitter:image',            image)
-    }
-
-    // ── Doc title ───────────────────────────────────────
-    const updateDocTitle = () => {
+    // ── SEO (reactive via useHead) ─────────────────────
+    const updateSEO = () => {
       if (!article.value) return
       const title = isPt.value ? article.value.titlePt : article.value.title
-      document.title = `${title} | Jorge Morais`
+      const description = isPt.value ? article.value.excerptPt : article.value.excerpt
+      useSEO(seoConfigs.article({
+        title,
+        description,
+        slug: article.value.slug,
+        heroImage: article.value.heroImage,
+        date: article.value.date
+      }))
+      useBreadcrumbs(breadcrumbConfigs.article(title, article.value.slug))
     }
 
     const highlightCode = () => { nextTick(() => { Prism.highlightAll() }) }
@@ -329,21 +293,14 @@ export default {
     // ── Lifecycle ───────────────────────────────────────
     onMounted(async () => {
       await initialize()
-      updateDocTitle()
-      updateArticleOgMeta()
+      updateSEO()
       highlightCode()
       loadCommentsCount()
       if (route.params.slug) incrementViews(route.params.slug)
-      window.addEventListener('languageChanged', updateDocTitle)
-    })
-
-    onUnmounted(() => {
-      window.removeEventListener('languageChanged', updateDocTitle)
     })
 
     watch([article, isPt], () => {
-      updateDocTitle()
-      updateArticleOgMeta()
+      updateSEO()
       highlightCode()
       loadCommentsCount()
     })
