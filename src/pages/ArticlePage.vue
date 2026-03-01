@@ -249,7 +249,7 @@ export default {
       const current = article.value
       return articles.value
         .filter(a => a.id !== current.id && a.status === 'published')
-        .filter(a => a.tags.some(t => current.tags.includes(t)))
+        .filter(a => (a.tags || []).some(t => (current.tags || []).includes(t)))
         .slice(0, 3)
     })
 
@@ -273,34 +273,37 @@ export default {
       return String(n)
     }
 
-    // ── SEO (reactive via useHead) ─────────────────────
-    const updateSEO = () => {
-      if (!article.value) return
+    // ── SEO (reactive via computed — called once in sync setup) ──
+    useSEO(() => {
+      if (!article.value) return {}
       const title = isPt.value ? article.value.titlePt : article.value.title
       const description = isPt.value ? article.value.excerptPt : article.value.excerpt
-      useSEO(seoConfigs.article({
+      return seoConfigs.article({
         title,
         description,
         slug: article.value.slug,
         heroImage: article.value.heroImage,
         date: article.value.date
-      }))
-      useBreadcrumbs(breadcrumbConfigs.article(title, article.value.slug))
-    }
+      })
+    })
+
+    useBreadcrumbs(() => {
+      if (!article.value) return []
+      const title = isPt.value ? article.value.titlePt : article.value.title
+      return breadcrumbConfigs.article(title, article.value.slug)
+    })
 
     const highlightCode = () => { nextTick(() => { Prism.highlightAll() }) }
 
     // ── Lifecycle ───────────────────────────────────────
     onMounted(async () => {
       await initialize()
-      updateSEO()
       highlightCode()
       loadCommentsCount()
       if (route.params.slug) incrementViews(route.params.slug)
     })
 
     watch([article, isPt], () => {
-      updateSEO()
       highlightCode()
       loadCommentsCount()
     })

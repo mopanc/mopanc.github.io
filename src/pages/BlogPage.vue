@@ -163,7 +163,7 @@
             <div class="article-card__footer">
               <div class="article-card__tags">
                 <span
-                  v-for="tag in article.tags.slice(0, 2)"
+                  v-for="tag in (article.tags || []).slice(0, 2)"
                   :key="tag"
                   class="article-card__tag"
                   :class="{ 'article-card__tag--active': activeTag === tag }"
@@ -305,7 +305,7 @@ export default {
 
     const allTags = computed(() => {
       const tagSet = new Set()
-      publishedArticles.value.forEach(a => a.tags.forEach(t => tagSet.add(t)))
+      publishedArticles.value.forEach(a => (a.tags || []).forEach(t => tagSet.add(t)))
       return Array.from(tagSet).sort()
     })
 
@@ -317,7 +317,7 @@ export default {
 
     const filteredArticles = computed(() => {
       if (!activeTag.value) return publishedArticles.value
-      return publishedArticles.value.filter(a => a.tags.includes(activeTag.value))
+      return publishedArticles.value.filter(a => (a.tags || []).includes(activeTag.value))
     })
 
     const totalReadTime = computed(() =>
@@ -331,7 +331,7 @@ export default {
       Object.values(likeMap).reduce((s, v) => s + (v || 0), 0)
     )
 
-    const tagCount = (tag) => publishedArticles.value.filter(a => a.tags.includes(tag)).length
+    const tagCount = (tag) => publishedArticles.value.filter(a => (a.tags || []).includes(tag)).length
 
     const formatCount = (n) => {
       if (n >= 1000) return (n / 1000).toFixed(1).replace('.0', '') + 'k'
