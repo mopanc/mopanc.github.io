@@ -195,7 +195,9 @@
 import { useLanguage } from '../composables/useLanguage'
 import { useArticles } from '../composables/useArticles'
 import { useAccessControlSimple } from '../composables/useAccessControlSimple'
-import { ref, computed, reactive, watch, onMounted, onUnmounted } from 'vue'
+import { useSEO, seoConfigs } from '../composables/useSEO'
+import { useBreadcrumbs, breadcrumbConfigs } from '../composables/useBreadcrumbs'
+import { ref, computed, reactive, watch, onMounted } from 'vue'
 
 export default {
   name: 'BlogPage',
@@ -283,19 +285,14 @@ export default {
       } catch { /* ignore */ }
     }
 
-    // ── Language & title ──────────────────────────────────
+    // ── SEO & Breadcrumbs ─────────────────────────────────
+    useSEO(seoConfigs.blog)
+    useBreadcrumbs(breadcrumbConfigs.blog)
+
+    // ── Language ─────────────────────────────────────────
     onMounted(async () => {
       await initialize()
-      updateTitle()
     })
-
-    const updateTitle = () => {
-      document.title = 'Blog & TIL | Jorge Morais — Full Stack Developer'
-    }
-
-    const langChangeHandler = () => updateTitle()
-    onMounted(() => window.addEventListener('languageChanged', langChangeHandler))
-    onUnmounted(() => window.removeEventListener('languageChanged', langChangeHandler))
 
     const isPt = computed(() => selectedLanguage.value === 'pt')
 
