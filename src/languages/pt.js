@@ -10,7 +10,7 @@ export default {
   eyebrow: "Web · Sistemas Industriais · IoT",
   btn_view_projects: "Ver Projetos",
   btn_lets_talk: "Falar Comigo",
-  presentation: "Full Stack Developer com mais de 5 anos de experiência profissional no desenvolvimento de aplicações web modernas utilizando React, Vue.js, Node.js e TypeScript. Experiência comprovada em interfaces frontend responsivas, APIs backend robustas e arquitetura de bases de dados. Histórico de trabalho em setores diversificados, incluindo e-commerce, projetos governamentais e sistemas industriais com integração de hardware. Competências técnicas complementadas por soft skills em gestão de equipas e comunicação empresarial, desenvolvidas através de cargos de liderança. Especialização em código limpo, boas práticas de desenvolvimento e implementação de soluções escaláveis.",
+  presentation: "Full Stack Developer com mais de 5 anos de experiência profissional no desenvolvimento de aplicações web modernas utilizando React, Vue.js, Node.js e TypeScript. Experiência comprovada em interfaces frontend responsivas, APIs backend robustas e arquitetura de bases de dados. Histórico de trabalho em setores diversificados, incluindo e-commerce, projetos governamentais e sistemas industriais com integração de hardware. Autor do depguard, uma ferramenta open-source de segurança npm publicada no npm com 9 ferramentas MCP para agentes de IA. Especialização em código limpo, boas práticas de desenvolvimento e implementação de soluções escaláveis.",
   experience: "Anos de experiência",
   projects_completed: "Projetos terminados",
   companies: "Empresas que trabalhei",

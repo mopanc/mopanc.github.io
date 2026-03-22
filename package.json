@@ -20,6 +20,8 @@
     "googleapis": "^118.0.0",
     "gsap": "^3.12.5",
     "i18n": "^0.15.1",
+    "idb": "^8.0.3",
+    "jspdf": "^4.2.0",
     "marked": "^17.0.3",
     "nodemailer": "^6.9.2",
     "nodemailer-sendgrid-transport": "^0.2.0",
@@ -49,6 +51,12 @@
     "root": true,
     "env": {
       "node": true
+    },
+    "globals": {
+      "defineProps": "readonly",
+      "defineEmits": "readonly",
+      "defineExpose": "readonly",
+      "withDefaults": "readonly"
     },
     "extends": [
       "plugin:vue/vue3-essential",
