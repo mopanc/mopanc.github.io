@@ -835,6 +835,54 @@
         "repository": "https://github.com/mopanc/montyhall",
         "website": null
       }
+    },
+    {
+      "id": "depguard",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "caseStudySlug": "depguard-mcp-security-server",
+      "projectType": "Open Source - MCP Security Server",
+      "status": "Active Development",
+      "title": "depguard — MCP Security Server for AI Coding Agents",
+      "description": "Open-source MCP server for npm dependency security. AI coding agents install packages without reviewing them, depguard gives them the tools to verify before installing. Includes a pre-install guardian that checks if packages exist and detects typosquatting, dead dependency detection to find unused packages, and full vulnerability auditing with dual advisory sources (npm + GitHub). Built with TypeScript, zero runtime dependencies, 147 offline tests. Published on npm: npmjs.com/package/depguard-cli",
+      "images": [
+        {
+          "src": "depguard/home.png",
+          "alt": "depguard landing page showing MCP Security Server for AI Coding Agents",
+          "title": "Landing Page"
+        },
+        {
+          "src": "depguard/demo.png",
+          "alt": "depguard live demo showing package audit results in terminal",
+          "title": "Live Demo"
+        },
+        {
+          "src": "depguard/description.png",
+          "alt": "depguard feature overview with 9 MCP tools and scoring model",
+          "title": "Features Overview"
+        },
+        {
+          "src": "depguard/npm.png",
+          "alt": "depguard-cli package page on npm registry",
+          "title": "npm Package"
+        }
+      ],
+      "technologies": [
+        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
+        { "name": "Node.js", "icon": "nodejs-icon.svg" },
+        { "name": "npm", "icon": "npmjs-icon.svg" },
+        { "name": "GitHub", "icon": "github-icon.svg" }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/depguard",
+        "website": "https://depguard.dev"
+      },
+      "metrics": [
+        { "value": "9", "label": "MCP Tools" },
+        { "value": "0", "label": "Dependencies" },
+        { "value": "147", "label": "Tests" }
+      ]
     }
   ]
 }

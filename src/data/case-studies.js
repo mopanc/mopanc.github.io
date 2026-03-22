@@ -1487,6 +1487,221 @@ class QuantumPortfolioOptimizer:
         // }
       }
     }
+  },
+
+  // ============================================================
+  // DEPGUARD - MCP Security Server for AI Coding Agents
+  // ============================================================
+  'depguard': {
+    id: 'depguard',
+    slug: 'depguard-mcp-security-server',
+    title: 'depguard - MCP Security Server for AI Coding Agents',
+    subtitle: 'How a token-saving experiment became an open-source npm security tool',
+
+    // SEO Meta
+    metaTitle: 'Case Study: depguard - MCP Security Server for AI Agents | Jorge Morais',
+    metaDescription: 'How I built an open-source MCP server for npm security auditing. Born from a need to save AI tokens, evolved into a full dependency security platform with 9 tools and zero dependencies.',
+
+    // Hero
+    heroImage: null,
+    tech: ['TypeScript', 'Node.js', 'MCP Protocol', 'JSON-RPC 2.0', 'npm Registry API', 'GitHub Advisory API'],
+    duration: '2 weeks (v1.0 to v1.4)',
+    role: 'Author & Maintainer',
+    year: '2026',
+
+    // Context
+    context: `I use Claude Code daily as a development companion. One thing I noticed quickly: AI agents burn through tokens fast when researching npm packages. Every time the agent needs to decide whether to install a dependency, it runs WebSearch, reads the npm page, checks for vulnerabilities, compares alternatives. Easily 10,000+ tokens per package decision. I thought: what if I could give the agent a single tool that answers all those questions in one call? That was the first seed of depguard, a simple MCP server that audits npm packages and saves tokens. But then something happened that changed the project's direction entirely.`,
+
+    // Technical Challenges
+    challenges: [
+      {
+        title: 'Token Cost of Manual Research',
+        description: 'Each npm package decision cost the AI agent 10,000+ tokens in web searches, page fetches, and reasoning. Multiply by dozens of installs per session.',
+        icon: 'ri-coin-line'
+      },
+      {
+        title: 'Supply Chain Attack Incident',
+        description: 'A widely-used npm package I depended on had a critical vulnerability in a specific version range. It was reported on GitHub Advisory but not on npm audit. I realized AI agents install packages blindly without checking multiple advisory sources.',
+        icon: 'ri-shield-cross-line'
+      },
+      {
+        title: 'AI Hallucinated Package Names',
+        description: 'AI agents sometimes suggest package names that do not exist on npm. These phantom names are a real supply chain attack vector. An attacker can register the hallucinated name with malicious code.',
+        icon: 'ri-ghost-line'
+      }
+    ],
+
+    // Architecture
+    architectureDiagram: null,
+
+    // Solution Stack
+    stack: {
+      core: ['TypeScript (strict mode)', 'Node.js 18+ built-ins only', 'Zero runtime dependencies'],
+      protocol: ['MCP (Model Context Protocol)', 'JSON-RPC 2.0 over stdio'],
+      security: ['npm Registry API', 'GitHub Advisory Database', 'CVSS scoring', 'Levenshtein distance'],
+      testing: ['node:test (built-in)', '147 offline tests', 'Mock fetch injection']
+    },
+
+    // Code Example
+    codeLanguage: 'typescript',
+    codeDescription: 'The guard function: pre-install check that verifies package existence, detects typosquatting, and runs a quick audit before allowing installation.',
+    codeExample: `// Pre-install guardian: the core of depguard's prevention layer
+async function guard(packageName: string, options: GuardOptions): Promise<GuardResult> {
+  const reasons: string[] = []
+  let decision: 'allow' | 'warn' | 'block' = 'allow'
+
+  // Step 1: Does this package even exist? (AI hallucination guard)
+  const verifyResult = await verify(packageName)
+  if (!verifyResult.exists) {
+    return { decision: 'block', reasons: ['Package does not exist on npm'] }
+  }
+
+  // Step 2: Is it a typosquat? (Levenshtein against 100+ popular packages)
+  if (verifyResult.possibleTyposquat) {
+    reasons.push('Possible typosquat of: ' + verifyResult.similarTo.join(', '))
+    decision = 'warn'
+  }
+
+  // Step 3: Quick audit + score
+  const [auditReport, scoreReport] = await Promise.all([
+    audit(packageName, targetLicense, fetcher),
+    score(packageName, { targetLicense, fetcher }),
+  ])
+
+  // Critical vulns = automatic block. No exceptions.
+  if (auditReport.vulnerabilities.critical > 0) {
+    decision = 'block'
+  }
+
+  // Score below threshold = warn or block
+  if (scoreReport.total < threshold - 20) decision = 'block'
+  else if (scoreReport.total < threshold) decision = 'warn'
+
+  return { decision, score: scoreReport.total, reasons, auditSummary }
+}`,
+
+    // Key Technical Decisions
+    keyDecisions: [
+      {
+        decision: 'Zero runtime dependencies',
+        rationale: 'A security tool cannot be a supply chain risk itself. Using only Node.js built-ins (fetch, crypto, readline, fs) eliminates the attack surface entirely.',
+        tradeoff: 'More code to write (custom semver parser, MCP protocol handler, disk cache), but the trust factor is worth it.'
+      },
+      {
+        decision: 'Security ceiling on scoring',
+        rationale: 'Initial scoring allowed popular packages with critical vulnerabilities to score above 60 (installable). A package with 1 critical vuln could score 66/100 because other dimensions compensated. Fixed by adding a hard ceiling: critical = max 30, high = max 50.',
+        tradeoff: 'Some legitimate packages with known-but-mitigated vulns get low scores, but false safety is worse than false alarms.'
+      },
+      {
+        decision: 'Conservative sweep (when in doubt, stay silent)',
+        rationale: 'Dead dependency detection could recommend removing packages that are actually used in ways static analysis cannot detect (dynamic imports, CI scripts, config files). Solution: classify uncertain cases as "maybe-unused" and always include a safety note.',
+        tradeoff: 'Lower recall (some truly unused deps are marked as maybe-unused), but zero risk of recommending removal of critical dependencies.'
+      }
+    ],
+
+    // Results & Metrics
+    metrics: [
+      { value: '9', label: 'MCP Tools' },
+      { value: '0', label: 'Runtime Dependencies' },
+      { value: '147', label: 'Offline Tests' },
+      { value: '~99%', label: 'Token Savings per Audit' },
+      { value: '25+', label: 'License Types' },
+      { value: '100+', label: 'Typosquat Watchlist' }
+    ],
+
+    businessImpact: `depguard saves approximately 11,000 tokens per package audit compared to manual AI research (WebSearch + WebFetch + reasoning). For a typical project with 30 dependencies, that is 330,000 tokens saved in a single project audit. Published on npm as depguard-cli, with a dedicated product page at depguard.dev. The tool is used as an MCP server integrated directly into AI coding workflows.`,
+
+    technicalWins: [
+      'Dual advisory sources (npm + GitHub) catch vulnerabilities that single-source tools miss',
+      'Levenshtein-based typosquatting detection against 100+ popular packages with zero false positives on exact matches',
+      'Dead dependency detection with awareness of config files, npm scripts, peer deps, workspaces, Vue/Svelte/Astro files, and SCSS imports',
+      'CVSS score integration for granular security assessment beyond simple severity labels',
+      'Dual license parsing handles SPDX expressions like MIT OR GPL-3.0 correctly',
+      'All 147 tests run offline with mock fetch. Zero flaky network tests in CI'
+    ],
+
+    // Key Learnings
+    learnings: [
+      'The best tools are born from real frustration. depguard started as a token-saving hack and became a security platform because the problem kept expanding.',
+      'Scoring algorithms must have hard ceilings for critical dimensions. Weighted averages allow bad scores in one dimension to be masked by good scores in others. Security cannot be averaged away.',
+      'Static analysis will always have blind spots (dynamic imports, CI-only deps). The right approach is not to pretend you catch everything, but to clearly communicate what you verified and what you did not.',
+      'Zero dependencies is not just a feature. It is a trust signal. When your tool audits other packages for supply chain risks, having your own dependency tree undermines credibility.',
+      'AI agents hallucinate package names. This is not a theoretical risk. It is a documented supply chain attack vector. Verifying package existence before install is a simple check with outsized impact.',
+      'Advisory databases disagree. npm and GitHub report different vulnerabilities for the same package. Deduplication by CVE ID + GHSA ID + URL is essential to avoid double-counting.'
+    ],
+
+    // Technologies (for SEO)
+    technologies: [
+      'TypeScript', 'Node.js', 'MCP', 'Model Context Protocol', 'JSON-RPC',
+      'npm', 'GitHub Advisory Database', 'CVSS', 'Levenshtein', 'semver',
+      'Claude Code', 'Cursor', 'Windsurf', 'Apache-2.0'
+    ],
+
+    // Translations
+    translations: {
+      pt: {
+        title: 'depguard - Servidor de Segurança MCP para Agentes de IA',
+        subtitle: 'Como uma experiência para poupar tokens se tornou numa ferramenta open-source de segurança npm',
+        context: `Uso o Claude Code diariamente como companheiro de desenvolvimento. Uma coisa que notei rapidamente: os agentes de IA gastam tokens a uma velocidade enorme quando pesquisam pacotes npm. Cada vez que o agente precisa de decidir se deve instalar uma dependência, corre WebSearch, lê a página do npm, verifica vulnerabilidades, compara alternativas. Facilmente 10.000+ tokens por decisão de pacote. Pensei: e se pudesse dar ao agente uma única ferramenta que responde a todas essas perguntas numa só chamada? Essa foi a primeira semente do depguard, um servidor MCP simples que audita pacotes npm e poupa tokens. Mas depois aconteceu algo que mudou a direção do projeto.`,
+        challenges: [
+          {
+            title: 'Custo em Tokens da Pesquisa Manual',
+            description: 'Cada decisão sobre um pacote npm custava ao agente de IA 10.000+ tokens em pesquisas web, leitura de páginas e raciocínio. Multiplicado por dezenas de instalações por sessão.',
+            icon: 'ri-coin-line'
+          },
+          {
+            title: 'Incidente de Ataque à Supply Chain',
+            description: 'Um pacote npm amplamente usado de que eu dependia tinha uma vulnerabilidade crítica num range de versão específico. Foi reportada no GitHub Advisory mas não no npm audit. Percebi que os agentes de IA instalam pacotes cegamente sem verificar múltiplas fontes.',
+            icon: 'ri-shield-cross-line'
+          },
+          {
+            title: 'Nomes de Pacotes Alucinados pela IA',
+            description: 'Os agentes de IA por vezes sugerem nomes de pacotes que não existem no npm. Estes nomes fantasma são um vetor real de ataque. Um atacante pode registar o nome alucinado com código malicioso.',
+            icon: 'ri-ghost-line'
+          }
+        ],
+        stack: {
+          core: ['TypeScript (strict mode)', 'Node.js 18+ apenas built-ins', 'Zero dependências runtime'],
+          protocol: ['MCP (Model Context Protocol)', 'JSON-RPC 2.0 sobre stdio'],
+          security: ['npm Registry API', 'GitHub Advisory Database', 'CVSS scoring', 'Distância de Levenshtein'],
+          testing: ['node:test (built-in)', '147 testes offline', 'Mock fetch injection']
+        },
+        keyDecisions: [
+          {
+            decision: 'Zero dependências runtime',
+            rationale: 'Uma ferramenta de segurança não pode ser ela própria um risco de supply chain. Usar apenas built-ins do Node.js elimina a superfície de ataque.',
+            tradeoff: 'Mais código para escrever (parser semver, handler MCP, cache em disco), mas o fator confiança compensa.'
+          },
+          {
+            decision: 'Teto de segurança no scoring',
+            rationale: 'O scoring inicial permitia que pacotes populares com vulnerabilidades críticas pontuassem acima de 60. Corrigido com um teto: crítico = máx 30, alto = máx 50.',
+            tradeoff: 'Alguns pacotes legítimos com vulns conhecidas ficam com scores baixos, mas falsa segurança é pior que falsos alarmes.'
+          },
+          {
+            decision: 'Sweep conservador (na dúvida, silêncio)',
+            rationale: 'A deteção de dependências mortas podia recomendar remover pacotes usados de formas que a análise estática não deteta. Solução: classificar casos incertos como "talvez não usado".',
+            tradeoff: 'Menor recall, mas zero risco de recomendar remoção de dependências críticas.'
+          }
+        ],
+        businessImpact: `O depguard poupa aproximadamente 11.000 tokens por auditoria de pacote comparado com pesquisa manual do agente de IA. Para um projeto típico com 30 dependências, são 330.000 tokens poupados numa única auditoria. Publicado no npm como depguard-cli, com página dedicada em depguard.dev.`,
+        technicalWins: [
+          'Fontes duais de advisories (npm + GitHub) apanham vulnerabilidades que ferramentas de fonte única não detetam',
+          'Deteção de typosquatting baseada em Levenshtein contra 100+ pacotes populares',
+          'Deteção de dependências mortas com awareness de config files, npm scripts, peer deps, workspaces, ficheiros Vue/Svelte/Astro e imports SCSS',
+          'Integração CVSS para avaliação de segurança granular além de labels de severidade',
+          'Parsing de licenças duais para expressões SPDX como MIT OR GPL-3.0',
+          'Todos os 147 testes correm offline com mock fetch. Zero testes flaky no CI'
+        ],
+        learnings: [
+          'As melhores ferramentas nascem de frustração real. O depguard começou como um hack para poupar tokens e tornou-se numa plataforma de segurança porque o problema continuou a crescer.',
+          'Algoritmos de scoring devem ter tetos para dimensões críticas. Médias ponderadas permitem que scores maus numa dimensão sejam mascarados por scores bons noutras. A segurança não pode ser mediada.',
+          'A análise estática terá sempre pontos cegos. A abordagem correta não é fingir que se apanha tudo, mas comunicar claramente o que se verificou e o que não.',
+          'Zero dependências não é apenas uma feature. É um sinal de confiança. Quando a tua ferramenta audita outros pacotes por riscos de supply chain, ter a tua própria árvore de dependências mina a credibilidade.',
+          'Os agentes de IA alucinam nomes de pacotes. Verificar a existência antes de instalar é uma verificação simples com impacto enorme.',
+          'As bases de dados de advisories discordam. O npm e o GitHub reportam vulnerabilidades diferentes para o mesmo pacote. Deduplicação por CVE ID + GHSA ID + URL é essencial.'
+        ]
+      }
+    }
   }
 
 };

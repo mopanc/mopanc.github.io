@@ -20,14 +20,14 @@ export function useProjects() {
       const processedProjects = projectsData.projects.map(project => ({
         ...project,
         // Converter caminhos de imagem para requires
-        imageSrc: getProjectImage(project.images[0].src),
-        imageAlt: project.images[0].alt,
+        imageSrc: project.images?.length > 0 ? getProjectImage(project.images[0].src) : getProjectImage('def.png'),
+        imageAlt: project.images?.[0]?.alt || project.title,
         projectName: project.title,
         projectDescription: project.description,
         githubLink: project.links.repository,
         websiteLink: project.links.website,
         caseStudySlug: project.caseStudySlug || null,
-        gallery: project.images.map(img => ({
+        gallery: (project.images || []).map(img => ({
           src: getProjectImage(img.src),
           alt: img.alt,
           title: img.title
