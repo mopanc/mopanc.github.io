@@ -19,7 +19,7 @@
 // Normal visitors are untouched — we return undefined so Netlify
 // serves the regular SPA response.
 
-import { marked } from 'npm:marked@12'
+import { marked } from 'https://esm.sh/marked@12.0.2'
 
 const FIRESTORE_PROJECT = 'portfolio-db-2f39b'
 const SITE_URL = 'https://jorgemopanc.com'
