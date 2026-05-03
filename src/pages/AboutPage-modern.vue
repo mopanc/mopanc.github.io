@@ -1124,7 +1124,7 @@ export default {
       showAccessModal: false,
       requestedTabId: null,
       militaryTitle: 'Exército Português',
-      militarySubtitle: 'Atirador Especializado | Missão Internacional Bosnia Herzegovina',
+      militarySubtitle: 'Atirador | Missão Internacional de Paz, Bósnia-Herzegovina',
       militaryContent: {
         intro: 'Entre 2004 e 2008, servi no Exército Português...',
         journey1: 'O meu percurso militar iniciou-se no Regimento de Infantaria 13...',
@@ -1133,8 +1133,8 @@ export default {
         timelineTitle: 'Marcos da Experiência Militar',
         basicTitle: 'Recruta e Treinamento Militar Básico',
         basicDescription: 'Formação fundamental no RI13 Vila Real...',
-        specializedTitle: 'Treinamento Especializado de Atirador',
-        specializedDescription: 'Especialização na Escola Prática de Infantaria...',
+        specializedTitle: 'Formação na EPI Mafra',
+        specializedDescription: 'Formação na Escola Prática de Infantaria...',
         preparationTitle: 'Preparação para Missão Internacional',
         preparationDescription: 'Treinos exaustivos e preparações militares...',
         deploymentTitle: 'Destacamento na Bosnia Herzegovina',
@@ -1474,21 +1474,21 @@ export default {
           id: 1,
           years: '2004-2008',
           duration: '4 anos',
-          title: 'Exército Português - Atirador Especializado',
+          title: 'Exército Português - Atirador',
           company: 'Regimento de Infantaria 13 (RI13) - Vila Real | EPI - Mafra',
           category: 'military',
           icon: 'ri-shield-star-line',
           position: 8,
-          description: 'Serviço militar no Exército Português como atirador especializado. Passei pelo RI13 em Vila Real e pela Escola Prática de Infantaria em Mafra. Em 2006 participei numa missão de apoio à paz na Bósnia Herzegovina após a guerra civil de 95, destacado pela EUFOR como parte da ALFACOY (Companhia de Atiradores).',
+          description: 'Serviço militar no Exército Português como atirador. Passei pelo RI13 em Vila Real e pela Escola Prática de Infantaria em Mafra. Em 2006 participei numa missão de apoio à paz na Bósnia Herzegovina após a guerra civil de 95, destacado pela EUFOR como parte da ALFACOY (Companhia de Atiradores).',
           achievements: [
-            'Especialização em armamento e tiro - múltiplas armas e equipamentos',
+            'Formação em armamento e tiro - múltiplas armas e equipamentos',
             'Missão Internacional de Paz - Bósnia Herzegovina (2006) - 8 meses',
             'Membro da ALFACOY (Companhia de Atiradores) destacado pela EUFOR',
             'Experiências enriquecedoras em várias missões e treinos',
             'Liderança e coordenação de equipas em operações militares'
           ],
           certifications: [
-            { name: 'Atirador Especializado', type: 'military', icon: 'ri-focus-line' },
+            { name: 'Atirador', type: 'military', icon: 'ri-focus-line' },
             { name: 'Medalha Serviço Paz', type: 'award', icon: 'ri-global-line' },
             { name: 'EUFOR - ALFACOY', type: 'military', icon: 'ri-shield-star-line' }
           ],
@@ -2193,11 +2193,7 @@ export default {
 .about-page {
   min-height: 100vh;
   padding-top: 2rem;
-  background-image:
-    radial-gradient(circle at 12% 25%, rgba(119, 167, 255, 0.15), transparent 35%),
-    radial-gradient(circle at 88% 20%, rgba(74, 134, 232, 0.2), transparent 38%),
-    radial-gradient(circle at 75% 70%, rgba(74, 134, 232, 0.12), transparent 45%);
-  background-repeat: no-repeat;
+  background: var(--color-bg-primary);
 }
 
 .container {
@@ -2241,10 +2237,7 @@ export default {
 }
 
 .about-title-highlight {
-  background: linear-gradient(135deg, var(--color-primary), var(--color-accent));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-primary);
 }
 
 .about-hero-description {

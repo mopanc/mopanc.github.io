@@ -4,11 +4,11 @@
     <div v-if="!article" class="article-not-found">
       <div class="container-narrow">
         <i class="ri-file-unknow-line"></i>
-        <h1>{{ isPt ? 'Artigo não encontrado' : 'Article not found' }}</h1>
-        <p>{{ isPt ? 'O artigo que procuras não existe ou foi movido.' : 'The article you are looking for does not exist or has been moved.' }}</p>
+        <h1>{{ translations.article_not_found_title || 'Article not found' }}</h1>
+        <p>{{ translations.article_not_found_msg || 'The article you are looking for does not exist or has been moved.' }}</p>
         <router-link to="/blog" class="btn btn--primary">
           <i class="ri-arrow-left-line"></i>
-          {{ isPt ? 'Voltar ao Blog' : 'Back to Blog' }}
+          {{ translations.article_back_to_blog || 'Back to Blog' }}
         </router-link>
       </div>
     </div>
@@ -22,7 +22,7 @@
           <div class="breadcrumb-inner">
             <router-link to="/" class="breadcrumb-link">
               <i class="ri-home-4-line"></i>
-              {{ isPt ? 'Início' : 'Home' }}
+              {{ translations.article_breadcrumb_home || 'Home' }}
             </router-link>
             <i class="ri-arrow-right-s-line breadcrumb-sep"></i>
             <router-link to="/blog" class="breadcrumb-link">Blog</router-link>
@@ -77,13 +77,13 @@
             <div class="article-footer-section">
               <router-link to="/blog" class="btn btn--secondary article-back-btn">
                 <i class="ri-arrow-left-line"></i>
-                {{ isPt ? 'Voltar ao Blog' : 'Back to Blog' }}
+                {{ translations.article_back_to_blog || 'Back to Blog' }}
               </router-link>
 
               <!-- Related articles -->
               <div v-if="relatedArticles.length > 0" class="related-articles">
                 <h3 class="related-articles__title">
-                  {{ isPt ? 'Artigos relacionados' : 'Related articles' }}
+                  {{ translations.article_related || 'Related articles' }}
                 </h3>
                 <div class="related-articles__grid">
                   <router-link
@@ -137,13 +137,13 @@
             <div class="sidebar-card sidebar-stats">
               <p class="sidebar-card__label">
                 <i class="ri-bar-chart-2-line"></i>
-                {{ isPt ? 'Estatísticas' : 'Stats' }}
+                {{ translations.article_stats || 'Stats' }}
               </p>
               <div class="sidebar-stats__grid">
                 <div class="sidebar-stat">
                   <i class="ri-eye-line"></i>
                   <span class="sidebar-stat__value">{{ formatCount(article.views || 0) }}</span>
-                  <span class="sidebar-stat__label">{{ isPt ? 'views' : 'views' }}</span>
+                  <span class="sidebar-stat__label">views</span>
                 </div>
                 <div class="sidebar-stat">
                   <i class="ri-heart-line"></i>
@@ -153,7 +153,7 @@
                 <div class="sidebar-stat">
                   <i class="ri-message-3-line"></i>
                   <span class="sidebar-stat__value">{{ commentsCount }}</span>
-                  <span class="sidebar-stat__label">{{ isPt ? 'comentários' : 'comments' }}</span>
+                  <span class="sidebar-stat__label">{{ translations.article_comments || 'comments' }}</span>
                 </div>
               </div>
             </div>
@@ -162,7 +162,7 @@
             <div class="sidebar-card sidebar-likes">
               <p class="sidebar-card__label">
                 <i class="ri-heart-line"></i>
-                {{ isPt ? 'Gostar do artigo' : 'Like this article' }}
+                {{ translations.article_like_title || 'Like this article' }}
               </p>
               <LikesSection
                 :article-id="article.id"
@@ -175,7 +175,7 @@
             <div class="sidebar-card sidebar-share">
               <p class="sidebar-card__label">
                 <i class="ri-share-forward-line"></i>
-                {{ isPt ? 'Partilhar' : 'Share' }}
+                {{ translations.article_share || 'Share' }}
               </p>
               <ShareButtons
                 :title="isPt ? article.titlePt : article.title"
@@ -222,7 +222,7 @@ export default {
   setup() {
     const route  = useRoute()
     const router = useRouter()
-    const { selectedLanguage, initialize } = useLanguage()
+    const { translations, selectedLanguage, initialize } = useLanguage()
     const { articles, isLoading, incrementViews } = useArticles()
     const { safeLocalStorage, COOKIE_CATEGORIES } = useCookieConsent()
 
@@ -323,6 +323,7 @@ export default {
       article,
       relatedArticles,
       renderedContent,
+      translations,
       isPt,
       formatDate,
       formatCount,

@@ -26,6 +26,7 @@
     "nodemailer": "^6.9.2",
     "nodemailer-sendgrid-transport": "^0.2.0",
     "prismjs": "^1.30.0",
+    "split-type": "^0.3.4",
     "swiper": "^9.3.0",
     "turndown": "^7.2.2",
     "vue": "^3.2.13",

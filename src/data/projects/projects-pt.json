@@ -1,271 +1,687 @@
 {
   "projects": [
     {
-      "id": "Qore-Rewrite",
+      "id": "depguard",
+      "category": "open-source",
+      "isPublic": true,
+      "featured": true,
+      "caseStudySlug": "depguard-mcp-security-server",
+      "projectType": "Open Source - Servidor de Segurança MCP",
+      "status": "Em Desenvolvimento Ativo",
+      "title": "depguard",
+      "description": "Servidor MCP open-source para segurança de dependências npm, construído em TypeScript com zero dependências runtime. 12 ferramentas: guardião pré-instalação, deteção de alucinações de IA, análise estática de código com padrões de malware, sweep de dependências mortas, auditoria de vulnerabilidades de fonte dupla (npm + GitHub Advisory), AI Code Review, geração de SBOM CycloneDX 1.6 com VEX. 298 testes offline. Publicado no npm: npmjs.com/package/depguard-cli.",
+      "images": [
+        {
+          "src": "depguard/home.png",
+          "alt": "Página inicial do depguard com servidor de segurança MCP para agentes de IA",
+          "title": "Página Inicial"
+        },
+        {
+          "src": "depguard/demo.png",
+          "alt": "Demo do depguard mostrando resultados de auditoria de pacotes no terminal",
+          "title": "Demo"
+        },
+        {
+          "src": "depguard/description.png",
+          "alt": "Visão geral das funcionalidades do depguard com 9 ferramentas MCP e modelo de scoring",
+          "title": "Funcionalidades"
+        },
+        {
+          "src": "depguard/npm.png",
+          "alt": "Página do pacote depguard-cli no registry npm",
+          "title": "Pacote npm"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "npm",
+          "icon": "npmjs-icon.svg"
+        },
+        {
+          "name": "GitHub",
+          "icon": "github-icon.svg"
+        }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/depguard",
+        "website": "https://depguard.dev"
+      },
+      "metrics": [
+        {
+          "value": "12",
+          "label": "Ferramentas MCP"
+        },
+        {
+          "value": "0",
+          "label": "Dependências"
+        },
+        {
+          "value": "298",
+          "label": "Testes"
+        }
+      ]
+    },
+    {
+      "id": "gov-analytics-portugal",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "projectType": "Plataforma de Dados Cívicos",
+      "status": "Estável",
+      "title": "GOV.analytics",
+      "description": "Análise de despesa pública portuguesa, construída sobre dados abertos do portal BASE/IMPIC (dados.gov.pt). Monorepo Turborepo: backend Fastify + TypeScript com Kysely como query builder type-safe, PostgreSQL com particionamento por ano e materialized views para agregações rápidas, filas Redis + BullMQ, frontend Next.js 15 (App Router) com Tailwind v4. O pipeline ETL ingere mais de 200k contratos públicos entre 2018 e 2026 a partir de exports XLSX: download automático, parsing, transformação, carregamento em batch com deduplicação, refresh de views. O frontend expõe contratos, fornecedores e analytics: resumos de despesa, top fornecedores, drill-downs de contratos, pesquisa. A ambição 'live' está limitada pelos formatos arcaicos do governo (apenas Excel, atrasados anos). A análise histórica funciona com dados reais de produção.",
+      "images": [
+        {
+          "src": "gov/dashboard.png",
+          "alt": "Dashboard principal do GOV.analytics com resumo de despesa pública por ano e ministério",
+          "title": "Dashboard"
+        },
+        {
+          "src": "gov/contratos.png",
+          "alt": "Listagem de contratos públicos com filtros avançados por ano, fornecedor e entidade",
+          "title": "Contratos"
+        },
+        {
+          "src": "gov/receitas.png",
+          "alt": "Acompanhamento de receitas públicas e breakdowns em paralelo com a despesa",
+          "title": "Receitas"
+        },
+        {
+          "src": "gov/fontes.png",
+          "alt": "Fontes de dados abertos e estado da ingestão a partir do BASE/IMPIC e dados.gov.pt",
+          "title": "Fontes de Dados"
+        },
+        {
+          "src": "gov/analytics.png",
+          "alt": "Vista de analytics com tendências de despesa ano-a-ano e totais agregados",
+          "title": "Analytics"
+        },
+        {
+          "src": "gov/analytics-1.png",
+          "alt": "Drill-down de analytics com vistas detalhadas por ministério, região ou categoria",
+          "title": "Drill-down de Analytics"
+        },
+        {
+          "src": "gov/analytics-2.png",
+          "alt": "Deep-dive de analytics com gráficos comparativos e rankings de fornecedores",
+          "title": "Deep-dive de Analytics"
+        },
+        {
+          "src": "gov/search.png",
+          "alt": "Pesquisa avançada com filtros multi-campo em contratos, fornecedores e entidades",
+          "title": "Pesquisa"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "Fastify",
+          "icon": ""
+        },
+        {
+          "name": "Kysely",
+          "icon": ""
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": ""
+        },
+        {
+          "name": "Redis",
+          "icon": ""
+        },
+        {
+          "name": "BullMQ",
+          "icon": ""
+        },
+        {
+          "name": "Next.js 15",
+          "icon": ""
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwindcss-icon.svg"
+        },
+        {
+          "name": "Turborepo",
+          "icon": ""
+        }
+      ],
+      "links": {
+        "repository": null,
+        "website": null
+      },
+      "metrics": [
+        {
+          "value": "200k+",
+          "label": "Contratos"
+        },
+        {
+          "value": "9",
+          "label": "Anos"
+        },
+        {
+          "value": "6",
+          "label": "Migrações SQL"
+        }
+      ]
+    },
+    {
+      "id": "workora-recruitment-saas",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "projectType": "SaaS de Recrutamento com IA",
+      "status": "Em Desenvolvimento",
+      "title": "Workora",
+      "description": "SaaS de recrutamento que liga empresas a candidatos. Backend em Node.js/Express 5 com TypeScript, Prisma ORM e PostgreSQL (31 controllers, 30+ services, 28 route files). Frontend React 18/TypeScript com Vite, Tailwind e shadcn/ui (18 páginas, 21 grupos de componentes). Empresas publicam vagas com créditos e revêem candidatos. Candidatos carregam CV, pesquisam e candidatam-se num clique. O Gemini AI pontua o fit candidato-vaga e sugere recomendações; a decisão final é humana. Stripe para créditos e subscrições, LinkedIn OAuth para login + import de perfil, Socket.IO para notificações em tempo real, Bull queue com SMTP/SendGrid/Mailgun para pipelines de email, PDFKit para faturas e relatórios, i18n completo PT/EN. Acesso baseado em papéis: Admin, Empresa e Candidato.",
+      "images": [
+        {
+          "src": "workora/home.png",
+          "alt": "Página inicial Workora a apresentar a plataforma de recrutamento com IA",
+          "title": "Página Inicial"
+        },
+        {
+          "src": "workora/jobs-listing.png",
+          "alt": "Listagem pública de vagas com pesquisa, filtros e candidatura num clique",
+          "title": "Listagem de Vagas"
+        },
+        {
+          "src": "workora/candidate-profile.png",
+          "alt": "Perfil de candidato com CV parsed, competências e histórico de candidaturas",
+          "title": "Perfil do Candidato"
+        },
+        {
+          "src": "workora/interview.png",
+          "alt": "Gestão de entrevistas com agendamento e comunicação candidato-empresa",
+          "title": "Gestão de Entrevistas"
+        },
+        {
+          "src": "workora/company-dashboard.png",
+          "alt": "Dashboard da empresa com applicant tracking, analytics e gestão de vagas",
+          "title": "Dashboard da Empresa"
+        },
+        {
+          "src": "workora/ai-matching.png",
+          "alt": "Matching de candidatos por Gemini AI com fit scores e recomendações ordenadas",
+          "title": "Matching por IA"
+        },
+        {
+          "src": "workora/analytics.png",
+          "alt": "Analytics de recrutamento com funil de contratação, métricas de conversão e insights da plataforma",
+          "title": "Analytics e Insights"
+        },
+        {
+          "src": "workora/social-media.png",
+          "alt": "Integração com redes sociais para partilha de vagas e amplificação de alcance",
+          "title": "Partilha em Redes Sociais"
+        },
+        {
+          "src": "workora/pricing-credits.png",
+          "alt": "Compra de créditos e subscrições com integração de pagamentos Stripe",
+          "title": "Créditos e Subscrições"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "Express",
+          "icon": "express-js.svg"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "Prisma",
+          "icon": ""
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": ""
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwindcss-icon.svg"
+        },
+        {
+          "name": "Vite",
+          "icon": ""
+        },
+        {
+          "name": "Stripe",
+          "icon": ""
+        },
+        {
+          "name": "Gemini AI",
+          "icon": ""
+        },
+        {
+          "name": "Redis",
+          "icon": ""
+        },
+        {
+          "name": "Socket.IO",
+          "icon": "socketio.svg"
+        }
+      ],
+      "links": {
+        "repository": null,
+        "website": null
+      },
+      "metrics": [
+        {
+          "value": "31",
+          "label": "Controllers"
+        },
+        {
+          "value": "30+",
+          "label": "Services"
+        },
+        {
+          "value": "18",
+          "label": "Páginas"
+        }
+      ]
+    },
+    {
+      "id": "cyborg-ai-platform",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "projectType": "Plataforma de IA Multi-Tenant",
+      "status": "Desenvolvimento Activo",
+      "title": "Cyborg",
+      "description": "Plataforma de IA multi-tenant para gerir equipamentos industriais e IoT por chat. Três serviços: um backend Go com 19 módulos em PostgreSQL e Redis, um engine Python FastAPI sobre Qdrant que comunica com Claude, OpenAI ou Ollama local, e um frontend React/TypeScript (Vite, Tailwind, shadcn/ui). Largas PDF, DOCX, Excel, Markdown ou HTML e cada agente fica com a sua knowledge base. Os agentes fazem chamadas HTTP reais (Basic, Bearer ou OAuth2) e comunicam com os equipamentos sobre Modbus, MQTT ou OPC-UA. Acesso multi-tenant baseado em roles, alertas IA gerados a partir dos dados dos equipamentos, analytics de conversas, gating de funcionalidades por licença. Inclui emulador de dispositivos para testes end-to-end sem hardware real.",
+      "images": [
+        {
+          "src": "cyborg/home.png",
+          "alt": "Página principal do Cyborg com agentes, equipamentos e contexto de tenant",
+          "title": "Plataforma Principal"
+        },
+        {
+          "src": "cyborg/dashboard.png",
+          "alt": "Dashboard com analytics de utilização, métricas de conversas e visão geral de tenant",
+          "title": "Vista Geral do Dashboard"
+        },
+        {
+          "src": "cyborg/equipment.png",
+          "alt": "Ecrã de gestão de equipamentos com registo de dispositivos e configuração de protocolos",
+          "title": "Gestão de Equipamentos"
+        },
+        {
+          "src": "cyborg/rag-ingest.png",
+          "alt": "Ingestão de documentos RAG com upload de PDF, DOCX, Excel, Markdown e HTML para knowledge bases por agente",
+          "title": "Ingestão de Documentos RAG"
+        },
+        {
+          "src": "cyborg/agent-config.png",
+          "alt": "Configuração de agente com system prompt, tool actions e atribuição de knowledge base",
+          "title": "Configuração de Agente"
+        },
+        {
+          "src": "cyborg/chat.png",
+          "alt": "Chat com agente IA com respostas em streaming e respostas contextuais",
+          "title": "Chat de Agente"
+        },
+        {
+          "src": "cyborg/chat-1.png",
+          "alt": "Chat com agente a executar tool-calling em dispositivos reais sobre HTTP/Modbus/MQTT/OPC-UA",
+          "title": "Chat com Tool-Calling"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Go",
+          "icon": ""
+        },
+        {
+          "name": "Python",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "FastAPI",
+          "icon": ""
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": ""
+        },
+        {
+          "name": "Qdrant",
+          "icon": ""
+        },
+        {
+          "name": "Redis",
+          "icon": ""
+        },
+        {
+          "name": "Docker",
+          "icon": "docker-icon.svg"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwindcss-icon.svg"
+        },
+        {
+          "name": "Anthropic SDK",
+          "icon": ""
+        },
+        {
+          "name": "OpenAI SDK",
+          "icon": ""
+        },
+        {
+          "name": "Ollama",
+          "icon": ""
+        }
+      ],
+      "links": {
+        "repository": null,
+        "website": null
+      },
+      "metrics": [
+        {
+          "value": "3",
+          "label": "Arquitetura de Serviços"
+        },
+        {
+          "value": "4",
+          "label": "Protocolos"
+        },
+        {
+          "value": "5",
+          "label": "Formatos Doc"
+        }
+      ]
+    },
+    {
+      "id": "montedge-personal-finance",
+      "category": "personal",
+      "isPublic": true,
+      "featured": false,
+      "projectType": "Plataforma de Finanças Pessoais",
+      "status": "Em uso pessoal",
+      "title": "MontEdge",
+      "description": "Plataforma de finanças pessoais que segue cada conta, ativo e movimento num só sítio. Backend Rails API com MySQL, frontend Next.js + TypeScript com rotas protegidas. O domínio cobre 20+ entidades: contas bancárias, carteiras, brokers e ativos de investimento com seguimento de dividendos, cartões de crédito (encargos, prestações, pagamentos), receitas, despesas com lógica de divisão e comparação de preços por loja, transferências, passivos, taxas de IVA. Analytics por cima: conversão cambial, deteção do preço mais barato por artigo, breakdown de yield de dividendos. Feito em conjunto com o meu irmão (dev Rails). Uso-o no dia-a-dia para gerir as minhas finanças.",
+      "images": [
+        {
+          "src": "montedge/dashboard.png",
+          "alt": "Vista principal do MontEdge com resumo financeiro de contas, investimentos e movimentos recentes",
+          "title": "Dashboard"
+        },
+        {
+          "src": "montedge/accounts.png",
+          "alt": "Lista de contas bancárias e carteiras com saldos e moedas",
+          "title": "Contas & Carteiras"
+        },
+        {
+          "src": "montedge/investments.png",
+          "alt": "Ativos de investimento, brokers e seguimento de dividendos",
+          "title": "Investimentos & Dividendos"
+        },
+        {
+          "src": "montedge/credit-cards.png",
+          "alt": "Gestão de cartões de crédito com encargos, planos de prestações e pagamentos",
+          "title": "Cartões de Crédito"
+        },
+        {
+          "src": "montedge/analytics.png",
+          "alt": "Analytics com conversão cambial e breakdown de yield de dividendos",
+          "title": "Analytics"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Ruby on Rails",
+          "icon": ""
+        },
+        {
+          "name": "MySQL",
+          "icon": "mysql-official.svg"
+        },
+        {
+          "name": "Next.js",
+          "icon": ""
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwindcss-icon.svg"
+        },
+        {
+          "name": "Docker",
+          "icon": "docker-icon.svg"
+        }
+      ],
+      "links": {
+        "repository": null,
+        "website": null
+      }
+    },
+    {
+      "id": "multi-location-enterprise-sync",
       "category": "professional",
       "isPublic": false,
       "featured": true,
-      "caseStudySlug": "pos-sync-fiscal-compliance",
+      "caseStudySlug": "federated-pos-synchronization",
       "projectType": "Enterprise Software - Business Management Platform",
       "status": "In Production",
-      "title": "QORE - Plataforma de Gestão Empresarial",
-      "description": "Sistema empresarial completo para gestão centralizada de negócios multi-loja, desenvolvido com stack tecnológico avançado: Node.js, Express.js, TypeScript, TypeORM e SQL Server no backend, React com TypeScript no frontend, e Socket.IO para comunicação em tempo real. Inclui gestão de lojas, análise de vendas com dashboards estatísticos, controlo de stocks, gestão de utilizadores com permissões granulares, e automação de processos. Funcionalidades principais: configuração remota de dispositivos via protocolo ETPROXY proprietário, sincronização de dados empresariais, análises comparativas, rankings de produtos, exportação PDF/CSV, gestão inteligente de preços, backups automáticos e licenciamento controlado por dispositivos.",
+      "title": "Sincronização Empresarial Multi-Localização",
+      "description": "Plataforma de gestão multi-loja para uma organização com várias localizações. Node.js, Express.js, TypeScript, TypeORM e SQL Server no backend, React + TypeScript no frontend, Socket.IO para comunicação em tempo real. Cobre gestão de lojas, análise de vendas com dashboards estatísticos, controlo de stocks, gestão de utilizadores com permissões granulares, e automação de processos. O essencial: configuração remota de dispositivos via protocolo ETPROXY proprietário, sincronização de dados entre localizações, análises comparativas, rankings de produtos, exportação PDF/CSV, gestão de preços baseada em regras, backups automáticos, e licenciamento por dispositivo.",
       "images": [
         {
-          "src": "qore/Grafics.png",
-          "alt": "Gráfico interativo com estatísticas de vendas e métricas empresariais",
-          "title": "Estatísticas de Vendas"
-        },
-        {
-          "src": "qore/Chart.png",
-          "alt": "Painel com gráficos comparativos de desempenho e evolução de vendas",
-          "title": "Gráficos de Desempenho"
-        },
-        {
-          "src": "qore/Database.png",
-          "alt": "Visualização de base de dados com listagem estruturada de artigos e transações",
-          "title": "Base de Dados"
-        },
-        {
-          "src": "qore/Receive.png",
-          "alt": "Ecrã de receção de artigos com controlo de stocks e entradas em armazém",
-          "title": "Receção de Stocks"
-        },
-        {
-          "src": "qore/report.png",
-          "alt": "Relatório detalhado com listagem de utilizadores e permissões atribuídas",
-          "title": "Relatórios de Utilizadores"
-        },
-        {
-          "src": "qore/Stores.png",
-          "alt": "Interface de gestão de lojas com configuração de secções, grupos e dispositivos",
-          "title": "Gestão de Lojas"
-        },
-        {
-          "src": "qore/Tasks.png",
-          "alt": "Lista de tarefas automáticas do sistema com estados e prioridades",
-          "title": "Gestão de Tarefas"
-        },
-        {
-          "src": "qore/VAT.png",
-          "alt": "Configuração de perfis de IVA com regras fiscais aplicadas a artigos e serviços",
-          "title": "Configuração de IVA"
-        },
-        {
-          "src": "qore/VAT1.png",
-          "alt": "Tabela de taxas de IVA com percentagens e categorias aplicáveis",
-          "title": "Tabela de IVA"
+          "src": "qore/home.png",
+          "alt": "Multi-Location Enterprise Sync — vista ilustrativa do dashboard (visualização gerada por IA, não a UI proprietária real)",
+          "title": "Vista da Plataforma"
         }
       ],
       "technologies": [
-        { "name": "Node.js", "icon": "nodejs-icon.svg" },
-        { "name": "Express.js", "icon": "express-js.svg" },
-        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
-        { "name": "TypeORM", "icon": "Typeorm--Streamline-Simple-Icons.svg" },
-        { "name": "SQL Server", "icon": "microsoft-sql-server.svg" },
-        { "name": "Socket.IO", "icon": "socketio.svg" },
-        { "name": "React", "icon": "reactjs-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "RESTful API", "icon": "getpostman-icon.svg" },
-        { "name": "C#", "icon": "visualstudio_code-icon.svg" },
-        { "name": "InnoSetup", "icon": "innosetup.svg" }
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "Express.js",
+          "icon": "express-js.svg"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "TypeORM",
+          "icon": "Typeorm--Streamline-Simple-Icons.svg"
+        },
+        {
+          "name": "SQL Server",
+          "icon": "microsoft-sql-server.svg"
+        },
+        {
+          "name": "Socket.IO",
+          "icon": "socketio.svg"
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "CSS3",
+          "icon": "w3_css-icon.svg"
+        },
+        {
+          "name": "RESTful API",
+          "icon": "getpostman-icon.svg"
+        },
+        {
+          "name": "C#",
+          "icon": "visualstudio_code-icon.svg"
+        },
+        {
+          "name": "InnoSetup",
+          "icon": "innosetup.svg"
+        }
+      ],
+      "links": {
+        "repository": null
+      },
+      "metrics": [
+        {
+          "value": "72%",
+          "label": "Memória Reduzida"
+        },
+        {
+          "value": "96%",
+          "label": "Pipeline Rápido"
+        },
+        {
+          "value": "500k+",
+          "label": "Docs/Mês"
+        }
+      ]
+    },
+    {
+      "id": "qscope-v3-trading-platform",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "projectType": "Plataforma Autónoma de Trading Cripto",
+      "status": "Em Testes ao Vivo",
+      "title": "Q-Scope V3",
+      "description": "Plataforma autónoma de trading cripto com tomada de decisão por IA, painel de 7 analistas, e learning engine que se ajusta ao longo do tempo. Arquitetura poliglota: backend NestJS + TypeScript (11 módulos, 19 serviços, 56 ficheiros), micro-serviço Python FastAPI a correr 7 analistas (RSI, MACD, Trend, Volume, Elliott Wave, Fibonacci, Hurst) e a extrair mais de 100 features, gateway Socket.IO para telemetria de ciclo em tempo real, PostgreSQL para trades, decisões e learning data, Redis para price cache e pub/sub, Ollama para agentes LLM locais (decisão + revisão pós-trade). O Analysis Cycle corre SCAN → SYNC → ANALYZE → CONSENSUS → AI DECIDE → EXECUTE → MONITOR → EXIT → LEARN. Os pesos dos analistas vão sendo afinados pela accuracy histórica em cada regime de mercado. Integração live com Binance Futures (orders reais assinadas), notícias CryptoCompare/CoinGecko com classificação de sentimento, Fear & Greed Index. Sistema de prompts versionados (CRUD + revert) para governar o comportamento da IA sem redeploys.",
+      "images": [
+        {
+          "src": "qscope-v3/dashboard.png",
+          "alt": "Dashboard Q-Scope V3 com telemetria de ciclo em tempo real e painel de 7 analistas",
+          "title": "Dashboard"
+        },
+        {
+          "src": "qscope-v3/decisions.png",
+          "alt": "Output do motor de decisão IA: consenso dos 7 analistas com scores de confiança por sinal",
+          "title": "Decisões IA"
+        },
+        {
+          "src": "qscope-v3/analytics.png",
+          "alt": "Analytics de performance: trades, decisões e learning data ao longo do tempo",
+          "title": "Analytics"
+        },
+        {
+          "src": "qscope-v3/position.png",
+          "alt": "Monitorização de posição ativa com níveis de stop-loss e take-profit",
+          "title": "Posição Ativa"
+        },
+        {
+          "src": "qscope-v3/position-1.png",
+          "alt": "Detalhe de posição com entrada, saídas e contribuição por analista",
+          "title": "Detalhe da Posição"
+        },
+        {
+          "src": "qscope-v3/history.png",
+          "alt": "Histórico de trades com post-mortem por trade e revisão de aprendizagem",
+          "title": "Histórico"
+        },
+        {
+          "src": "qscope-v3/news.png",
+          "alt": "Feed de notícias com classificação de sentimento e Fear & Greed Index",
+          "title": "Notícias e Sentimento"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "NestJS",
+          "icon": ""
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "Python",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "FastAPI",
+          "icon": ""
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "Socket.IO",
+          "icon": "socketio.svg"
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": ""
+        },
+        {
+          "name": "Redis",
+          "icon": ""
+        },
+        {
+          "name": "Ollama",
+          "icon": ""
+        },
+        {
+          "name": "Binance API",
+          "icon": ""
+        }
       ],
       "links": {
         "repository": null,
         "website": null
       },
       "metrics": [
-        { "value": "72%", "label": "Memória Reduzida" },
-        { "value": "96%", "label": "Pipeline Rápido" },
-        { "value": "900k+", "label": "Docs POS" }
-      ]
-    },
-    {
-      "id": "alice4cash-payment-machine",
-      "category": "professional",
-      "isPublic": false,
-      "featured": true,
-      "projectType": "Embedded Systems - Payment Machine Backend",
-      "status": "In Production",
-      "title": "Alice4Cash - Sistema de Pagamento Automatizado",
-      "description": "Webservice backend para máquina de pagamentos automatizada Alice4Cash, desenvolvido em C puro para controlo de hardware complexo incluindo hoppers, validadores de moedas/notas, reciclador e cofre de segurança. Utiliza protocolos especializados CCTalk e EID003 para comunicação com periféricos, e MQTT para integração com aplicações móveis. Principais desafios: gestão rigorosa de memória em ambiente restrito, prevenção de memory leaks, manipulação de dados binários e sincronização em tempo real. Funcionalidades: validação automática de valores, cálculo de troco, controlo LED, monitoramento remoto via MQTT e logging detalhado de transações.",
-      "images": [
         {
-          "src": "alice4cash/homepage.jpg",
-          "alt": "Máquina Alice4Cash mostrando design moderno com interface digital e compartimentos para processamento de dinheiro",
-          "title": "Máquina Alice4Cash"
+          "value": "7",
+          "label": "Painel de Analistas"
         },
         {
-          "src": "alice4cash/black.jpg",
-          "alt": "Vista dos componentes internos incluindo hoppers, validadores, reciclador e sistema de controlo",
-          "title": "Componentes Hardware"
+          "value": "9 Fases",
+          "label": "Ciclo"
         },
         {
-          "src": "alice4cash/white.jpg",
-          "alt": "Interface de desenvolvimento do webservice backend mostrando código C e configurações MQTT",
-          "title": "Backend Development"
-        },
-        {
-          "src": "alice4cash/desc1.jpg",
-          "alt": "Diagrama de comunicação CCTalk e EID003 entre componentes da máquina",
-          "title": "Protocolos de Comunicação"
-        },
-        {
-          "src": "alice4cash/desc2.jpg",
-          "alt": "Aplicação móvel conectada via MQTT para monitoramento e controlo remoto da máquina",
-          "title": "Integração Mobile MQTT"
-        },
-        {
-          "src": "alice4cash/desc3.jpg",
-          "alt": "Ambiente de testes com debugging de memory leaks e análise de performance",
-          "title": "Testing & Debugging"
-        },
-        {
-          "src": "alice4cash/desc4.jpg",
-          "alt": "Ambiente de testes com debugging de memory leaks e análise de performance",
-          "title": "Testing & Debugging"
+          "value": "Adaptativos",
+          "label": "Pesos"
         }
-      ],
-      "technologies": [
-        { "name": "C Programming", "icon": "c-programming.svg" },
-        { "name": "MQTT Protocol", "icon": "mqtt-icon-solid.svg" },
-        { "name": "CCTalk Protocol", "icon": "binary-svgrepo-com.svg" },
-        { "name": "EID003 Protocol", "icon": "binary-svgrepo-com.svg" },
-        { "name": "Embedded Systems", "icon": "memory.svg" },
-        { "name": "Linux Embedded", "icon": "linux.svg" },
-        { "name": "IoT Communication", "icon": "iot.svg" }
-      ],
-      "links": {
-        "repository": null,
-        "website": "https://www.alice4cash.com/"
-      },
-      "metrics": [
-        { "value": "0", "label": "Memory Leaks" },
-        { "value": "3+", "label": "Protocolos HW" },
-        { "value": "Live", "label": "MQTT" }
-      ]
-    },
-    {
-      "id": "q-scope-ai-trader",
-      "category": "personal",
-      "isPublic": true,
-      "featured": true,
-      "caseStudySlug": "qscope-quantum-elliott-wave-ai",
-      "projectType": "Plataforma de Trading Algorítmico com IA",
-      "status": "In Development",
-      "title": "Q-Scope AI Trading Platform",
-      "description": "Plataforma avançada de trading algorítmico que combina IA com análise técnica moderna. Integra engine quântico NEURO-IA-CORE v4.0, análise multi-timeframe e Elliott Wave Theory para decisões automatizadas. Inclui dashboard em tempo real, gestão de risco dinâmica e integração completa com Binance API através de WebSocket e autenticação JWT.",
-      "images": [
-        {
-          "src": "q-scope-ai/login.jpg",
-          "alt": "Sistema de gestão de risco dinâmico",
-          "title": "Dynamic Risk Management"
-        },
-        {
-          "src": "q-scope-ai/dashboard.jpg",
-          "alt": "Dashboard principal com análise IA em tempo real",
-          "title": "AI Trading Dashboard"
-        },
-        {
-          "src": "q-scope-ai/live_signals.jpg",
-          "alt": "Sinais de IA ao vivo com Elliott Wave e Fibonacci",
-          "title": "Live AI Signals"
-        },
-        {
-          "src": "q-scope-ai/active_positions.jpg",
-          "alt": "Análise multi-timeframe e confluências quânticas",
-          "title": "Multi-Timeframe Analysis"
-        },
-        {
-          "src": "q-scope-ai/how_ai_works.jpg",
-          "alt": "Sistema de gestão de risco dinâmico",
-          "title": "Dynamic Risk Management"
-        },
-        {
-          "src": "q-scope-ai/license.jpg",
-          "alt": "Sistema de gestão de risco dinâmico",
-          "title": "Dynamic Risk Management"
-        },
-        {
-          "src": "q-scope-ai/pair_setup.jpg",
-          "alt": "Sistema de gestão de risco dinâmico",
-          "title": "Dynamic Risk Management"
-        },
-        {
-          "src": "q-scope-ai/training.jpg",
-          "alt": "Sistema de gestão de risco dinâmico",
-          "title": "Dynamic Risk Management"
-        }
-      ],
-      "technologies": [
-        { "name": "Python", "icon": "python-icon.svg" },
-        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
-        { "name": "Node.js", "icon": "nodejs-icon.svg" },
-        { "name": "React", "icon": "reactjs-icon.svg" },
-        { "name": "Express.js", "icon": "express.svg" },
-        { "name": "TypeORM", "icon": "nodejs-icon.svg" },
-        { "name": "MySQL", "icon": "mysql-official.svg" },
-        { "name": "Socket.IO", "icon": "socketio.svg" },
-        { "name": "Vite", "icon": "js.svg" },
-        { "name": "TailwindCSS", "icon": "tailwindcss-icon.svg" },
-        { "name": "Binance API", "icon": "getpostman-icon.svg" },
-        { "name": "JWT Authentication", "icon": "getpostman-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/Q-scope-AI",
-        "website": null
-      },
-      "metrics": [
-        { "value": "3", "label": "Modelos IA" },
-        { "value": "4x", "label": "Timeframes" },
-        { "value": "Live", "label": "Feed Binance" }
-      ]
-    },
-    {
-      "id": "smarttrade-ai",
-      "category": "personal",
-      "isPublic": true,
-      "featured": true,
-      "projectType": "Sistema de Inteligência Artificial para crypto Trading",
-      "status": "In Development",
-      "title": "Smart Trade AI",
-      "description": "Sistema de inteligência artificial avançado para análise de gráficos de cryptomoedas que combina múltiplas tecnologias de machine learning. Integra algoritmos Quantum based, Fibonacci, Elliott Waves, análise multi-timeframe e otimização de portfólio com modelos Random Forest e Gradient Boosting. Inclui gestão de risco adaptativa que processa mais de 50 indicadores técnicos em tempo real, substituindo decisões manuais por análise contextual baseada em padrões Elliott Wave e confiança da IA.",
-      "images": [
-        {
-          "src": "crypto_ai_analyser/dashboard.jpg",
-          "alt": "Dashboard da análise IA em tempo real",
-          "title": "IA Dashboard"
-        },
-        {
-          "src": "crypto_ai_analyser/elliot_waves.jpg",
-          "alt": "Visualização dos modelos ML e Elliott Wave",
-          "title": "Modelos ML"
-        },
-        {
-          "src": "crypto_ai_analyser/fibonacci.jpg",
-          "alt": "Quantum Elliott Wave e Multi-Timeframe Analysis",
-          "title": "Quantum Analysis"
-        },
-        {
-          "src": "crypto_ai_analyser/how_ai_works.jpg",
-          "alt": "Quantum Portfolio Optimizer e Risk Manager",
-          "title": "AI Risk Management"
-        }
-      ],
-      "technologies": [
-        { "name": "Python", "icon": "python-icon.svg" },
-        { "name": "Scikit-learn", "icon": "python-icon.svg" },
-        { "name": "NumPy", "icon": "python-icon.svg" },
-        { "name": "Pandas", "icon": "python-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/trading-bot",
-        "website": null
-      },
-      "metrics": [
-        { "value": "50+", "label": "Indicadores" },
-        { "value": "3", "label": "Modelos ML" },
-        { "value": "IA", "label": "Auto-Análise" }
       ]
     },
     {
@@ -276,8 +692,8 @@
       "caseStudySlug": "dataconvert-template-processing",
       "projectType": "Plataforma SaaS de Processamento de Dados",
       "status": "In Development",
-      "title": "DataConvert - Professional Data Processing Platform",
-      "description": "Plataforma SaaS para automatização de processamento de dados corporativos com sistema multi-tenant. Combina extração inteligente de tabelas PDF através de IA (tabula-py + pdfplumber) com mapeamento visual de colunas e conversão automatizada para CSV/JSON. Inclui sistema de templates personalizados, dashboard analítico, gestão de planos (Free/Personal/Enterprise) e upload drag-and-drop.",
+      "title": "DataConvert",
+      "description": "Plataforma SaaS para automatizar processamento de dados corporativos. Multi-tenant, com templates personalizados, extração de tabelas PDF via tabula-py e pdfplumber, mapeamento visual de colunas, e conversão automatizada PDF→CSV/JSON. Stack: backend Node.js/TypeScript/Express, frontend React/TypeScript, autenticação JWT, sistema de planos (Free/Personal/Enterprise), e serviço Python FastAPI para processamento de PDF. Dashboard analítico, gestão de templates, upload drag-and-drop, e sistema multi-tenancy para empresas.",
       "images": [
         {
           "src": "data-convert/landing_page.jpg",
@@ -306,582 +722,233 @@
         }
       ],
       "technologies": [
-        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
-        { "name": "React", "icon": "reactjs-icon.svg" },
-        { "name": "Node.js", "icon": "nodejs-icon.svg" },
-        { "name": "Express.js", "icon": "express.svg" },
-        { "name": "TypeORM", "icon": "nodejs-icon.svg" },
-        { "name": "PostgreSQL", "icon": "mysql-official.svg" },
-        { "name": "Python", "icon": "python-icon.svg" },
-        { "name": "FastAPI", "icon": "python-icon.svg" },
-        { "name": "Vite", "icon": "js.svg" },
-        { "name": "TailwindCSS", "icon": "tailwindcss-icon.svg" },
-        { "name": "Tabula-py", "icon": "python-icon.svg" },
-        { "name": "PDFplumber", "icon": "python-icon.svg" },
-        { "name": "Pandas", "icon": "python-icon.svg" },
-        { "name": "JWT Authentication", "icon": "getpostman-icon.svg" },
-        { "name": "Bcrypt", "icon": "visualstudio_code-icon.svg" },
-        { "name": "Axios", "icon": "js.svg" },
-        { "name": "Multer", "icon": "nodejs-icon.svg" }
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "Express.js",
+          "icon": "express.svg"
+        },
+        {
+          "name": "TypeORM",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": "mysql-official.svg"
+        },
+        {
+          "name": "Python",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "FastAPI",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "Vite",
+          "icon": "js.svg"
+        },
+        {
+          "name": "TailwindCSS",
+          "icon": "tailwindcss-icon.svg"
+        },
+        {
+          "name": "Tabula-py",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "PDFplumber",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "Pandas",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "JWT Authentication",
+          "icon": "getpostman-icon.svg"
+        },
+        {
+          "name": "Bcrypt",
+          "icon": "visualstudio_code-icon.svg"
+        },
+        {
+          "name": "Axios",
+          "icon": "js.svg"
+        },
+        {
+          "name": "Multer",
+          "icon": "nodejs-icon.svg"
+        }
       ],
       "links": {
         "repository": "https://github.com/mopanc/dataconvert-platform",
         "website": null
       },
       "metrics": [
-        { "value": "2", "label": "Motores IA" },
-        { "value": "SaaS", "label": "Multi-tenant" },
-        { "value": "3", "label": "Planos" }
+        {
+          "value": "2",
+          "label": "Motores IA"
+        },
+        {
+          "value": "SaaS",
+          "label": "Multi-tenant"
+        },
+        {
+          "value": "3",
+          "label": "Planos"
+        }
       ]
     },
     {
-      "id": "google-glass-website",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Website Responsivo com Redesign Moderno",
-      "status": "Completed",
-      "title": "Google Glass - Website Modernizado",
-      "description": "Redesign moderno do meu primeiro projeto web sobre Google Glass, originalmente criado no curso do Gustavo Guanabara. Transformei o design clássico numa experiência contemporânea com design system premium, paleta terrosa sofisticada e navegação avançada. Inclui responsividade completa, animações fluidas, formulário com validação em tempo real e galeria interativa.",
-      "images": [
-        {
-          "src": "google_glass/homepage.jpg",
-          "alt": "Página inicial com header glassmorphism e design premium",
-          "title": "Homepage Premium Design"
-        },
-        {
-          "src": "google_glass/fotos.jpg",
-          "alt": "Menu de navegação moderno com hover effects sofisticados",
-          "title": "Advanced Navigation"
-        },
-        {
-          "src": "google_glass/multimidia.jpg",
-          "alt": "Layout responsivo com grid moderno e tipografia premium",
-          "title": "Modern Content Layout"
-        },
-        {
-          "src": "google_glass/specs.jpg",
-          "alt": "Formulário de contato modernizado com validação em tempo real",
-          "title": "Modern Contact Form"
-        }
-      ],
-      "technologies": [
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "Media Queries", "icon": "w3_css-icon.svg" },
-        { "name": "Google Fonts", "icon": "google_analytics-icon.svg" },
-        { "name": "Accessibility (A11y)", "icon": "w3_html5-icon.svg" },
-        { "name": "Cross-browser Support", "icon": "visualstudio_code-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/projeto-glass-html5",
-        "website": null
-      }
-    },
-    {
-      "id": "digital-garage-management",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Aplicação Web - Sistema de Gestão de Oficina",
-      "status": "Completed",
-      "title": "Sistema de Gestão Digital de Oficina",
-      "description": "Sistema moderno e profissional de gestão de oficina construído com React.js e Ant Design. Oferece gestão completa de serviços automotivos com reservas online, gestão de clientes e controles administrativos. Inclui homepage com tema Ferrari, sistema de reservas com operações CRUD e painel administrativo. Construído com padrões React modernos e design responsivo.",
-      "images": [
-        {
-          "src": "garage/banner.jpg",
-          "alt": "Homepage showing Digital Garage hero banner with Ferrari theme and service features",
-          "title": "Digital Garage Homepage"
-        },
-        {
-          "src": "garage/features.jpg",
-          "alt": "Booking management interface with table, filters and CRUD operations",
-          "title": "Booking Management System"
-        },
-        {
-          "src": "garage/tipos.jpg",
-          "alt": "Administrator",
-          "title": "Administrative Panel"
-        },
-        {
-          "src": "garage/admin1.jpg",
-          "alt": "Administrator",
-          "title": "Booking Forms Interface"
-        },
-        {
-          "src": "garage/admin2.jpg",
-          "alt": "Administrator",
-          "title": "Booking Forms Interface"
-        }
-      ],
-      "technologies": [
-        { "name": "React.js", "icon": "reactjs-icon.svg" },
-        { "name": "Ant Design", "icon": "reactjs-icon.svg" },
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "JSON Server", "icon": "js.svg" },
-        { "name": "Axios", "icon": "js.svg" },
-        { "name": "React Router", "icon": "reactjs-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/digital-garage-management",
-        "website": null
-      }
-    },
-    {
-      "id": "capitalges-website",
+      "id": "payment-machine-backend",
       "category": "professional",
       "isPublic": false,
       "featured": true,
-      "projectType": "Web Development - Corporate Website",
+      "projectType": "Embedded Systems - Payment Machine Backend",
       "status": "In Production",
-      "title": "CapitalGes - Consultoria Empresarial",
-      "description": "Website corporativo profissional desenvolvido para a CapitalGes, empresa portuguesa especializada em consultoria empresarial para PMEs. Focado em contabilidade, fiscalidade, apoio à gestão e recursos humanos. Desenvolvido com PHP puro e Nginx, oferece experiência moderna com design minimalista, sistema de newsletter, área de notícias, integração com redes sociais e otimização SEO completa.",
+      "title": "Backend de Máquina de Pagamento",
+      "description": "Backend embebido para máquina de pagamento automatizada, escrito em C puro para controlar o hardware: hoppers, validadores de moedas e notas, reciclador, cofre de segurança. CCTalk e ID003 para os periféricos, MQTT para a app móvel companheira. Gestão apertada de memória num ambiente embebido com recursos limitados, prevenção de memory leaks, manipulação de protocolos binários, sincronização em tempo real. Validação automática de valores, cálculo de troco, controlo de LEDs, monitorização remota via MQTT, logging detalhado de transações.",
       "images": [
         {
-          "src": "capitalges/homepage.jpg",
-          "alt": "Homepage da CapitalGes mostrando serviços de consultoria empresarial com design minimalista",
-          "title": "Página Principal"
-        },
-        {
-          "src": "capitalges/news.jpg",
-          "alt": "Página de serviços detalhando contabilidade, fiscalidade e apoio à gestão",
-          "title": "Serviços Empresariais"
-        },
-        {
-          "src": "capitalges/aboutus.jpg",
-          "alt": "Página sobre a empresa com missão e valores da CapitalGes",
-          "title": "Sobre a Empresa"
-        },
-        {
-          "src": "capitalges/contacts.jpg",
-          "alt": "Página de contactos com formulário e informações de localização",
-          "title": "Contactos e Localização"
-        },
-        {
-          "src": "def.png",
-          "alt": "Área de notícias e atualizações sobre consultoria empresarial",
-          "title": "Centro de Notícias"
-        },
-        {
-          "src": "def.png",
-          "alt": "Área de notícias e atualizações sobre consultoria empresarial",
-          "title": "Centro de Notícias"
+          "src": "alice4cash/alice.png",
+          "alt": "Backend de máquina de pagamento — visualização ilustrativa do hardware (gerada por IA, não o produto proprietário real)",
+          "title": "Máquina de Pagamento"
         }
       ],
       "technologies": [
-        { "name": "PHP", "icon": "php-icon.svg" },
-        { "name": "Nginx", "icon": "docker-icon.svg" },
-        { "name": "JavaScript", "icon": "js.svg" },
-        { "name": "jQuery", "icon": "jquery-vertical.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "Sass", "icon": "sass-lang-icon.svg" },
-        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" }
-      ],
-      "links": {
-        "repository": null,
-        "website": "https://www.capitalges.pt"
-      }
-    },
-    {
-      "id": "amf-shoes-website",
-      "category": "professional",
-      "isPublic": false,
-      "featured": true,
-      "projectType": "Desenvolvimento Web - Website Corporativo E-commerce",
-      "status": "In Production",
-      "title": "AMF Safety Shoes - Website Corporativo",
-      "description": "Website corporativo desenvolvido para a AMF Safety Shoes, empresa portuguesa líder em calçado técnico de segurança (650.000 pares/ano, €20M faturação). Plataforma digital premium multilingue (PT/EN) que combina storytelling corporativo com funcionalidades e-commerce. Desenvolvido com PHP, Nginx e foco em sustentabilidade, inovação I&D e certificações de qualidade.",
-      "images": [
         {
-          "src": "amf/homepage.jpg",
-          "alt": "Homepage da AMF Safety Shoes com hero section e apresentação da empresa líder em calçado de segurança",
-          "title": "Homepage Corporativa"
+          "name": "C Programming",
+          "icon": "c-programming.svg"
         },
         {
-          "src": "amf/page1.jpg",
-          "alt": "Página interna da AMF mostrando conteúdo detalhado sobre produtos e serviços",
-          "title": "Página de Conteúdo"
+          "name": "MQTT Protocol",
+          "icon": "mqtt-icon-solid.svg"
         },
         {
-          "src": "amf/page2.jpg",
-          "alt": "Segunda página interna com informações sobre a empresa e processos",
-          "title": "Informações da Empresa"
+          "name": "CCTalk Protocol",
+          "icon": "binary-svgrepo-com.svg"
         },
         {
-          "src": "def.png",
-          "alt": "Versão mobile do site AMF mostrando design responsivo e navegação otimizada",
-          "title": "Interface Mobile 1"
+          "name": "ID003 Protocol",
+          "icon": "binary-svgrepo-com.svg"
         },
         {
-          "src": "def.png",
-          "alt": "Segunda interface mobile demonstrando adaptabilidade do design para dispositivos móveis",
-          "title": "Interface Mobile 2"
+          "name": "Embedded Systems",
+          "icon": "memory.svg"
+        },
+        {
+          "name": "Linux Embedded",
+          "icon": "linux.svg"
+        },
+        {
+          "name": "IoT Communication",
+          "icon": "iot.svg"
         }
       ],
-      "technologies": [
-        { "name": "PHP", "icon": "php-icon.svg" },
-        { "name": "Nginx", "icon": "docker-icon.svg" },
-        { "name": "JavaScript", "icon": "js.svg" },
-        { "name": "jQuery", "icon": "jquery-vertical.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "Sass", "icon": "sass-lang-icon.svg" },
-        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
-        { "name": "Google Tag Manager", "icon": "google_analytics-icon.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
-        { "name": "Multilingual Support", "icon": "w3_html5-icon.svg" }
-      ],
       "links": {
-        "repository": null,
-        "website": "https://www.amfshoes.com/pt/"
-      }
-    },
-    {
-      "id": "toworkfor-ecommerce",
-      "category": "professional",
-      "isPublic": false,
-      "featured": true,
-      "projectType": "E-commerce Development - B2C Online Store",
-      "status": "In Production",
-      "title": "Toworkfor - E-commerce de Calçado de Segurança",
-      "description": "Plataforma e-commerce B2C completa desenvolvida para a Toworkfor, especializada em calçado de segurança profissional. O projeto apresenta uma loja online moderna e funcional com catálogo extenso de produtos de segurança laboral, sistema de gestão de utilizadores, e experiência de compra otimizada. Desenvolvido com PHP puro e arquitetura robusta, o site oferece funcionalidades avançadas de e-commerce incluindo carrinho de compras inteligente, sistema de checkout seguro, gestão de stock em tempo real, múltiplos métodos de pagamento, e sistema de tracking de encomendas. A plataforma conta com design responsivo premium, suporte multilingue (Português, Inglês, Espanhol, Francês, Alemão), sistema de filtros avançados por categoria, tamanho, marca e preço, pesquisa inteligente de produtos, sistema de reviews e avaliações, programa de fidelização, e integração com redes sociais. O desenvolvimento técnico inclui PHP para backend robusto, JavaScript e jQuery para interatividade, HTML5 semântico para SEO otimizado, CSS3 responsivo com design mobile-first, integração com Google Analytics e Tag Manager, Facebook Pixel para remarketing, sistema de gestão de cookies GDPR compliant, e otimização de performance. A interface destaca navegação intuitiva por categorias, visualização de produtos com zoom, sistema de wishlist, comparador de produtos, calculadora de fretes, chat de suporte integrado, e área de cliente personalizada. Este projeto representa uma solução e-commerce completa que combina funcionalidade empresarial com experiência de utilizador superior, posicionando a Toworkfor como líder digital no mercado de equipamentos de proteção individual e calçado de segurança profissional.",
-      "images": [
-        {
-          "src": "toworkfor/homepage.jpg",
-          "alt": "Homepage da Toworkfor mostrando catálogo de calçado de segurança com design moderno e navegação intuitiva",
-          "title": "Homepage E-commerce"
-        },
-        {
-          "src": "toworkfor/products.jpg",
-          "alt": "Página de produtos com filtros avançados, grid responsivo e informações detalhadas de calçado de segurança",
-          "title": "Catálogo de Produtos"
-        },
-        {
-          "src": "toworkfor/shoes.jpg",
-          "alt": "Página de detalhes do produto mostrando especificações técnicas, imagens e opções de compra",
-          "title": "Detalhes do Produto"
-        },
-        {
-          "src": "toworkfor/login.jpg",
-          "alt": "Interface de login e registro com design moderno e validação de formulários",
-          "title": "Sistema de Autenticação"
-        },
-        {
-          "src": "toworkfor/menu.jpg",
-          "alt": "Menu de navegação com categorias organizadas e sistema de pesquisa avançada",
-          "title": "Navegação e Menu"
-        },
-        {
-          "src": "def.png",
-          "alt": "Interface mobile otimizada mostrando responsividade e adaptação para dispositivos móveis",
-          "title": "Interface Mobile 1"
-        },
-        {
-          "src": "toworkfor/mobile2.jpg",
-          "alt": "Segunda tela mobile demonstrando carrinho de compras e processo de checkout móvel",
-          "title": "Interface Mobile 2"
-        }
-      ],
-      "technologies": [
-        { "name": "PHP", "icon": "php-icon.svg" },
-        { "name": "MySQL", "icon": "mysql-official.svg" },
-        { "name": "JavaScript", "icon": "js.svg" },
-        { "name": "jQuery", "icon": "jquery-vertical.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "Bootstrap", "icon": "getbootstrap-icon.svg" },
-        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
-        { "name": "Google Tag Manager", "icon": "google_analytics-icon.svg" },
-        { "name": "Facebook Pixel", "icon": "slack-icon.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
-        { "name": "Multilingual Support", "icon": "w3_html5-icon.svg" },
-        { "name": "Payment Integration", "icon": "getpostman-icon.svg" },
-        { "name": "GDPR Compliance", "icon": "visualstudio_code-icon.svg" }
-      ],
-      "links": {
-        "repository": null,
-        "website": "https://www.toworkfor.pt/pt/"
-      }
-    },
-    {
-      "id": "loucas-falcao-ecommerce",
-      "category": "professional",
-      "isPublic": false,
-      "featured": true,
-      "projectType": "E-commerce Development - B2B/B2C Wholesale Platform",
-      "status": "In Production",
-      "title": "Louças Falcão - E-commerce de Porcelana e Decoração",
-      "description": "Plataforma e-commerce sofisticada desenvolvida para a Louças Falcão, empresa portuguesa especializada em porcelana, cerâmica e artigos decorativos sediada em Barcelos. O projeto apresenta uma solução digital completa que combina vendas B2B e B2C, oferecendo um catálogo extenso de produtos de decoração, utilidades domésticas e artigos colecionáveis. Desenvolvido com tecnologias web modernas, o site serve tanto clientes profissionais quanto consumidores finais, com funcionalidades adaptadas para ambos os segmentos. A plataforma oferece navegação avançada por múltiplas categorias incluindo porcelana/cerâmica, marfinites/resinas, vidro, flores/plantas artificiais, vime/madeira, bonecas de porcelana, brinquedos/peluches, têxteis/calçado e decorações temáticas. O sistema de e-commerce inclui motor de pesquisa avançado com filtros específicos, distinção entre produtos nacionais e importados, separação entre artigos decorativos e utilitários, sistema de login profissional para clientes B2B, suporte multilingue completo (Português, Inglês, Francês, Espanhol), e integração com sistemas de pagamento e logística. O desenvolvimento técnico emprega arquitetura robusta para gestão de inventário complexo, sistema de preços diferenciados B2B/B2C, otimização SEO para múltiplos idiomas, design responsivo para todos os dispositivos, integração com Google Analytics para análise detalhada, e interface administrativa para gestão de produtos e encomendas. A experiência do utilizador destaca navegação intuitiva por extensas categorias, visualização profissional de produtos com zoom, sistema de wishlist e comparação, calculadora de quantidades para encomendas profissionais, e área de cliente personalizada com histórico de compras. Este projeto representa uma solução e-commerce especializada que posiciona a Louças Falcão como referência digital no mercado português de decoração e utilidades domésticas, combinando tradição artesanal com tecnologia moderna.",
-      "images": [
-        {
-          "src": "falcao/homepage.jpg",
-          "alt": "Homepage da Louças Falcão mostrando catálogo de porcelana, cerâmica e artigos decorativos com navegação profissional",
-          "title": "Homepage E-commerce"
-        },
-        {
-          "src": "falcao/products.jpg",
-          "alt": "Página de produtos com grid organizado, filtros avançados e categorização detalhada de louças e decoração",
-          "title": "Catálogo de Produtos"
-        },
-        {
-          "src": "falcao/toys.jpg",
-          "alt": "Seção de brinquedos e artigos colecionáveis mostrando diversidade do catálogo e organização por categorias",
-          "title": "Categoria Brinquedos e Colecionáveis"
-        }
-      ],
-      "technologies": [
-        { "name": "PHP", "icon": "php-icon.svg" },
-        { "name": "MySQL", "icon": "mysql-official.svg" },
-        { "name": "JavaScript", "icon": "js.svg" },
-        { "name": "jQuery", "icon": "jquery-vertical.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "Bootstrap", "icon": "getbootstrap-icon.svg" },
-        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
-        { "name": "Multilingual Support", "icon": "w3_html5-icon.svg" },
-        { "name": "Advanced Search", "icon": "google_analytics-icon.svg" },
-        { "name": "B2B Integration", "icon": "business.svg" },
-        { "name": "Inventory Management", "icon": "inventory.svg" },
-        { "name": "SEO Optimization", "icon": "google_analytics-icon.svg" }
-      ],
-      "links": {
-        "repository": null,
-        "website": "https://www.loucasfalcao.com/pt/porcelana-ceramica"
-      }
-    },
-    {
-      "id": "frontend-training-collection",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Desenvolvimento Web - Coleção de Treinos Frontend",
-      "status": "Completed",
-      "title": "Coleção de Treinos Frontend - Projetos Clone",
-      "description": "Coleção de projetos de treino frontend desenvolvidos durante a minha jornada autodidacta, demonstrando dedicação ao domínio de HTML5, CSS3 e JavaScript vanilla através da reprodução de interfaces populares. Inclui recriações pixel-perfect de Facebook, Instagram, Netflix, Game of Thrones e calculadora moderna. Cada projeto foca diferentes aspetos do desenvolvimento frontend sem frameworks.",
-      "images": [
-        {
-          "src": "frontend/insta.jpg",
-          "alt": "Instagram login interface recreation with gradient backgrounds",
-          "title": "Instagram Login Clone"
-        },
-        {
-          "src": "frontend/facebook.jpg",
-          "alt": "Facebook login page clone with authentic blue theme and form layout",
-          "title": "Facebook Login Clone"
-        },
-        {
-          "src": "frontend/netflix.jpg",
-          "alt": "Netflix main page clone with movie grid and responsive design",
-          "title": "Netflix Homepage Clone"
-        },
-        {
-          "src": "frontend/gameofthrones.jpg",
-          "alt": "Game of Thrones website clone with dark medieval theme",
-          "title": "Game of Thrones Website Clone"
-        },
-        {
-          "src": "frontend/calc.jpg",
-          "alt": "Calculadora moderna personalizada com design elegante e funcionalidade completa",
-          "title": "Calculadora Moderna (Design Original)"
-        },
-        {
-          "src": "frontend/maccalc.jpg",
-          "alt": "Calculadora estilo Mac com funcionalidades avançadas e design",
-          "title": "Clone Calculadora Mac"
-        }
-      ],
-      "technologies": [
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
-        { "name": "CSS Grid", "icon": "grid.svg" },
-        { "name": "Flexbox", "icon": "flexbox.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/frontend-training-clones",
-        "website": null
-      }
-    },
-    {
-      "id": "jobscalc-freelancer-calculator",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Aplicação Web - Calculadora de Projetos Freelancer",
-      "status": "Completed",
-      "title": "JobsCalc - Calculadora de Projetos Freelancer",
-      "description": "Aplicação web full-stack desenvolvida durante o bootcamp Maratona Discover da Rocketseat para cálculo de orçamentos e gestão de horas de trabalho freelancer. Inclui gestão completa de projetos com operações CRUD, cálculos automáticos baseados em taxa horária, acompanhamento de status e dashboard profissional com métricas em tempo real. Construída com Node.js, Express, EJS e SQLite.",
-      "images": [
-        {
-          "src": "jobs_calc/dashboard.jpg",
-          "alt": "Professional dashboard showing project overview with status cards and metrics",
-          "title": "Project Dashboard"
-        },
-        {
-          "src": "jobs_calc/profile.jpg",
-          "alt": "Profile management page with hourly rate calculator and work planning",
-          "title": "Profile & Rate Configuration"
-        },
-        {
-          "src": "def.png",
-          "alt": "Job creation form with automatic budget calculation",
-          "title": "New Project Creation"
-        }
-      ],
-      "technologies": [
-        { "name": "Node.js", "icon": "nodejs-icon.svg" },
-        { "name": "Express.js", "icon": "express.svg" },
-        { "name": "EJS", "icon": "ejs.svg" },
-        { "name": "SQLite", "icon": "sqlite.svg" },
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "MVC Architecture", "icon": "architecture.svg" },
-        { "name": "RESTful API", "icon": "getpostman-icon.svg" },
-        { "name": "Nodemon", "icon": "nodemon.svg" },
-        { "name": "NPM", "icon": "npm.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/MaratonaDiscover",
-        "website": null
-      }
-    },
-    {
-      "id": "marvel-digital-catalog",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Aplicação Web - Catálogo de Comics e Personagens Marvel",
-      "status": "Completed",
-      "title": "Catálogo Digital Marvel",
-      "description": "Aplicação web moderna e interativa para explorar o universo Marvel, apresentando comics e personagens através da API oficial Marvel. Construída com JavaScript vanilla e CSS moderno, oferece experiência premium com design glassmorphism, pesquisa em tempo real, filtragem avançada e sistema de carrinho de compras funcional. Inclui sistema de favoritos com localStorage e arquitetura JavaScript modular.",
-      "images": [
-        {
-          "src": "marvel/home.jpg",
-          "alt": "Homepage showing Marvel comics grid with search bar and filters",
-          "title": "Comics Catalog Homepage"
-        },
-        {
-          "src": "marvel/characteres.jpg",
-          "alt": "Characters page displaying Marvel heroes and villains with stats",
-          "title": "Marvel Characters Gallery"
-        },
-        {
-          "src": "marvel/cart.jpg",
-          "alt": "Shopping cart interface with item management and checkout",
-          "title": "Shopping Cart System"
-        },
-        {
-          "src": "marvel/detail.jpg",
-          "alt": "Detail interface with information detailed",
-          "title": "Detailed modal"
-        }
-      ],
-      "technologies": [
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "Marvel API", "icon": "getpostman-icon.svg" },
-        { "name": "Bootstrap 4", "icon": "getbootstrap-icon.svg" },
-        { "name": "jQuery", "icon": "jquery-vertical.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/catalogo-digital-marvel",
-        "website": null
-      }
-    },
-    {
-      "id": "monty-hall-problem",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Desenvolvimento Web - Jogo Educativo Interativo",
-      "status": "Completed",
-      "title": "Problema de Monty Hall - Jogo Interativo",
-      "description": "Aplicação web educativa interativa que demonstra o famoso paradoxo de probabilidade de Monty Hall através de uma interface de jogo envolvente. Recria o cenário clássico do game show onde jogadores escolhem entre três portas para ilustrar o conceito contra-intuitivo que trocar de porta aumenta as hipóteses de ganhar de 33.3% para 66.7%. Construída com Vue.js 2 e interface visualmente apelativa com portas 3D.",
-      "images": [
-        {
-          "src": "monthy_hall/home.jpg",
-          "alt": "Monty Hall game interface showing three doors with instructions and probability explanation",
-          "title": "Main Game Interface"
-        },
-        {
-          "src": "monthy_hall/door.jpg",
-          "alt": "Monty Hall game with door selection and probability cards visible",
-          "title": "Door Selection State"
-        },
-        {
-          "src": "monthy_hall/open.jpg",
-          "alt": "Monty Hall game showing opened door with animated gift reveal",
-          "title": "Prize Reveal Animation"
-        }
-      ],
-      "technologies": [
-        { "name": "Vue.js 2", "icon": "vue.svg" },
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS Grid", "icon": "grid.svg" },
-        { "name": "CSS Animations", "icon": "animation.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/montyhall",
-        "website": null
-      }
-    },
-    {
-      "id": "depguard",
-      "category": "personal",
-      "isPublic": true,
-      "featured": true,
-      "caseStudySlug": "depguard-mcp-security-server",
-      "projectType": "Open Source - Servidor de Segurança MCP",
-      "status": "Em Desenvolvimento Ativo",
-      "title": "depguard — Servidor de Segurança MCP para Agentes de IA",
-      "description": "Servidor MCP open-source para segurança de dependências npm. Os agentes de IA instalam pacotes sem os rever, o depguard dá-lhes ferramentas para verificar antes de instalar. Inclui um guardião pré-instalação que verifica se os pacotes existem e deteta typosquatting, deteção de dependências mortas para encontrar pacotes não utilizados, e auditoria completa de vulnerabilidades com fontes duais (npm + GitHub). Construído com TypeScript, zero dependências runtime, 147 testes offline. Publicado no npm: npmjs.com/package/depguard-cli",
-      "images": [
-        {
-          "src": "depguard/home.png",
-          "alt": "Página inicial do depguard com servidor de segurança MCP para agentes de IA",
-          "title": "Página Inicial"
-        },
-        {
-          "src": "depguard/demo.png",
-          "alt": "Demo do depguard mostrando resultados de auditoria de pacotes no terminal",
-          "title": "Demo"
-        },
-        {
-          "src": "depguard/description.png",
-          "alt": "Visão geral das funcionalidades do depguard com 9 ferramentas MCP e modelo de scoring",
-          "title": "Funcionalidades"
-        },
-        {
-          "src": "depguard/npm.png",
-          "alt": "Página do pacote depguard-cli no registry npm",
-          "title": "Pacote npm"
-        }
-      ],
-      "technologies": [
-        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
-        { "name": "Node.js", "icon": "nodejs-icon.svg" },
-        { "name": "npm", "icon": "npmjs-icon.svg" },
-        { "name": "GitHub", "icon": "github-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/depguard",
-        "website": "https://depguard.dev"
+        "repository": null
       },
       "metrics": [
-        { "value": "9", "label": "Ferramentas MCP" },
-        { "value": "0", "label": "Dependências" },
-        { "value": "147", "label": "Testes" }
+        {
+          "value": "0",
+          "label": "Memory Leaks"
+        },
+        {
+          "value": "3+",
+          "label": "Protocolos HW"
+        },
+        {
+          "value": "Live",
+          "label": "MQTT"
+        }
+      ]
+    },
+    {
+      "id": "truck-scale-automation-platform",
+      "category": "professional",
+      "isPublic": false,
+      "featured": true,
+      "projectType": "Sistema Industrial de Báscula Self-Service",
+      "status": "Em Produção · Multi-site",
+      "title": "Plataforma de Automação de Báscula de Camiões",
+      "description": "Automação on-premise de báscula de camiões em produção em várias empresas industriais. Substitui as operações manuais por fluxos self-service para o motorista. O executável on-premise orquestra a báscula end-to-end: instrumentos de pesagem, placas de I/O programáveis (barreiras, semáforos, sensores), MUPIs (ecrãs LED nas duas extremidades) que guiam o motorista em cada passo, impressoras de talão, leitores RFID, câmaras IP com reconhecimento automático de matrículas (ANPR), streams MJPEG e RTSP (integração custom via go2rtc). Monitores Raspberry Pi correm as interfaces de trucker e check-in, por isso uma báscula completa opera sem ninguém no local. App desktop para controlo de impressoras locais e operação remota, mais CMS para gestão de documentos de pesagem e workflows. Construído em Node.js com SQL Server, empacotado via pkg + InnoSetup, hardened com Watchdog para supervisão de processos. Frontend Angular.",
+      "images": [
+        {
+          "src": "truck-scale/dashboard.png",
+          "alt": "Plataforma de automação de báscula — vista ilustrativa do dashboard (visualização gerada por IA, não a UI proprietária real)",
+          "title": "Operação da Báscula"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "JavaScript",
+          "icon": "javascript.svg"
+        },
+        {
+          "name": "SQL Server",
+          "icon": "microsoft-sql-server.svg"
+        },
+        {
+          "name": "Angular",
+          "icon": ""
+        },
+        {
+          "name": "go2rtc",
+          "icon": ""
+        },
+        {
+          "name": "RTSP",
+          "icon": ""
+        },
+        {
+          "name": "MJPEG",
+          "icon": ""
+        },
+        {
+          "name": "InnoSetup",
+          "icon": "innosetup.svg"
+        },
+        {
+          "name": "pkg",
+          "icon": ""
+        },
+        {
+          "name": "Watchdog",
+          "icon": ""
+        }
+      ],
+      "links": {
+        "repository": null,
+        "website": null
+      },
+      "metrics": [
+        {
+          "value": "Multi-site",
+          "label": "Produção"
+        },
+        {
+          "value": "Zero",
+          "label": "Operadores no Local"
+        },
+        {
+          "value": "8",
+          "label": "Integrações de Hardware"
+        }
       ]
     }
   ]

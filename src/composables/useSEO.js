@@ -7,9 +7,9 @@ export function useSEO(optionsOrRef) {
       : (optionsOrRef && optionsOrRef.value !== undefined) ? optionsOrRef.value
       : optionsOrRef || {}
 
-    const title = opts.title || 'Jorge Morais | Full Stack Developer Portfolio'
-    const description = opts.description || 'Full Stack Developer with 5+ years of experience specializing in React, Vue.js, Node.js, TypeScript, and embedded systems. Building high-performance web applications and industrial IoT solutions.'
-    const keywords = opts.keywords || 'full stack developer, react developer, vue.js developer, nodejs developer, typescript developer, embedded systems, IoT, C programming, portugal developer'
+    const title = opts.title || 'Jorge Morais · Senior Full-Stack Developer · AI + IoT'
+    const description = opts.description || 'Senior Full-Stack Developer at the intersection of AI and Industrial IoT. React/Vue/Node + C firmware + LLMs (RAG, MCP, agents). Remote, EU.'
+    const keywords = opts.keywords || 'senior full stack developer, AI and industrial IoT, edge AI, llm integration, mcp server, rag, agent tooling, react developer, vue developer, nodejs developer, typescript developer, embedded developer, MQTT, remote developer EU'
     const ogImage = opts.ogImage || 'https://avatars.githubusercontent.com/u/45471030?v=4'
     const ogType = opts.ogType || 'website'
     const canonical = opts.canonical || `https://jorgemopanc.com${typeof window !== 'undefined' ? window.location.pathname : ''}`
@@ -36,7 +36,7 @@ export function useSEO(optionsOrRef) {
         { property: 'og:description', content: description },
         { property: 'og:image', content: ogImage },
         { property: 'og:url', content: canonical },
-        { property: 'og:site_name', content: 'Jorge Morais - Full Stack Developer' },
+        { property: 'og:site_name', content: 'Jorge Morais — Senior Full-Stack Developer' },
         { property: 'og:locale', content: 'en_GB' },
         { name: 'twitter:card', content: twitterCard },
         { name: 'twitter:title', content: title },
@@ -75,15 +75,15 @@ export function useSEO(optionsOrRef) {
 // Predefined SEO configurations for common pages
 export const seoConfigs = {
   home: {
-    title: 'Jorge Morais | Full Stack Developer Portfolio',
-    description: 'Full Stack Developer with 5+ years building high-performance web applications and embedded systems. Specialized in React, Vue.js, Node.js, TypeScript, C programming, and industrial IoT. Available for remote opportunities.',
-    keywords: 'full stack developer, react developer, vuejs developer, nodejs developer, typescript developer, embedded systems developer, IoT developer, C programming, industrial systems, remote developer, portugal developer, benelux developer, nordic developer',
+    title: 'Jorge Morais · Senior Full-Stack Developer · AI + IoT',
+    description: 'Senior Full-Stack Developer at the intersection of AI and Industrial IoT. React/Vue/Node + C firmware + LLMs (RAG, MCP, agents). Remote, EU.',
+    keywords: 'senior full stack developer, AI and industrial IoT, edge AI developer, llm integration, mcp server, rag, agent tooling, react developer, vue developer, nodejs developer, typescript developer, embedded developer, MQTT, CCTalk, remote developer EU, benelux developer, nordic developer, portugal developer',
     canonical: 'https://jorgemopanc.com/',
     structuredData: {
       '@context': 'https://schema.org',
       '@type': 'Person',
       name: 'Jorge Morais',
-      jobTitle: 'Lead Full Stack Developer',
+      jobTitle: 'Senior Full-Stack Developer',
       url: 'https://jorgemopanc.com',
       sameAs: [
         'https://github.com/jorgemorais272',
@@ -98,32 +98,44 @@ export const seoConfigs = {
       email: 'jorgemopanc@icloud.com',
       telephone: '+351910559307',
       knowsAbout: [
-        'React.js', 'Vue.js', 'Node.js', 'TypeScript', 'JavaScript',
-        'C Programming', 'Embedded Systems', 'IoT', 'MQTT', 'CCTalk',
-        'Full Stack Development', 'Frontend Development', 'Backend Development'
+        'Full-Stack Development',
+        'AI for Industrial Systems', 'Edge AI', 'IoT Platforms with AI',
+        'React.js', 'Vue.js', 'Node.js', 'TypeScript',
+        'Large Language Models', 'LLM Integration', 'Retrieval-Augmented Generation',
+        'Model Context Protocol', 'MCP Servers', 'AI Agents', 'Prompt Engineering',
+        'C Programming', 'Embedded Systems', 'Industrial IoT', 'MQTT', 'CCTalk Protocol',
+        'Raspberry Pi', 'IMX8', 'Industrial Telemetry', 'Hardware-to-Cloud Integration'
       ]
     }
   },
 
   projects: {
-    title: 'Projects & Portfolio | Jorge Morais Full Stack Dev',
-    description: 'Explore my portfolio of web applications, embedded systems, and IoT projects. Built with React, Vue.js, Node.js, C, and modern technologies.',
-    keywords: 'portfolio, projects, web applications, embedded systems, IoT projects, react projects, vuejs projects, nodejs projects, case studies',
+    title: 'Case Studies & Projects | Jorge Morais — Senior Full-Stack Developer',
+    description: 'Production case studies at the intersection of AI and Industrial IoT: distributed IoT monitoring, federated POS sync, document automation platform, depguard MCP security server, quantum-inspired AI trading. React, Vue, Node.js, TypeScript, C, Python.',
+    keywords: 'case studies, portfolio, senior full stack developer, AI industrial IoT case studies, llm tooling, mcp server, react projects, vue projects, nodejs projects, embedded systems, IoT platform, MQTT, CCTalk',
     canonical: 'https://jorgemopanc.com/projects'
   },
 
   about: {
-    title: 'About Jorge Morais | Developer Experience & Bio',
-    description: 'Learn about my journey from military service to full stack development. 5+ years of experience in web applications, embedded systems, and industrial IoT solutions.',
-    keywords: 'about, developer bio, full stack developer biography, career journey, professional experience, technical expertise',
+    title: 'About Jorge Morais — Senior Full-Stack Developer · AI + Industrial IoT',
+    description: 'Senior Full-Stack Developer based in Braga, Portugal, working at the intersection of AI and Industrial IoT. Five-plus years shipping React/Vue/Node.js platforms, embedded C, MCP servers and RAG over device telemetry. Previously remote at Frontkom (Norway).',
+    keywords: 'about, jorge morais bio, senior full stack developer biography, AI industrial IoT developer, llm engineer, embedded developer, career',
     canonical: 'https://jorgemopanc.com/about'
   },
 
   contact: {
-    title: 'Contact Jorge Morais - Available for Remote Opportunities',
-    description: 'Get in touch to discuss your project. Available for remote full stack development, embedded systems programming, and technical consulting.',
-    keywords: 'contact, hire developer, remote developer, full stack developer for hire, technical consulting, freelance developer',
+    title: 'Contact Jorge Morais — Senior Full-Stack Developer (Remote, EU)',
+    description: 'Get in touch to discuss a senior or lead role at the intersection of AI and Industrial IoT, an LLM integration engagement, or a hardware-to-cloud platform challenge. Remote-first, EU citizen.',
+    keywords: 'contact, hire senior full stack developer, AI industrial IoT, hire llm developer, hire mcp developer, remote developer EU, benelux nordic remote',
     canonical: 'https://jorgemopanc.com/contact'
+  },
+
+  hire: {
+    title: 'Hire Jorge Morais — Senior Full-Stack Developer · AI + Industrial IoT (Remote, EU)',
+    description: 'Open to senior or lead full-stack roles in product teams at the intersection of AI and Industrial IoT — smart manufacturing, edge AI, IoT platforms with LLM features, agents that act on real hardware. Remote-first, EU citizen, available for relocation to Benelux or Nordic countries.',
+    keywords: 'hire senior full stack developer, AI industrial IoT, edge AI developer, hire llm developer, hire mcp developer, remote senior developer EU, benelux nordic remote senior',
+    canonical: 'https://jorgemopanc.com/hire',
+    ogType: 'profile'
   },
 
   certificates: {
@@ -142,9 +154,9 @@ export const seoConfigs = {
   },
 
   blog: {
-    title: 'Blog & TIL | Jorge Morais — Full Stack Developer',
-    description: 'Technical articles on Node.js, Vue.js, React, embedded systems, performance optimization, and full stack development.',
-    keywords: 'blog, articles, tutorials, nodejs, vuejs, react, embedded systems, performance, full stack development',
+    title: 'Blog & TIL | Jorge Morais — Senior Full-Stack Developer · AI + Industrial IoT',
+    description: 'Technical writing at the intersection of full-stack engineering, AI integration (RAG, MCP, agents), and the embedded / industrial IoT side of real systems — Node.js performance, embedded C, MQTT pipelines, and the productivity shift AI is creating in software teams.',
+    keywords: 'blog, articles, AI industrial IoT writing, llm integration, mcp server, rag, agent tooling, nodejs performance, vuejs, react, embedded systems, senior developer blog',
     canonical: 'https://jorgemopanc.com/blog',
     ogType: 'website'
   },

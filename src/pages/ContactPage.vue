@@ -1,297 +1,246 @@
 <template>
-  <div class="contact-page">
-    <div class="container-wide">
-      <!-- Header Section -->
-      <div class="contact-header">
-        <h1 class="contact-title" ref="contact_title">Get In Touch</h1>
-        <p class="contact-subtitle" ref="contact_subtitle">
-          Ready to bring your next project to life? Let's discuss how we can work together.
+  <div class="contact-edt">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="ce-hero">
+      <div class="container-wide">
+        <p class="ce-hero__eyebrow">
+          <span class="ce-hero__eyebrow-dot"></span>
+          <span ref="eyebrow_meta">{{ translations.contact_hero_eyebrow || 'Braga · CET (GMT+1) · replies in <24h' }}</span>
         </p>
+        <h1 class="ce-hero__title">
+          <span class="ce-hero__title-line">{{ translations.contact_hero_title_1 || "let's" }}</span>
+          <span class="ce-hero__title-line ce-hero__title-line--accent">
+            {{ translations.contact_hero_title_2 || 'talk.' }}<span class="ce-hero__cursor" aria-hidden="true"></span>
+          </span>
+        </h1>
+        <p class="ce-hero__lede" ref="contact_subtitle">
+          {{ translations.contact_hero_lede || 'Hiring, projects, or technical conversation.' }}
+        </p>
+      </div>
+    </section>
 
-        <!-- Call to Action Buttons -->
-        <div class="cta-buttons">
-          <button @click="openSchedule" class="btn btn--primary btn--pill">
-            <i class="ri-calendar-line"></i>
-            <span ref="schedule_meeting">Schedule a Meeting</span>
-          </button>
-          <a href="mailto:jorgemopanc@icloud.com" class="btn btn--secondary btn--pill">
-            <i class="ri-mail-line"></i>
-            <span ref="send_email_cta">Send Email</span>
-          </a>
+    <!-- ═══ CHANNELS RAIL ═══ -->
+    <section class="ce-channels">
+      <div class="container-wide">
+        <div class="ce-channels__grid">
+
+          <!-- Left: form (the prime channel) -->
+          <div class="ce-channels__form">
+            <div class="ce-channels__heading">
+              <span class="ce-channels__num">/01</span>
+              <h2 class="ce-channels__title">
+                {{ translations.contact_drop_message || 'Drop a message' }}
+              </h2>
+            </div>
+            <ContactForm />
+          </div>
+
+          <!-- Right: side rail -->
+          <aside class="ce-side">
+
+            <!-- Channels list -->
+            <div class="ce-side__block">
+              <div class="ce-channels__heading">
+                <span class="ce-channels__num">/02</span>
+                <h2 class="ce-channels__title">
+                  {{ translations.contact_other_channels || 'Other channels' }}
+                </h2>
+              </div>
+              <ul class="ce-list">
+                <li class="ce-list__item">
+                  <a href="mailto:jorgemopanc@icloud.com" class="ce-list__link">
+                    <span class="ce-list__num">01</span>
+                    <span class="ce-list__main">
+                      <span class="ce-list__head">email</span>
+                      <span class="ce-list__sub">jorgemopanc@icloud.com</span>
+                    </span>
+                    <i class="ri-arrow-right-up-line ce-list__arrow"></i>
+                  </a>
+                </li>
+                <li class="ce-list__item">
+                  <a href="https://www.linkedin.com/in/jorge-mopanc/" class="ce-list__link" target="_blank" rel="noopener noreferrer">
+                    <span class="ce-list__num">02</span>
+                    <span class="ce-list__main">
+                      <span class="ce-list__head">linkedin</span>
+                      <span class="ce-list__sub">/in/jorge-mopanc</span>
+                    </span>
+                    <i class="ri-arrow-right-up-line ce-list__arrow"></i>
+                  </a>
+                </li>
+                <li class="ce-list__item">
+                  <a href="https://github.com/mopanc" class="ce-list__link" target="_blank" rel="noopener noreferrer">
+                    <span class="ce-list__num">03</span>
+                    <span class="ce-list__main">
+                      <span class="ce-list__head">github</span>
+                      <span class="ce-list__sub">@mopanc</span>
+                    </span>
+                    <i class="ri-arrow-right-up-line ce-list__arrow"></i>
+                  </a>
+                </li>
+                <li class="ce-list__item">
+                  <button @click="openSchedule" class="ce-list__link ce-list__link--btn" type="button">
+                    <span class="ce-list__num">04</span>
+                    <span class="ce-list__main">
+                      <span class="ce-list__head">{{ translations.contact_schedule_meeting_head || 'schedule meeting' }}</span>
+                      <span class="ce-list__sub">{{ translations.contact_schedule_meeting_sub || '30 or 60 min · Google Meet' }}</span>
+                    </span>
+                    <i class="ri-calendar-line ce-list__arrow"></i>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Timezone visualizer -->
+            <div class="ce-side__block ce-tz">
+              <div class="ce-channels__heading">
+                <span class="ce-channels__num">/03</span>
+                <h2 class="ce-channels__title">
+                  {{ translations.contact_local_time || 'Local time' }}
+                </h2>
+              </div>
+
+              <div class="ce-tz__readout">
+                <span class="ce-tz__time">{{ localTime }}</span>
+                <span class="ce-tz__zone">Braga · CET</span>
+              </div>
+
+              <div class="ce-tz__bar" aria-hidden="true">
+                <span class="ce-tz__bar-asleep" :style="`left:${asleepStart}%; width:${asleepWidth}%`"></span>
+                <span class="ce-tz__bar-awake" :style="`left:${awakeStart}%; width:${awakeWidth}%`"></span>
+                <span class="ce-tz__bar-marker" :style="`left:${markerLeft}%`"></span>
+                <span class="ce-tz__tick" v-for="t in [0,6,12,18]" :key="t" :style="`left:${(t/24)*100}%`">
+                  <span class="ce-tz__tick-label">{{ t.toString().padStart(2,'0') }}</span>
+                </span>
+              </div>
+
+              <p class="ce-tz__status" :class="{ 'ce-tz__status--awake': isAwake }">
+                <span class="ce-tz__pulse"></span>
+                {{ isAwake
+                  ? (translations.contact_status_awake || 'probably awake right now.')
+                  : (translations.contact_status_asleep || 'probably asleep. Drop a line, I\'ll reply in the morning.')
+                }}
+              </p>
+            </div>
+
+          </aside>
         </div>
       </div>
+    </section>
 
-      <div class="contact-content">
-        <!-- Main Contact Form - Full Width & Prominent -->
-        <div class="main-contact-form">
-          <div class="form-header">
-            <h2 ref="contact_form_title">Send Message</h2>
-            <p class="form-subtitle" ref="form_subtitle">Let's discuss your project and how I can help bring it to life.</p>
-          </div>
-          <ContactForm />
-        </div>
-
-        <!-- Mobile Social Strip (visible only on mobile) -->
-        <div class="mobile-social-strip">
-          <a href="https://www.linkedin.com/in/jorge-mopanc/" class="mobile-social-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-linkedin-fill"></i>
-            <span>LinkedIn</span>
-          </a>
-          <a href="https://github.com/mopanc" class="mobile-social-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-github-fill"></i>
-            <span>GitHub</span>
-          </a>
-          <a href="https://codepen.io/mopanc" class="mobile-social-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-codepen-line"></i>
-            <span>CodePen</span>
-          </a>
-          <a href="https://twitter.com/JorgeMo56542670" class="mobile-social-link" target="_blank" rel="noopener noreferrer">
-            <i class="ri-twitter-fill"></i>
-            <span>Twitter</span>
-          </a>
-        </div>
-
-        <!-- Secondary Information Grid -->
-        <div class="info-grid">
-          <!-- Quick Contact Info -->
-          <div class="info-card contact-info">
-            <div class="info-header">
-              <i class="ri-user-line"></i>
-              <h4 ref="contact_professional">Professional Contact</h4>
-            </div>
-            <div class="info-items">
-              <div class="info-item">
-                <i class="ri-map-pin-line"></i>
-                <span ref="location_value">Braga, Portugal</span>
-              </div>
-              <div class="info-item">
-                <i class="ri-timer-2-line"></i>
-                <span ref="response_time">Usually responds within 24 hours</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Social Links -->
-          <div class="info-card social-links">
-            <div class="info-header">
-              <i class="ri-links-line"></i>
-              <h4 ref="connect_title">Connect With Me</h4>
-            </div>
-            <div class="social-compact-grid">
-              <a href="https://www.linkedin.com/in/jorge-mopanc/" class="social-compact" target="_blank" rel="noopener noreferrer">
-                <i class="ri-linkedin-fill"></i>
-                <span>LinkedIn</span>
-              </a>
-              <a href="https://github.com/mopanc" class="social-compact" target="_blank" rel="noopener noreferrer">
-                <i class="ri-github-fill"></i>
-                <span>GitHub</span>
-              </a>
-              <a href="https://codepen.io/mopanc" class="social-compact" target="_blank" rel="noopener noreferrer">
-                <i class="ri-codepen-line"></i>
-                <span>CodePen</span>
-              </a>
-              <a href="https://twitter.com/JorgeMo56542670" class="social-compact" target="_blank" rel="noopener noreferrer">
-                <i class="ri-twitter-fill"></i>
-                <span>Twitter</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- Services Overview -->
-          <div class="info-card services-overview">
-            <div class="info-header">
-              <i class="ri-tools-line"></i>
-              <h4 ref="services_title">What I Can Help With</h4>
-            </div>
-            <div class="services-compact">
-              <div class="service-compact">
-                <i class="ri-code-s-slash-line"></i>
-                <div>
-                  <span class="service-name" ref="fullstack_title">FullStack Development</span>
-                  <span class="service-tech" ref="fullstack_tech">React • Node.js • TypeScript</span>
-                </div>
-              </div>
-              <div class="service-compact">
-                <i class="ri-cpu-line"></i>
-                <div>
-                  <span class="service-name" ref="systems_title">Systems Engineering</span>
-                  <span class="service-tech" ref="systems_tech">C • IoT • Industrial Protocols</span>
-                </div>
-              </div>
-              <div class="service-compact">
-                <i class="ri-robot-line"></i>
-                <div>
-                  <span class="service-name" ref="ai_title">AI/ML Solutions</span>
-                  <span class="service-tech" ref="ai_tech">Python • Analytics • Patterns</span>
-                </div>
-              </div>
-              <div class="service-compact">
-                <i class="ri-stock-line"></i>
-                <div>
-                  <span class="service-name" ref="trading_title">Trading Systems</span>
-                  <span class="service-tech" ref="trading_tech">Algorithms • ML • Risk Management</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Location Map -->
-      <div class="map-section">
-        <h3 ref="location_title">Location</h3>
-        <div class="map-container">
-          <iframe
-            width="100%"
-            height="300"
-            src="https://maps.google.com/maps?q=braga,portugal&t=&z=13&ie=UTF8&iwloc=&output=embed"
-            frameborder="0"
-            scrolling="no"
-            marginheight="0"
-            marginwidth="0"
-            style="border-radius: 12px;"
-            loading="lazy">
-          </iframe>
-        </div>
-      </div>
-    </div>
-
-    <!-- Schedule Meeting Modal -->
+    <!-- ═══ Schedule modal ═══ -->
     <Teleport to="body">
-      <Transition name="modal-fade">
-        <div v-if="showScheduleModal" class="schedule-modal-overlay" @click="closeSchedule">
-          <div class="schedule-modal" @click.stop>
-            <div class="schedule-header">
-              <h3 ref="schedule_modal_title">Schedule a Meeting</h3>
-              <button @click="closeSchedule" class="close-modal-btn">
+      <Transition name="ce-modal">
+        <div v-if="showScheduleModal" class="ce-modal" @click.self="closeSchedule">
+          <div class="ce-modal__panel" role="dialog" aria-modal="true">
+            <header class="ce-modal__header">
+              <span class="ce-modal__num">/agendar</span>
+              <h3 ref="schedule_modal_title">{{ translations.schedule_modal_title || 'Schedule a Meeting' }}</h3>
+              <button @click="closeSchedule" class="ce-modal__close" :aria-label="translations.meeting_modal_close || 'Close'">
                 <i class="ri-close-line"></i>
               </button>
-            </div>
+            </header>
 
-            <div class="schedule-body">
-              <!-- Option 1: Calendly Integration (if you have a Calendly account) -->
-              <div class="schedule-option" v-if="calendlyUrl">
-                <p ref="schedule_calendly_desc">Select a convenient time slot from my calendar:</p>
-                <a :href="calendlyUrl" target="_blank" rel="noopener noreferrer" class="btn btn--primary">
+            <div class="ce-modal__body">
+              <!-- Calendly path -->
+              <div v-if="calendlyUrl">
+                <p class="ce-modal__hint">{{ translations.meeting_calendly_hint || 'Pick a slot from my calendar:' }}</p>
+                <a :href="calendlyUrl" target="_blank" rel="noopener noreferrer" class="ce-modal__primary-btn">
                   <i class="ri-calendar-check-line"></i>
-                  <span ref="open_calendar">Open Calendar</span>
+                  <span>{{ translations.open_calendar || 'Open Calendar' }}</span>
                 </a>
               </div>
 
-              <!-- Option 2: Meeting Request Form -->
-              <div class="schedule-option" v-if="!calendlyUrl">
-                <p ref="schedule_form_desc">Fill in your details and preferred time, and I'll get back to you shortly:</p>
+              <!-- Form path -->
+              <form
+                v-if="!calendlyUrl && !meetingSent"
+                @submit.prevent="submitMeetingRequest"
+                class="ce-meet-form"
+                name="meeting-request"
+                method="POST"
+                data-netlify="true"
+                data-netlify-honeypot="bot-field"
+              >
+                <input type="hidden" name="form-name" value="meeting-request" />
+                <p class="ce-honeypot">
+                  <label>Don't fill this out: <input name="bot-field" tabindex="-1" /></label>
+                </p>
+                <p class="ce-modal__hint">
+                  {{ translations.meeting_form_hint || 'Fill in the details and your preferred window.' }}
+                </p>
 
-                <form
-                  @submit.prevent="submitMeetingRequest"
-                  class="meeting-request-form"
-                  name="meeting-request"
-                  method="POST"
-                  data-netlify="true"
-                  data-netlify-honeypot="bot-field"
-                >
-                  <!-- Hidden fields for Netlify -->
-                  <input type="hidden" name="form-name" value="meeting-request" />
-                  <div style="display: none;">
-                    <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-                  </div>
-                  <div class="form-group">
-                    <label ref="meeting_name_label">Your Name *</label>
-                    <input
-                      name="name"
-                      v-model="meetingRequest.name"
-                      type="text"
-                      required
-                      :placeholder="$refs.meeting_name_placeholder?.textContent || 'John Doe'"
-                    >
-                  </div>
+                <div class="ce-meet-row">
+                  <label class="ce-meet-field">
+                    <span>{{ translations.meeting_name_label || 'Your Name' }} *</span>
+                    <input name="name" v-model="meetingRequest.name" type="text" required />
+                  </label>
+                  <label class="ce-meet-field">
+                    <span>{{ translations.meeting_email_label || 'Email' }} *</span>
+                    <input name="email" v-model="meetingRequest.email" type="email" required />
+                  </label>
+                </div>
 
-                  <div class="form-group">
-                    <label ref="meeting_email_label">Email *</label>
-                    <input
-                      name="email"
-                      v-model="meetingRequest.email"
-                      type="email"
-                      required
-                      :placeholder="$refs.meeting_email_placeholder?.textContent || 'john@example.com'"
-                    >
-                  </div>
+                <label class="ce-meet-field">
+                  <span>{{ translations.meeting_company_label || 'Company / Organization' }}</span>
+                  <input name="company" v-model="meetingRequest.company" type="text" />
+                </label>
 
-                  <div class="form-group">
-                    <label ref="meeting_company_label">Company/Organization</label>
-                    <input
-                      name="company"
-                      v-model="meetingRequest.company"
-                      type="text"
-                      :placeholder="$refs.meeting_company_placeholder?.textContent || 'Your Company'"
-                    >
-                  </div>
-
-                  <div class="form-row">
-                    <div class="form-group">
-                      <label ref="meeting_date_label">Preferred Date *</label>
-                      <input
-                        name="date"
-                        v-model="meetingRequest.date"
-                        type="date"
-                        required
-                        :min="minDate"
-                      >
-                    </div>
-
-                    <div class="form-group">
-                      <label ref="meeting_time_label">Preferred Time *</label>
-                      <select name="time" v-model="meetingRequest.time" required>
-                        <option value="" disabled ref="meeting_select_time">Select time</option>
-                        <option value="09:00">09:00</option>
-                        <option value="10:00">10:00</option>
-                        <option value="11:00">11:00</option>
-                        <option value="14:00">14:00</option>
-                        <option value="15:00">15:00</option>
-                        <option value="16:00">16:00</option>
-                        <option value="17:00">17:00</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="form-group">
-                    <label ref="meeting_duration_label">Duration</label>
-                    <select name="duration" v-model="meetingRequest.duration">
-                      <option value="30" ref="meeting_30min">30 minutes</option>
-                      <option value="60" ref="meeting_60min">60 minutes</option>
+                <div class="ce-meet-row">
+                  <label class="ce-meet-field">
+                    <span>{{ translations.meeting_date_label || 'Preferred Date' }} *</span>
+                    <input name="date" v-model="meetingRequest.date" type="date" required :min="minDate" />
+                  </label>
+                  <label class="ce-meet-field">
+                    <span>{{ translations.meeting_time_label || 'Preferred Time' }} *</span>
+                    <select name="time" v-model="meetingRequest.time" required>
+                      <option value="" disabled>—</option>
+                      <option value="09:00">09:00</option>
+                      <option value="10:00">10:00</option>
+                      <option value="11:00">11:00</option>
+                      <option value="14:00">14:00</option>
+                      <option value="15:00">15:00</option>
+                      <option value="16:00">16:00</option>
+                      <option value="17:00">17:00</option>
                     </select>
-                  </div>
+                  </label>
+                </div>
 
-                  <div class="form-group">
-                    <label ref="meeting_topic_label">Meeting Topic *</label>
-                    <textarea
-                      name="topic"
-                      v-model="meetingRequest.topic"
-                      required
-                      rows="4"
-                      :placeholder="$refs.meeting_topic_placeholder?.textContent || 'What would you like to discuss?'"
-                    ></textarea>
-                  </div>
+                <label class="ce-meet-field">
+                  <span>{{ translations.meeting_duration_label || 'Duration' }}</span>
+                  <select name="duration" v-model="meetingRequest.duration">
+                    <option value="30">30 min</option>
+                    <option value="60">60 min</option>
+                  </select>
+                </label>
 
-                  <button type="submit" class="btn btn--primary" style="width:100%;margin-top:0.5rem" :disabled="isSubmitting">
-                    <i v-if="!isSubmitting" class="ri-send-plane-fill"></i>
-                    <i v-else class="ri-loader-4-line animate-spin"></i>
-                    <span ref="submit_meeting">{{ isSubmitting ? 'Sending...' : 'Request Meeting' }}</span>
-                  </button>
-                </form>
+                <label class="ce-meet-field">
+                  <span>{{ translations.meeting_topic_label || 'Meeting Topic' }} *</span>
+                  <textarea
+                    name="topic"
+                    v-model="meetingRequest.topic"
+                    required
+                    rows="4"
+                  ></textarea>
+                </label>
+
+                <button
+                  type="submit"
+                  class="ce-modal__primary-btn"
+                  :class="{ 'ce-modal__primary-btn--sending': isSubmitting }"
+                  :disabled="isSubmitting"
+                >
+                  <i v-if="!isSubmitting" class="ri-send-plane-line"></i>
+                  <i v-else class="ri-loader-4-line ce-spin"></i>
+                  <span>{{ isSubmitting ? (translations.sending || 'Sending...') : (translations.submit_meeting || 'Request Meeting') }}</span>
+                </button>
+              </form>
+
+              <!-- Success -->
+              <div v-if="meetingSent" class="ce-modal__success">
+                <div class="ce-modal__success-num">✓</div>
+                <h4>{{ translations.meeting_success_title || 'Request sent.' }}</h4>
+                <p>{{ translations.meeting_success_msg || 'I will be in touch within 24h to confirm.' }}</p>
               </div>
-
-              <!-- Success Message -->
-              <div v-if="showSuccess" class="success-message">
-                <i class="ri-checkbox-circle-line"></i>
-                <p ref="meeting_success">Meeting request sent successfully! I'll get back to you within 24 hours.</p>
-              </div>
-
-              <!-- Hidden translation refs -->
-              <span ref="meeting_name_placeholder" style="display: none;">Your full name</span>
-              <span ref="meeting_email_placeholder" style="display: none;">your.email@example.com</span>
-              <span ref="meeting_company_placeholder" style="display: none;">Your Company</span>
-              <span ref="meeting_topic_placeholder" style="display: none;">What would you like to discuss?</span>
             </div>
           </div>
         </div>
@@ -302,19 +251,23 @@
 
 <script>
 import ContactForm from '../components/ContactForm.vue'
+import { useLanguage } from '../composables/useLanguage'
 
 export default {
   name: 'ContactPage',
-  components: {
-    ContactForm
+  components: { ContactForm },
+
+  setup() {
+    const { translations, initialize } = useLanguage()
+    return { translations, initialize }
   },
+
   data() {
     return {
       showScheduleModal: false,
       isSubmitting: false,
-      showSuccess: false,
-      // Set to null to show form, or add your Calendly URL to use Calendly
-      calendlyUrl: null, // Example: 'https://calendly.com/jorgemopanc/30min'
+      meetingSent: false,
+      calendlyUrl: null,
       meetingRequest: {
         name: '',
         email: '',
@@ -324,34 +277,64 @@ export default {
         duration: '30',
         topic: ''
       },
-      minDate: new Date().toISOString().split('T')[0]
+      minDate: new Date().toISOString().split('T')[0],
+      // clock state
+      now: new Date(),
+      clockInterval: null
     }
   },
-  mounted() {
-    this.loadTranslations();
 
-    // Listen for language changes from LanguageSelector
-    this.handleLanguageChange = () => {
-      this.loadTranslations();
-    };
+  computed: {
+    localTime() {
+      const h = this.now.getHours().toString().padStart(2, '0')
+      const m = this.now.getMinutes().toString().padStart(2, '0')
+      return `${h}:${m}`
+    },
+    fractionOfDay() {
+      return (this.now.getHours() * 3600 + this.now.getMinutes() * 60 + this.now.getSeconds()) / 86400
+    },
+    markerLeft() {
+      return (this.fractionOfDay * 100).toFixed(2)
+    },
+    // Awake window: 08:00 - 23:00 (15h block)
+    awakeStart() { return (8 / 24) * 100 },
+    awakeWidth() { return ((23 - 8) / 24) * 100 },
+    asleepStart() { return 0 },
+    asleepWidth() { return 100 },
+    isAwake() {
+      const h = this.now.getHours()
+      return h >= 8 && h < 23
+    }
+  },
 
-    window.addEventListener('languageChanged', this.handleLanguageChange);
-    window.addEventListener('storage', this.handleLanguageChange);
+  async mounted() {
+    await this.initialize()
+    this.clockInterval = setInterval(() => {
+      this.now = new Date()
+    }, 30000) // update every 30s, smooth enough for the marker
   },
 
   beforeUnmount() {
-    // Clean up event listeners
-    if (this.handleLanguageChange) {
-      window.removeEventListener('languageChanged', this.handleLanguageChange);
-      window.removeEventListener('storage', this.handleLanguageChange);
-    }
+    if (this.clockInterval) clearInterval(this.clockInterval)
+    // Restore page scroll if modal was open when navigating away
+    document.documentElement.style.overflow = ''
+    document.body.style.overflow = ''
+  },
+
+  watch: {
+    showScheduleModal(open) {
+      // Lock both html and body to defeat any browser/wrapper scroll
+      // surface that sits next to the modal's own overflow.
+      const v = open ? 'hidden' : ''
+      document.documentElement.style.overflow = v
+      document.body.style.overflow = v
+    },
   },
 
   methods: {
     openSchedule() {
       this.showScheduleModal = true
-      this.showSuccess = false
-      // Reset form
+      this.meetingSent = false
       this.meetingRequest = {
         name: '',
         email: '',
@@ -365,885 +348,720 @@ export default {
 
     closeSchedule() {
       this.showScheduleModal = false
-      this.showSuccess = false
+      // delay reset of meetingSent so we don't see content swap during exit transition
+      setTimeout(() => { this.meetingSent = false }, 350)
     },
 
     async submitMeetingRequest() {
       this.isSubmitting = true
-
       try {
-        // Create FormData for Netlify
         const formData = new FormData()
         formData.append('form-name', 'meeting-request')
-        formData.append('name', this.meetingRequest.name)
-        formData.append('email', this.meetingRequest.email)
-        formData.append('company', this.meetingRequest.company)
-        formData.append('date', this.meetingRequest.date)
-        formData.append('time', this.meetingRequest.time)
-        formData.append('duration', this.meetingRequest.duration)
-        formData.append('topic', this.meetingRequest.topic)
+        Object.entries(this.meetingRequest).forEach(([k, v]) => formData.append(k, v))
 
-        // Submit to Netlify
         const response = await fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: new URLSearchParams(formData).toString()
         })
 
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`)
-        }
-
-        // Show success message
-        this.showSuccess = true
-
-        // Auto close after 3 seconds
-        setTimeout(() => {
-          this.closeSchedule()
-        }, 3000)
-
+        if (!response.ok) throw new Error(`HTTP ${response.status}`)
+        this.meetingSent = true
+        setTimeout(() => this.closeSchedule(), 3500)
       } catch (error) {
         console.error('Error submitting meeting request:', error)
-        alert('Sorry, there was an error. Please try again or contact me directly.')
+        alert(this.translations.meeting_error || 'There was an error. Please try again or email me directly.')
       } finally {
         this.isSubmitting = false
       }
-    },
-
-    loadTranslations() {
-      const selectedLanguage = localStorage.getItem('selectedLanguage') || 'en';
-
-      import(`../languages/${selectedLanguage}.js`).then((module) => {
-        const expressions = module.default;
-
-        // Helper function to safely set text content
-        const setTextContent = (refName, value) => {
-          if (this.$refs[refName]) {
-            this.$refs[refName].textContent = value;
-          }
-        };
-
-        // Set page content
-        setTextContent('contact_title', expressions.contact_title || 'Get In Touch');
-        setTextContent('contact_subtitle', expressions.contact_subtitle || 'Ready to bring your next project to life? Let\'s discuss how we can work together.');
-        setTextContent('contact_professional', expressions.contact_professional || 'Professional Contact');
-        setTextContent('email_label', expressions.email_label || 'Email');
-        setTextContent('phone_label', expressions.phone_label || 'Phone');
-        setTextContent('location_label', expressions.location_label || 'Location');
-        setTextContent('availability_label', expressions.availability_label || 'Availability');
-        setTextContent('response_time', expressions.response_time || 'Usually responds within 24 hours');
-        setTextContent('connect_title', expressions.connect_title || 'Connect With Me');
-        setTextContent('linkedin_desc', expressions.linkedin_desc || 'Professional network');
-        setTextContent('github_desc', expressions.github_desc || 'Code repositories');
-        setTextContent('codepen_desc', expressions.codepen_desc || 'Creative projects');
-        setTextContent('twitter_desc', expressions.twitter_desc || 'Tech insights');
-        setTextContent('services_title', expressions.services_title || 'What I Can Help With');
-        setTextContent('fullstack_title', expressions.fullstack_title || 'FullStack Development');
-        setTextContent('fullstack_desc', expressions.fullstack_desc || 'Complete web applications with React, Node.js, and modern technologies.');
-        setTextContent('systems_title', expressions.systems_title || 'Systems Engineering');
-        setTextContent('systems_desc', expressions.systems_desc || 'Low-level C programming, industrial protocols (ccTalk, MQTT), and critical systems.');
-        setTextContent('ai_title', expressions.ai_title || 'AI/ML Solutions');
-        setTextContent('ai_desc', expressions.ai_desc || 'Machine learning systems with Python, predictive analytics, and pattern recognition.');
-        setTextContent('trading_title', expressions.trading_title || 'Trading Systems');
-        setTextContent('trading_desc', expressions.trading_desc || 'Algorithmic trading with machine learning models, statistical analysis, and risk management.');
-        setTextContent('quick_contact_title', expressions.quick_contact_title || 'Quick Contact');
-        setTextContent('quick_contact_desc', expressions.quick_contact_desc || 'For detailed discussions, please use the contact form on the homepage or reach out directly via email.');
-        setTextContent('go_homepage', expressions.go_homepage || 'Go to Homepage');
-        setTextContent('send_email', expressions.send_email || 'Send Email');
-        setTextContent('location_title', expressions.location_title || 'Location');
-        setTextContent('contact_form_title', expressions.contact_form_title || 'Send Message');
-        setTextContent('form_subtitle', expressions.form_subtitle || 'Let\'s discuss your project and how I can help bring it to life.');
-        setTextContent('location_value', expressions.location_value || 'Braga, Portugal');
-        setTextContent('fullstack_tech', expressions.fullstack_tech || 'React • Node.js • TypeScript');
-        setTextContent('systems_tech', expressions.systems_tech || 'C • IoT • Industrial Protocols');
-        setTextContent('ai_tech', expressions.ai_tech || 'Python • Analytics • Patterns');
-        setTextContent('trading_tech', expressions.trading_tech || 'Algorithms • ML • Risk Management');
-      });
     }
   }
 }
 </script>
 
 <style scoped>
-.contact-page {
-  padding: 5rem 0 3rem;
-  min-height: 100vh;
+.contact-edt {
   position: relative;
   background: var(--color-bg-primary);
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(119, 167, 255, 0.18), transparent 40%),
-    radial-gradient(circle at 80% 10%, rgba(74, 134, 232, 0.25), transparent 45%),
-    radial-gradient(circle at 70% 80%, rgba(63, 118, 210, 0.13), transparent 55%);
+  min-height: 100vh;
+  padding: 0 0 6rem;
+  overflow: hidden;
 }
 
-.contact-page::after {
+/* ═══ HERO (dark band) ═══ */
+.ce-hero {
+  padding: 7rem 0 6rem;
+  background: #0A0D14;
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.ce-hero::before {
   content: "";
   position: absolute;
-  inset: 10% 5% 20% 5%;
-  border-radius: 32px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px);
+  background-size: calc(100% / 12) 100%;
   pointer-events: none;
-  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.3);
+  z-index: 0;
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent);
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 2rem;
-  position: relative;
-  z-index: 1;
-}
+.ce-hero > * { position: relative; z-index: 1; }
 
-.contact-header {
-  text-align: center;
-  margin-bottom: 3rem;
-  max-width: 860px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.contact-title {
-  font-size: clamp(2.8rem, 4.5vw, 3.8rem);
-  font-weight: var(--fw-bold);
-  color: var(--color-white);
-  margin-bottom: 1rem;
-}
-
-.contact-subtitle {
-  font-size: 1.2rem;
-  color: rgba(210, 217, 230, 0.85);
-  max-width: 620px;
-  margin: 0 auto 2.5rem;
-  line-height: 1.7;
-}
-
-/* CTA Buttons */
-.cta-buttons {
+.ce-hero__eyebrow {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin: 0 0 2.5rem;
+  font-family: var(--ff-mono);
+  font-size: 1.15rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #8a9ab5;
 }
 
-.contact-content {
-  display: grid;
-  grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.65fr);
-  gap: 2.25rem;
-  margin-bottom: 4rem;
+.ce-hero__eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #7eb8f7;
+  box-shadow: 0 0 0 4px rgba(126, 184, 247, 0.22);
+  animation: ceDotPulse 2.4s ease-in-out infinite;
 }
 
-.main-contact-form {
-  background: linear-gradient(160deg, rgba(12, 15, 20, 0.96), rgba(10, 12, 18, 0.9));
-  border-radius: 24px;
-  padding: 3rem;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 35px 80px rgba(0, 0, 0, 0.55);
+@keyframes ceDotPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(126, 184, 247, 0.22); }
+  50% { box-shadow: 0 0 0 8px rgba(126, 184, 247, 0); }
+}
+
+.ce-hero__title {
+  margin: 0 0 2.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: clamp(5rem, 13vw, 14rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  color: #FAFAF8;
+}
+
+.ce-hero__title-line {
+  display: block;
+}
+
+.ce-hero__title-line--accent {
   position: relative;
+  display: inline-block;
+  padding-right: 0.4em;
+}
+
+.ce-hero__cursor {
+  display: inline-block;
+  width: 0.42em;
+  height: 0.78em;
+  background: #7eb8f7;
+  margin-left: 0.05em;
+  vertical-align: baseline;
+  position: relative;
+  top: 0.05em;
+  animation: ceCursorBlink 1.05s steps(2) infinite;
+}
+
+@keyframes ceCursorBlink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
+.ce-hero__lede {
+  max-width: 56rem;
+  margin: 0;
+  font-size: 1.7rem;
+  line-height: 1.55;
+  color: #c8d8f0;
+}
+
+/* ═══ CHANNELS ═══ */
+.ce-channels {
+  padding: 4rem 0 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.ce-channels__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(280px, 1fr);
+  gap: 6rem;
+  align-items: flex-start;
+}
+
+.ce-channels__heading {
+  display: flex;
+  align-items: baseline;
+  gap: 1.4rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ce-channels__num {
+  font-family: var(--ff-mono);
+  font-size: 1.2rem;
+  letter-spacing: 0.18em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.ce-channels__title {
+  margin: 0;
+  font-size: clamp(1.8rem, 2.4vw, 2.4rem);
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: -0.01em;
+}
+
+/* ═══ SIDE RAIL ═══ */
+.ce-side {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  position: sticky;
+  top: 9rem;
+}
+
+.ce-side__block {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Channels list */
+.ce-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ce-list__item {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ce-list__item:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.ce-list__link {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1.8rem 0.4rem;
+  text-decoration: none;
+  color: var(--color-white);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  width: 100%;
+  text-align: left;
+  transition: padding 0.32s cubic-bezier(0.65, 0, 0.35, 1);
   overflow: hidden;
 }
 
-.main-contact-form::after {
+.ce-list__link::before {
   content: "";
   position: absolute;
-  inset: 1.5rem;
-  border-radius: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  pointer-events: none;
-  box-shadow: inset 0 0 40px rgba(74, 134, 232, 0.15);
-}
-
-.form-header {
-  text-align: center;
-  margin-bottom: 2.5rem;
-}
-
-.form-header h2 {
-  color: var(--color-white);
-  font-size: 2.2rem;
-  font-weight: var(--fw-bold);
-  margin-bottom: 0.5rem;
-}
-
-.form-subtitle {
-  color: rgba(210, 217, 230, 0.85);
-  font-size: 1.1rem;
-  line-height: 1.6;
-  max-width: 540px;
-  margin: 0 auto;
-}
-
-/* Information Grid - Compact */
-.info-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.info-card {
-  background: linear-gradient(160deg, rgba(15, 18, 28, 0.92), rgba(12, 13, 18, 0.95));
-  border-radius: 20px;
-  padding: 1.75rem;
-  border: 1px solid rgba(74, 134, 232, 0.2);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
-}
-
-.info-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 30px 55px rgba(74, 134, 232, 0.25);
-}
-
-.info-header {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 1.25rem;
-}
-
-.info-header i {
-  font-size: 1.3rem;
-  color: var(--color-primary);
-}
-
-.info-header h4 {
-  color: var(--color-white);
-  font-size: 1.2rem;
-  font-weight: var(--fw-semibold);
-  margin: 0;
-}
-
-/* Contact Info */
-.info-items {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.info-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  color: var(--color-text);
-  font-size: 0.95rem;
-}
-
-.info-item i {
-  font-size: 1rem;
-  color: var(--color-primary);
-  flex-shrink: 0;
-}
-
-/* Social Links - Compact */
-.social-compact-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.75rem;
-}
-
-.social-compact {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 0.9rem 1rem;
-  border-radius: 12px;
-  text-decoration: none;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.04);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-}
-
-.social-compact:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 15px 25px rgba(74, 134, 232, 0.25);
-}
-
-.social-compact i {
-  font-size: 1.1rem;
-  color: var(--color-primary);
-}
-
-.social-compact span {
-  color: var(--color-white);
-  font-size: 0.95rem;
-  font-weight: var(--fw-medium);
-}
-
-/* Services Overview - Compact */
-.services-compact {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.service-compact {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  padding: 1rem;
-  background: rgba(255, 255, 255, 0.02);
-  border-radius: 16px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: transform 0.3s ease, border-color 0.3s ease;
-}
-
-.service-compact:hover {
-  transform: translateY(-3px);
-  border-color: rgba(74, 134, 232, 0.4);
-  box-shadow: 0 10px 30px rgba(74, 134, 232, 0.2);
-}
-
-.service-compact i {
-  font-size: 1.3rem;
-  color: var(--color-primary);
-  flex-shrink: 0;
-}
-
-.service-compact div {
-  flex: 1;
-}
-
-.service-name {
-  display: block;
-  color: var(--color-white);
-  font-size: 0.95rem;
-  font-weight: var(--fw-semibold);
-  margin-bottom: 0.25rem;
-}
-
-.service-tech {
-  display: block;
-  color: rgba(210, 217, 230, 0.8);
-  font-size: 0.85rem;
-}
-
-/* Mobile Social Strip */
-.mobile-social-strip {
-  display: none;
-}
-
-/* Map Section */
-.map-section {
-  text-align: center;
-}
-
-.map-section h3 {
-  color: var(--color-white);
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.map-container {
-  background: var(--color-bg-secondary);
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-}
-
-/* Responsive Design */
-@media (max-width: 1024px) {
-  .contact-content {
-    grid-template-columns: 1fr;
-  }
-
-  .info-grid {
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 0 1rem;
-  }
-
-  .contact-title {
-    font-size: 2.2rem;
-  }
-
-  .contact-subtitle {
-    font-size: 1rem;
-    margin-bottom: 1.8rem;
-  }
-
-  .contact-header {
-    margin-bottom: 2rem;
-  }
-
-  .main-contact-form {
-    padding: 1.5rem;
-  }
-
-  .info-grid {
-    display: none;
-  }
-
-  .map-section {
-    display: none;
-  }
-
-  .contact-content {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  /* Mobile Social Strip */
-  .mobile-social-strip {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 0.75rem;
-  }
-
-  .mobile-social-link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.4rem;
-    padding: 0.9rem 0.5rem;
-    border-radius: 14px;
-    text-decoration: none;
-    border: 1px solid rgba(255, 255, 255, 0.12);
-    background: rgba(255, 255, 255, 0.04);
-    transition: transform 0.2s ease, border-color 0.2s ease;
-  }
-
-  .mobile-social-link:hover {
-    transform: translateY(-2px);
-    border-color: rgba(74, 134, 232, 0.4);
-  }
-
-  .mobile-social-link i {
-    font-size: 1.3rem;
-    color: var(--color-primary);
-  }
-
-  .mobile-social-link span {
-    font-size: 0.75rem;
-    color: var(--color-text);
-    font-weight: 500;
-  }
-}
-
-@media (max-width: 480px) {
-  .contact-title {
-    font-size: 1.8rem;
-  }
-
-  .contact-subtitle {
-    font-size: 0.95rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .contact-header {
-    margin-bottom: 1.5rem;
-  }
-
-  .cta-buttons {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .cta-buttons .btn {
-    width: 100%;
-    justify-content: center;
-  }
-
-  .main-contact-form {
-    padding: 1.25rem;
-    border-radius: 16px;
-  }
-
-  .info-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .social-compact-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .main-contact-form {
-    padding: 1.5rem;
-  }
-
-  .form-header {
-    margin-bottom: 2rem;
-  }
-
-  .form-header h2 {
-    font-size: 1.7rem;
-  }
-
-  .contact-content {
-    gap: 1.5rem;
-  }
-
-  .service-compact {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .service-compact i {
-    margin-top: 0;
-  }
-}
-
-/* Theme adjustments */
-.theme-light .contact-page {
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(63, 118, 210, 0.08), transparent 40%),
-    radial-gradient(circle at 80% 10%, rgba(63, 118, 210, 0.1), transparent 45%),
-    radial-gradient(circle at 70% 80%, rgba(63, 118, 210, 0.06), transparent 55%);
-}
-
-/* Hardcoded light-gray texts: contact subtitle, form subtitle, service tech */
-.theme-light .contact-subtitle,
-.theme-light .form-subtitle,
-.theme-light .service-tech {
-  color: #6a7586;
-}
-
-
-.theme-light .main-contact-form {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(240, 244, 250, 0.9));
-  border-color: rgba(74, 134, 232, 0.2);
-  box-shadow: 0 20px 45px rgba(15, 23, 33, 0.15);
-}
-
-.theme-light .info-card {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(195, 203, 216, 0.6);
-  box-shadow: 0 10px 25px rgba(18, 25, 38, 0.1);
-}
-
-.theme-light .map-container {
-  border-color: rgba(195, 203, 216, 0.6);
-  box-shadow: 0 20px 40px rgba(15, 23, 33, 0.15);
-}
-
-.theme-light .social-compact,
-.theme-light .service-compact {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(195, 203, 216, 0.5);
-}
-
-.theme-light .social-compact:hover,
-.theme-light .service-compact:hover {
-  box-shadow: 0 8px 18px rgba(15, 23, 33, 0.15);
-}
-
-.theme-light .mobile-social-link {
-  background: rgba(255, 255, 255, 0.85);
-  border-color: rgba(195, 203, 216, 0.5);
-}
-
-.theme-light .mobile-social-link span {
-  color: var(--color-text);
-}
-
-/* Fix: form group inputs — color was var(--color-bg-primary) = #f3f5f8 in lightmode (invisible) */
-.theme-light .form-group input,
-.theme-light .form-group select,
-.theme-light .form-group textarea {
-  background: rgba(255, 255, 255, 0.95);
-  border-color: rgba(195, 203, 216, 0.8);
-  color: var(--color-text);
-  box-shadow: none;
-}
-
-.theme-light .form-group label {
-  color: #1e2a38;
-}
-
-.theme-light .form-group input::placeholder,
-.theme-light .form-group textarea::placeholder {
-  color: rgba(43, 58, 74, 0.5);
-}
-
-/* Schedule modal header in lightmode */
-.theme-light .schedule-header {
-  background: linear-gradient(135deg, rgba(240, 244, 250, 0.98), rgba(228, 235, 245, 0.95));
-  border-bottom-color: rgba(195, 203, 216, 0.6);
-}
-
-.theme-light .schedule-option p {
-  color: #6a7586;
-}
-
-.theme-light .close-modal-btn:hover {
-  background: rgba(63, 118, 210, 0.1);
-}
-
-/* Schedule Meeting Modal */
-.schedule-modal-overlay {
-  position: fixed;
-  top: 0;
   left: 0;
-  right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.85);
-  backdrop-filter: blur(8px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 99999;
-  padding: 2rem;
-  overflow-y: auto;
-}
-
-.schedule-modal {
-  background: var(--color-bg-secondary);
-  border-radius: 24px;
-  max-width: 640px;
+  height: 100%;
   width: 100%;
-  max-height: 90vh;
-  overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  position: relative;
-  z-index: 100000;
+  background: var(--color-white);
+  transform: translateX(-101%);
+  transition: transform 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 0;
+}
+
+.ce-list__link > * { position: relative; z-index: 1; transition: color 0.32s ease; }
+
+.ce-list__link:hover {
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+}
+
+.ce-list__link:hover::before {
+  transform: translateX(0);
+}
+
+.ce-list__link:hover .ce-list__num,
+.ce-list__link:hover .ce-list__head,
+.ce-list__link:hover .ce-list__sub,
+.ce-list__link:hover .ce-list__arrow {
+  color: var(--color-bg-primary);
+}
+
+.ce-list__num {
+  font-family: var(--ff-mono);
+  font-size: 1.15rem;
+  letter-spacing: 0.16em;
+  color: var(--color-primary);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.ce-list__main {
   display: flex;
   flex-direction: column;
+  gap: 0.25rem;
+  min-width: 0;
 }
 
-.schedule-header {
-  padding: 2rem 2rem 1.5rem;
-  border-bottom: 1px solid var(--color-border);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: sticky;
-  top: 0;
-  background: linear-gradient(135deg, rgba(12, 16, 24, 0.95), rgba(10, 12, 18, 0.9));
-  z-index: 1;
-}
-
-.schedule-header h3 {
+.ce-list__head {
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
   color: var(--color-white);
-  font-size: 1.75rem;
-  font-weight: var(--fw-bold);
-  margin: 0;
+  font-family: 'Space Grotesk', sans-serif;
 }
 
-.close-modal-btn {
-  background: none;
-  border: none;
+.ce-list__sub {
+  font-family: var(--ff-mono);
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
   color: var(--color-text);
-  font-size: 1.75rem;
-  cursor: pointer;
-  padding: 0.5rem;
-  border-radius: 8px;
-  transition: all 0.2s ease;
+  text-transform: lowercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.close-modal-btn:hover {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--color-white);
+.ce-list__arrow {
+  font-size: 1.7rem;
+  color: var(--color-text);
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1), color 0.3s ease;
 }
 
-.schedule-body {
-  padding: 2rem;
-  overflow-y: auto;
-  flex: 1;
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+.ce-list__link:hover .ce-list__arrow {
+  transform: translate(3px, -3px);
 }
 
-.schedule-body::-webkit-scrollbar {
-  display: none; /* Chrome, Safari and Opera */
-}
-
-.schedule-option p {
-  color: rgba(210, 217, 230, 0.9);
-  margin-bottom: 1.5rem;
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-/* calendly btn now uses global btn--primary */
-
-/* submit-meeting-btn now uses global btn--primary */
-
-/* Meeting Request Form */
-.meeting-request-form {
+/* ═══ TIMEZONE VISUALIZER ═══ */
+.ce-tz__readout {
   display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.form-group label {
+.ce-tz__time {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.6rem, 4vw, 3.4rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   color: var(--color-white);
-  font-weight: var(--fw-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+.ce-tz__zone {
+  font-family: var(--ff-mono);
+  font-size: 1.15rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.ce-tz__bar {
+  position: relative;
+  width: 100%;
+  height: 6px;
+  background: transparent;
+  margin: 1.6rem 0 2.6rem;
+}
+
+.ce-tz__bar-asleep {
+  position: absolute;
+  top: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    -45deg,
+    var(--color-border),
+    var(--color-border) 3px,
+    transparent 3px,
+    transparent 6px
+  );
+}
+
+.ce-tz__bar-awake {
+  position: absolute;
+  top: 0;
+  height: 6px;
+  background: var(--color-white);
+}
+
+.ce-tz__bar-marker {
+  position: absolute;
+  top: -7px;
+  width: 2px;
+  height: 20px;
+  background: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.15);
+  transform: translateX(-1px);
+  transition: left 0.6s ease;
+}
+
+.ce-tz__bar-marker::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 8px;
+  height: 8px;
+  background: var(--color-primary);
+  border-radius: 50%;
+  animation: ceMarkerPulse 2s ease-in-out infinite;
+}
+
+@keyframes ceMarkerPulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.7; }
+}
+
+.ce-tz__tick {
+  position: absolute;
+  top: 6px;
+  width: 1px;
+  height: 4px;
+  background: var(--color-text);
+  opacity: 0.45;
+}
+
+.ce-tz__tick-label {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--ff-mono);
   font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
+  white-space: nowrap;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-  padding: 0.95rem 1.35rem;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 12px;
-  color: var(--color-white);
-  font-size: 1rem;
-  font-family: inherit;
-  transition: all 0.25s ease;
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
-}
-
-.form-group input:focus,
-.form-group select:focus,
-.form-group textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(195, 176, 145, 0.1);
-}
-
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-  color: rgba(210, 217, 230, 0.7);
-}
-
-.form-group textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.form-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-}
-
-/* submit-meeting-btn replaced with global btn--primary */
-
-/* Success Message */
-.success-message {
-  background: rgba(46, 213, 115, 0.1);
-  border: 1px solid #2ed573;
-  border-radius: 12px;
-  padding: 1.5rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
-}
-
-.success-message i {
-  font-size: 2rem;
-  color: #2ed573;
-  flex-shrink: 0;
-}
-
-.success-message p {
-  color: var(--color-white);
+.ce-tz__status {
   margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 1.3rem;
+  color: var(--color-text);
   line-height: 1.5;
 }
 
-/* Animation */
-.animate-spin {
-  animation: spin 1s linear infinite;
+.ce-tz__pulse {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-text);
+  flex-shrink: 0;
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
+.ce-tz__status--awake {
+  color: var(--color-white);
+}
+
+.ce-tz__status--awake .ce-tz__pulse {
+  background: #16a34a;
+  box-shadow: 0 0 0 4px rgba(22, 163, 74, 0.18);
+  animation: ceDotPulse 2.4s ease-in-out infinite;
+}
+
+/* ═══ MODAL ═══ */
+.ce-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(26, 26, 26, 0.55);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 5rem 2rem;
+  /* No overflow on the overlay — the panel below owns its own scroll
+     when the form is taller than the viewport. Avoids double scrollbars. */
+  overflow: hidden;
+  z-index: 99999;
+  overscroll-behavior: contain;
+}
+
+.ce-modal__panel {
+  background: var(--color-bg-primary);
+  border: 1px solid var(--color-border);
+  width: 100%;
+  max-width: 640px;
+  position: relative;
+  /* Panel handles its own scroll when content exceeds viewport */
+  max-height: calc(100vh - 10rem); /* viewport minus modal vertical padding */
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.ce-modal__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 1.4rem;
+  padding: 2rem 2.4rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.ce-modal__num {
+  font-family: var(--ff-mono);
+  font-size: 1.15rem;
+  letter-spacing: 0.18em;
+  color: var(--color-primary);
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.ce-modal__header h3 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-white);
+}
+
+.ce-modal__close {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: var(--color-white);
+  cursor: pointer;
+  padding: 0.4rem;
+  transition: color 0.2s ease, transform 0.2s ease;
+  line-height: 1;
+}
+
+.ce-modal__close:hover {
+  color: var(--color-primary);
+  transform: rotate(90deg);
+}
+
+.ce-modal__body {
+  padding: 2.4rem;
+}
+
+.ce-modal__hint {
+  margin: 0 0 1.8rem;
+  font-size: 1.4rem;
+  color: var(--color-text);
+}
+
+/* Meeting form */
+.ce-meet-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.ce-meet-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.6rem;
+}
+
+.ce-meet-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.ce-meet-field span {
+  font-family: var(--ff-mono);
+  font-size: 1.05rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.ce-meet-field input,
+.ce-meet-field select,
+.ce-meet-field textarea {
+  width: 100%;
+  padding: 0.95rem 1.1rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  color: var(--color-white);
+  font-size: 1.4rem;
+  font-family: inherit;
+  transition: border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.ce-meet-field input:focus,
+.ce-meet-field select:focus,
+.ce-meet-field textarea:focus {
+  outline: none;
+  border-color: var(--color-white);
+}
+
+.ce-meet-field textarea {
+  resize: vertical;
+  min-height: 110px;
+  line-height: 1.55;
+}
+
+.ce-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* Modal primary button */
+.ce-modal__primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  padding: 1.3rem 2rem;
+  width: 100%;
+  margin-top: 1rem;
+  background: #1A1A1A;
+  color: #FAFAF8;
+  border: 1px solid #1A1A1A;
+  border-radius: 0;
+  font-family: inherit;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: background 0.22s ease, border-color 0.22s ease, transform 0.18s ease;
+}
+
+.ce-modal__primary-btn:hover:not(:disabled):not(.ce-modal__primary-btn--sending) {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.ce-modal__primary-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.85;
+}
+
+.ce-modal__primary-btn--sending::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary);
+  animation: cfProgress 1.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+  z-index: 0;
+}
+
+.ce-modal__primary-btn--sending span,
+.ce-modal__primary-btn--sending i { position: relative; z-index: 1; }
+
+@keyframes cfProgress {
+  0% { transform: scaleX(0); transform-origin: left center; }
+  50% { transform: scaleX(1); transform-origin: left center; }
+  50.01% { transform: scaleX(1); transform-origin: right center; }
+  100% { transform: scaleX(0); transform-origin: right center; }
+}
+
+.ce-spin {
+  animation: ceSpin 0.9s linear infinite;
+  display: inline-block;
+}
+@keyframes ceSpin {
+  from { transform: rotate(0); }
   to { transform: rotate(360deg); }
 }
 
-/* Modal Transitions */
-.modal-fade-enter-active,
-.modal-fade-leave-active {
-  transition: opacity 0.3s ease;
+/* Modal success */
+.ce-modal__success {
+  text-align: center;
+  padding: 2rem 0;
 }
 
-.modal-fade-enter-active .schedule-modal,
-.modal-fade-leave-active .schedule-modal {
-  transition: transform 0.3s ease, opacity 0.3s ease;
+.ce-modal__success-num {
+  font-size: 4rem;
+  line-height: 1;
+  font-weight: 700;
+  color: #16a34a;
+  font-family: var(--ff-mono);
+  margin-bottom: 1.4rem;
 }
 
-.modal-fade-enter-from,
-.modal-fade-leave-to {
+.ce-modal__success h4 {
+  margin: 0 0 0.6rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.ce-modal__success p {
+  margin: 0;
+  font-size: 1.4rem;
+  color: var(--color-text);
+}
+
+/* Modal transitions */
+.ce-modal-enter-active,
+.ce-modal-leave-active {
+  transition: opacity 0.32s ease;
+}
+.ce-modal-enter-active .ce-modal__panel,
+.ce-modal-leave-active .ce-modal__panel {
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.32s ease;
+}
+.ce-modal-enter-from,
+.ce-modal-leave-to {
+  opacity: 0;
+}
+.ce-modal-enter-from .ce-modal__panel,
+.ce-modal-leave-to .ce-modal__panel {
+  transform: translateY(24px);
   opacity: 0;
 }
 
-.modal-fade-enter-from .schedule-modal,
-.modal-fade-leave-to .schedule-modal {
-  transform: scale(0.9);
-  opacity: 0;
-}
-
-/* Responsive Modal */
-@media (max-width: 768px) {
-  .schedule-modal-overlay {
-    padding: 1rem;
-  }
-
-  .schedule-modal {
-    max-height: 95vh;
-  }
-
-  .schedule-header {
-    padding: 1.5rem 1.5rem 1rem;
-  }
-
-  .schedule-header h3 {
-    font-size: 1.5rem;
-  }
-
-  .schedule-body {
-    padding: 1.5rem;
-  }
-
-  .form-row {
+/* ═══ Responsive ═══ */
+@media (max-width: 1024px) {
+  .ce-channels__grid {
     grid-template-columns: 1fr;
+    gap: 4rem;
   }
+  .ce-side {
+    position: static;
+  }
+}
 
-  .cta-buttons {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .cta-buttons .btn {
-    width: 100%;
-    justify-content: center;
-  }
+@media (max-width: 720px) {
+  .contact-edt { padding: 2rem 0 5rem; }
+  .ce-hero { padding: 4rem 0 3rem; }
+  .ce-hero__title { font-size: clamp(4rem, 18vw, 8rem); }
+  .ce-channels { padding: 3rem 0 0; }
+  .ce-channels__grid { gap: 4rem; }
+  .ce-meet-row { grid-template-columns: 1fr; }
+  .ce-modal { padding: 2rem 1rem; }
+  .ce-modal__header { padding: 1.6rem 1.6rem; }
+  .ce-modal__body { padding: 1.6rem; }
 }
 
 @media (max-width: 480px) {
-  .schedule-header {
-    padding: 1.25rem;
-  }
-
-  .schedule-header h3 {
-    font-size: 1.25rem;
-  }
-
-  .schedule-body {
-    padding: 1.25rem;
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    padding: 0.75rem 1rem;
-  }
-
-  .submit-meeting-btn,
-  .schedule-calendly-btn {
-    padding: 0.875rem 1.5rem;
-    font-size: 1rem;
-  }
+  .ce-list__link { padding: 1.4rem 0.2rem; }
+  .ce-list__link:hover { padding-left: 1rem; padding-right: 1rem; }
+  .ce-list__head { font-size: 1.55rem; }
+  .ce-tz__time { font-size: 2.4rem; }
 }
 </style>

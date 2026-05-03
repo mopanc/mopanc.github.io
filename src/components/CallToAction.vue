@@ -103,29 +103,22 @@ onMounted(async () => {
 
 /* Main CTA Card */
 .cta-card {
-  background: linear-gradient(160deg, rgba(20, 28, 38, 0.92), rgba(10, 14, 20, 0.98));
-  border: 1px solid rgba(74, 134, 232, 0.25);
-  border-radius: 20px;
-  padding: 3rem;
-  margin-bottom: 2rem;
+  background: transparent;
+  border: none;
+  border-top: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: 4rem 0;
+  margin-bottom: 0;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
   gap: 2rem;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.3);
 }
 
 .cta-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(195, 176, 145, 0.1) 0%, transparent 50%);
-  pointer-events: none;
+  display: none;
 }
 
 .cta-content {
@@ -135,22 +128,15 @@ onMounted(async () => {
 }
 
 .cta-icon {
-  font-size: 2.6rem;
-  color: var(--color-primary);
-  width: 64px;
-  height: 64px;
-  display: grid;
-  place-items: center;
-  border-radius: 16px;
-  background: rgba(74, 134, 232, 0.15);
-  border: 1px solid rgba(74, 134, 232, 0.25);
+  display: none;
 }
 
 .cta-title {
-  color: var(--color-white);
-  font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+  color: #1A1A1A;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
   margin-bottom: 0.5rem;
   font-weight: var(--fw-bold);
+  letter-spacing: -0.02em;
 }
 
 .cta-description {
@@ -300,17 +286,7 @@ onMounted(async () => {
   }
 }
 
-.theme-light .cta-card {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(237, 241, 246, 0.92));
-  border-color: rgba(63, 118, 210, 0.2);
-  box-shadow: 0 26px 50px rgba(30, 42, 56, 0.12);
-}
-
-.theme-light .cta-icon {
-  background: rgba(63, 118, 210, 0.12);
-  border-color: rgba(63, 118, 210, 0.25);
-  color: var(--color-primary);
-}
+/* light is default — no overrides needed */
 
 @media screen and (max-width: 768px) {
   .cta-section {

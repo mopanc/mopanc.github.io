@@ -1,195 +1,237 @@
 <template>
-  <section id="contact" class="contact-form-section">
-    <div class="container-narrow">
+  <section id="contact" class="cf-section">
+    <div class="cf-shell">
       <form
         @submit.prevent="handleSubmit"
-        class="contact-form"
-        :class="{ 'form--sending': isSending }"
+        class="cf-form"
+        :class="{ 'cf-form--sending': isSending, 'cf-form--sent': sent }"
         name="contact-form"
         method="POST"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
+        novalidate
       >
-        <!-- Hidden honeypot field for spam protection -->
         <input type="hidden" name="form-name" value="contact-form" />
-        <div style="display: none;">
-          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
-        </div>
+        <p class="cf-honeypot" aria-hidden="true">
+          <label>Don't fill this out: <input name="bot-field" tabindex="-1" /></label>
+        </p>
 
-        <div class="form-grid">
-          <!-- Name Field -->
-          <div class="form-field">
-            <label for="name" class="form-label">{{ translations.name || 'Name' }} *</label>
+        <!-- Subject as segmented control -->
+        <fieldset class="cf-segmented" :class="{ 'cf-field--invalid': false }">
+          <legend class="cf-legend">
+            <span class="cf-legend__num">01</span>
+            {{ translations.subject || 'What is this about' }}
+          </legend>
+          <div class="cf-seg" role="radiogroup">
+            <button
+              v-for="opt in subjectOptions"
+              :key="opt.value"
+              type="button"
+              role="radio"
+              :aria-checked="form.subject === opt.value"
+              class="cf-seg__btn"
+              :class="{ 'cf-seg__btn--active': form.subject === opt.value }"
+              @click="setSubject(opt.value)"
+            >
+              <i :class="opt.icon"></i>
+              <span>{{ opt.label }}</span>
+            </button>
+          </div>
+        </fieldset>
+
+        <!-- Name + Email row -->
+        <div class="cf-row">
+          <!-- Name -->
+          <div class="cf-field" :class="{ 'cf-field--filled': form.name, 'cf-field--invalid': errors.name }">
+            <label for="cf-name" class="cf-field__label">
+              <span class="cf-field__num">02</span>
+              {{ translations.name || 'Your name' }}
+            </label>
             <input
-              id="name"
+              id="cf-name"
               name="name"
               v-model="form.name"
               type="text"
-              class="form-input"
-              :class="{ 'error': errors.name }"
+              autocomplete="name"
+              class="cf-field__input"
               required
-              :placeholder="translations.name_placeholder || 'Your full name'"
-            >
-            <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
+              @focus="touched.name = true"
+            />
+            <span class="cf-field__line" aria-hidden="true"></span>
+            <span v-if="errors.name" class="cf-field__error">{{ errors.name }}</span>
           </div>
 
-          <!-- Email Field -->
-          <div class="form-field">
-            <label for="email" class="form-label">{{ translations.email || 'Email' }} *</label>
+          <!-- Email -->
+          <div class="cf-field" :class="{ 'cf-field--filled': form.email, 'cf-field--invalid': errors.email }">
+            <label for="cf-email" class="cf-field__label">
+              <span class="cf-field__num">03</span>
+              {{ translations.email || 'Email' }}
+            </label>
             <input
-              id="email"
+              id="cf-email"
               name="email"
               v-model="form.email"
               type="email"
-              class="form-input"
-              :class="{ 'error': errors.email }"
+              autocomplete="email"
+              class="cf-field__input"
               required
-              :placeholder="translations.email_placeholder || 'your.email@example.com'"
-            >
-            <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
+              @focus="touched.email = true"
+            />
+            <span class="cf-field__line" aria-hidden="true"></span>
+            <span v-if="errors.email" class="cf-field__error">{{ errors.email }}</span>
           </div>
+        </div>
 
-          <!-- Subject Field -->
-          <div class="form-field form-field--full">
-            <label for="subject" class="form-label">{{ translations.subject || 'Subject' }}</label>
-            <select
-              id="subject"
-              name="subject"
-              v-model="form.subject"
-              class="form-input form-select"
-              @change="onSubjectChange"
-            >
-              <option value="">{{ translations.select_subject || 'Select a subject' }}</option>
-              <option value="access_request">{{ translations.portfolio_access || 'Portfolio Access Request' }}</option>
-              <option value="job_opportunity">{{ translations.job_opportunity || 'Job Opportunity' }}</option>
-              <option value="project_discussion">{{ translations.project_discussion || 'Project Discussion' }}</option>
-              <option value="collaboration">{{ translations.collaboration || 'Collaboration' }}</option>
-              <option value="other">{{ translations.other || 'Other' }}</option>
-            </select>
-          </div>
-
-          <!-- Access Request Details (conditional) -->
-          <div v-if="form.subject === 'access_request'" class="form-field form-field--full access-request-section">
-            <div class="access-info-card">
-              <h3>{{ translations.access_request_title || 'Portfolio Access Request' }}</h3>
-              <p>{{ translations.access_request_info || 'To protect sensitive information, detailed portfolio content requires verification.' }}</p>
+        <!-- Access-request conditional fields -->
+        <transition name="cf-collapse">
+          <div v-if="form.subject === 'access_request'" class="cf-extra">
+            <p class="cf-extra__hint">
+              <i class="ri-lock-2-line"></i>
+              {{ translations.access_request_info || 'Sensitive portfolio content. Verification required.' }}
+            </p>
+            <div class="cf-row">
+              <div class="cf-field" :class="{ 'cf-field--filled': form.company, 'cf-field--invalid': errors.company }">
+                <label for="cf-company" class="cf-field__label">
+                  <span class="cf-field__num">·</span>
+                  {{ translations.company || 'Company' }}
+                </label>
+                <input
+                  id="cf-company"
+                  name="company"
+                  v-model="form.company"
+                  type="text"
+                  autocomplete="organization"
+                  class="cf-field__input"
+                />
+                <span class="cf-field__line" aria-hidden="true"></span>
+                <span v-if="errors.company" class="cf-field__error">{{ errors.company }}</span>
+              </div>
+              <div class="cf-field" :class="{ 'cf-field--filled': form.position, 'cf-field--invalid': errors.position }">
+                <label for="cf-position" class="cf-field__label">
+                  <span class="cf-field__num">·</span>
+                  {{ translations.position || 'Your role' }}
+                </label>
+                <input
+                  id="cf-position"
+                  name="position"
+                  v-model="form.position"
+                  type="text"
+                  autocomplete="organization-title"
+                  class="cf-field__input"
+                />
+                <span class="cf-field__line" aria-hidden="true"></span>
+                <span v-if="errors.position" class="cf-field__error">{{ errors.position }}</span>
+              </div>
             </div>
-
-            <div class="form-field">
-              <label for="company" class="form-label">{{ translations.company || 'Company/Organization' }} *</label>
-              <input
-                id="company"
-                name="company"
-                v-model="form.company"
-                type="text"
-                class="form-input"
-                :class="{ 'error': errors.company }"
-                required
-                :placeholder="translations.company_placeholder || 'Your company or organization'"
-              >
-              <span v-if="errors.company" class="error-message">{{ errors.company }}</span>
-            </div>
-
-            <div class="form-field">
-              <label for="position" class="form-label">{{ translations.position || 'Your Position' }} *</label>
-              <input
-                id="position"
-                name="position"
-                v-model="form.position"
-                type="text"
-                class="form-input"
-                :class="{ 'error': errors.position }"
-                required
-                :placeholder="translations.position_placeholder || 'HR Manager, Recruiter, CTO, etc.'"
-              >
-              <span v-if="errors.position" class="error-message">{{ errors.position }}</span>
-            </div>
-
-            <div class="form-field">
-              <label for="reason" class="form-label">{{ translations.access_reason || 'Reason for Access' }} *</label>
-              <select
-                id="reason"
-                name="reason"
-                v-model="form.reason"
-                class="form-input form-select"
-                :class="{ 'error': errors.reason }"
-                required
-              >
-                <option value="">{{ translations.select_reason || 'Select reason' }}</option>
-                <option value="recruitment">{{ translations.recruitment || 'Recruitment/Hiring' }}</option>
+            <div class="cf-field" :class="{ 'cf-field--filled': form.reason, 'cf-field--invalid': errors.reason }">
+              <label for="cf-reason" class="cf-field__label">
+                <span class="cf-field__num">·</span>
+                {{ translations.access_reason || 'Reason for access' }}
+              </label>
+              <select id="cf-reason" name="reason" v-model="form.reason" class="cf-field__input cf-field__select">
+                <option value="">—</option>
+                <option value="recruitment">{{ translations.recruitment || 'Recruitment / Hiring' }}</option>
                 <option value="project_evaluation">{{ translations.project_evaluation || 'Project Evaluation' }}</option>
                 <option value="partnership">{{ translations.partnership || 'Partnership Discussion' }}</option>
                 <option value="reference_check">{{ translations.reference_check || 'Reference Check' }}</option>
                 <option value="other">{{ translations.other || 'Other' }}</option>
               </select>
-              <span v-if="errors.reason" class="error-message">{{ errors.reason }}</span>
+              <span class="cf-field__line" aria-hidden="true"></span>
+              <span v-if="errors.reason" class="cf-field__error">{{ errors.reason }}</span>
             </div>
           </div>
+        </transition>
 
-          <!-- Message Field -->
-          <div class="form-field form-field--full">
-            <label for="message" class="form-label">{{ translations.message || 'Message' }} *</label>
-            <textarea
-              id="message"
-              name="message"
-              v-model="form.message"
-              class="form-textarea"
-              :class="{ 'error': errors.message }"
-              rows="6"
-              required
-              :placeholder="getMessagePlaceholder()"
-            ></textarea>
-            <span v-if="errors.message" class="error-message">{{ errors.message }}</span>
+        <!-- Message -->
+        <div class="cf-field cf-field--ta" :class="{ 'cf-field--filled': form.message, 'cf-field--invalid': errors.message }">
+          <label for="cf-message" class="cf-field__label">
+            <span class="cf-field__num">04</span>
+            {{ translations.message || 'Message' }}
+          </label>
+          <textarea
+            id="cf-message"
+            name="message"
+            v-model="form.message"
+            class="cf-field__input cf-field__textarea"
+            rows="5"
+            required
+            :maxlength="charLimit"
+            :placeholder="getMessagePlaceholder()"
+          ></textarea>
+          <span class="cf-field__line" aria-hidden="true"></span>
+          <div class="cf-field__meta">
+            <span class="cf-field__error" v-if="errors.message">{{ errors.message }}</span>
+            <span class="cf-counter" :class="{ 'cf-counter--warn': form.message.length > charLimit * 0.85 }">
+              {{ form.message.length }} / {{ charLimit }}
+            </span>
           </div>
+        </div>
 
-          <!-- Submit Button -->
-          <div class="form-field form-field--full form-actions">
-            <button
-              type="submit"
-              class="btn btn--primary btn--large"
-              :disabled="isSending"
-            >
-              <span v-if="!isSending">
-                <i class="ri-send-plane-line"></i>
-                {{ translations.send_message || 'Send Message' }}
-              </span>
-              <span v-else>
-                <i class="ri-loader-4-line animate-spin"></i>
+        <!-- Submit -->
+        <div class="cf-submit-row">
+          <button
+            type="submit"
+            class="cf-submit"
+            :class="{
+              'cf-submit--sending': isSending,
+              'cf-submit--done': sent,
+              'cf-submit--error': errored
+            }"
+            :disabled="isSending || sent"
+          >
+            <span class="cf-submit__progress" aria-hidden="true"></span>
+            <span class="cf-submit__label">
+              <template v-if="sent">
+                <i class="ri-check-line"></i>
+                {{ translations.message_sent_short || 'delivered.' }}
+              </template>
+              <template v-else-if="errored">
+                <i class="ri-error-warning-line"></i>
+                {{ translations.error_title || 'try again' }}
+              </template>
+              <template v-else-if="isSending">
+                <i class="ri-loader-4-line cf-spin"></i>
                 {{ translations.sending || 'Sending...' }}
-              </span>
-            </button>
-
-          </div>
+              </template>
+              <template v-else>
+                {{ translations.send_message || 'Send Message' }}
+                <i class="ri-arrow-right-up-line"></i>
+              </template>
+            </span>
+          </button>
+          <p class="cf-submit__note">
+            <i class="ri-time-line"></i>
+            {{ translations.response_time || 'Replies within 24h · Braga, CET' }}
+          </p>
         </div>
       </form>
 
-      <!-- Success/Error Messages -->
-      <div v-if="showMessage" class="form-message" :class="messageType">
-        <div class="message-content">
-          <i :class="messageIcon"></i>
-          <div>
-            <h4>{{ messageTitle }}</h4>
-            <p>{{ messageText }}</p>
+      <!-- Inline success block (replaces toast — feels more editorial) -->
+      <transition name="cf-success">
+        <div v-if="showSuccessBlock" class="cf-success-block" :class="{ 'cf-success-block--access': isAccessRequest }">
+          <div class="cf-success-block__num">✓</div>
+          <div class="cf-success-block__body">
+            <h3>{{ messageTitle }}</h3>
+            <p style="white-space: pre-line">{{ messageText }}</p>
+            <button class="cf-success-block__close" @click="closeMessage">
+              {{ translations.send_another || 'Send another' }}
+              <i class="ri-arrow-right-line"></i>
+            </button>
           </div>
-          <button @click="closeMessage" class="message-close">
-            <i class="ri-close-line"></i>
-          </button>
         </div>
-      </div>
+      </transition>
     </div>
   </section>
 </template>
 
 <script setup>
-import { ref, reactive, computed, onMounted } from 'vue'
+import { ref, reactive, computed, onMounted, watch } from 'vue'
 import { useLanguage } from '../composables/useLanguage.js'
-
-// EmailJS - será configurado depois
-// import emailjs from '@emailjs/browser'
 
 const { translations, initialize } = useLanguage()
 
-// Form state
+const charLimit = 1500
+
 const form = reactive({
   name: '',
   email: '',
@@ -209,32 +251,45 @@ const errors = reactive({
   message: ''
 })
 
-const isSending = ref(false)
-const showMessage = ref(false)
-const messageType = ref('success') // 'success' or 'error'
-const messageText = ref('')
+const touched = reactive({
+  name: false,
+  email: false,
+  message: false
+})
 
-// Message computed properties
-const messageTitle = computed(() => {
-  return messageType.value === 'success'
+const isSending = ref(false)
+const sent = ref(false)
+const errored = ref(false)
+const showSuccessBlock = ref(false)
+const messageType = ref('success')
+const messageText = ref('')
+const isAccessRequest = ref(false)
+
+const subjectOptions = computed(() => [
+  { value: 'project_discussion', icon: 'ri-rocket-line', label: translations.project_discussion || 'Project' },
+  { value: 'job_opportunity', icon: 'ri-briefcase-line', label: translations.job_opportunity || 'Hiring' },
+  { value: 'collaboration', icon: 'ri-team-line', label: translations.collaboration || 'Collab' },
+  { value: 'other', icon: 'ri-chat-3-line', label: translations.other || 'Other' }
+])
+
+const messageTitle = computed(() =>
+  messageType.value === 'success'
     ? (translations.success_title || 'Message Sent!')
     : (translations.error_title || 'Error')
-})
+)
 
-const messageIcon = computed(() => {
-  return messageType.value === 'success'
-    ? 'ri-check-circle-line'
-    : 'ri-error-warning-line'
-})
+const setSubject = (val) => {
+  form.subject = form.subject === val ? '' : val
+  // clear conditional errors when subject changes
+  errors.company = ''
+  errors.position = ''
+  errors.reason = ''
+}
 
-// Validation
 const validateForm = () => {
-  // Clear previous errors
   Object.keys(errors).forEach(key => errors[key] = '')
-
   let isValid = true
 
-  // Name validation
   if (!form.name.trim()) {
     errors.name = translations.name_required || 'Name is required'
     isValid = false
@@ -243,35 +298,30 @@ const validateForm = () => {
     isValid = false
   }
 
-  // Email validation
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
   if (!form.email.trim()) {
     errors.email = translations.email_required || 'Email is required'
     isValid = false
   } else if (!emailRegex.test(form.email)) {
-    errors.email = translations.email_invalid || 'Please enter a valid email'
+    errors.email = translations.email_invalid || 'Invalid email'
     isValid = false
   }
 
-  // Additional validations for access requests
   if (form.subject === 'access_request') {
     if (!form.company.trim()) {
-      errors.company = translations.company_required || 'Company is required for access requests'
+      errors.company = translations.company_required || 'Company required'
       isValid = false
     }
-
     if (!form.position.trim()) {
-      errors.position = translations.position_required || 'Position is required for access requests'
+      errors.position = translations.position_required || 'Position required'
       isValid = false
     }
-
     if (!form.reason) {
-      errors.reason = translations.reason_required || 'Reason is required for access requests'
+      errors.reason = translations.reason_required || 'Reason required'
       isValid = false
     }
   }
 
-  // Message validation
   if (!form.message.trim()) {
     errors.message = translations.message_required || 'Message is required'
     isValid = false
@@ -283,499 +333,703 @@ const validateForm = () => {
   return isValid
 }
 
-// Handle form submission
 const handleSubmit = async () => {
   if (!validateForm()) {
+    // shake the form on invalid
+    const formEl = document.querySelector('.cf-form')
+    if (formEl) {
+      formEl.classList.remove('cf-form--shake')
+      // force reflow
+      void formEl.offsetWidth
+      formEl.classList.add('cf-form--shake')
+    }
     return
   }
 
   isSending.value = true
-  showMessage.value = false
+  errored.value = false
+  showSuccessBlock.value = false
 
   try {
-    await submitToNetlify()
+    const formData = new FormData()
+    formData.append('form-name', 'contact-form')
+    formData.append('name', form.name)
+    formData.append('email', form.email)
+    formData.append('subject', form.subject)
+    formData.append('message', form.message)
+    if (form.subject === 'access_request') {
+      formData.append('company', form.company)
+      formData.append('position', form.position)
+      formData.append('reason', form.reason)
+    }
 
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams(formData).toString()
+    })
+
+    if (!response.ok) throw new Error(`HTTP ${response.status}`)
+
+    isAccessRequest.value = form.subject === 'access_request'
+    messageType.value = 'success'
+    if (isAccessRequest.value) {
+      messageText.value = (translations.access_request_confirmation
+        || 'Your request was sent. You will receive an access code via email if approved.')
+        + '\n\n'
+        + (translations.access_request_note || 'Please check your email within 24-48 hours.')
+    } else {
+      messageText.value = translations.message_sent || 'Message sent. I will get back to you soon.'
+    }
+
+    sent.value = true
+    // Wait a beat to let the button "delivered" state breathe before showing block
+    setTimeout(() => {
+      showSuccessBlock.value = true
+    }, 600)
   } catch (error) {
     console.error('Form submission error:', error)
+    errored.value = true
     messageType.value = 'error'
-    messageText.value = translations.message_error || 'Sorry, there was an error sending your message. Please try again.'
-    showMessage.value = true
+    messageText.value = translations.message_error || 'Something went wrong. Please try again.'
+    showSuccessBlock.value = true
+    // Auto-clear error state on submit button after 2s so user can retry
+    setTimeout(() => {
+      errored.value = false
+    }, 2400)
   } finally {
     isSending.value = false
-
-    // Auto-hide message after 8 seconds
-    setTimeout(() => {
-      showMessage.value = false
-    }, 8000)
   }
 }
 
-// Submit form to Netlify
-const submitToNetlify = async () => {
-  const formData = new FormData()
-
-  // Add all form fields
-  formData.append('form-name', 'contact-form')
-  formData.append('name', form.name)
-  formData.append('email', form.email)
-  formData.append('subject', form.subject)
-  formData.append('message', form.message)
-
-  // Add access request fields if present
-  if (form.subject === 'access_request') {
-    formData.append('company', form.company)
-    formData.append('position', form.position)
-    formData.append('reason', form.reason)
+const closeMessage = () => {
+  showSuccessBlock.value = false
+  if (messageType.value === 'success') {
+    // Reset form for "send another"
+    Object.keys(form).forEach(key => form[key] = '')
+    sent.value = false
   }
-
-  const response = await fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(formData).toString()
-  })
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`)
-  }
-
-  // Handle success based on form type
-  if (form.subject === 'access_request') {
-    await handleAccessRequest()
-  } else {
-    handleRegularMessage()
-  }
-}
-
-const handleAccessRequest = async () => {
-  messageType.value = 'success'
-  messageText.value = `
-${translations.access_request_sent || 'Access request sent successfully!'}
-
-${translations.access_request_confirmation || 'Your request has been sent. You will receive an access code via email if approved.'}
-
-${translations.access_request_note || 'Please check your email within 24-48 hours for a response.'}
-  `
-  showMessage.value = true
-
-  // Reset form
-  resetForm()
-}
-
-const handleRegularMessage = () => {
-  messageType.value = 'success'
-  messageText.value = translations.message_sent || 'Message sent successfully! I\'ll get back to you soon.'
-  showMessage.value = true
-
-  // Reset form
-  resetForm()
-}
-
-
-const resetForm = () => {
-  Object.keys(form).forEach(key => form[key] = '')
-}
-
-const onSubjectChange = () => {
-  // Clear message when changing subject
-  form.message = ''
 }
 
 const getMessagePlaceholder = () => {
   if (form.subject === 'access_request') {
-    return translations.access_message_placeholder ||
-           'Please provide additional context about your request and timeline...'
+    return translations.access_message_placeholder
+      || 'Provide additional context: timeline, role, what you want to evaluate.'
   }
-  return translations.message_placeholder ||
-         'Tell me about your project or how I can help you...'
+  return translations.message_placeholder
+    || 'Tell me about your project, scope, deadlines.'
 }
 
-
-const closeMessage = () => {
-  showMessage.value = false
-}
+// re-validate live once a field has been touched & is non-empty
+watch(() => form.name, () => { if (touched.name && errors.name) errors.name = '' })
+watch(() => form.email, () => { if (touched.email && errors.email) errors.email = '' })
+watch(() => form.message, () => { if (errors.message && form.message.trim().length >= 10) errors.message = '' })
 
 onMounted(async () => {
   await initialize()
 })
 </script>
 
-
 <style scoped>
-/* Contact Form Section */
-.contact-form-section {
-  padding: 6rem 0 7rem;
+/* ── Section shell ─────────────────────────────────────── */
+.cf-section {
+  padding: 0;
 }
 
-.contact-form {
-  max-width: 820px;
+.cf-shell {
+  width: 100%;
+  max-width: 880px;
   margin: 0 auto;
-  padding: 2.5rem;
-  border-radius: 20px;
-  background: linear-gradient(160deg, rgba(20, 28, 38, 0.92), rgba(10, 14, 20, 0.98));
-  border: 1px solid rgba(74, 134, 232, 0.25);
-  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.3);
-  transition: var(--transition);
-}
-
-.form--sending {
-  opacity: 0.7;
-  pointer-events: none;
-}
-
-/* Form Grid */
-.form-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem;
-}
-
-.form-field--full {
-  grid-column: 1 / -1;
-}
-
-/* Form Fields */
-.form-field {
   position: relative;
 }
 
-.form-label {
-  display: block;
-  color: var(--color-white);
-  font-weight: var(--fw-medium);
-  margin-bottom: 0.5rem;
-  font-size: var(--fs-sm);
-  letter-spacing: 0.04em;
+.cf-honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
-.form-input,
-.form-textarea {
-  width: 100%;
-  padding: 1rem 1.5rem;
-  border: 1px solid rgba(74, 134, 232, 0.2);
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--color-white);
-  font-size: 1rem;
-  font-family: var(--ff-body);
-  transition: var(--transition);
-}
-
-.form-input:focus,
-.form-textarea:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(74, 134, 232, 0.15);
-}
-
-.form-input::placeholder,
-.form-textarea::placeholder {
-  color: var(--color-text);
-  opacity: 0.7;
-}
-
-.form-input.error,
-.form-textarea.error {
-  border-color: #e74c3c;
-  box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.12);
-}
-
-.form-textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.error-message {
-  color: #e74c3c;
-  font-size: var(--fs-sm);
-  margin-top: 0.5rem;
-  display: block;
-}
-
-/* Form Actions */
-.form-actions {
+/* ── Form ──────────────────────────────────────────────── */
+.cf-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  margin-top: 1rem;
-}
-
-.btn--large {
-  padding: 1.2rem 3rem;
-  font-size: var(--fs-md);
-  font-weight: var(--fw-semibold);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 200px;
-  justify-content: center;
-}
-
-.btn:disabled {
-  opacity: 0.7;
-  cursor: not-allowed;
-}
-
-/* Contact Info */
-.contact-info {
-  display: flex;
-  gap: 2rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.contact-info-item {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  color: var(--color-text);
-  font-size: var(--fs-sm);
-}
-
-.contact-info-item i {
-  color: var(--color-primary);
-  font-size: 1.2rem;
-}
-
-.contact-info-item a {
-  color: var(--color-white);
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.contact-info-item a:hover {
-  color: var(--color-primary);
-}
-
-/* Success/Error Messages */
-.form-message {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  max-width: 400px;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: var(--box-shadow);
-  z-index: 1000;
-  animation: slideIn 0.3s ease-out;
-}
-
-.form-message.success {
-  background: #27ae60;
-  color: white;
-}
-
-.form-message.error {
-  background: #e74c3c;
-  color: white;
-}
-
-.message-content {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.message-content i {
-  font-size: 1.5rem;
-  margin-top: 0.2rem;
-}
-
-.message-content h4 {
-  margin: 0 0 0.5rem 0;
-  font-size: var(--fs-md);
-}
-
-.message-content p {
-  margin: 0;
-  font-size: var(--fs-sm);
-  line-height: 1.4;
-}
-
-.message-close {
-  background: none;
-  border: none;
-  color: white;
-  cursor: pointer;
-  font-size: 1.2rem;
+  gap: 3.2rem;
   padding: 0;
-  margin-left: auto;
+  position: relative;
 }
 
-/* Animations */
-@keyframes slideIn {
-  from {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0);
-    opacity: 1;
-  }
+.cf-form--sending {
+  pointer-events: none;
 }
 
-.animate-spin {
-  animation: spin 1s linear infinite;
+.cf-form--shake {
+  animation: cfShake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97);
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@keyframes cfShake {
+  10%, 90% { transform: translateX(-1px); }
+  20%, 80% { transform: translateX(2px); }
+  30%, 50%, 70% { transform: translateX(-4px); }
+  40%, 60% { transform: translateX(4px); }
 }
 
-/* Access Request Section */
-.access-request-section {
-  background: rgba(74, 134, 232, 0.08);
-  border: 1px solid rgba(74, 134, 232, 0.2);
-  border-radius: 16px;
-  padding: 2rem;
-  margin: 1.5rem 0;
+/* ── Segmented (subject) ───────────────────────────────── */
+.cf-segmented {
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
 }
 
-.access-info-card {
-  background: rgba(74, 134, 232, 0.12);
-  border-radius: 12px;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  border-left: 4px solid var(--color-primary);
+.cf-legend {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  font-family: var(--ff-mono);
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-text);
+  padding: 0;
 }
 
-.access-info-card h3 {
+.cf-legend__num {
   color: var(--color-primary);
-  margin: 0 0 0.5rem 0;
-  font-size: 1.2rem;
   font-weight: 600;
 }
 
-.access-info-card p {
+.cf-seg {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.cf-seg__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.85rem 1.3rem;
+  font-family: inherit;
+  font-size: 1.35rem;
+  font-weight: 500;
+  background: transparent;
+  color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  cursor: pointer;
+  transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease, transform 0.18s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cf-seg__btn i {
+  font-size: 1.5rem;
   color: var(--color-text);
+  transition: color 0.22s ease;
+}
+
+.cf-seg__btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--color-white);
+  transform: translateY(101%);
+  transition: transform 0.32s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: -1;
+}
+
+.cf-seg__btn:hover:not(.cf-seg__btn--active) {
+  border-color: var(--color-white);
+}
+
+.cf-seg__btn--active {
+  color: var(--color-bg-primary);
+  border-color: var(--color-white);
+}
+
+.cf-seg__btn--active::before {
+  transform: translateY(0);
+}
+
+.cf-seg__btn--active i {
+  color: var(--color-primary);
+}
+
+/* ── Field (universal) ─────────────────────────────────── */
+.cf-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.4rem;
+}
+
+.cf-field {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1.8rem;
+}
+
+.cf-field__label {
+  position: absolute;
+  top: 1.8rem;
+  left: 0;
+  display: flex;
+  align-items: baseline;
+  gap: 0.7rem;
+  font-family: inherit;
+  font-size: 1.5rem;
+  color: var(--color-text);
+  pointer-events: none;
+  transform-origin: left top;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.22s ease,
+              opacity 0.22s ease;
+  letter-spacing: 0;
+}
+
+.cf-field__num {
+  font-family: var(--ff-mono);
+  font-size: 1.05rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 600;
+  position: relative;
+  top: -1px;
+}
+
+.cf-field__input {
+  width: 100%;
+  padding: 0.7rem 0 1rem 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  color: var(--color-white);
+  font-size: 1.7rem;
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.4;
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+
+.cf-field__input::placeholder {
+  color: var(--color-text);
+  opacity: 0.5;
+}
+
+.cf-field__input::-webkit-outer-spin-button,
+.cf-field__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
   margin: 0;
-  line-height: 1.6;
-  font-size: 1rem;
 }
 
-.access-request-section .form-field {
-  margin-bottom: 1.5rem;
+.cf-field__textarea {
+  resize: vertical;
+  min-height: 130px;
+  line-height: 1.55;
+  padding-bottom: 1.2rem;
 }
 
-.form-select {
+.cf-field__select {
   appearance: none;
   -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
-  background-position: right 0.5rem center;
-  background-repeat: no-repeat;
-  background-size: 1.5em 1.5em;
-  padding-right: 2.5rem;
   cursor: pointer;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23999' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 0 center;
+  background-repeat: no-repeat;
+  background-size: 1.6em 1.6em;
+  padding-right: 2.5rem;
 }
 
-.form-select:focus {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236a5acd' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+/* Bottom border (resting) */
+.cf-field::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: var(--color-border);
+  z-index: 0;
 }
 
-/* Enhanced message styling for access codes */
-.form-message.success {
-  background: linear-gradient(135deg, #27ae60, #2ecc71);
-  border-left: 4px solid #1e7e34;
+/* Animated focus underline (draws from left) */
+.cf-field__line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.42s cubic-bezier(0.65, 0, 0.35, 1);
+  z-index: 1;
+  pointer-events: none;
 }
 
-.form-message .message-content {
-  white-space: pre-line;
-  line-height: 1.6;
+.cf-field:focus-within .cf-field__line {
+  transform: scaleX(1);
 }
 
-.form-message .message-content strong {
+/* Floating label states */
+.cf-field:focus-within .cf-field__label,
+.cf-field--filled .cf-field__label {
+  transform: translateY(-2.2rem) scale(0.78);
+  color: var(--color-text);
+}
+
+.cf-field:focus-within .cf-field__label .cf-field__num,
+.cf-field--filled .cf-field__label .cf-field__num {
+  color: var(--color-primary);
+}
+
+.cf-field:focus-within .cf-field__label {
+  color: var(--color-white);
+}
+
+/* Invalid state */
+.cf-field--invalid::after {
+  background: #d4365e;
+}
+
+.cf-field--invalid .cf-field__line {
+  background: #d4365e;
+  transform: scaleX(1);
+}
+
+.cf-field__error {
+  margin-top: 0.5rem;
+  font-family: var(--ff-mono);
+  font-size: 1.1rem;
+  letter-spacing: 0.04em;
+  color: #d4365e;
+  text-transform: lowercase;
+}
+
+.cf-field__meta {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.cf-counter {
+  font-family: var(--ff-mono);
+  font-size: 1.1rem;
+  color: var(--color-text);
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  margin-left: auto;
+}
+
+.cf-counter--warn {
+  color: var(--color-warning);
+}
+
+/* ── Conditional access-request block ──────────────────── */
+.cf-extra {
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 2rem 0 0;
+  border-top: 1px solid var(--color-border);
+  position: relative;
+}
+
+.cf-extra::before {
+  content: "ACCESS";
+  position: absolute;
+  top: -0.6rem;
+  left: 0;
+  background: var(--color-bg-primary);
+  font-family: var(--ff-mono);
+  font-size: 1rem;
+  letter-spacing: 0.22em;
+  color: var(--color-primary);
+  padding-right: 0.8rem;
+}
+
+.cf-extra__hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0;
+  font-size: 1.3rem;
+  color: var(--color-text);
+}
+
+.cf-extra__hint i {
+  color: var(--color-primary);
+  font-size: 1.5rem;
+}
+
+/* Collapse transition */
+.cf-collapse-enter-active,
+.cf-collapse-leave-active {
+  overflow: hidden;
+  transition: max-height 0.38s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 0.28s ease,
+              margin 0.38s ease;
+}
+.cf-collapse-enter-from,
+.cf-collapse-leave-to {
+  max-height: 0;
+  opacity: 0;
+  margin-top: -2rem;
+}
+.cf-collapse-enter-to,
+.cf-collapse-leave-from {
+  max-height: 600px;
+  opacity: 1;
+  margin-top: 0;
+}
+
+/* ── Submit button ─────────────────────────────────────── */
+.cf-submit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.cf-submit {
+  --c-bg: #1A1A1A;
+  --c-fg: #FAFAF8;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 220px;
+  padding: 1.4rem 2.2rem;
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--c-fg);
+  background: var(--c-bg);
+  border: 1px solid var(--c-bg);
+  border-radius: 0;
+  cursor: pointer;
+  overflow: hidden;
+  transition: background 0.22s ease, color 0.22s ease, border-color 0.22s ease, transform 0.18s ease;
+}
+
+.cf-submit:hover:not(:disabled):not(.cf-submit--sending):not(.cf-submit--done) {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  transform: translateY(-2px);
+}
+
+.cf-submit:disabled {
+  cursor: not-allowed;
+}
+
+.cf-submit__label {
+  position: relative;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cf-submit__label i {
+  font-size: 1.5rem;
+  transition: transform 0.25s ease;
+}
+
+.cf-submit:hover .cf-submit__label i.ri-arrow-right-up-line {
+  transform: translate(2px, -2px);
+}
+
+.cf-submit__progress {
+  position: absolute;
+  inset: 0;
+  background: var(--color-primary);
+  transform: scaleX(0);
+  transform-origin: left center;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cf-submit--sending .cf-submit__progress {
+  animation: cfProgress 1.4s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+@keyframes cfProgress {
+  0% { transform: scaleX(0); transform-origin: left center; }
+  50% { transform: scaleX(1); transform-origin: left center; }
+  50.01% { transform: scaleX(1); transform-origin: right center; }
+  100% { transform: scaleX(0); transform-origin: right center; }
+}
+
+.cf-submit--done {
+  --c-bg: #16a34a;
+  --c-fg: #FAFAF8;
+  border-color: #16a34a;
+}
+.cf-submit--done .cf-submit__progress {
+  background: #16a34a;
+  transform: scaleX(1);
+  animation: cfBurst 0.6s ease forwards;
+}
+@keyframes cfBurst {
+  0% { transform: scaleX(0); opacity: 1; }
+  60% { transform: scaleX(1); opacity: 1; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+
+.cf-submit--error {
+  --c-bg: #d4365e;
+  --c-fg: #FAFAF8;
+  border-color: #d4365e;
+  animation: cfShake 0.45s cubic-bezier(0.36, 0.07, 0.19, 0.97);
+}
+
+.cf-spin {
+  animation: cfSpin 0.9s linear infinite;
+  display: inline-block;
+}
+@keyframes cfSpin {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+.cf-submit__note {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-family: var(--ff-mono);
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.cf-submit__note i {
+  font-size: 1.3rem;
+  color: var(--color-primary);
+}
+
+/* ── Success block ─────────────────────────────────────── */
+.cf-success-block {
+  margin-top: 3rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem;
+  align-items: flex-start;
+  padding: 2.4rem;
+  border: 1px solid var(--color-border);
+  border-left: 3px solid #16a34a;
+  background: rgba(22, 163, 74, 0.04);
+  position: relative;
+}
+
+.cf-success-block--access {
+  border-left-color: var(--color-primary);
+  background: rgba(37, 99, 235, 0.04);
+}
+
+.cf-success-block__num {
+  font-size: 3rem;
+  line-height: 1;
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.2);
-  padding: 2px 6px;
-  border-radius: 4px;
-  font-family: 'Courier New', monospace;
-  letter-spacing: 1px;
+  color: #16a34a;
+  font-family: var(--ff-mono);
 }
 
-.theme-light .contact-form {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(237, 241, 246, 0.92));
-  border-color: rgba(63, 118, 210, 0.2);
-  box-shadow: 0 26px 50px rgba(30, 42, 56, 0.12);
+.cf-success-block--access .cf-success-block__num {
+  color: var(--color-primary);
 }
 
-.theme-light .form-label {
-  color: #1e2a38;
+.cf-success-block__body h3 {
+  margin: 0 0 0.6rem;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--color-white);
+  letter-spacing: -0.01em;
 }
 
-.theme-light .form-input,
-.theme-light .form-textarea,
-.theme-light .form-select {
-  background: rgba(255, 255, 255, 0.9);
-  color: #1e2a38;
-  border-color: rgba(63, 118, 210, 0.2);
+.cf-success-block__body p {
+  margin: 0;
+  font-size: 1.4rem;
+  line-height: 1.65;
+  color: var(--color-text);
 }
 
-.theme-light .form-input::placeholder,
-.theme-light .form-textarea::placeholder {
-  color: rgba(30, 42, 56, 0.6);
+.cf-success-block__close {
+  margin-top: 1.4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: none;
+  padding: 0;
+  font-family: var(--ff-mono);
+  font-size: 1.15rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-white);
+  cursor: pointer;
+  position: relative;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .contact-form-section {
-    padding: 0;
-  }
-
-  .contact-form {
-    padding: 1.5rem;
-    border-radius: 14px;
-  }
-
-  .form-grid {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .access-request-section {
-    padding: 1.5rem;
-    margin: 1rem 0;
-  }
-
-  .access-info-card {
-    padding: 1rem;
-  }
-
-  .contact-info {
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  /* Contact Preview Styles */
-  .contact-preview {
-    color: #999;
-    font-style: italic;
-    font-family: monospace;
-    letter-spacing: 1px;
-  }
-
-  .form-message {
-    position: fixed;
-    top: 1rem;
-    left: 1rem;
-    right: 1rem;
-    max-width: none;
-  }
-
-  .form-actions {
-    gap: 1.5rem;
-  }
+.cf-success-block__close::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(1);
+  transform-origin: left center;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-@media screen and (max-width: 480px) {
-  .btn--large {
-    width: 100%;
-    padding: 1rem 2rem;
-  }
+.cf-success-block__close:hover {
+  color: var(--color-primary);
+}
+.cf-success-block__close:hover::after {
+  transform-origin: right center;
+  transform: scaleX(0);
+}
+
+.cf-success-block__close i {
+  transition: transform 0.25s ease;
+}
+.cf-success-block__close:hover i {
+  transform: translateX(3px);
+}
+
+.cf-success-enter-active,
+.cf-success-leave-active {
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cf-success-enter-from,
+.cf-success-leave-to {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+/* ── Responsive ────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .cf-form { gap: 2.6rem; }
+  .cf-row { grid-template-columns: 1fr; gap: 2.6rem; }
+  .cf-seg { gap: 0.5rem; }
+  .cf-seg__btn { padding: 0.7rem 1rem; font-size: 1.25rem; flex: 1 1 calc(50% - 0.3rem); justify-content: center; }
+  .cf-submit-row { flex-direction: column; align-items: stretch; gap: 1.2rem; }
+  .cf-submit { width: 100%; }
+  .cf-submit__note { justify-content: center; }
 }
 </style>

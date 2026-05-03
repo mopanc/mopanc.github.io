@@ -23,17 +23,30 @@ module.exports = defineConfig({
             staticDir: path.join(__dirname, 'dist'),
 
             // Required - Routes to prerender.
+            // Keep this list in sync with public/sitemap.xml when publishing
+            // a new article. Articles live in Firestore (source of truth);
+            // listing the slug here triggers the SPA to render it server-side
+            // at build time so crawlers and LLM scrapers see real content.
+            // Slugs must match src/data/case-studies.js (project pages)
+            // and Firestore article slugs (blog pages).
             routes: [
               '/',
               '/projects',
-              '/projects/balanca-marques-iot-system',
-              '/projects/pos-sync-fiscal-compliance',
+              '/projects/distributed-iot-monitoring',
+              '/projects/federated-pos-synchronization',
               '/projects/dataconvert-template-processing',
-              '/projects/qscope-quantum-elliott-wave-ai',
+              '/projects/depguard-mcp-security-server',
+              '/projects/quantum-elliott-wave-trading-ai',
               '/about',
               '/certificates',
               '/contact',
-              '/privacy'
+              '/hire',
+              '/privacy',
+              '/blog',
+              '/blog/depguard-ai',
+              '/blog/cache-layers-every-developer-should-know',
+              '/blog/ai-multiplier-effect-software-teams',
+              '/blog/five-async-nodejs-patterns-promises'
             ],
 
             // Renderer configuration

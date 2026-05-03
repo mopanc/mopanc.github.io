@@ -33,23 +33,23 @@ const updateMetaTags = (language) => {
 
   // Atualiza title
   document.title = isPt
-    ? 'Jorge Mopanc - Desenvolvedor de Software | Vue.js, React & Node.js'
-    : 'Jorge Mopanc - Software Developer | Vue.js, React & Node.js Expert'
+    ? 'Jorge Morais - Desenvolvedor de Software | Vue.js, React & Node.js'
+    : 'Jorge Morais - Software Developer | Vue.js, React & Node.js Expert'
 
   // Atualiza meta description
   const metaDescription = document.querySelector('meta[name="description"]')
   if (metaDescription) {
     metaDescription.content = isPt
-      ? 'Jorge Mopanc é um desenvolvedor de software profissional com 4+ anos de experiência em Vue.js, React.js, Node.js e TypeScript. Disponível para projetos freelance e oportunidades full-time.'
-      : 'Jorge Mopanc is a professional software developer with 4+ years experience in Vue.js, React.js, Node.js, and TypeScript. Available for freelance projects and full-time opportunities.'
+      ? 'Jorge Morais é um desenvolvedor de software profissional com 4+ anos de experiência em Vue.js, React.js, Node.js e TypeScript. Disponível para projetos freelance e oportunidades full-time.'
+      : 'Jorge Morais is a professional software developer with 4+ years experience in Vue.js, React.js, Node.js, and TypeScript. Available for freelance projects and full-time opportunities.'
   }
 
   // Atualiza Open Graph
   const ogTitle = document.querySelector('meta[property="og:title"]')
   if (ogTitle) {
     ogTitle.content = isPt
-      ? 'Jorge Mopanc - Desenvolvedor de Software | Vue.js & React'
-      : 'Jorge Mopanc - Software Developer | Vue.js & React Expert'
+      ? 'Jorge Morais - Desenvolvedor de Software | Vue.js & React'
+      : 'Jorge Morais - Software Developer | Vue.js & React Expert'
   }
 
   const ogDescription = document.querySelector('meta[property="og:description"]')
