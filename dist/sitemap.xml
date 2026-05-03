@@ -65,9 +65,15 @@
   <!-- BLOG_START -->
   <url>
     <loc>https://jorgemopanc.com/blog</loc>
-    <lastmod>2026-03-01</lastmod>
+    <lastmod>2026-04-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://jorgemopanc.com/blog/depguard-ai</loc>
+    <lastmod>2026-03-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://jorgemopanc.com/blog/cache-layers-every-developer-should-know</loc>

@@ -77,6 +77,11 @@ export const breadcrumbConfigs = {
     { name: 'Blog', path: '/blog' }
   ],
 
+  hire: [
+    { name: 'Home', path: '/' },
+    { name: 'Hire', path: '/hire' }
+  ],
+
   article: (articleTitle, articleSlug) => [
     { name: 'Home', path: '/' },
     { name: 'Blog', path: '/blog' },

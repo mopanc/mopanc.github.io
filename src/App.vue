@@ -1,16 +1,9 @@
 <template>
-  <div id="app">
+  <div id="app" :class="{ 'app--dark-page': isDarkPage }">
     <MagneticCursor />
-    <LoadingScreen :visible="isLoading" />
     <PageHeader />
     <router-view></router-view>
     <FooterPage />
-
-    <!-- Terminal de Autenticação -->
-    <MiniTerminal />
-
-    <!-- WhatsApp Chat Widget -->
-    <WhatsAppChat />
 
     <!-- Cookie Banner -->
     <CookieBanner />
@@ -21,53 +14,40 @@
 import '../firebase.js';
 import PageHeader from './components/PageHeader';
 import FooterPage from './components/FooterPage.vue';
-import MiniTerminal from './components/MiniTerminal.vue';
-import WhatsAppChat from './components/WhatsAppChat.vue';
+// MiniTerminal removed — kept for future use
+// import MiniTerminal from './components/MiniTerminal.vue';
 import CookieBanner from './components/CookieBanner.vue';
-import LoadingScreen from './components/LoadingScreen.vue';
 import MagneticCursor from './components/MagneticCursor.vue';
 import { useCookieConsent } from './composables/useCookieConsent';
-import { ref, onMounted } from 'vue';
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 export default {
   name: 'App',
   components: {
     PageHeader,
     FooterPage,
-    MiniTerminal,
-    WhatsAppChat,
     CookieBanner,
-    LoadingScreen,
     MagneticCursor,
   },
   setup() {
     const { initializeConsent } = useCookieConsent()
-    const isLoading = ref(true)
-
-    // Initialize cookie consent on app startup
     initializeConsent()
 
-    onMounted(() => {
-      const minDelay = 1200
-      const startTime = performance.now()
-
-      const finish = () => {
-        const elapsed = performance.now() - startTime
-        const remaining = Math.max(0, minDelay - elapsed)
-        setTimeout(() => {
-          isLoading.value = false
-        }, remaining)
-      }
-
-      if (document.readyState === 'complete') {
-        finish()
-      } else {
-        window.addEventListener('load', finish, { once: true })
-        setTimeout(finish, 5000)
-      }
+    const route = useRoute()
+    const isDarkPage = computed(() => {
+      const p = route.path
+      return p === '/'
+        || p.startsWith('/projects')
+        || p === '/about'
+        || p === '/certificates'
+        || p === '/blog'
+        || p === '/contact'
+        || route.name === 'NotFound'
+        || !route.matched.length
     })
 
-    return { isLoading }
+    return { isDarkPage }
   }
 }
 
@@ -76,10 +56,15 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: var(--ff-body);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #fff;
+  text-align: left;
+  color: #1A1A1A;
+}
+
+/* ═══ Dark page — homepage only ═══ */
+.app--dark-page {
+  background: #0a0d14;
 }
 </style>

@@ -170,34 +170,26 @@ onMounted(async () => {
 
 .cv-download-card {
   position: relative;
-  background: linear-gradient(160deg, rgba(20, 28, 38, 0.9), rgba(10, 14, 20, 0.95));
-  border: 1px solid rgba(74, 134, 232, 0.25);
-  border-radius: 18px;
-  padding: 3rem;
+  background: var(--color-bg-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: 2.5rem;
   max-width: 860px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
   gap: 2rem;
-  transition: var(--transition);
-  box-shadow: 0 26px 60px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
   overflow: hidden;
 }
 
-.cv-download-card::before {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background: radial-gradient(circle at 20% 20%, rgba(74, 134, 232, 0.25), transparent 45%);
-  opacity: 0.7;
-  pointer-events: none;
+.cv-download-card:hover {
+  transform: translateY(-2px);
 }
 
-.cv-download-card:hover {
-  border-color: var(--color-primary);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+.cv-download-card::before {
+  display: none;
 }
 
 .cv-content {
@@ -208,15 +200,15 @@ onMounted(async () => {
 }
 
 .cv-icon {
-  font-size: 2.6rem;
-  color: var(--color-primary);
-  width: 64px;
-  height: 64px;
+  font-size: 2rem;
+  color: #1A1A1A;
+  width: 48px;
+  height: 48px;
   display: grid;
   place-items: center;
-  border-radius: 16px;
-  background: rgba(74, 134, 232, 0.15);
-  border: 1px solid rgba(74, 134, 232, 0.25);
+  border-radius: 0;
+  background: transparent;
+  border: 1px solid var(--color-border);
 }
 
 .cv-text h3 {
@@ -284,17 +276,7 @@ onMounted(async () => {
   font-size: 1.2rem;
 }
 
-.theme-light .cv-download-card {
-  background: linear-gradient(160deg, rgba(255, 255, 255, 0.96), rgba(237, 241, 246, 0.92));
-  border-color: rgba(63, 118, 210, 0.2);
-  box-shadow: 0 26px 50px rgba(30, 42, 56, 0.12);
-}
-
-.theme-light .cv-icon {
-  background: rgba(63, 118, 210, 0.12);
-  border-color: rgba(63, 118, 210, 0.25);
-  color: var(--color-primary);
-}
+/* light is default */
 
 
 .theme-light .alternative-link {

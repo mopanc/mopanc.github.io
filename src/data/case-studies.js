@@ -6,25 +6,25 @@
  */
 
 const caseStudies = {
-  'balanca-marques-iot': {
-    id: 'balanca-marques-iot',
-    slug: 'balanca-marques-iot-system',
-    title: 'Industrial IoT Monitoring System',
-    subtitle: 'Real-time monitoring for 15 industrial vending machines across Portugal',
+  'distributed-iot-monitoring': {
+    id: 'distributed-iot-monitoring',
+    slug: 'distributed-iot-monitoring',
+    title: 'Distributed IoT Monitoring',
+    subtitle: 'Real-time monitoring for 15+ industrial vending devices distributed across European markets',
 
     // SEO Meta
-    metaTitle: 'Case Study: Industrial IoT System with MQTT & ccTalk | Jorge Morais',
-    metaDescription: 'How I built a real-time IoT monitoring system for 15 vending machines using Node.js, MQTT, and ccTalk protocol. Reduced maintenance time by 40%.',
+    metaTitle: 'Case Study: Distributed IoT Monitoring with MQTT & ccTalk | Jorge Morais',
+    metaDescription: 'How I built a real-time IoT monitoring platform for 15+ distributed vending devices using Node.js, MQTT, and ccTalk protocol. Maintenance cycles cut by ~40%.',
 
     // Hero
-    heroImage: '../assets/imgs-bck/company-bm',
+    heroImage: require('@/data/projects/images/truck-scale/dashboard.png'),
     tech: ['Node.js', 'Vue.js 3', 'MQTT', 'ccTalk Protocol', 'WebSockets', 'C', 'PostgreSQL'],
     duration: '3 months',
-    role: 'Full Stack Developer',
+    role: 'Lead Developer',
     year: '2023',
 
     // Context
-    context: `Balança Marques operates 15 industrial vending machines distributed across Portugal. Before this system, they had no real-time visibility into machine status, coin levels, or malfunctions. This led to inefficient maintenance schedules, unexpected downtime, and lost revenue. The challenge was to build a reliable IoT monitoring system that could communicate with legacy hardware using the ccTalk protocol while providing modern real-time dashboards.`,
+    context: `An industrial client operated 15+ distributed vending devices across European markets. Each ran legacy firmware with no telemetry. field service was reactive, costly, and depended on customer phone calls to even know a machine was offline. I designed and built a real-time IoT monitoring platform that talks to the legacy hardware over ccTalk while exposing a modern dashboard, predictive alerts, and historical analytics on top.`,
 
     // Technical Challenges
     challenges: [
@@ -213,7 +213,7 @@ class CcTalkMQTTBridge {
       { value: '15', label: 'Devices Monitored' }
     ],
 
-    businessImpact: `The system paid for itself within 4 months through reduced operational costs and improved efficiency. Key achievements include 40% reduction in emergency maintenance calls through predictive monitoring, early detection of issues preventing machine downtime (estimated €15k savings), and optimized coin collection routes reducing fuel costs by 25%. The client reported significantly improved customer satisfaction due to reduced machine downtime.`,
+    businessImpact: `The platform paid for itself within a few months through reduced operational costs and improved efficiency. Key wins: ~40% reduction in emergency maintenance calls thanks to predictive monitoring, early detection of issues that previously meant full machine downtime, and optimized cash-collection routes that cut fuel costs by ~25%. Customer satisfaction improved significantly once devices stopped going dark between visits.`,
 
     technicalWins: [
       'Zero data loss over 6 months of continuous operation',
@@ -243,35 +243,31 @@ class CcTalkMQTTBridge {
     ],
 
     // Testimonial
-    testimonial: {
-      quote: "Jorge's IoT system transformed how we operate. We went from reactive to proactive maintenance, saving thousands in downtime costs. The real-time dashboard gives us complete visibility into our machines.",
-      author: "João Silva",
-      role: "CTO, Balança Marques"
-    }
+    testimonial: null
   },
 
   // ============================================================
-  // POS-SYNC - Multi-Section Supermarket Integration
+  // FEDERATED POS SYNCHRONIZATION
   // ============================================================
-  'pos-sync-system': {
-    id: 'pos-sync-system',
-    slug: 'pos-sync-fiscal-compliance',
-    title: 'POS-Sync - Real-time Multi-Section Supermarket Integration',
-    subtitle: 'Automated fiscal synchronization enabling instant checkout across independent supermarket departments in Malta',
+  'federated-pos-synchronization': {
+    id: 'federated-pos-synchronization',
+    slug: 'federated-pos-synchronization',
+    title: 'Federated POS Synchronization',
+    subtitle: 'Real-time fiscal synchronization across independent in-store departments running on a leased-section retail model',
 
     // SEO Meta
-    metaTitle: 'Case Study: Multi-Section POS Sync & Fiscal Integration | Jorge Morais',
-    metaDescription: 'Built real-time POS synchronization for Malta supermarkets with independent sections (bakery, butcher, fishmonger). Automatic .dat generation enables instant central checkout. 99.7% success rate.',
+    metaTitle: 'Case Study: Federated POS Sync & Fiscal Compliance | Jorge Morais',
+    metaDescription: 'Built real-time POS synchronization for a retail chain with independent in-store departments. Event-driven receipt detection and fiscal-compliant .dat generation across 20+ terminals.',
 
     // Hero
-    heroImage: '../assets/imgs-bck/pos-sync',
+    heroImage: require('@/data/projects/images/qore/home.png'),
     tech: ['TypeScript', 'Node.js', 'Event-Driven Architecture', 'TypeORM', 'SQL Server', 'File Watcher', 'HMAC-SHA1'],
     duration: '2 months (MVP + continuous maintenance)',
     role: 'Backend Engineer & System Architect',
     year: '2025',
 
     // Context
-    context: `Malta supermarkets operate with leased sections - each department (bakery, butcher, fishmonger, deli) is run by independent entrepreneurs using their own POS terminals. The challenge: when a customer buys bread from the bakery, receives a receipt, then proceeds to central checkout, the cashier must have instant access to that transaction data without manual entry. POS-Sync continuously monitors section POS terminals for new receipts, extracts fiscal data (barcodes, department codes, prices), syncs to Qore central database, and generates .dat files in the exact format required by the central billing software - all in real-time to enable seamless checkout experiences across 20+ independent terminals.`,
+    context: `A retail chain operated under a leased-section model. each department (bakery, butcher, fishmonger, deli) was run by independent entrepreneurs using their own POS terminals, yet customers paid once at a central register on the way out. The problem: when a customer hands over a department receipt at central checkout, the cashier must already have that transaction available. no manual entry, no waiting. I built a system that continuously monitors section POS terminals for new receipts, extracts fiscal data (barcodes, department codes, prices), syncs to a central database, and generates .dat files in the exact format the central billing software requires. all in real time across 20+ independent terminals.`,
 
     // Technical Challenges
     challenges: [
@@ -472,7 +468,7 @@ export class FiscalFileGenerator {
       },
       {
         decision: 'JSON-Driven .dat Field Configuration',
-        rationale: 'Fiscal format changes frequently per Malta tax authority updates. External config allows field updates without rebuild, enables isolated testing, and adapts to different department requirements',
+        rationale: 'Fiscal format requirements change with tax authority updates. External config allows field updates without rebuild, enables isolated testing, and adapts to per-department format quirks',
         tradeoff: 'Extra file dependency but prevents hardcoded format errors and simplifies compliance maintenance'
       }
     ],
@@ -487,12 +483,12 @@ export class FiscalFileGenerator {
       { value: '24/7', label: 'Real-time Monitoring' }
     ],
 
-    businessImpact: `System achieved complete automation of multi-section receipt synchronization, eliminating manual data entry at central checkout and reducing customer wait times by 70%. Enables seamless operation of Malta supermarket model where 20+ independent entrepreneurs operate specialized sections. Processes 800+ daily transactions with zero data loss across bakery, butcher, fishmonger, and deli sections. Date-organized .dat file system (YYYYMMDD folders) ensures audit-ready fiscal compliance. The event-driven architecture maintains instant data availability even during peak shopping hours.`,
+    businessImpact: `Eliminated manual data entry at central checkout and cut customer wait times by ~70%. Enables a leased-section retail model where 20+ independent entrepreneurs operate specialized departments behind a single central register. Processes 500k+ documents per month with zero data loss across all departments. Date-organized .dat output (YYYYMMDD folders) ensures audit-ready fiscal compliance. The event-driven architecture maintains instant data availability even during peak shopping hours.`,
 
     technicalWins: [
       'Eliminated 100% of manual receipt entry at central checkout counters',
       'Achieved <500ms receipt-to-checkout availability (critical for customer experience)',
-      'Zero fiscal compliance incidents - all .dat files pass Malta tax authority validation',
+      'Zero fiscal compliance incidents - all .dat files pass tax authority validation',
       'Duplicate prevention ensures 100% transaction accuracy in central database',
       'Handles concurrent receipt generation across 20+ independent section terminals',
       'Event-driven architecture provides instant synchronization without polling overhead'
@@ -504,7 +500,7 @@ export class FiscalFileGenerator {
       'awaitWriteFinish stabilization is non-negotiable - processing incomplete files causes corrupt data and cascading failures',
       'Map-based duplicate prevention is essential - file system events can fire multiple times, causing duplicate transactions',
       'Exponential backoff is critical for distributed systems - central database failures during peak hours are inevitable',
-      'JSON-driven configuration beats hardcoding - fiscal formats change per tax authority updates, code shouldn\'t need to',
+      'JSON-driven configuration beats hardcoding - fiscal formats change with tax authority updates, code shouldn\'t need to',
       'Zod schema validation catches errors early - runtime type checking prevents invalid receipt data from reaching central database'
     ],
 
@@ -517,22 +513,18 @@ export class FiscalFileGenerator {
     ],
 
     // Testimonial
-    testimonial: {
-      quote: "POS-Sync transformed our supermarket operations. With 20+ independent section operators, manual receipt entry at checkout was creating massive bottlenecks. Now customers receive instant service - the moment they hand over their bakery receipt, all transaction data is already at the central register. Zero errors, zero waiting. The system handles peak hours flawlessly and tax compliance became trivial.",
-      author: "Operations Manager",
-      role: "Malta Supermarket Chain"
-    },
+    testimonial: null,
 
     // Portuguese Translation
     translations: {
       pt: {
-        title: 'POS-Sync - Integração Multi-Secção em Tempo Real para Supermercados',
-        subtitle: 'Sincronização fiscal automatizada permitindo checkout instantâneo em departamentos independentes de supermercados em Malta',
+        title: 'Sincronização POS Federada',
+        subtitle: 'Sincronização fiscal em tempo real entre departamentos independentes num modelo de retalho com secções arrendadas',
 
-        metaTitle: 'Caso de Estudo: Sincronização POS Multi-Secção & Integração Fiscal | Jorge Morais',
-        metaDescription: 'Construí sincronização POS em tempo real para supermercados em Malta com secções independentes (padaria, talho, peixaria). Geração automática de ficheiros .dat permite checkout central instantâneo. Taxa de sucesso de 98.5%.',
+        metaTitle: 'Caso de Estudo: Sincronização POS Federada & Conformidade Fiscal | Jorge Morais',
+        metaDescription: 'Construí sincronização POS em tempo real para uma cadeia de retalho com departamentos independentes em loja. Deteção de recibos orientada a eventos e geração de ficheiros .dat fiscais em mais de 20 terminais.',
 
-        context: `Os supermercados de Malta operam com secções arrendadas - cada departamento (padaria, talho, peixaria, charcutaria) é gerido por empresários independentes usando os seus próprios terminais POS. O desafio: quando um cliente compra pão na padaria, recebe um recibo e depois segue para o checkout central, o caixa deve ter acesso instantâneo aos dados da transação sem entrada manual. O POS-Sync monitoriza continuamente os terminais POS das secções em busca de novos recibos, extrai dados fiscais (códigos de barras, códigos de departamento, preços), sincroniza com a base de dados central Qore e gera ficheiros .dat no formato exato exigido pelo software de faturação central - tudo em tempo real para permitir experiências de checkout sem falhas em mais de 20 terminais independentes.`,
+        context: `Uma cadeia de retalho operava num modelo de secções arrendadas. cada departamento (padaria, talho, peixaria, charcutaria) era gerido por empresários independentes com os seus próprios terminais POS, mas o cliente pagava tudo num único checkout central à saída. O desafio: quando o cliente entrega o recibo do departamento na caixa central, o operador tem de já ter a transação disponível. sem entrada manual, sem espera. Construí um sistema que monitoriza continuamente os POS de secção à procura de novos recibos, extrai dados fiscais (códigos de barras, códigos de departamento, preços), sincroniza com uma base de dados central e gera ficheiros .dat no formato exato exigido pelo software de faturação central. tudo em tempo real em mais de 20 terminais independentes.`,
 
         challenges: [
           {
@@ -575,7 +567,7 @@ export class FiscalFileGenerator {
           },
           {
             decision: 'Configuração de Campos .dat Orientada a JSON',
-            rationale: 'Formato fiscal muda frequentemente por atualizações da autoridade fiscal de Malta. Configuração externa permite atualizações de campos sem rebuild, possibilita testes isolados e adapta-se a diferentes requisitos de departamento',
+            rationale: 'O formato fiscal muda frequentemente com atualizações da autoridade fiscal. Configuração externa permite atualizações de campos sem rebuild, possibilita testes isolados e adapta-se a diferentes requisitos de departamento',
             tradeoff: 'Dependência de ficheiro extra mas previne erros de formato hardcoded e simplifica manutenção de conformidade'
           }
         ],
@@ -589,12 +581,12 @@ export class FiscalFileGenerator {
           { value: '24/7', label: 'Monitorização em Tempo Real' }
         ],
 
-        businessImpact: `O sistema alcançou automatização completa da sincronização de recibos multi-secção, eliminando entrada manual de dados no checkout central e reduzindo tempos de espera de clientes em 70%. Permite operação sem falhas do modelo de supermercado de Malta onde 20+ empresários independentes operam secções especializadas. Processa 800+ transações diárias com zero perda de dados em secções de padaria, talho, peixaria e charcutaria. Sistema de ficheiros .dat organizado por data (pastas AAAAMMDD) garante conformidade fiscal pronta para auditorias. A arquitetura orientada a eventos mantém disponibilidade instantânea de dados mesmo durante horas de pico de compras.`,
+        businessImpact: `Eliminou a entrada manual de dados no checkout central e reduziu tempos de espera dos clientes em ~70%. Permite operar um modelo de retalho com secções arrendadas onde 20+ empresários independentes gerem departamentos especializados por trás de uma única caixa central. Processa 500k+ documentos por mês com zero perda de dados. Sistema de ficheiros .dat organizado por data (pastas AAAAMMDD) garante conformidade fiscal pronta para auditorias. A arquitetura orientada a eventos mantém disponibilidade instantânea de dados mesmo durante horas de pico de compras.`,
 
         technicalWins: [
           'Eliminou 100% da entrada manual de recibos nos balcões de checkout central',
           'Alcançou disponibilidade recibo-para-checkout <500ms (crítico para experiência do cliente)',
-          'Zero incidentes de conformidade fiscal - todos os ficheiros .dat passam validação da autoridade fiscal de Malta',
+          'Zero incidentes de conformidade fiscal - todos os ficheiros .dat passam validação da autoridade fiscal',
           'Prevenção de duplicados garante 100% de precisão de transações na base de dados central',
           'Lida com geração concorrente de recibos em 20+ terminais de secção independentes',
           'Arquitetura orientada a eventos fornece sincronização instantânea sem sobrecarga de polling'
@@ -605,15 +597,11 @@ export class FiscalFileGenerator {
           'Estabilização awaitWriteFinish é inegociável - processar ficheiros incompletos causa dados corruptos e falhas em cascata',
           'Prevenção de duplicados baseada em Map é essencial - eventos do sistema de ficheiros podem disparar múltiplas vezes, causando transações duplicadas',
           'Backoff exponencial é crítico para sistemas distribuídos - falhas da base de dados central durante horas de pico são inevitáveis',
-          'Configuração orientada a JSON supera hardcoding - formatos fiscais mudam por atualizações da autoridade fiscal, código não deveria precisar',
+          'Configuração orientada a JSON supera hardcoding - os formatos fiscais mudam com atualizações da autoridade fiscal, o código não deveria precisar',
           'Validação de schema Zod captura erros cedo - verificação de tipo em runtime previne dados de recibo inválidos de alcançar base de dados central'
         ],
 
-        testimonial: {
-          quote: "O POS-Sync transformou as operações do nosso supermercado. Com 20+ operadores de secção, a entrada manual de recibos no checkout estava a criar gargalos massivos. Agora os clientes recebem serviço instantâneo - no momento em que entregam o recibo da padaria, todos os dados da transação já estão no registo central. Zero erros, zero espera. O sistema lida com horas de pico impecavelmente e a conformidade fiscal tornou-se trivial.",
-          author: "Gestor de Operações",
-          role: "Cadeia de Supermercados de Malta"
-        }
+        testimonial: null
       }
     }
   },
@@ -632,7 +620,7 @@ export class FiscalFileGenerator {
     metaDescription: 'Built SaaS data processing platform with reusable templates for CSV/Excel/PDF/TXT conversion. Dual AI extraction (tabula-py + pdfplumber) with visual column mapping. 90% time reduction for recurring conversions.',
 
     // Hero
-    heroImage: '../assets/imgs-bck/dataconvert',
+    heroImage: require('@/data/projects/images/data-convert/landing_page.jpg'),
     tech: ['TypeScript', 'React', 'Node.js', 'Python', 'FastAPI', 'TypeORM', 'PostgreSQL', 'Tabula-py', 'PDFplumber'],
     duration: '4 months (MVP + iterative improvements)',
     role: 'Full Stack Developer & System Architect',
@@ -1054,442 +1042,6 @@ def calculate_confidence(df: pd.DataFrame) -> float:
   },
 
   // ============================================================
-  // Q-SCOPE - Quantum Elliott Wave Trading AI
-  // ============================================================
-  'qscope-quantum-trading': {
-    id: 'qscope-quantum-trading',
-    slug: 'qscope-quantum-elliott-wave-ai',
-    title: 'Q-Scope - Quantum Elliott Wave Trading AI',
-    subtitle: 'Autonomous cryptocurrency trading system achieving 65%+ win rate through quantum-inspired ML, Elliott Wave detection, and multi-timeframe analysis',
-
-    // SEO Meta
-    metaTitle: 'Case Study: Quantum AI Trading System with Elliott Wave & ML | Jorge Morais',
-    metaDescription: 'Built quantum-inspired trading AI combining Elliott Wave theory, fractal analysis, multi-timeframe confluence, and quantum portfolio optimization. 65%+ win rate with risk-adjusted position sizing across BTC/ETH/SOL markets.',
-
-    // Hero
-    heroImage: '../assets/imgs-bck/qscope',
-    tech: ['Python', 'Scikit-learn', 'NumPy', 'Pandas', 'TA-Lib', 'TypeScript', 'Node.js', 'Machine Learning'],
-    duration: '6 months (MVP + continuous evolution)',
-    role: 'AI/ML Engineer & System Architect',
-    year: '2025',
-
-    // Context
-    context: `Cryptocurrency markets operate 24/7 with extreme volatility, presenting both opportunity and risk. Traditional technical analysis often fails because it treats markets as random walks, ignoring their fractal, quantum-like nature. The challenge: build an intelligent trading system that understands market microstructure through quantum principles - Hurst exponents (persistence vs mean reversion), fractal dimensions (complexity), Elliott Wave patterns (market psychology cycles), and multi-timeframe confluence (temporal superposition). Q-Scope continuously monitors crypto markets, extracting quantum indicators from price action, classifying Elliott Wave stages with ML confidence scoring, analyzing multiple timeframes simultaneously for signal confluence, and optimizing position sizes using quantum-inspired algorithms - all in real-time to enable autonomous trading decisions with 65%+ accuracy and optimized risk/reward ratios.`,
-
-    // Technical Challenges
-    challenges: [
-      {
-        title: 'Real-time Elliott Wave Classification with ML Confidence',
-        description: 'Elliott Wave Theory is traditionally subjective - different analysts see different waves. Built QuantumElliottWaveML with specialized ML models: HistGradientBoostingClassifier identifies wave type (Impulse 1-5, Corrective A-B-C), quantum indicators (Hurst < 0.45 + negative momentum = Wave 2), wave progress tracking (0-100%), and multi-factor confidence scoring (Elliott 80%, Quantum 90%, Overall 85%)',
-        icon: 'ri-wave-pulse-line'
-      },
-      {
-        title: 'Quantum Regime Detection via Hurst Exponent & Fractal Dimension',
-        description: 'Markets alternate between trending (persistent) and mean-reverting (chaotic) regimes. Trading strategies must adapt dynamically. Quantum regime analyzer calculates Hurst Exponent (H>0.6=trending, H<0.4=mean reversion, H≈0.5=random walk) and Fractal Dimension (D>1.7=chaotic/high risk, D<1.5=clean/low risk) to classify market into TRENDING_BULL, TRENDING_BEAR, MEAN_REVERTING, CHAOTIC, or CONSOLIDATING regimes',
-        icon: 'ri-flashlight-line'
-      },
-      {
-        title: 'Multi-Timeframe Confluence Analysis',
-        description: 'Single-timeframe signals produce 40% false positives. Real opportunities appear when multiple timeframes align. MultiTimeframeAnalyzer simulates higher timeframes by aggregating candles, calculates momentum alignment across 5m/15m/1h/4h, determines bias via EMA separation, and produces signal strength (VERY_STRONG ≥0.7, STRONG ≥0.5, MODERATE ≥0.3, WEAK <0.3). Only trades on STRONG_BUY_SIGNAL with multi-timeframe confirmation',
-        icon: 'ri-time-line'
-      },
-      {
-        title: 'Quantum Portfolio Optimization with Wave-Adaptive Sizing',
-        description: 'Traditional fixed position sizing (always 5%) ignores signal quality, market regime, and Elliott Wave stage. QuantumPortfolioOptimizer explores 16 position sizes simultaneously via quantum superposition, amplifies high-Sharpe solutions through interference, adapts sizing to wave stage (Wave 3: 5% with 1.5x multiplier, Wave 2: 4% with 1.2x, Wave 5: 0% with VETO), integrates Kelly Criterion, and caps at risk_tolerance/risk_score',
-        icon: 'ri-shield-check-line'
-      }
-    ],
-
-    // Architecture
-    architectureDiagram: null,
-
-    // Solution Stack
-    stack: {
-      ml_core: ['Python 3.13', 'Scikit-learn', 'NumPy', 'Pandas', 'SciPy', 'TA-Lib'],
-      ml_models: ['HistGradientBoostingClassifier', 'MLPClassifier (256-128-64)', 'ExtraTreesRegressor', 'RobustScaler'],
-      quantum: ['Hurst Exponent', 'Fractal Dimension', 'Quantum Superposition', 'Interference Amplification'],
-      backend: ['TypeScript', 'Node.js 18', 'SQLite', 'Binance WebSocket API']
-    },
-
-    // Code Example - Quantum Elliott Wave ML
-    codeExample: `# quantum_elliott_ml.py
-import numpy as np
-from sklearn.ensemble import HistGradientBoostingClassifier
-from dataclasses import dataclass
-
-@dataclass
-class QuantumIndicators:
-    """Quantum Market Indicators"""
-    hurst_exponent: float           # Persistence (0=mean reversion, 1=trending)
-    fractal_dimension: float        # Complexity (1=simple, 2=chaotic)
-    momentum_quantum: float         # Combined momentum (-1 to 1)
-    volume_quantum: float           # Volume strength (0-3x)
-    market_regime: str              # Current regime
-    regime_confidence: float        # Confidence (0-1)
-
-class QuantumElliottWaveML:
-    """
-    Quantum Elliott Wave ML System
-    ML-powered Elliott Wave detection using quantum indicators
-    """
-
-    def __init__(self):
-        # Specialized ML models
-        self.wave_classifier = HistGradientBoostingClassifier(
-            max_iter=300,
-            learning_rate=0.05,
-            max_depth=12,
-            l2_regularization=0.1
-        )
-        self.entry_predictor = MLPClassifier(
-            hidden_layer_sizes=(256, 128, 64),
-            activation='tanh'
-        )
-
-    def extract_quantum_features(self, features: dict) -> QuantumIndicators:
-        """Extract Quantum Indicators from Raw Features"""
-        # Hurst Exponent (Persistence Analysis)
-        hurst = features.get('regime_hurst_exponent', 0.5)
-
-        # Fractal Dimension (Complexity Analysis)
-        fractal = features.get('regime_fractal_dimension', 1.5)
-
-        # Quantum Momentum (Multi-period combination)
-        momentum_3p = features.get('momentum_3p', 0)
-        momentum_5p = features.get('momentum_5p', 0)
-        momentum_accel = features.get('core_momentum_accel', 0)
-        momentum_quantum = (momentum_3p + momentum_5p + momentum_accel/10) / 3
-
-        # Determine Market Regime
-        market_regime = self._determine_quantum_regime(features)
-
-        return QuantumIndicators(
-            hurst_exponent=hurst,
-            fractal_dimension=fractal,
-            momentum_quantum=momentum_quantum,
-            volume_quantum=features.get('core_volume_strength', 1.0),
-            market_regime=market_regime,
-            regime_confidence=0.9
-        )
-
-    def _determine_quantum_regime(self, features: dict) -> str:
-        """Quantum Regime Classification"""
-        hurst = features.get('regime_hurst_exponent', 0.5)
-        vol_ratio = features.get('regime_vol_ratio', 1.0)
-        adx = features.get('regime_adx', 25)
-        trend_strength = features.get('regime_trend_strength', 0)
-
-        # Chaotic regime
-        if vol_ratio > 1.8 and adx < 20:
-            return 'CHAOTIC'
-
-        # Trending regimes
-        elif hurst > 0.6 and adx > 25:
-            if trend_strength > 0.02:
-                return 'TRENDING_BULL'
-            elif trend_strength < -0.02:
-                return 'TRENDING_BEAR'
-
-        # Mean reverting
-        elif hurst < 0.4:
-            return 'MEAN_REVERTING'
-
-        return 'CONSOLIDATING'
-
-    def analyze_wave_2_entry(self, elliott_context, quantum_data, price) -> dict:
-        """
-        Wave 2 Analysis - BEST OPPORTUNITY
-
-        Wave 2 characteristics:
-        - Mean reversion (Hurst < 0.45)
-        - Fibonacci retracement (38.2% - 61.8%)
-        - Volume declining
-        - RSI oversold recovery
-        """
-        confidence = 0.6
-        reasoning = []
-
-        # Check Hurst (must show mean reversion)
-        if quantum_data.hurst_exponent < 0.45:
-            confidence += 0.2
-            reasoning.append("Hurst indicates mean reversion - perfect for Wave 2")
-
-        # Check volume
-        if quantum_data.volume_quantum > 0.8:
-            confidence += 0.1
-            reasoning.append("Volume adequate for support")
-
-        # Check wave progress (ideal 50-80%)
-        if 0.5 < elliott_context.wave_progress < 0.8:
-            confidence += 0.2
-            reasoning.append(f"Wave 2 at {elliott_context.wave_progress:.1%} - ideal zone")
-
-        # Decision
-        if confidence > 0.7:
-            return {
-                'decision': 'BUY',
-                'action_type': 'CONSERVATIVE',
-                'confidence': confidence,
-                'reasoning': reasoning,
-                'opportunity_score': 85,
-                'position_size': 4.0,  # Wave 2 allows larger position
-                'stop_loss': price * 0.97,
-                'take_profits': [(price * 1.08, 50.0), (price * 1.15, 50.0)]
-            }
-        else:
-            return {'decision': 'WAIT', 'confidence': confidence}
-
-# Quantum Portfolio Optimizer
-class QuantumPortfolioOptimizer:
-    """
-    Quantum-inspired Portfolio Optimization
-    Uses superposition and interference to explore optimal position sizes
-    """
-
-    def __init__(self, max_position_size=0.1, risk_tolerance=0.02):
-        self.max_position_size = max_position_size
-        self.risk_tolerance = risk_tolerance
-        self.quantum_states = 16  # Superposition states
-
-    def optimize_position_size(self, confidence, risk_score, volatility,
-                                elliott_wave_stage, fib_confluence, mtf_alignment):
-        """Quantum Position Sizing Optimization"""
-        # Create quantum superposition of solutions
-        quantum_solutions = self._create_quantum_superposition(
-            confidence, risk_score, volatility,
-            elliott_wave_stage, fib_confluence, mtf_alignment
-        )
-
-        # Apply quantum interference (amplify high-Sharpe solutions)
-        optimized_solutions = self._apply_quantum_interference(quantum_solutions)
-
-        # Quantum measurement (collapse to final solution)
-        final_position = self._quantum_measurement(optimized_solutions)
-
-        return final_position
-
-    def _create_quantum_superposition(self, confidence, risk_score, volatility,
-                                       elliott_stage, fib_confluence, mtf_alignment):
-        """Create superposition of different position sizes"""
-        solutions = []
-
-        for i in range(self.quantum_states):
-            # Quantum amplitude (probability)
-            amplitude = np.sin(i * np.pi / self.quantum_states) ** 2
-            base_size = amplitude * self.max_position_size
-
-            # Elliott Wave multiplier
-            elliott_multiplier = {
-                'wave_2': 1.2,  # Best entry
-                'wave_3': 1.5,  # Strongest wave
-                'wave_5': 0.7   # Dangerous
-            }.get(elliott_stage, 1.0)
-
-            # Fibonacci bonus + Multi-timeframe factor
-            fib_bonus = min(fib_confluence * 0.1, 0.3)
-            mtf_factor = 0.5 + (mtf_alignment - 0.5) * 0.8
-
-            adjusted_size = base_size * elliott_multiplier * (1 + fib_bonus) * mtf_factor
-
-            # Calculate Sharpe estimate
-            expected_return = confidence * 0.05
-            expected_risk = risk_score * volatility * 0.1
-            sharpe = expected_return / max(expected_risk, 0.01)
-
-            solutions.append({
-                'size': adjusted_size,
-                'amplitude': amplitude,
-                'sharpe': sharpe,
-                'confidence': confidence
-            })
-
-        return solutions
-
-    def _apply_quantum_interference(self, solutions):
-        """Apply constructive interference to amplify good solutions"""
-        for solution in solutions:
-            # Quantum energy
-            energy = (
-                solution['sharpe'] * 0.4 +
-                solution['confidence'] * 0.3
-            )
-            solution['quantum_energy'] = energy
-
-        # Interference boost
-        max_energy = max(s['quantum_energy'] for s in solutions)
-        for solution in solutions:
-            boost = (solution['quantum_energy'] / max_energy) ** 0.8
-            solution['amplitude'] *= boost
-
-        return solutions`,
-
-    // Key Technical Decisions
-    keyDecisions: [
-      {
-        decision: 'Hurst Exponent for Regime Detection',
-        rationale: 'Markets alternate between persistent (trending) and mean-reverting regimes. Hurst > 0.6 = trending (momentum works), Hurst < 0.4 = mean reversion (contrarian works). Dynamically adapts strategy to market microstructure',
-        tradeoff: 'More complex calculation, but vastly superior regime classification accuracy (87% vs 60% with ADX alone)'
-      },
-      {
-        decision: 'ML-Powered Elliott Wave Classification',
-        rationale: 'Traditional Elliott Wave is subjective. ML classifier trained on Hurst, momentum, volume, fractal dimension provides objective, reproducible wave identification with confidence scoring',
-        tradeoff: 'Requires labeled training data and periodic retraining, but eliminates analyst bias and provides consistent wave classification'
-      },
-      {
-        decision: 'Quantum Superposition for Portfolio Optimization',
-        rationale: 'Traditional fixed sizing (always 5%) ignores signal quality and market regime. Quantum approach explores 16 position sizes simultaneously, amplifies high-Sharpe solutions via interference, adapts to Elliott Wave stage',
-        tradeoff: 'More computational overhead, but produces optimal position sizes that significantly improve Sharpe ratio (2.1 vs 1.3 with fixed sizing)'
-      },
-      {
-        decision: 'Multi-Timeframe Confluence as Veto',
-        rationale: 'Single-timeframe signals produce 40% false positives. Multi-timeframe confluence reduces false positives to <15%. Acts as powerful filter - only trade when 5m, 15m, 1h, 4h align',
-        tradeoff: 'Reduces trade frequency by 60%, but increases win rate from 48% to 65%+'
-      }
-    ],
-
-    // Results & Metrics
-    metrics: [
-      { value: '65-72%', label: 'Win Rate' },
-      { value: '1:2.5', label: 'Average R:R' },
-      { value: '2.1', label: 'Sharpe Ratio' },
-      { value: '8.3%', label: 'Max Drawdown' },
-      { value: '15-25', label: 'Trades per Week' },
-      { value: '<200ms', label: 'Multi-TF Analysis' }
-    ],
-
-    businessImpact: `System achieved autonomous 24/7 cryptocurrency trading with 65%+ win rate and optimized risk-adjusted returns (Sharpe 2.1). Processes 12 quantum indicators per signal in <200ms, enabling real-time decision-making across BTC, ETH, SOL. Quantum regime detection eliminates trading in chaotic markets (avoiding 40% of losing trades). Elliott Wave ML classification identifies high-probability Wave 2 and Wave 3 entries with 85% confidence. Multi-timeframe confluence reduces false signals by 60%. Quantum portfolio optimizer adapts position sizing to wave stage and signal quality, increasing profitability by 45% vs fixed sizing. Defensive mechanisms (Wave 5 veto, corrective wave avoidance, regime-based switching) protect capital during unfavorable conditions. Real-time monitoring and automatic position sizing enable truly autonomous operation without human intervention, trading 24/7 across global crypto markets.`,
-
-    technicalWins: [
-      'Hurst exponent regime detection - 87% accuracy vs 60% with traditional indicators',
-      'ML Elliott Wave classification - Eliminates analyst subjectivity, consistent wave ID',
-      'Quantum portfolio optimization - +45% profitability vs fixed position sizing',
-      'Multi-timeframe confluence - 60% reduction in false signals, 65%+ win rate',
-      'Wave 2/3 detection - Identifies highest-probability entries with 85% confidence',
-      'Defensive veto system - Avoids Wave 5 and corrective waves (prevents 35% of losses)'
-    ],
-
-    // Key Learnings
-    learnings: [
-      'Quantum principles apply to financial markets - Hurst exponent and fractal dimension provide deep insight into market microstructure that traditional indicators miss',
-      'Elliott Wave needs ML - Manual analysis is too subjective. ML classifier with quantum features provides objective, reproducible wave identification',
-      'Multi-timeframe confluence is non-negotiable - Single-timeframe signals produce too many false positives. Requiring alignment across 5m/15m/1h/4h increased win rate from 48% to 65%+',
-      'Position sizing is as important as entry - Fixed sizing leaves money on the table. Quantum optimizer adapting to wave stage and signal quality increased profitability by 45%',
-      'Defensive mechanisms matter more than offensive - Veto rules (avoid Wave 5, avoid corrective waves, avoid chaotic regimes) prevented more losses than any optimization improved gains',
-      'Real-time processing enables edge - <200ms analysis latency allows execution before market moves. Speed is competitive advantage in crypto'
-    ],
-
-    // Technologies (for SEO)
-    technologies: [
-      'Python', 'Scikit-learn', 'NumPy', 'Pandas', 'TA-Lib', 'SciPy',
-      'HistGradientBoosting', 'MLPClassifier', 'Machine Learning',
-      'Hurst Exponent', 'Fractal Dimension', 'Elliott Wave Theory',
-      'Quantum Computing', 'Portfolio Optimization', 'TypeScript', 'Node.js',
-      'Binance API', 'WebSocket', 'Real-time Trading', 'Cryptocurrency'
-    ],
-
-    // // Testimonial
-    // testimonial: {
-    //   quote: "The Quantum Elliott Wave AI transformed our cryptocurrency trading operation. Before, we relied on manual technical analysis and fixed position sizing - results were inconsistent. Now the system autonomously identifies high-probability Wave 2 and Wave 3 entries with 85% ML confidence, adapts position sizing using quantum optimization, and vetoes dangerous trades before we waste capital. The multi-timeframe confluence filter eliminated 60% of our false signals overnight. Win rate went from 48% to 65%+, and Sharpe ratio doubled to 2.1. Most importantly, it operates 24/7 across global crypto markets without human intervention.",
-    //   author: "Head of Quantitative Trading",
-    //   role: "Cryptocurrency Hedge Fund"
-    // },
-
-    // Portuguese Translation
-    translations: {
-      pt: {
-        title: 'Q-Scope - IA Quântica para Trading com Elliott Wave',
-        subtitle: 'Sistema autónomo de trading de criptomoedas alcançando 65%+ de taxa de acerto através de ML inspirado em princípios quânticos, deteção de Elliott Wave e análise multi-timeframe',
-
-        metaTitle: 'Caso de Estudo: Sistema IA Quântica de Trading com Elliott Wave & ML | Jorge Morais',
-        metaDescription: 'Construí IA de trading inspirada em princípios quânticos combinando teoria Elliott Wave, análise fractal, confluência multi-timeframe e otimização quântica de portfolio. Taxa de acerto 65%+ com dimensionamento de posições ajustado ao risco nos mercados BTC/ETH/SOL.',
-
-        context: `Mercados de criptomoedas operam 24/7 com volatilidade extrema, apresentando oportunidade e risco. Análise técnica tradicional frequentemente falha porque trata mercados como passeios aleatórios, ignorando sua natureza fractal e quântica. O desafio: construir sistema inteligente de trading que compreende microestrutura de mercado através de princípios quânticos - expoentes de Hurst (persistência vs reversão à média), dimensões fractais (complexidade), padrões Elliott Wave (ciclos de psicologia de mercado), e confluência multi-timeframe (superposição temporal). Q-Scope monitoriza continuamente mercados cripto, extraindo indicadores quânticos da ação de preço, classificando estágios Elliott Wave com pontuação de confiança ML, analisando múltiplos timeframes simultaneamente para confluência de sinal, e otimizando tamanhos de posição usando algoritmos inspirados em princípios quânticos - tudo em tempo real para permitir decisões autónomas de trading com 65%+ de precisão e rácios risco/recompensa otimizados.`,
-
-        challenges: [
-          {
-            title: 'Classificação em Tempo Real de Elliott Wave com Confiança ML',
-            description: 'Teoria Elliott Wave é tradicionalmente subjetiva - diferentes analistas veem ondas diferentes. Construí QuantumElliottWaveML com modelos ML especializados: HistGradientBoostingClassifier identifica tipo de onda (Impulso 1-5, Corretiva A-B-C), indicadores quânticos (Hurst < 0.45 + momentum negativo = Onda 2), rastreamento de progresso de onda (0-100%), e pontuação de confiança multi-fator (Elliott 80%, Quantum 90%, Geral 85%)',
-            icon: 'ri-wave-pulse-line'
-          },
-          {
-            title: 'Deteção de Regime Quântico via Expoente de Hurst & Dimensão Fractal',
-            description: 'Mercados alternam entre regimes de tendência (persistentes) e reversão à média (caóticos). Estratégias de trading devem adaptar-se dinamicamente. Analisador de regime quântico calcula Expoente de Hurst (H>0.6=tendência, H<0.4=reversão média, H≈0.5=passeio aleatório) e Dimensão Fractal (D>1.7=caótico/alto risco, D<1.5=limpo/baixo risco) para classificar mercado em regimes TRENDING_BULL, TRENDING_BEAR, MEAN_REVERTING, CHAOTIC ou CONSOLIDATING',
-            icon: 'ri-flashlight-line'
-          },
-          {
-            title: 'Análise de Confluência Multi-Timeframe',
-            description: 'Sinais de timeframe único produzem 40% de falsos positivos. Oportunidades reais aparecem quando múltiplos timeframes alinham. MultiTimeframeAnalyzer simula timeframes superiores agregando velas, calcula alinhamento de momentum em 5m/15m/1h/4h, determina viés via separação EMA, e produz força de sinal (MUITO_FORTE ≥0.7, FORTE ≥0.5, MODERADO ≥0.3, FRACO <0.3). Apenas negocia em STRONG_BUY_SIGNAL com confirmação multi-timeframe',
-            icon: 'ri-time-line'
-          },
-          {
-            title: 'Otimização Quântica de Portfolio com Dimensionamento Adaptativo de Onda',
-            description: 'Dimensionamento de posição fixo tradicional (sempre 5%) ignora qualidade de sinal, regime de mercado e estágio Elliott Wave. QuantumPortfolioOptimizer explora 16 tamanhos de posição simultaneamente via superposição quântica, amplifica soluções de alto-Sharpe através de interferência, adapta dimensionamento ao estágio de onda (Onda 3: 5% com multiplicador 1.5x, Onda 2: 4% com 1.2x, Onda 5: 0% com VETO), integra Critério de Kelly e limita a tolerância_risco/pontuação_risco',
-            icon: 'ri-shield-check-line'
-          }
-        ],
-
-        keyDecisions: [
-          {
-            decision: 'Expoente de Hurst para Deteção de Regime',
-            rationale: 'Mercados alternam entre regimes persistentes (tendência) e reversão à média. Hurst > 0.6 = tendência (momentum funciona), Hurst < 0.4 = reversão média (contrarian funciona). Adapta estratégia dinamicamente à microestrutura de mercado',
-            tradeoff: 'Cálculo mais complexo, mas precisão vastamente superior na classificação de regime (87% vs 60% apenas com ADX)'
-          },
-          {
-            decision: 'Classificação Elliott Wave Alimentada por ML',
-            rationale: 'Elliott Wave tradicional é subjetivo. Classificador ML treinado em Hurst, momentum, volume, dimensão fractal fornece identificação de onda objetiva e reproduzível com pontuação de confiança',
-            tradeoff: 'Requer dados de treino rotulados e retreinamento periódico, mas elimina viés de analista e fornece classificação consistente de ondas'
-          },
-          {
-            decision: 'Superposição Quântica para Otimização de Portfolio',
-            rationale: 'Dimensionamento fixo tradicional (sempre 5%) ignora qualidade de sinal e regime de mercado. Abordagem quântica explora 16 tamanhos de posição simultaneamente, amplifica soluções de alto-Sharpe via interferência, adapta-se ao estágio Elliott Wave',
-            tradeoff: 'Mais sobrecarga computacional, mas produz tamanhos de posição ótimos que melhoram significativamente o rácio Sharpe (2.1 vs 1.3 com dimensionamento fixo)'
-          },
-          {
-            decision: 'Confluência Multi-Timeframe como Veto',
-            rationale: 'Sinais de timeframe único produzem 40% de falsos positivos. Confluência multi-timeframe reduz falsos positivos para <15%. Age como filtro poderoso - apenas negocia quando 5m, 15m, 1h, 4h alinham',
-            tradeoff: 'Reduz frequência de negociação em 60%, mas aumenta taxa de acerto de 48% para 65%+'
-          }
-        ],
-
-        metrics: [
-          { value: '65-72%', label: 'Taxa de Acerto' },
-          { value: '1:2.5', label: 'R:R Médio' },
-          { value: '2.1', label: 'Rácio Sharpe' },
-          { value: '8.3%', label: 'Drawdown Máximo' },
-          { value: '15-25', label: 'Trades por Semana' },
-          { value: '<200ms', label: 'Análise Multi-TF' }
-        ],
-
-        businessImpact: `Sistema alcançou trading autónomo 24/7 de criptomoedas com taxa de acerto 65%+ e retornos otimizados ajustados ao risco (Sharpe 2.1). Processa 12 indicadores quânticos por sinal em <200ms, permitindo tomada de decisão em tempo real em BTC, ETH, SOL. Deteção de regime quântico elimina trading em mercados caóticos (evitando 40% de trades perdedores). Classificação ML Elliott Wave identifica entradas de alta probabilidade Onda 2 e Onda 3 com 85% de confiança. Confluência multi-timeframe reduz sinais falsos em 60%. Otimizador de portfolio quântico adapta dimensionamento de posição ao estágio de onda e qualidade de sinal, aumentando rentabilidade em 45% vs dimensionamento fixo. Mecanismos defensivos (veto Onda 5, evitar ondas corretivas, troca baseada em regime) protegem capital durante condições desfavoráveis. Monitorização em tempo real e dimensionamento automático de posição permitem operação verdadeiramente autónoma sem intervenção humana, negociando 24/7 em mercados cripto globais.`,
-
-        technicalWins: [
-          'Deteção de regime com expoente de Hurst - 87% precisão vs 60% com indicadores tradicionais',
-          'Classificação ML Elliott Wave - Elimina subjetividade de analista, ID de onda consistente',
-          'Otimização quântica de portfolio - +45% rentabilidade vs dimensionamento fixo de posição',
-          'Confluência multi-timeframe - 60% redução em sinais falsos, taxa de acerto 65%+',
-          'Deteção Onda 2/3 - Identifica entradas de maior probabilidade com 85% de confiança',
-          'Sistema de veto defensivo - Evita Onda 5 e ondas corretivas (previne 35% das perdas)'
-        ],
-
-        learnings: [
-          'Princípios quânticos aplicam-se a mercados financeiros - Expoente de Hurst e dimensão fractal fornecem insight profundo sobre microestrutura de mercado que indicadores tradicionais perdem',
-          'Elliott Wave precisa de ML - Análise manual é demasiado subjetiva. Classificador ML com características quânticas fornece identificação de onda objetiva e reproduzível',
-          'Confluência multi-timeframe é inegociável - Sinais de timeframe único produzem demasiados falsos positivos. Requerer alinhamento em 5m/15m/1h/4h aumentou taxa de acerto de 48% para 65%+',
-          'Dimensionamento de posição é tão importante quanto entrada - Dimensionamento fixo deixa dinheiro na mesa. Otimizador quântico adaptando-se ao estágio de onda e qualidade de sinal aumentou rentabilidade em 45%',
-          'Mecanismos defensivos importam mais que ofensivos - Regras de veto (evitar Onda 5, evitar ondas corretivas, evitar regimes caóticos) preveniram mais perdas do que qualquer otimização melhorou ganhos',
-          'Processamento em tempo real permite vantagem - Latência de análise <200ms permite execução antes do mercado se mover. Velocidade é vantagem competitiva em cripto'
-        ],
-
-        // testimonial: {
-        //   quote: "A IA Quântica Elliott Wave transformou a nossa operação de trading de criptomoedas. Antes, confiávamos em análise técnica manual e dimensionamento fixo de posição - resultados eram inconsistentes. Agora o sistema identifica autonomamente entradas de alta probabilidade Onda 2 e Onda 3 com 85% de confiança ML, adapta dimensionamento de posição usando otimização quântica, e veta trades perigosos antes de desperdiçarmos capital. O filtro de confluência multi-timeframe eliminou 60% dos nossos sinais falsos overnight. Taxa de acerto foi de 48% para 65%+, e rácio Sharpe duplicou para 2.1. Mais importante, opera 24/7 em mercados cripto globais sem intervenção humana.",
-        //   author: "Chefe de Trading Quantitativo",
-        //   role: "Fundo de Investimento em Criptomoedas"
-        // }
-      }
-    }
-  },
-
-  // ============================================================
   // DEPGUARD - MCP Security Server for AI Coding Agents
   // ============================================================
   'depguard': {
@@ -1500,14 +1052,22 @@ class QuantumPortfolioOptimizer:
 
     // SEO Meta
     metaTitle: 'Case Study: depguard - MCP Security Server for AI Agents | Jorge Morais',
-    metaDescription: 'How I built an open-source MCP server for npm security auditing. Born from a need to save AI tokens, evolved into a full dependency security platform with 9 tools and zero dependencies.',
+    metaDescription: 'How I built an open-source MCP server for npm security auditing. 12 tools, zero runtime dependencies, CycloneDX 1.6 SBOM generation, and a 298-test suite. all from a token-saving experiment.',
 
     // Hero
-    heroImage: null,
-    tech: ['TypeScript', 'Node.js', 'MCP Protocol', 'JSON-RPC 2.0', 'npm Registry API', 'GitHub Advisory API'],
-    duration: '2 weeks (v1.0 to v1.4)',
+    heroImage: require('@/data/projects/images/depguard/home.png'),
+    tech: ['TypeScript', 'Node.js', 'MCP Protocol', 'JSON-RPC 2.0', 'npm Registry API', 'GitHub Advisory API', 'CycloneDX 1.6'],
+    duration: 'Active (v1.0 → v1.9)',
     role: 'Author & Maintainer',
     year: '2026',
+
+    // Public artifacts
+    links: {
+      website: 'https://depguard.dev',
+      github: 'https://github.com/mopanc/depguard',
+      npm: 'https://www.npmjs.com/package/depguard-cli',
+      glama: 'https://glama.ai/mcp/servers/mopanc/depguard',
+    },
 
     // Context
     context: `I use Claude Code daily as a development companion. One thing I noticed quickly: AI agents burn through tokens fast when researching npm packages. Every time the agent needs to decide whether to install a dependency, it runs WebSearch, reads the npm page, checks for vulnerabilities, compares alternatives. Easily 10,000+ tokens per package decision. I thought: what if I could give the agent a single tool that answers all those questions in one call? That was the first seed of depguard, a simple MCP server that audits npm packages and saves tokens. But then something happened that changed the project's direction entirely.`,
@@ -1538,8 +1098,8 @@ class QuantumPortfolioOptimizer:
     stack: {
       core: ['TypeScript (strict mode)', 'Node.js 18+ built-ins only', 'Zero runtime dependencies'],
       protocol: ['MCP (Model Context Protocol)', 'JSON-RPC 2.0 over stdio'],
-      security: ['npm Registry API', 'GitHub Advisory Database', 'CVSS scoring', 'Levenshtein distance'],
-      testing: ['node:test (built-in)', '147 offline tests', 'Mock fetch injection']
+      security: ['npm Registry API', 'GitHub Advisory Database', 'CVSS scoring', 'Levenshtein distance', '18+ malware patterns', 'CycloneDX 1.6 SBOM'],
+      testing: ['node:test (built-in)', '298 offline tests', 'Mock fetch injection']
     },
 
     // Code Example
@@ -1601,9 +1161,9 @@ async function guard(packageName: string, options: GuardOptions): Promise<GuardR
 
     // Results & Metrics
     metrics: [
-      { value: '9', label: 'MCP Tools' },
+      { value: '12', label: 'MCP Tools' },
       { value: '0', label: 'Runtime Dependencies' },
-      { value: '147', label: 'Offline Tests' },
+      { value: '298', label: 'Offline Tests' },
       { value: '~99%', label: 'Token Savings per Audit' },
       { value: '25+', label: 'License Types' },
       { value: '100+', label: 'Typosquat Watchlist' }
@@ -1617,7 +1177,10 @@ async function guard(packageName: string, options: GuardOptions): Promise<GuardR
       'Dead dependency detection with awareness of config files, npm scripts, peer deps, workspaces, Vue/Svelte/Astro files, and SCSS imports',
       'CVSS score integration for granular security assessment beyond simple severity labels',
       'Dual license parsing handles SPDX expressions like MIT OR GPL-3.0 correctly',
-      'All 147 tests run offline with mock fetch. Zero flaky network tests in CI'
+      'CycloneDX 1.6 SBOM generation with PURLs, SHA-512 integrity hashes, and inline VEX vulnerability data. output validates against the official schema and is consumed unchanged by Dependency-Track, Trivy, Grype, OWASP DT',
+      'Static code analysis: tarball download + 18+ malware pattern scan catches obfuscation and behavioral mismatches before install',
+      'AI Code Review tool surfaces debris left by AI agents (rogue console.logs, empty catches, broken imports, orphan files)',
+      'All 298 tests run offline with mock fetch. Zero flaky network tests in CI'
     ],
 
     // Key Learnings
@@ -1663,8 +1226,8 @@ async function guard(packageName: string, options: GuardOptions): Promise<GuardR
         stack: {
           core: ['TypeScript (strict mode)', 'Node.js 18+ apenas built-ins', 'Zero dependências runtime'],
           protocol: ['MCP (Model Context Protocol)', 'JSON-RPC 2.0 sobre stdio'],
-          security: ['npm Registry API', 'GitHub Advisory Database', 'CVSS scoring', 'Distância de Levenshtein'],
-          testing: ['node:test (built-in)', '147 testes offline', 'Mock fetch injection']
+          security: ['npm Registry API', 'GitHub Advisory Database', 'CVSS scoring', 'Distância de Levenshtein', '18+ padrões de malware', 'CycloneDX 1.6 SBOM'],
+          testing: ['node:test (built-in)', '298 testes offline', 'Mock fetch injection']
         },
         keyDecisions: [
           {
@@ -1690,7 +1253,10 @@ async function guard(packageName: string, options: GuardOptions): Promise<GuardR
           'Deteção de dependências mortas com awareness de config files, npm scripts, peer deps, workspaces, ficheiros Vue/Svelte/Astro e imports SCSS',
           'Integração CVSS para avaliação de segurança granular além de labels de severidade',
           'Parsing de licenças duais para expressões SPDX como MIT OR GPL-3.0',
-          'Todos os 147 testes correm offline com mock fetch. Zero testes flaky no CI'
+          'Geração de SBOM CycloneDX 1.6 com PURLs, hashes de integridade SHA-512 e dados VEX inline. output válido contra o schema oficial, consumido directamente pelo Dependency-Track, Trivy, Grype e OWASP DT',
+          'Análise estática de código: download de tarball + scan a 18+ padrões de malware deteta ofuscação e mismatches comportamentais antes da instalação',
+          'Ferramenta AI Code Review identifica detritos deixados por agentes de IA (console.logs em produção, catches vazios, imports partidos, ficheiros órfãos)',
+          'Todos os 298 testes correm offline com mock fetch. Zero testes flaky no CI'
         ],
         learnings: [
           'As melhores ferramentas nascem de frustração real. O depguard começou como um hack para poupar tokens e tornou-se numa plataforma de segurança porque o problema continuou a crescer.',
@@ -1699,6 +1265,258 @@ async function guard(packageName: string, options: GuardOptions): Promise<GuardR
           'Zero dependências não é apenas uma feature. É um sinal de confiança. Quando a tua ferramenta audita outros pacotes por riscos de supply chain, ter a tua própria árvore de dependências mina a credibilidade.',
           'Os agentes de IA alucinam nomes de pacotes. Verificar a existência antes de instalar é uma verificação simples com impacto enorme.',
           'As bases de dados de advisories discordam. O npm e o GitHub reportam vulnerabilidades diferentes para o mesmo pacote. Deduplicação por CVE ID + GHSA ID + URL é essencial.'
+        ]
+      }
+    }
+  },
+
+  'quantum-elliott-wave-trading-ai': {
+    id: 'quantum-elliott-wave-trading-ai',
+    slug: 'quantum-elliott-wave-trading-ai',
+    title: 'Quantum Elliott Wave AI — Autonomous Crypto Trading Platform',
+    subtitle: 'Personal R&D project — an ML and quantum-inspired trading system that classifies Elliott Wave stages, requires multi-timeframe confluence, and adapts position sizing on live Binance markets',
+
+    // SEO Meta
+    metaTitle: 'Case Study: Quantum Elliott Wave AI Trading Platform | Jorge Morais',
+    metaDescription: 'A personal R&D platform combining ML Elliott Wave classification, Hurst exponent regime detection, multi-timeframe confluence, and quantum-inspired portfolio optimization. Python + TypeScript + Node.js, live on Binance.',
+
+    // Hero
+    heroImage: require('@/data/projects/images/qscope-v3/dashboard.png'),
+    tech: ['Python 3.13', 'TypeScript', 'Node.js 18', 'Scikit-learn', 'TA-Lib', 'NumPy', 'SQLite', 'Binance API'],
+    duration: '6 months (MVP + ongoing iterations)',
+    role: 'Sole author — architecture, ML, backend, deployment',
+    year: '2025',
+
+    // Context
+    context: `Cryptocurrency markets run 24/7 with extreme volatility, and traditional technical analysis tends to fail there because it treats price as a random walk and ignores the fractal, regime-shifting microstructure of those markets. I wanted to push a single-developer system as far as I could in that domain: build an autonomous platform that understands the regime via quantitative measures (Hurst exponent, fractal dimension), classifies Elliott Wave stages with machine learning rather than human eyeballs, requires multi-timeframe confluence before acting, and optimizes position sizing adaptively. This is a personal R&D project, not a client engagement. It runs live on Binance with small real signed orders so the feedback loop is real market data and real fills, not paper trading. All metrics below are backtested or observed on this same project — they are not client outcomes.`,
+
+    // Technical Challenges
+    challenges: [
+      {
+        title: 'Objective Elliott Wave classification',
+        description: 'Elliott Wave is famously subjective — different analysts label different waves on the same chart. The system needed reproducible wave identification with a confidence score, not human judgement calls.',
+        icon: 'ri-wave-line'
+      },
+      {
+        title: 'Regime detection beyond ADX',
+        description: 'Markets alternate between persistent (trending) and mean-reverting regimes. A trend-following strategy that runs in a mean-reverting regime bleeds capital. ADX alone is too noisy.',
+        icon: 'ri-flashlight-line'
+      },
+      {
+        title: 'Single-timeframe false positives',
+        description: 'Signals from one timeframe produce ~40% false positives in observed runs. Real opportunities only show up when 5m, 15m, 1h, and 4h all align — but combining them naively is just as noisy.',
+        icon: 'ri-time-line'
+      },
+      {
+        title: 'Position sizing as a first-class problem',
+        description: 'Fixed position sizing (e.g., always 5%) ignores signal quality, market regime, and Elliott Wave stage. It under-sizes the best entries and over-sizes the worst ones.',
+        icon: 'ri-shield-check-line'
+      }
+    ],
+
+    // Architecture
+    architectureDiagram: null,
+
+    // Solution Stack
+    stack: {
+      ai: ['Python 3.13', 'NumPy', 'Pandas', 'Scikit-learn (HistGradientBoosting, MLPClassifier, ExtraTreesRegressor)', 'TA-Lib', 'SciPy'],
+      quantum: ['Hurst exponent analyzer', 'Fractal dimension calculator', 'Quantum superposition engine', 'Interference amplifier'],
+      backend: ['TypeScript', 'Node.js 18', 'SQLite trade history', 'Binance WebSocket API'],
+      deployment: ['PM2 process manager', 'Python subprocess bridge', 'Real-time WebSocket streaming, 24/7 operation']
+    },
+
+    // Code Example
+    codeLanguage: 'python',
+    codeDescription: 'Wave 2 entry analysis — the highest-probability long entry in the model. Combines Hurst-based mean-reversion check, volume confirmation, wave progress validation, and ML confidence scoring before producing a structured trade decision with stop loss and tiered take-profits.',
+    codeExample: `def _analyze_wave_2_entry(self, elliott_context, quantum_data, price) -> Dict:
+    """
+    Wave 2 analysis — best long opportunity in the impulsive 1-5 sequence.
+
+    Wave 2 characteristics we look for:
+      - Mean reversion (Hurst < 0.45)
+      - Fibonacci retracement zone (38.2% - 61.8% of Wave 1)
+      - Declining volume vs Wave 1
+      - RSI recovering from oversold
+    """
+    confidence = 0.6
+    reasoning, warnings = [], []
+
+    # Hurst confirms mean-reversion regime — a Wave 2 should pull back, not trend.
+    if quantum_data.hurst_exponent < 0.45:
+        confidence += 0.2
+        reasoning.append("Hurst < 0.45: mean-reversion regime confirmed")
+    else:
+        warnings.append("Hurst not showing mean reversion")
+
+    # Volume floor: a healthy Wave 2 retraces with declining but non-trivial volume.
+    if quantum_data.volume_quantum > 0.8:
+        confidence += 0.1
+        reasoning.append("Volume above support floor")
+
+    # Wave progress: ideal Wave 2 zone is 50-80% of expected retracement.
+    if 0.5 < elliott_context.wave_progress < 0.8:
+        confidence += 0.2
+        reasoning.append(f"Wave 2 at {elliott_context.wave_progress:.1%} — ideal entry zone")
+    else:
+        warnings.append("Wave 2 outside ideal zone")
+
+    # Decision: only fire when conviction crosses 0.7. Below that, wait.
+    if confidence > 0.7:
+        return {
+            'decision':       'BUY',
+            'action_type':    'CONSERVATIVE',
+            'confidence':     confidence,
+            'reasoning':      reasoning,
+            'warnings':       warnings,
+            'opportunity_score': 85,
+            'position_size':  4.0,                     # Wave 2 allows larger position
+            'stop_loss':      price * 0.97,            # 3% below entry
+            'take_profits':   [(price * 1.08, 50.0),   # 50% out at 8% gain
+                               (price * 1.15, 50.0)],  # remainder at 15%
+        }
+    return {'decision': 'WAIT', 'confidence': confidence, 'warnings': warnings}`,
+
+    // Key Technical Decisions
+    keyDecisions: [
+      {
+        decision: 'Hurst exponent as the primary regime classifier',
+        rationale: 'Hurst > 0.6 means persistence (momentum strategies work). Hurst < 0.4 means mean reversion (contrarian strategies work). Backtests showed ~87% regime classification accuracy versus ~60% for ADX alone.',
+        tradeoff: 'More expensive to compute than ADX, and needs a sufficient lookback window to be stable. Worth it — the regime label drives every downstream decision.'
+      },
+      {
+        decision: 'ML-classified Elliott Waves over rule-based detection',
+        rationale: 'Rule-based wave detection inherits the subjectivity of the analyst who wrote the rules. A HistGradientBoostingClassifier trained on Hurst, momentum, volume, and fractal dimension produces objective, reproducible wave labels with calibrated confidence.',
+        tradeoff: 'Requires labeled training data and periodic retraining as market microstructure shifts. Replaceable when (and if) labels degrade — the rest of the pipeline does not assume any particular classifier.'
+      },
+      {
+        decision: 'Quantum superposition for portfolio sizing',
+        rationale: 'The optimizer evaluates 16 candidate position sizes simultaneously and amplifies high-Sharpe candidates via an interference step (energy = 0.4·Sharpe + 0.3·confidence + Kelly term). Adapts to Elliott Wave stage (Wave 3: 1.5x, Wave 5: 0.7x and veto).',
+        tradeoff: 'More CPU per signal than fixed sizing, but it removes a whole category of bad trades — over-sized Wave 5 entries are particularly damaging, and fixed sizing has no way to avoid them.'
+      },
+      {
+        decision: 'Multi-timeframe confluence as a hard filter (not a tiebreaker)',
+        rationale: 'The system requires confluence ≥ 0.3 across 5m/15m/1h/4h before any trade fires. Confluence is computed from momentum alignment, EMA bias direction, and a count of agreeing timeframes. Reduces trade frequency by ~60% but increases observed win rate from 48% to 65%+.',
+        tradeoff: 'Lower trade count means slower compounding in calm markets. Acceptable trade — surviving drawdowns matters more than being maximally active.'
+      }
+    ],
+
+    // Results & Metrics (backtested / observed on this project — not client outcomes)
+    metrics: [
+      { value: '65-72%', label: 'Win rate (backtest)' },
+      { value: '2.1', label: 'Sharpe ratio' },
+      { value: '8.3%', label: 'Max drawdown' },
+      { value: '<200ms', label: 'Multi-TF analysis' },
+      { value: '12', label: 'Quantum indicators / signal' },
+      { value: '24/7', label: 'Autonomous operation' }
+    ],
+
+    businessImpact: `The platform runs unattended 24/7 against live Binance markets, signing real (small) orders to keep the feedback loop honest. End-to-end signal generation — from raw candle ingestion through Hurst regime classification, ML wave labeling, multi-timeframe confluence, and quantum portfolio sizing — completes in under 200ms per pair. Defensive vetoes (Wave 5, corrective patterns, chaotic regimes via fractal dimension > 1.7) account for more of the realized edge than any single offensive component, which is the most useful lesson the project produced. As a portfolio piece this case demonstrates the ability to design and ship a polyglot, ML-driven, real-time system end-to-end as a single developer — from market data plumbing to model training to live execution.`,
+
+    technicalWins: [
+      'Hurst-exponent-driven regime detection: ~87% classification accuracy vs ~60% for ADX-only baselines on the same data.',
+      'ML Elliott Wave classification (HistGradientBoosting on quantum features) eliminates analyst subjectivity and produces calibrated confidence scores.',
+      'Multi-timeframe confluence filter cuts false positives by ~60% and lifts observed win rate from 48% to 65%+.',
+      'Quantum-inspired portfolio optimizer adapts position size to wave stage and signal quality, materially improving Sharpe (2.1 vs 1.3 with fixed sizing on the same backtest set).',
+      'Defensive veto layer (Wave 5, corrective A/B/C, fractal dimension > 1.7) prevented a measurable share of would-be losses across backtests.',
+      'Sub-200ms multi-timeframe analysis on commodity hardware enables low-latency trade execution.',
+      'Polyglot architecture (Python ML core + TypeScript/Node.js orchestration + SQLite persistence) cleanly separated by concern, communicating over a subprocess bridge — no stack-internal lock-in.',
+      'Robust error handling and reconnection across Binance WebSocket disconnects, partial fills, and data gaps — required for unattended 24/7 operation.'
+    ],
+
+    // Key Learnings
+    learnings: [
+      'Defensive rules outperformed offensive rules. The veto layer (Wave 5, corrective waves, chaotic regimes) prevented more loss than any optimization improved gain.',
+      'Position sizing is as important as entry. Fixed sizing under-funds the best setups and over-funds the worst — the asymmetry is large enough to dominate medium-term P&L.',
+      'Single-timeframe signals lie. Demanding alignment across 5m/15m/1h/4h is an unglamorous filter that did more for win rate than any model upgrade.',
+      'Hurst exponent and fractal dimension are doing real work that ADX and ATR are not. The cost is more compute and more parameters; the win is a regime label that downstream decisions can actually trust.',
+      'ML confidence scoring is not optional in production. Every signal carries a wave-level confidence and an overall confidence — low-confidence signals get smaller size or no trade at all.',
+      '24/7 autonomous systems force you to take edge cases seriously. API failures, partial fills, gapped candles, daylight-saving timestamps — the system has to survive all of them without a human in the loop.',
+      'A polyglot stack is fine when boundaries are clean. Python for ML, TypeScript/Node for orchestration, SQLite for state — each chosen because it was the right tool for that layer, not because the stack pretends to be uniform.'
+    ],
+
+    // Technologies (for SEO)
+    technologies: [
+      'Python', 'TypeScript', 'Node.js', 'Scikit-learn', 'TA-Lib', 'NumPy', 'Pandas', 'SciPy',
+      'Machine Learning', 'Hurst Exponent', 'Fractal Dimension', 'Elliott Wave',
+      'Quantum-Inspired Algorithms', 'Multi-Timeframe Analysis', 'Kelly Criterion',
+      'Algorithmic Trading', 'Binance API', 'WebSocket', 'SQLite', 'PM2'
+    ],
+
+    // Translations
+    translations: {
+      pt: {
+        title: 'Quantum Elliott Wave AI — Plataforma Autónoma de Trading de Cripto',
+        subtitle: 'Projeto pessoal de I&D — sistema de trading com ML e algoritmos de inspiração quântica que classifica fases Elliott Wave, exige confluência multi-timeframe, e ajusta o sizing dinamicamente em mercados Binance ao vivo',
+        context: `Os mercados de cripto correm 24/7 com volatilidade extrema e a análise técnica clássica falha porque trata o preço como random walk e ignora a microestrutura fractal e mutável dos mercados. Quis empurrar até onde dava um sistema construído por um único developer: uma plataforma autónoma que entende o regime do mercado por medidas quantitativas (expoente de Hurst, dimensão fractal), classifica fases Elliott Wave com machine learning em vez de olho humano, exige confluência entre múltiplos timeframes antes de agir, e optimiza o sizing de forma adaptativa. É um projeto pessoal de I&D, não um engagement de cliente. Corre ao vivo na Binance com ordens reais (pequenas) assinadas, para que o feedback loop seja mercado real e fills reais, não paper trading. Todas as métricas abaixo são backtested ou observadas neste mesmo projeto — não são resultados de cliente.`,
+        challenges: [
+          {
+            title: 'Classificação Elliott Wave objetiva',
+            description: 'Elliott Wave é notoriamente subjetiva — analistas diferentes etiquetam ondas diferentes no mesmo gráfico. Era preciso identificação reproduzível com score de confiança, não juízo humano.',
+            icon: 'ri-wave-line'
+          },
+          {
+            title: 'Detecção de regime para além do ADX',
+            description: 'Os mercados alternam entre persistente (em tendência) e reversão à média. Uma estratégia trend-following num regime de reversão à média sangra capital. ADX sozinho é demasiado ruidoso.',
+            icon: 'ri-flashlight-line'
+          },
+          {
+            title: 'Falsos positivos de timeframe único',
+            description: 'Sinais de um único timeframe produzem ~40% de falsos positivos nas corridas observadas. Oportunidades reais aparecem quando 5m, 15m, 1h e 4h alinham — combiná-los ingenuamente é igualmente ruidoso.',
+            icon: 'ri-time-line'
+          },
+          {
+            title: 'Sizing como problema de primeira classe',
+            description: 'Sizing fixo (sempre 5%) ignora qualidade do sinal, regime, e fase Elliott Wave. Sub-financia as melhores entradas e sobre-financia as piores.',
+            icon: 'ri-shield-check-line'
+          }
+        ],
+        stack: {
+          ai: ['Python 3.13', 'NumPy', 'Pandas', 'Scikit-learn (HistGradientBoosting, MLPClassifier, ExtraTreesRegressor)', 'TA-Lib', 'SciPy'],
+          quantum: ['Analisador de expoente de Hurst', 'Calculador de dimensão fractal', 'Motor de superposição quântica', 'Amplificador de interferência'],
+          backend: ['TypeScript', 'Node.js 18', 'Histórico de trades em SQLite', 'Binance WebSocket API'],
+          deployment: ['Gestor de processos PM2', 'Bridge Python via subprocess', 'Streaming WebSocket em tempo real, operação 24/7']
+        },
+        keyDecisions: [
+          {
+            decision: 'Expoente de Hurst como classificador de regime principal',
+            rationale: 'Hurst > 0.6 indica persistência (estratégias de momentum funcionam). Hurst < 0.4 indica reversão à média (contrárias funcionam). Os backtests mostraram ~87% de precisão vs ~60% só com ADX.',
+            tradeoff: 'Mais caro de calcular que ADX e precisa de janela suficiente para estabilizar. Vale a pena — o label de regime conduz todas as decisões a jusante.'
+          },
+          {
+            decision: 'Elliott Waves classificadas por ML em vez de regras',
+            rationale: 'Detecção baseada em regras herda a subjetividade do analista que escreveu as regras. Um HistGradientBoostingClassifier treinado em Hurst, momentum, volume e dimensão fractal produz labels objetivas, reproduzíveis e com confiança calibrada.',
+            tradeoff: 'Precisa de dados rotulados e re-treino periódico à medida que a microestrutura muda. Substituível quando os labels degradam — o resto da pipeline não depende do classificador concreto.'
+          },
+          {
+            decision: 'Superposição quântica para sizing de portfolio',
+            rationale: 'O otimizador avalia 16 candidatos de tamanho simultaneamente e amplifica os de Sharpe alto via interferência (energia = 0.4·Sharpe + 0.3·confiança + termo de Kelly). Adapta-se à fase Elliott (Wave 3: 1.5x, Wave 5: 0.7x e veto).',
+            tradeoff: 'Mais CPU por sinal que sizing fixo, mas elimina toda uma categoria de trades maus — entradas em Wave 5 sobre-dimensionadas são especialmente destrutivas e sizing fixo não tem como as evitar.'
+          },
+          {
+            decision: 'Confluência multi-timeframe como filtro forte (não desempate)',
+            rationale: 'O sistema exige confluência ≥ 0.3 entre 5m/15m/1h/4h antes de qualquer trade. A confluência combina alinhamento de momentum, direção de viés EMA, e contagem de timeframes em concordância. Reduz frequência de trades em ~60% mas aumenta o win rate observado de 48% para 65%+.',
+            tradeoff: 'Menos trades significam compounding mais lento em mercados calmos. Aceitável — sobreviver a drawdowns importa mais que estar maximamente ativo.'
+          }
+        ],
+        businessImpact: `A plataforma corre 24/7 sem supervisão contra mercados Binance ao vivo, assinando ordens reais (pequenas) para manter o feedback loop honesto. A geração end-to-end de sinal — desde a ingestão de candles até classificação de regime via Hurst, labeling de wave por ML, confluência multi-timeframe e sizing de inspiração quântica — completa em menos de 200ms por par. Os vetos defensivos (Wave 5, padrões corretivos A/B/C, regimes caóticos via dimensão fractal > 1.7) explicam mais do edge realizado do que qualquer componente ofensivo, que é a lição mais útil que o projeto produziu. Como peça de portfolio, demonstra capacidade de desenhar e entregar um sistema poliglota, em tempo real e baseado em ML, end-to-end como developer único — desde o pipe de dados ao treino do modelo à execução ao vivo.`,
+        technicalWins: [
+          'Detecção de regime via Hurst: ~87% de precisão de classificação vs ~60% para baselines só com ADX nos mesmos dados.',
+          'Classificação Elliott Wave por ML (HistGradientBoosting sobre features quânticas) elimina subjetividade e produz scores de confiança calibrados.',
+          'Filtro de confluência multi-timeframe corta falsos positivos em ~60% e eleva o win rate observado de 48% para 65%+.',
+          'Otimizador de portfolio de inspiração quântica adapta o sizing à fase de wave e qualidade do sinal, melhorando Sharpe materialmente (2.1 vs 1.3 com sizing fixo no mesmo conjunto de backtests).',
+          'Camada defensiva de veto (Wave 5, A/B/C corretivas, dimensão fractal > 1.7) preveniu uma fatia mensurável de perdas potenciais nos backtests.',
+          'Análise multi-timeframe em sub-200ms em hardware comum permite execução de baixa latência.',
+          'Arquitetura poliglota (Python para ML core + TypeScript/Node.js para orquestração + SQLite para persistência) limpa por preocupação, comunicando via subprocess — sem lock-in interno de stack.',
+          'Tratamento de erro e reconexão robustos para desconexões WebSocket Binance, fills parciais e gaps de dados — necessários para operação 24/7 sem supervisão.'
+        ],
+        learnings: [
+          'Regras defensivas superaram ofensivas. A camada de veto (Wave 5, corretivas, regimes caóticos) preveniu mais perda do que qualquer otimização melhorou ganho.',
+          'Sizing é tão importante como entrada. Sizing fixo sub-financia os melhores setups e sobre-financia os piores — a assimetria é grande o suficiente para dominar o P&L de médio prazo.',
+          'Sinais de timeframe único mentem. Exigir alinhamento entre 5m/15m/1h/4h é um filtro pouco glamoroso que fez mais pelo win rate que qualquer upgrade de modelo.',
+          'O expoente de Hurst e a dimensão fractal estão a fazer trabalho real que o ADX e o ATR não fazem. O custo é mais compute e mais parâmetros; o ganho é um label de regime no qual as decisões a jusante podem confiar.',
+          'O scoring de confiança ML não é opcional em produção. Cada sinal carrega confiança ao nível da wave e confiança global — sinais de baixa confiança recebem sizing menor ou nenhum trade.',
+          'Sistemas autónomos 24/7 forçam-te a levar edge cases a sério. Falhas de API, fills parciais, candles em falta, timestamps de horário de verão — o sistema tem de sobreviver a tudo sem humano no loop.',
+          'Uma stack poliglota está bem quando as fronteiras são limpas. Python para ML, TypeScript/Node para orquestração, SQLite para estado — cada uma escolhida por ser a ferramenta certa para essa camada.'
         ]
       }
     }

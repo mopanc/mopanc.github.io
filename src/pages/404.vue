@@ -1,7 +1,7 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
 <div class="body_404">
-    <!-- Lamp with enhanced movement -->
+    <!-- Lamp -->
     <div class="lamp__wrap">
       <div class="lamp">
         <div class="cable"></div>
@@ -9,30 +9,34 @@
         <div class="in-cover">
           <div class="bulb"></div>
         </div>
-        <div class="light"></div>
       </div>
     </div>
 
-    <!-- Content that appears only when illuminated -->
+    <!-- Content -->
     <section class="error">
       <div class="error__content">
-        <div class="error__message message">
-          <h1 class="message__title illuminated-text" ref="not_found_title" data-text="Page Not Found">Page Not Found</h1>
-          <p class="message__text illuminated-text" ref="not_found_description" data-text="We're sorry, the page you were looking for isn't found here. The link you followed may either be broken or no longer exists.">We're sorry, the page you were looking for isn't found here. The link you followed may either be broken or no longer exists.</p>
+        <div class="error__message">
+          <h1 class="message__title illuminated-text" data-text="404">404</h1>
+          <p class="message__sub illuminated-text" ref="not_found_title" data-text="Page Not Found">Page Not Found</p>
+          <p class="message__text illuminated-text" ref="not_found_description" data-text="The page you were looking for doesn't exist or has been moved.">The page you were looking for doesn't exist or has been moved.</p>
         </div>
-        <div class="error__nav e-nav">
-          <a href="/" class="btn btn--primary illuminated-button" ref="home_page">
+        <div class="error__nav">
+          <a href="/" class="error__btn error__btn--primary" ref="home_page">
             <i class="ri-home-line"></i>
-            Home Page
+            Home
           </a>
-          <a href="/projects" class="btn btn--secondary illuminated-button">
+          <a href="/projects" class="error__btn error__btn--outline">
             <i class="ri-folder-line"></i>
             Projects
+          </a>
+          <a href="/contact" class="error__btn error__btn--outline">
+            <i class="ri-message-line"></i>
+            Contact
           </a>
         </div>
       </div>
     </section>
-    </div>
+</div>
 </template>
 
 <script>
@@ -45,131 +49,118 @@ export default {
     },
     async mounted() {
         await this.initialize()
-
-        // Set translated text if refs exist
         if (this.$refs.not_found_title) {
             this.$refs.not_found_title.textContent = this.translations.not_found_title || 'Page Not Found'
+            this.$refs.not_found_title.dataset.text = this.$refs.not_found_title.textContent
         }
         if (this.$refs.not_found_description) {
-            this.$refs.not_found_description.textContent = this.translations.not_found_description || "We're sorry, the page you were looking for isn't found here."
+            this.$refs.not_found_description.textContent = this.translations.not_found_description || "The page you were looking for doesn't exist or has been moved."
+            this.$refs.not_found_description.dataset.text = this.$refs.not_found_description.textContent
         }
         if (this.$refs.home_page) {
-            this.$refs.home_page.innerHTML = `<i class="ri-home-line"></i> ${this.translations.home_page || 'Home Page'}`
+            this.$refs.home_page.innerHTML = `<i class="ri-home-line"></i> ${this.translations.home_page || 'Home'}`
         }
     }
 }
 </script>
 
 <style scoped>
-/* Import Remix Icons */
-@import url('https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css');
-
-/* Dark room base */
 .body_404 {
-  background: #000000;
+  background: #0a0d14;
   min-height: 100vh;
   overflow: hidden;
   position: relative;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--ff-body);
 }
 
-/* Enhanced lamp animation */
+/* ═══ LAMP ═══ */
 .lamp {
   position: absolute;
-  left: 0px;
-  right: 0px;
-  top: 0px;
-  margin: 0px auto;
+  left: 0; right: 0; top: 0;
+  margin: 0 auto;
   width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   transform-origin: center top;
-  animation: move 6s ease-in-out infinite;
+  animation: swing 6s ease-in-out infinite;
   z-index: 1;
 }
 
-@keyframes move {
-  0% { transform: rotate(35deg); }
-  25% { transform: rotate(-35deg); }
-  50% { transform: rotate(40deg); }
-  75% { transform: rotate(-40deg); }
-  100% { transform: rotate(35deg); }
+@keyframes swing {
+  0% { transform: rotate(30deg); }
+  25% { transform: rotate(-30deg); }
+  50% { transform: rotate(35deg); }
+  75% { transform: rotate(-35deg); }
+  100% { transform: rotate(30deg); }
 }
 
 .cable {
-  width: 8px;
-  height: 150px;
-  background: linear-gradient(to bottom, #333, #111);
-  border-radius: 4px;
+  width: 4px;
+  height: 100px;
+  background: linear-gradient(to bottom, rgba(126,184,247,0.2), rgba(126,184,247,0.05));
+  border-radius: 2px;
 }
 
 .cover {
-  width: 200px;
-  height: 80px;
-  background: linear-gradient(to bottom, #2a2a2a, #000);
+  width: 180px;
+  height: 70px;
+  background: linear-gradient(to bottom, #151a24, #0a0d14);
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
   position: relative;
   z-index: 200;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.8);
+  border: 1px solid rgba(126,184,247,0.08);
+  border-bottom: none;
 }
 
 .in-cover {
   width: 100%;
-  max-width: 200px;
-  height: 20px;
+  max-width: 180px;
+  height: 18px;
   border-radius: 100%;
-  background: #070808;
+  background: #0c1018;
   position: absolute;
-  left: 0px;
-  right: 0px;
-  margin: 0px auto;
-  bottom: -9px;
+  left: 0; right: 0;
+  margin: 0 auto;
+  bottom: -8px;
   z-index: 100;
 }
 
 .bulb {
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(circle, #d2b48c, #c9a876);
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #7eb8f7, #3b6fd4);
   border-radius: 50%;
   position: absolute;
-  left: 0px;
-  right: 0px;
-  bottom: -20px;
-  margin: 0px auto;
+  left: 0; right: 0;
+  bottom: -16px;
+  margin: 0 auto;
   box-shadow:
-    0 0 40px 15px rgba(210, 180, 140, 0.8),
-    0 0 120px 80px rgba(210, 180, 140, 0.4),
-    0 0 200px 150px rgba(210, 180, 140, 0.2),
-    0 0 300px 200px rgba(210, 180, 140, 0.1);
-  animation: bulbFlicker 2s ease-in-out infinite alternate;
+    0 0 30px 10px rgba(126,184,247,0.6),
+    0 0 100px 60px rgba(126,184,247,0.25),
+    0 0 200px 120px rgba(126,184,247,0.1),
+    0 0 300px 180px rgba(59,111,212,0.05);
+  animation: glow 2.5s ease-in-out infinite alternate;
 }
 
-@keyframes bulbFlicker {
+@keyframes glow {
   0% {
     box-shadow:
-      0 0 40px 15px rgba(210, 180, 140, 0.6),
-      0 0 120px 80px rgba(210, 180, 140, 0.3),
-      0 0 200px 150px rgba(210, 180, 140, 0.15),
-      0 0 300px 200px rgba(210, 180, 140, 0.05);
+      0 0 30px 10px rgba(126,184,247,0.4),
+      0 0 100px 60px rgba(126,184,247,0.15),
+      0 0 200px 120px rgba(126,184,247,0.06);
   }
   100% {
     box-shadow:
-      0 0 40px 15px rgba(210, 180, 140, 0.9),
-      0 0 120px 80px rgba(210, 180, 140, 0.5),
-      0 0 200px 150px rgba(210, 180, 140, 0.25),
-      0 0 300px 200px rgba(210, 180, 140, 0.15);
+      0 0 30px 10px rgba(126,184,247,0.7),
+      0 0 100px 60px rgba(126,184,247,0.3),
+      0 0 200px 120px rgba(126,184,247,0.12),
+      0 0 300px 180px rgba(59,111,212,0.06);
   }
 }
 
-/* Enhanced ambient glow */
-.light {
-  display: none;
-}
-
-/* Content section */
+/* ═══ CONTENT ═══ */
 .error {
   position: relative;
   min-height: 100vh;
@@ -181,179 +172,154 @@ export default {
 
 .error__content {
   text-align: center;
-  max-width: 600px;
+  max-width: 550px;
   padding: 2rem;
-}
-
-/* Text that only appears when illuminated */
-.illuminated-text {
-  color: transparent;
-  position: relative;
-}
-
-.illuminated-text::before {
-  content: attr(data-text);
-  position: absolute;
-  top: 0;
-  left: 0;
-  color: rgba(255, 255, 255, 0.9);
-  clip-path: circle(100px at 25% 0px);
-  animation: lightReveal 6s ease-in-out infinite;
-}
-
-@keyframes lightReveal {
-  0% { clip-path: circle(100px at 25% 0px); }
-  25% { clip-path: circle(100px at 75% 0px); }
-  50% { clip-path: circle(100px at 20% 0px); }
-  75% { clip-path: circle(100px at 80% 0px); }
-  100% { clip-path: circle(100px at 25% 0px); }
-}
-
-.message__title {
-  font-size: 4rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-bottom: 2rem;
-  line-height: 1.2;
-}
-
-.message__text {
-  font-size: 1.2rem;
-  line-height: 1.6;
-  margin-bottom: 3rem;
-  opacity: 0.9;
-  width: 360px;
-}
-
-/* Enhanced buttons */
-.error__nav {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.illuminated-button {
-  background: rgba(210, 180, 140, 0.1);
-  border: 2px solid rgba(210, 180, 140, 0.3);
-  color: rgba(255, 255, 255, 0.8);
-  padding: 1rem 2rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  transition: all 0.3s ease;
-  position: relative;
-  font-size: 0.9rem;
-}
-
-.illuminated-button:hover {
-  background: rgba(210, 180, 140, 0.2);
-  border-color: rgba(210, 180, 140, 0.6);
-  color: rgba(255, 255, 255, 1);
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(210, 180, 140, 0.3);
-}
-
-.btn--primary {
-  background: rgba(210, 180, 140, 0.1) !important;
-}
-
-.btn--secondary {
-  background: rgba(255, 255, 255, 0.05) !important;
-}
-
-.illuminated-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 5px 25px rgba(210, 180, 140, 0.4) !important;
-  border-color: rgba(210, 180, 140, 0.8) !important;
-}
-
-/* Icons in buttons */
-.illuminated-button i {
-  font-size: 1.2rem;
-  opacity: 0.8;
 }
 
 .error__message {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Illuminated text — two layers: dim base + bright revealed */
+.illuminated-text {
+  color: rgba(200, 216, 240, 0.06);
+  position: relative;
+}
+
+.illuminated-text::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  color: rgba(200, 216, 240, 0.9);
+  clip-path: ellipse(250px 350px at 25% -80px);
+  filter: blur(0.5px);
+  animation: lightReveal 6s ease-in-out infinite;
+}
+
+@keyframes lightReveal {
+  0% { clip-path: ellipse(250px 350px at 25% -80px); }
+  25% { clip-path: ellipse(250px 350px at 75% -80px); }
+  50% { clip-path: ellipse(250px 350px at 20% -80px); }
+  75% { clip-path: ellipse(250px 350px at 80% -80px); }
+  100% { clip-path: ellipse(250px 350px at 25% -80px); }
+}
+
+.message__title {
+  font-size: clamp(50px, 10vw, 80px);
+  font-weight: 700;
+  font-family: var(--ff-mono);
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.message__title::before {
+  color: rgba(126, 184, 247, 0.9);
+}
+
+.message__sub {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.message__text {
+  font-size: 16px;
+  line-height: 1.7;
+  max-width: 400px;
+}
+
+/* ═══ BUTTONS ═══ */
+.error__nav {
+  display: flex;
+  gap: 0.8rem;
   justify-content: center;
-  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.error__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  min-height: auto;
+  min-width: auto;
+}
+
+.error__btn i { font-size: 1.1em; }
+
+.error__btn--primary {
+  background: rgba(126,184,247,0.12);
+  color: #7eb8f7;
+  border: 1px solid rgba(126,184,247,0.25);
+}
+
+.error__btn--primary:hover {
+  background: rgba(126,184,247,0.2);
+  border-color: rgba(126,184,247,0.5);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(126,184,247,0.15);
+}
+
+.error__btn--outline {
+  background: transparent;
+  color: #c8d8f0;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.error__btn--outline:hover {
+  border-color: rgba(255,255,255,0.25);
+  color: #ffffff;
+  transform: translateY(-2px);
 }
 
 /* Ambient particles */
 .body_404::before {
   content: '';
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
   background-image:
-    radial-gradient(1px 1px at 20px 30px, rgba(210, 180, 140, 0.2), transparent),
-    radial-gradient(1px 1px at 40px 70px, rgba(255, 255, 255, 0.05), transparent),
-    radial-gradient(1px 1px at 90px 40px, rgba(210, 180, 140, 0.1), transparent),
-    radial-gradient(1px 1px at 130px 80px, rgba(255, 255, 255, 0.02), transparent),
-    radial-gradient(1px 1px at 160px 120px, rgba(210, 180, 140, 0.15), transparent);
+    radial-gradient(1px 1px at 20px 30px, rgba(126,184,247,0.15), transparent),
+    radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.03), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(126,184,247,0.08), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.02), transparent),
+    radial-gradient(1px 1px at 160px 120px, rgba(126,184,247,0.1), transparent);
   background-repeat: repeat;
   background-size: 200px 150px;
   animation: float 25s ease-in-out infinite;
   pointer-events: none;
-  opacity: 0.4;
+  opacity: 0.5;
   z-index: 1;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px) translateX(0px); }
-  33% { transform: translateY(-8px) translateX(4px); }
-  66% { transform: translateY(4px) translateX(-6px); }
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-6px) translateX(3px); }
+  66% { transform: translateY(3px) translateX(-4px); }
 }
 
-/* Responsive design */
+/* ═══ RESPONSIVE ═══ */
 @media (max-width: 768px) {
-  .message__title {
-    font-size: 2.5rem;
-    letter-spacing: 2px;
-  }
-
-  .message__text {
-    font-size: 1rem;
-    padding: 0 1rem;
-  }
-
-  .lamp {
-    zoom: 0.7;
-  }
-
-  .error__nav {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .illuminated-button {
-    width: 200px;
-    justify-content: center;
-  }
+  .lamp { zoom: 0.7; }
+  .error__nav { flex-direction: column; align-items: center; }
+  .error__btn { width: 200px; justify-content: center; }
 }
 
 @media (max-width: 480px) {
-  .message__title {
-    font-size: 2rem;
-  }
-
-  .lamp {
-    zoom: 0.5;
-  }
-
-  .error__content {
-    padding: 1rem;
-  }
+  .lamp { zoom: 0.5; }
+  .error__content { padding: 1rem; }
 }
 </style>

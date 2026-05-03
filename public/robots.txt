@@ -3,28 +3,133 @@ Allow: /
 Disallow: /404
 Disallow: /*.json$
 Disallow: /dist/
+Disallow: /testes-logo
+Disallow: /admin
+Disallow: /blog-admin
+Disallow: /debug-financeiro
 
 # Sitemap
 Sitemap: https://jorgemopanc.com/sitemap.xml
 
-# AI Crawlers
+# ========================================
+# AI / LLM Crawlers — explicitly allowed
+# ========================================
+
+# OpenAI
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: CCBot
+User-agent: OAI-SearchBot
 Allow: /
 
+# Anthropic / Claude
 User-agent: anthropic-ai
 Allow: /
 
 User-agent: Claude-Web
 Allow: /
 
+User-agent: ClaudeBot
+Allow: /
+
+# Google (LLM training)
+User-agent: Google-Extended
+Allow: /
+
+# Common Crawl (used as training data by many LLMs)
+User-agent: CCBot
+Allow: /
+
+# Perplexity
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: Perplexity-User
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Meta (Llama, Meta AI)
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: Meta-ExternalFetcher
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# ByteDance / Doubao
+User-agent: Bytespider
+Allow: /
+
+# Amazon
+User-agent: Amazonbot
+Allow: /
+
+# DuckDuckGo (DuckAssist)
+User-agent: DuckAssistBot
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+User-agent: cohere-training-data-crawler
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Diffbot (used by AI search products)
+User-agent: Diffbot
+Allow: /
+
+# Omgili / Webz.io
+User-agent: Omgili
+Allow: /
+
+User-agent: Omgilibot
+Allow: /
+
+# Timpi
+User-agent: TimpiBot
+Allow: /
+
+# ========================================
+# Social link preview crawlers
+# ========================================
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: Slackbot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+User-agent: Discordbot
+Allow: /
+
+User-agent: WhatsApp
 Allow: /

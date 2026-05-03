@@ -5,16 +5,18 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomePage from './components/HomePage.vue';
 
 // Lazy load other pages with code splitting
-const ProjectsPage = () => import('./pages/ProjectsPage-modern.vue');
+const ProjectsPage = () => import('./pages/ProjectsOverview.vue');
 const ProjectDetail = () => import('./pages/ProjectDetail.vue');
-const AboutPage = () => import('./pages/AboutPage-modern.vue');
+const AboutPage = () => import('./pages/AboutPage-new.vue');
 const ContactPage = () => import('./pages/ContactPage.vue');
+const HirePage = () => import('./pages/HirePage.vue');
 const PrivacyPage = () => import('./pages/PrivacyPage.vue');
 const SuccessPage = () => import('./pages/SuccessPage.vue');
 const BlogPage = () => import('./pages/BlogPage.vue');
 const ArticlePage = () => import('./pages/ArticlePage.vue');
 const BlogAdmin = () => import('./pages/BlogAdmin.vue');
 const NotFoundPage = () => import('./pages/404.vue');
+const TestesLogo = () => import('./pages/TestesLogo.vue');
 
 // Código Mental - Book companion pages
 const LandingCodigoMental = () => import('./pages/LandingCodigoMental.vue');
@@ -28,9 +30,9 @@ const routes = [
     name: 'Home',
     component: HomePage,
     meta: {
-      title: 'Jorge Morais | Full Stack Developer Portfolio',
-      description: 'Full Stack Developer with 5+ years building high-performance web applications and embedded systems. Specialized in React, Vue.js, Node.js, TypeScript, C programming, and industrial IoT.',
-      keywords: 'full stack developer, lead developer, react developer, vuejs developer, nodejs developer, typescript developer, embedded systems developer, IoT developer',
+      title: 'Jorge Morais · Senior Full-Stack Developer · AI + IoT',
+      description: 'Senior Full-Stack Developer at the intersection of AI and Industrial IoT. React/Vue/Node + C firmware + LLMs (RAG, MCP, agents). Remote, EU.',
+      keywords: 'senior full stack developer, AI and industrial IoT, edge AI developer, llm integration, mcp server, rag, agent tooling, react developer, vue developer, nodejs developer, typescript developer, embedded developer, MQTT, CCTalk, remote developer EU, benelux developer, nordic developer',
       ogType: 'profile',
       seoConfig: 'home'
     }
@@ -46,6 +48,10 @@ const routes = [
       seoConfig: 'projects'
     }
   },
+  // Legacy routes — redirect to unified /projects (preserves SEO + external links)
+  { path: '/projects/case-studies', redirect: '/projects' },
+  { path: '/projects/personal', redirect: '/projects' },
+  { path: '/projects/open-source', redirect: '/projects' },
   {
     path: '/projects/:slug',
     name: 'ProjectDetail',
@@ -62,20 +68,16 @@ const routes = [
     name: 'About',
     component: AboutPage,
     meta: {
-      title: 'About Jorge Morais | Developer Experience & Bio',
-      description: 'Learn about my journey from military service to full stack development. 5+ years of experience in web applications, embedded systems, and industrial IoT solutions.',
-      keywords: 'about, developer bio, full stack developer biography, career journey, professional experience',
+      title: 'About Jorge Morais — Senior Full-Stack Developer · AI + Industrial IoT',
+      description: 'Senior Full-Stack Developer based in Braga, Portugal, working at the intersection of AI and Industrial IoT. From PHP and military service to embedded C, real-time React/Vue/Node.js platforms, MCP servers and RAG over device telemetry. 5+ years shipping production.',
+      keywords: 'about, jorge morais bio, senior full stack developer biography, AI industrial IoT developer, llm developer, mcp, embedded developer, career journey',
       seoConfig: 'about'
     }
   },
   {
     path: '/certificates',
-    name: 'Certificates',
-    component: AboutPage,
+    redirect: '/about',
     meta: {
-      title: 'Certifications & Education | Jorge Morais CS50 Harvard',
-      description: 'Professional certifications in JavaScript, React, Vue.js, Node.js, and computer science. Currently completing CS50 from Harvard University.',
-      keywords: 'certifications, education, cs50, harvard, javascript certification, react certification',
       seoConfig: 'certificates'
     }
   },
@@ -84,10 +86,22 @@ const routes = [
     name: 'Contact',
     component: ContactPage,
     meta: {
-      title: 'Contact Jorge Morais - Available for Remote Opportunities',
-      description: 'Get in touch to discuss your project. Available for remote full stack development, embedded systems programming, and technical consulting.',
-      keywords: 'contact, hire developer, remote developer, full stack developer for hire, technical consulting',
+      title: 'Contact Jorge Morais — Senior Full-Stack Developer (Remote, EU)',
+      description: 'Get in touch to discuss a senior or lead full-stack opportunity, an LLM integration engagement, or a hardware-to-cloud platform challenge. Remote-first, EU citizen.',
+      keywords: 'contact, hire senior full stack developer, hire llm developer, remote developer EU, benelux nordic remote',
       seoConfig: 'contact'
+    }
+  },
+  {
+    path: '/hire',
+    name: 'Hire',
+    component: HirePage,
+    meta: {
+      title: 'Hire Jorge Morais — Senior Full-Stack Developer · AI + Industrial IoT (Remote, EU)',
+      description: 'Open to senior or lead full-stack roles in product teams at the intersection of AI and Industrial IoT — smart manufacturing, edge AI, IoT platforms with LLM features, agents that act on real hardware. Remote-first, EU citizen, available for relocation to Benelux or Nordic countries.',
+      keywords: 'hire senior full stack developer, AI industrial IoT, edge AI developer, hire llm developer, hire mcp developer, remote senior developer EU, benelux nordic remote senior',
+      ogType: 'profile',
+      seoConfig: 'hire'
     }
   },
   {
@@ -195,6 +209,17 @@ const routes = [
       description: 'Roadmap educativo de literacia financeira: dos 3 bugs que herdaste até conceitos de investimento. Conteúdo do livro Código Mental.',
       keywords: 'debug financeiro, educacao financeira, investimentos, literacia financeira, codigo mental',
       ogType: 'article'
+    }
+  },
+  // Brand sandbox (internal, noindex)
+  {
+    path: '/testes-logo',
+    name: 'TestesLogo',
+    component: TestesLogo,
+    meta: {
+      title: 'Brand Mark Sandbox | Jorge Morais',
+      description: 'Internal sandbox for personal brand mark iteration.',
+      robots: 'noindex, nofollow'
     }
   },
   // Catch-all route for 404

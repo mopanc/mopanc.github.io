@@ -23,12 +23,7 @@
               <li><a href="#about" class="footer__link">{{ translations.about || 'Sobre' }}</a></li>
               <li><a href="#qualification" class="footer__link">{{ translations.footer_experience || 'Experiência' }}</a></li>
               <li><a href="#service" class="footer__link">{{ translations.footer_services || 'Serviços' }}</a></li>
-              <li>
-                <router-link v-if="isAccessValid" to="/projects" class="footer__link">{{ translations.projects || 'Projetos' }}</router-link>
-                <span v-else @click="showAccessRequired" class="footer__link footer__link--protected">
-                  🔒 {{ translations.projects || 'Projetos' }}
-                </span>
-              </li>
+              <li><router-link to="/projects" class="footer__link">{{ translations.projects || 'Projetos' }}</router-link></li>
             </ul>
           </div>
 
@@ -165,8 +160,8 @@ export default {
 
 <style scoped>
 .footer {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f1419 100%);
-  color: #ffffff;
+  background: #1A1A1A;
+  color: #FAFAF8;
   position: relative;
   overflow: hidden;
 }
@@ -177,7 +172,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  height: 1px;
+  height: 0;
   background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
 }
 
@@ -198,14 +193,10 @@ export default {
 }
 
 .footer__logo h3 {
-  color: var(--color-primary);
+  color: #FAFAF8;
   font-size: 1.8rem;
   font-weight: 700;
   margin: 0 0 0.5rem 0;
-  background: linear-gradient(135deg, var(--color-primary), #4facfe);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 .footer__tagline {
@@ -357,19 +348,17 @@ export default {
   justify-content: center;
   width: 40px;
   height: 40px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
   border-radius: 50%;
-  color: #a0a9c0;
+  color: #999;
   text-decoration: none;
   transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
 }
 
 .footer__social-link:hover {
-  background: var(--color-primary);
-  color: #ffffff;
-  transform: translateY(-3px);
-  box-shadow: 0 8px 20px rgba(106, 90, 205, 0.3);
+  background: #FAFAF8;
+  color: #1A1A1A;
+  transform: translateY(-2px);
 }
 
 /* Footer Bottom */

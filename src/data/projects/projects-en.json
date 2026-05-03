@@ -1,271 +1,687 @@
 {
   "projects": [
     {
-      "id": "qore-rewrite",
+      "id": "depguard",
+      "category": "open-source",
+      "isPublic": true,
+      "featured": true,
+      "caseStudySlug": "depguard-mcp-security-server",
+      "projectType": "Open Source - MCP Security Server",
+      "status": "Active Development",
+      "title": "depguard",
+      "description": "Open-source MCP server for npm dependency security, built in TypeScript with zero runtime dependencies. 12 tools: pre-install guardian, AI hallucination guard, static code analysis with malware pattern detection, dead dependency sweep, dual-source vulnerability audit (npm + GitHub Advisory), AI code review, CycloneDX 1.6 SBOM with VEX. 298 offline tests. Published on npm: npmjs.com/package/depguard-cli.",
+      "images": [
+        {
+          "src": "depguard/home.png",
+          "alt": "depguard landing page showing MCP Security Server for AI Coding Agents",
+          "title": "Landing Page"
+        },
+        {
+          "src": "depguard/demo.png",
+          "alt": "depguard live demo showing package audit results in terminal",
+          "title": "Live Demo"
+        },
+        {
+          "src": "depguard/description.png",
+          "alt": "depguard feature overview with 9 MCP tools and scoring model",
+          "title": "Features Overview"
+        },
+        {
+          "src": "depguard/npm.png",
+          "alt": "depguard-cli package page on npm registry",
+          "title": "npm Package"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "npm",
+          "icon": "npmjs-icon.svg"
+        },
+        {
+          "name": "GitHub",
+          "icon": "github-icon.svg"
+        }
+      ],
+      "links": {
+        "repository": "https://github.com/mopanc/depguard",
+        "website": "https://depguard.dev"
+      },
+      "metrics": [
+        {
+          "value": "12",
+          "label": "MCP Tools"
+        },
+        {
+          "value": "0",
+          "label": "Dependencies"
+        },
+        {
+          "value": "298",
+          "label": "Tests"
+        }
+      ]
+    },
+    {
+      "id": "gov-analytics-portugal",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "projectType": "Civic Data Platform",
+      "status": "Stable",
+      "title": "GOV.analytics",
+      "description": "Public procurement analytics for Portugal, built on open data from BASE/IMPIC (dados.gov.pt). Turborepo monorepo: Fastify + TypeScript backend with Kysely as type-safe query builder, PostgreSQL with year-based table partitioning and materialized views for fast aggregations, Redis + BullMQ queues, Next.js 15 (App Router) frontend with Tailwind v4. The ETL pipeline ingests over 200k public contracts spanning 2018 to 2026 from XLSX exports: automatic download, parsing, transformation, batch loading with deduplication, view refresh. The frontend exposes contracts, suppliers and analytics: spending summaries, top suppliers, contract drill-downs, search. The 'live' ambition is constrained by archaic government data formats (Excel-only, year-delayed releases). Historical analysis works on real production data.",
+      "images": [
+        {
+          "src": "gov/dashboard.png",
+          "alt": "GOV.analytics main dashboard with public spending summary across years and ministries",
+          "title": "Dashboard"
+        },
+        {
+          "src": "gov/contratos.png",
+          "alt": "Public contracts listing with advanced filters by year, supplier, and entity",
+          "title": "Contracts"
+        },
+        {
+          "src": "gov/receitas.png",
+          "alt": "Public revenue tracking and breakdowns alongside spending data",
+          "title": "Revenues"
+        },
+        {
+          "src": "gov/fontes.png",
+          "alt": "Open data sources and ingestion status from BASE/IMPIC and dados.gov.pt",
+          "title": "Data Sources"
+        },
+        {
+          "src": "gov/analytics.png",
+          "alt": "Analytics overview with year-over-year spending trends and totals",
+          "title": "Analytics"
+        },
+        {
+          "src": "gov/analytics-1.png",
+          "alt": "Analytics drill-down with detailed views by ministry, region or category",
+          "title": "Analytics Drill-down"
+        },
+        {
+          "src": "gov/analytics-2.png",
+          "alt": "Analytics deep-dive with comparative charts and supplier rankings",
+          "title": "Analytics Deep-dive"
+        },
+        {
+          "src": "gov/search.png",
+          "alt": "Advanced search with multi-field filters across contracts, suppliers and entities",
+          "title": "Search"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "Fastify",
+          "icon": ""
+        },
+        {
+          "name": "Kysely",
+          "icon": ""
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": ""
+        },
+        {
+          "name": "Redis",
+          "icon": ""
+        },
+        {
+          "name": "BullMQ",
+          "icon": ""
+        },
+        {
+          "name": "Next.js 15",
+          "icon": ""
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwindcss-icon.svg"
+        },
+        {
+          "name": "Turborepo",
+          "icon": ""
+        }
+      ],
+      "links": {
+        "repository": null,
+        "website": null
+      },
+      "metrics": [
+        {
+          "value": "200k+",
+          "label": "Contracts"
+        },
+        {
+          "value": "9",
+          "label": "Year Span"
+        },
+        {
+          "value": "6",
+          "label": "SQL Migrations"
+        }
+      ]
+    },
+    {
+      "id": "workora-recruitment-saas",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "projectType": "AI-Powered Recruitment SaaS",
+      "status": "In Development",
+      "title": "Workora",
+      "description": "Recruitment SaaS connecting companies with candidates. Backend in Node.js/Express 5 with TypeScript, Prisma ORM and PostgreSQL (31 controllers, 30+ services, 28 route files). React 18/TypeScript frontend with Vite, Tailwind and shadcn/ui (18 pages, 21 component groups). Companies post credit-gated jobs and review applicants. Candidates upload CVs, search and apply with one click. Gemini AI scores candidate-job fit and surfaces recommendations; humans make the final call. Stripe for credits and subscriptions, LinkedIn OAuth for one-tap login plus profile import, Socket.IO for real-time notifications, Bull queue with SMTP/SendGrid/Mailgun for email pipelines, PDFKit for invoices and reports, full PT/EN i18n. Role-based access for Admin, Company and Candidate.",
+      "images": [
+        {
+          "src": "workora/home.png",
+          "alt": "Workora landing page presenting the AI-powered recruitment platform",
+          "title": "Landing"
+        },
+        {
+          "src": "workora/jobs-listing.png",
+          "alt": "Public job listings with search, filters and one-click apply",
+          "title": "Jobs Listing"
+        },
+        {
+          "src": "workora/candidate-profile.png",
+          "alt": "Candidate profile with parsed CV, skills and applications history",
+          "title": "Candidate Profile"
+        },
+        {
+          "src": "workora/interview.png",
+          "alt": "Interview management with scheduling and candidate-company communication",
+          "title": "Interview Management"
+        },
+        {
+          "src": "workora/company-dashboard.png",
+          "alt": "Company dashboard with applicant tracking, analytics and job management",
+          "title": "Company Dashboard"
+        },
+        {
+          "src": "workora/ai-matching.png",
+          "alt": "Gemini AI candidate matching with fit scores and ranked recommendations",
+          "title": "AI Matching"
+        },
+        {
+          "src": "workora/analytics.png",
+          "alt": "Recruitment analytics with hiring funnel, conversion metrics and platform insights",
+          "title": "Analytics & Insights"
+        },
+        {
+          "src": "workora/social-media.png",
+          "alt": "Social media integration for sharing job postings and amplifying reach",
+          "title": "Social Media Sharing"
+        },
+        {
+          "src": "workora/pricing-credits.png",
+          "alt": "Credit purchase and subscription page with Stripe payment integration",
+          "title": "Credits & Pricing"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "Express",
+          "icon": "express-js.svg"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "Prisma",
+          "icon": ""
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": ""
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwindcss-icon.svg"
+        },
+        {
+          "name": "Vite",
+          "icon": ""
+        },
+        {
+          "name": "Stripe",
+          "icon": ""
+        },
+        {
+          "name": "Gemini AI",
+          "icon": ""
+        },
+        {
+          "name": "Redis",
+          "icon": ""
+        },
+        {
+          "name": "Socket.IO",
+          "icon": "socketio.svg"
+        }
+      ],
+      "links": {
+        "repository": null,
+        "website": null
+      },
+      "metrics": [
+        {
+          "value": "31",
+          "label": "Controllers"
+        },
+        {
+          "value": "30+",
+          "label": "Services"
+        },
+        {
+          "value": "18",
+          "label": "Pages"
+        }
+      ]
+    },
+    {
+      "id": "cyborg-ai-platform",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "projectType": "Multi-Tenant AI Platform",
+      "status": "Active Development",
+      "title": "Cyborg",
+      "description": "Multi-tenant AI platform for managing industrial and IoT equipment through chat. Three services: a Go backend with 19 modules running on PostgreSQL and Redis, a Python FastAPI engine on Qdrant that talks to Claude, OpenAI or local Ollama, and a React/TypeScript frontend (Vite, Tailwind, shadcn/ui). Drop in PDFs, DOCX, Excel, Markdown or HTML, and each agent gets its own knowledge base. Agents make real HTTP calls with Basic, Bearer or OAuth2 auth, and talk to equipment over Modbus, MQTT or OPC-UA. Role-based multi-tenant access, AI-generated alerts pulled from equipment data, conversation analytics, license gating per feature. Ships with a device emulator for end-to-end testing without real hardware.",
+      "images": [
+        {
+          "src": "cyborg/home.png",
+          "alt": "Cyborg platform home with agents, equipment overview and tenant context",
+          "title": "Platform Home"
+        },
+        {
+          "src": "cyborg/dashboard.png",
+          "alt": "Dashboard with usage analytics, conversation metrics and tenant overview",
+          "title": "Dashboard Overview"
+        },
+        {
+          "src": "cyborg/equipment.png",
+          "alt": "Equipment management screen with device registration and protocol configuration",
+          "title": "Equipment Management"
+        },
+        {
+          "src": "cyborg/rag-ingest.png",
+          "alt": "RAG document ingestion uploading PDF, DOCX, Excel, Markdown and HTML files into per-agent knowledge bases",
+          "title": "RAG Document Ingestion"
+        },
+        {
+          "src": "cyborg/agent-config.png",
+          "alt": "Agent configuration with system prompt, tool actions and knowledge base assignment",
+          "title": "Agent Configuration"
+        },
+        {
+          "src": "cyborg/chat.png",
+          "alt": "AI agent chat with streaming responses and contextual answers",
+          "title": "Agent Chat"
+        },
+        {
+          "src": "cyborg/chat-1.png",
+          "alt": "Agent chat executing tool-calling actions on real devices over HTTP/Modbus/MQTT/OPC-UA",
+          "title": "Chat with Tool-Calling"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Go",
+          "icon": ""
+        },
+        {
+          "name": "Python",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "FastAPI",
+          "icon": ""
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": ""
+        },
+        {
+          "name": "Qdrant",
+          "icon": ""
+        },
+        {
+          "name": "Redis",
+          "icon": ""
+        },
+        {
+          "name": "Docker",
+          "icon": "docker-icon.svg"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwindcss-icon.svg"
+        },
+        {
+          "name": "Anthropic SDK",
+          "icon": ""
+        },
+        {
+          "name": "OpenAI SDK",
+          "icon": ""
+        },
+        {
+          "name": "Ollama",
+          "icon": ""
+        }
+      ],
+      "links": {
+        "repository": null,
+        "website": null
+      },
+      "metrics": [
+        {
+          "value": "3",
+          "label": "Service Architecture"
+        },
+        {
+          "value": "4",
+          "label": "Device Protocols"
+        },
+        {
+          "value": "5",
+          "label": "Doc Formats"
+        }
+      ]
+    },
+    {
+      "id": "montedge-personal-finance",
+      "category": "personal",
+      "isPublic": true,
+      "featured": false,
+      "projectType": "Personal Finance Platform",
+      "status": "Personal use",
+      "title": "MontEdge",
+      "description": "Personal finance platform that tracks every account, asset and movement in one place. Rails API on MySQL, Next.js + TypeScript frontend with protected routes. The domain covers 20+ entities: bank accounts, wallets, brokers and investment assets with dividend tracking, credit cards (charges, installment plans, payments), revenues, expenses with split logic and store-level price comparison, transfers, liabilities, VAT rates. Analytics on top: currency conversion, cheapest-price detection per article, dividend yield breakdowns. Built jointly with my brother (Rails dev). I use it daily for my own finances.",
+      "images": [
+        {
+          "src": "montedge/dashboard.png",
+          "alt": "MontEdge dashboard overview showing financial summary across accounts, investments and recent movements",
+          "title": "Dashboard"
+        },
+        {
+          "src": "montedge/accounts.png",
+          "alt": "Bank accounts and wallets list with balances and currency",
+          "title": "Accounts & Wallets"
+        },
+        {
+          "src": "montedge/investments.png",
+          "alt": "Investment assets, brokers and dividend tracking",
+          "title": "Investments & Dividends"
+        },
+        {
+          "src": "montedge/credit-cards.png",
+          "alt": "Credit card management with charges, installment plans and payments",
+          "title": "Credit Cards"
+        },
+        {
+          "src": "montedge/analytics.png",
+          "alt": "Analytics with currency conversion and dividend yield breakdowns",
+          "title": "Analytics"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Ruby on Rails",
+          "icon": ""
+        },
+        {
+          "name": "MySQL",
+          "icon": "mysql-official.svg"
+        },
+        {
+          "name": "Next.js",
+          "icon": ""
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "Tailwind CSS",
+          "icon": "tailwindcss-icon.svg"
+        },
+        {
+          "name": "Docker",
+          "icon": "docker-icon.svg"
+        }
+      ],
+      "links": {
+        "repository": null,
+        "website": null
+      }
+    },
+    {
+      "id": "multi-location-enterprise-sync",
       "category": "professional",
       "isPublic": false,
       "featured": true,
-      "caseStudySlug": "pos-sync-fiscal-compliance",
+      "caseStudySlug": "federated-pos-synchronization",
       "projectType": "Enterprise Software - Business Management Platform",
       "status": "In Production",
-      "title": "QORE - Enterprise Management Platform",
-      "description": "Complete enterprise system for centralized multi-store business management, developed with advanced technology stack: Node.js, Express.js, TypeScript, TypeORM and SQL Server on backend, React with TypeScript on frontend, and Socket.IO for real-time communication. Includes store management, sales analysis with statistical dashboards, inventory control, user management with granular permissions, and process automation. Key features: remote device configuration via proprietary ETPROXY protocol, business data synchronization, comparative analysis, product rankings, PDF/CSV export, intelligent price management, automatic backups and device-controlled licensing.",
+      "title": "Multi-Location Enterprise Sync",
+      "description": "Multi-store management platform deployed across one organization's locations. Node.js, Express.js, TypeScript, TypeORM and SQL Server on the backend, React + TypeScript on the frontend, Socket.IO for real-time. Covers store management, sales analytics with statistical dashboards, inventory control, user management with granular permissions, and process automation. Key bits: remote device configuration via a proprietary ETPROXY protocol, business data sync across locations, comparative analysis, product rankings, PDF/CSV export, rule-based price management, automated backups, and device-bound licensing.",
       "images": [
         {
-          "src": "qore/Grafics.png",
-          "alt": "Interactive chart with sales statistics and business metrics",
-          "title": "Sales Statistics"
-        },
-        {
-          "src": "qore/Chart.png",
-          "alt": "Dashboard with comparative performance charts and sales evolution",
-          "title": "Performance Charts"
-        },
-        {
-          "src": "qore/Database.png",
-          "alt": "Database visualization with structured listing of articles and transactions",
-          "title": "Database View"
-        },
-        {
-          "src": "qore/Receive.png",
-          "alt": "Article reception screen with inventory control and warehouse entries",
-          "title": "Stock Reception"
-        },
-        {
-          "src": "qore/report.png",
-          "alt": "Detailed report with user listing and assigned permissions",
-          "title": "User Reports"
-        },
-        {
-          "src": "qore/Stores.png",
-          "alt": "Store management interface with section, group and device configuration",
-          "title": "Store Management"
-        },
-        {
-          "src": "qore/Tasks.png",
-          "alt": "System automatic task list with states and priorities",
-          "title": "Task Management"
-        },
-        {
-          "src": "qore/VAT.png",
-          "alt": "VAT profile configuration with tax rules applied to articles and services",
-          "title": "VAT Configuration"
-        },
-        {
-          "src": "qore/VAT1.png",
-          "alt": "VAT rate table with percentages and applicable categories",
-          "title": "VAT Table"
+          "src": "qore/home.png",
+          "alt": "Multi-Location Enterprise Sync — illustrative dashboard view (AI-generated visualization, not the actual proprietary UI)",
+          "title": "Platform Overview"
         }
       ],
       "technologies": [
-        { "name": "Node.js", "icon": "nodejs-icon.svg" },
-        { "name": "Express.js", "icon": "express-js.svg" },
-        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
-        { "name": "TypeORM", "icon": "Typeorm--Streamline-Simple-Icons.svg" },
-        { "name": "SQL Server", "icon": "microsoft-sql-server.svg" },
-        { "name": "Socket.IO", "icon": "socketio.svg" },
-        { "name": "React", "icon": "reactjs-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "RESTful API", "icon": "getpostman-icon.svg" },
-        { "name": "C#", "icon": "visualstudio_code-icon.svg" },
-        { "name": "InnoSetup", "icon": "innosetup.svg" }
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "Express.js",
+          "icon": "express-js.svg"
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "TypeORM",
+          "icon": "Typeorm--Streamline-Simple-Icons.svg"
+        },
+        {
+          "name": "SQL Server",
+          "icon": "microsoft-sql-server.svg"
+        },
+        {
+          "name": "Socket.IO",
+          "icon": "socketio.svg"
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "CSS3",
+          "icon": "w3_css-icon.svg"
+        },
+        {
+          "name": "RESTful API",
+          "icon": "getpostman-icon.svg"
+        },
+        {
+          "name": "C#",
+          "icon": "visualstudio_code-icon.svg"
+        },
+        {
+          "name": "InnoSetup",
+          "icon": "innosetup.svg"
+        }
+      ],
+      "links": {
+        "repository": null
+      },
+      "metrics": [
+        {
+          "value": "72%",
+          "label": "Memory Cut"
+        },
+        {
+          "value": "96%",
+          "label": "Faster Pipeline"
+        },
+        {
+          "value": "500k+",
+          "label": "Docs/Month"
+        }
+      ]
+    },
+    {
+      "id": "qscope-v3-trading-platform",
+      "category": "personal",
+      "isPublic": true,
+      "featured": true,
+      "projectType": "Autonomous Crypto Trading Platform",
+      "status": "Live Testing",
+      "title": "Q-Scope V3",
+      "description": "Autonomous crypto trading platform with AI decision-making, a 7-analyst panel, and a learning engine that adjusts over time. Polyglot architecture: NestJS + TypeScript backend (11 modules, 19 services, 56 files), a Python FastAPI analyst micro-service running 7 analysts (RSI, MACD, Trend, Volume, Elliott Wave, Fibonacci, Hurst) and extracting over 100 features, Socket.IO gateway for live cycle telemetry, PostgreSQL for trades, decisions and learning data, Redis for price cache and pub/sub, Ollama for local LLM agents (decision plus post-trade learning review). The Analysis Cycle runs SCAN → SYNC → ANALYZE → CONSENSUS → AI DECIDE → EXECUTE → MONITOR → EXIT → LEARN. Analyst weights adapt over time, tuned by historical accuracy per market regime. Live integration with Binance Futures (real signed orders), CryptoCompare/CoinGecko news with sentiment classification, Fear & Greed Index. Versioned prompt system (CRUD + revert) so AI behavior can be governed without redeploys.",
+      "images": [
+        {
+          "src": "qscope-v3/dashboard.png",
+          "alt": "Q-Scope V3 dashboard with live cycle telemetry and the 7-analyst panel",
+          "title": "Dashboard"
+        },
+        {
+          "src": "qscope-v3/decisions.png",
+          "alt": "AI decision engine output: 7-analyst consensus with confidence scores per signal",
+          "title": "AI Decisions"
+        },
+        {
+          "src": "qscope-v3/analytics.png",
+          "alt": "Performance analytics across trades, decisions and learning data over time",
+          "title": "Analytics"
+        },
+        {
+          "src": "qscope-v3/position.png",
+          "alt": "Active position monitoring with stop-loss and take-profit levels",
+          "title": "Active Position"
+        },
+        {
+          "src": "qscope-v3/position-1.png",
+          "alt": "Position detail view with entry, exits and analyst contribution breakdown",
+          "title": "Position Detail"
+        },
+        {
+          "src": "qscope-v3/history.png",
+          "alt": "Trade history with per-trade post-mortem and learning review",
+          "title": "Trade History"
+        },
+        {
+          "src": "qscope-v3/news.png",
+          "alt": "Market news feed with sentiment classification and Fear & Greed Index",
+          "title": "News & Sentiment"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "NestJS",
+          "icon": ""
+        },
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "Python",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "FastAPI",
+          "icon": ""
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "Socket.IO",
+          "icon": "socketio.svg"
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": ""
+        },
+        {
+          "name": "Redis",
+          "icon": ""
+        },
+        {
+          "name": "Ollama",
+          "icon": ""
+        },
+        {
+          "name": "Binance API",
+          "icon": ""
+        }
       ],
       "links": {
         "repository": null,
         "website": null
       },
       "metrics": [
-        { "value": "72%", "label": "Memory Cut" },
-        { "value": "96%", "label": "Faster Pipeline" },
-        { "value": "900k+", "label": "POS Docs" }
-      ]
-    },
-    {
-      "id": "alice4cash-payment-machine",
-      "category": "professional",
-      "isPublic": false,
-      "featured": true,
-      "projectType": "Embedded Systems - Payment Machine Backend",
-      "status": "In Production",
-      "title": "Alice4Cash - Automated Payment System",
-      "description": "Backend webservice for Alice4Cash automated payment machine, developed in pure C for controlling complex hardware including hoppers, coin/bill validators, recycler and security safe. Uses specialized CCTalk and EID003 protocols for peripheral communication, and MQTT for mobile app integration. Key challenges: rigorous memory management in restricted environment, memory leak prevention, binary data manipulation and real-time synchronization. Features: automatic value validation, change calculation, LED control, remote MQTT monitoring and detailed transaction logging.",
-      "images": [
         {
-          "src": "alice4cash/homepage.jpg",
-          "alt": "Alice4Cash machine showing modern design with digital interface and money processing compartments",
-          "title": "Alice4Cash Machine"
+          "value": "7",
+          "label": "Analyst Panel"
         },
         {
-          "src": "alice4cash/black.jpg",
-          "alt": "Internal components view including hoppers, validators, recycler and control system",
-          "title": "Hardware Components"
+          "value": "9-Phase",
+          "label": "Cycle"
         },
         {
-          "src": "alice4cash/white.jpg",
-          "alt": "Backend webservice development interface showing C code and MQTT configurations",
-          "title": "Backend Development"
-        },
-        {
-          "src": "alice4cash/desc1.jpg",
-          "alt": "CCTalk and EID003 communication diagram between machine components",
-          "title": "Communication Protocols"
-        },
-        {
-          "src": "alice4cash/desc2.jpg",
-          "alt": "Mobile application connected via MQTT for remote monitoring and machine control",
-          "title": "Mobile MQTT Integration"
-        },
-        {
-          "src": "alice4cash/desc3.jpg",
-          "alt": "Testing environment with memory leak debugging and performance analysis",
-          "title": "Testing & Debugging"
-        },
-        {
-          "src": "alice4cash/desc4.jpg",
-          "alt": "Testing environment with memory leak debugging and performance analysis",
-          "title": "Testing & Debugging"
+          "value": "Adaptive",
+          "label": "Weights"
         }
-      ],
-      "technologies": [
-        { "name": "C Programming", "icon": "c-programming.svg" },
-        { "name": "MQTT Protocol", "icon": "mqtt-icon-solid.svg" },
-        { "name": "CCTalk Protocol", "icon": "binary-svgrepo-com.svg" },
-        { "name": "EID003 Protocol", "icon": "binary-svgrepo-com.svg" },
-        { "name": "Embedded Systems", "icon": "memory.svg" },
-        { "name": "Linux Embedded", "icon": "linux.svg" },
-        { "name": "IoT Communication", "icon": "iot.svg" }
-      ],
-      "links": {
-        "repository": null,
-        "website": "https://www.alice4cash.com/"
-      },
-      "metrics": [
-        { "value": "0", "label": "Memory Leaks" },
-        { "value": "3+", "label": "HW Protocols" },
-        { "value": "Live", "label": "MQTT Feed" }
-      ]
-    },
-    {
-      "id": "q-scope-ai-trader",
-      "category": "personal",
-      "isPublic": true,
-      "featured": true,
-      "caseStudySlug": "qscope-quantum-elliott-wave-ai",
-      "projectType": "AI Algorithmic Trading System",
-      "status": "In Production",
-      "title": "Q-Scope AI Trading Platform",
-      "description": "Complete algorithmic trading platform with advanced artificial intelligence. Integrates NEURO-AI-CORE v4.0 with multi-timeframe analysis (15m, 1h, 4h), Elliott Wave Theory, advanced Fibonacci, and Quantum Engine. Full-stack system with TypeScript/Node.js backend, React/TypeScript frontend, dynamic risk management, continuous trade monitoring, and complete Binance API integration. Includes real-time dashboard, WebSocket for price streaming, JWT authentication, and licensing system.",
-      "images": [
-        {
-          "src": "q-scope-ai/login.jpg",
-          "alt": "User authentication and login interface",
-          "title": "Authentication System"
-        },
-        {
-          "src": "q-scope-ai/dashboard.jpg",
-          "alt": "Main dashboard with real-time AI analysis",
-          "title": "AI Trading Dashboard"
-        },
-        {
-          "src": "q-scope-ai/live_signals.jpg",
-          "alt": "Live AI signals with Elliott Wave and Fibonacci",
-          "title": "Live AI Signals"
-        },
-        {
-          "src": "q-scope-ai/active_positions.jpg",
-          "alt": "Multi-timeframe analysis and quantum confluences",
-          "title": "Multi-Timeframe Analysis"
-        },
-        {
-          "src": "q-scope-ai/how_ai_works.jpg",
-          "alt": "Dynamic risk management system",
-          "title": "Dynamic Risk Management"
-        },
-        {
-          "src": "q-scope-ai/license.jpg",
-          "alt": "Licensing and access control system",
-          "title": "License Management"
-        },
-        {
-          "src": "q-scope-ai/pair_setup.jpg",
-          "alt": "Trading pair configuration and setup",
-          "title": "Pair Configuration"
-        },
-        {
-          "src": "q-scope-ai/training.jpg",
-          "alt": "AI model training and optimization",
-          "title": "AI Training Module"
-        }
-      ],
-      "technologies": [
-        { "name": "Python", "icon": "python-icon.svg" },
-        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
-        { "name": "Node.js", "icon": "nodejs-icon.svg" },
-        { "name": "React", "icon": "reactjs-icon.svg" },
-        { "name": "Express.js", "icon": "express.svg" },
-        { "name": "TypeORM", "icon": "nodejs-icon.svg" },
-        { "name": "MySQL", "icon": "mysql-official.svg" },
-        { "name": "Socket.IO", "icon": "socketio.svg" },
-        { "name": "Vite", "icon": "js.svg" },
-        { "name": "TailwindCSS", "icon": "tailwindcss-icon.svg" },
-        { "name": "Binance API", "icon": "getpostman-icon.svg" },
-        { "name": "JWT Authentication", "icon": "getpostman-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/Q-scope-AI",
-        "website": null
-      },
-      "metrics": [
-        { "value": "3", "label": "AI Models" },
-        { "value": "4x", "label": "Timeframes" },
-        { "value": "Live", "label": "Binance Feed" }
-      ]
-    },
-    {
-      "id": "smarttrade-ai",
-      "category": "personal",
-      "isPublic": true,
-      "featured": true,
-      "projectType": "AI Trading System",
-      "status": "In Development",
-      "title": "Smart Trade AI",
-      "description": "Advanced artificial intelligence system for cryptocurrency chart analysis that combines multiple machine learning technologies. Integrates Quantum based algorithms, Fibonacci, Elliott Waves, multi-timeframe analysis and portfolio optimization with Random Forest and Gradient Boosting models. Includes adaptive risk management that processes more than 50 technical indicators in real-time, replacing manual decisions with contextual analysis based on Elliott Wave patterns and AI confidence.",
-      "images": [
-        {
-          "src": "crypto_ai_analyser/dashboard.jpg",
-          "alt": "Real-time AI analysis dashboard",
-          "title": "AI Dashboard"
-        },
-        {
-          "src": "crypto_ai_analyser/elliot_waves.jpg",
-          "alt": "ML models and Elliott Wave visualization",
-          "title": "ML Models"
-        },
-        {
-          "src": "crypto_ai_analyser/fibonacci.jpg",
-          "alt": "Quantum Elliott Wave and Multi-Timeframe Analysis",
-          "title": "Quantum Analysis"
-        },
-        {
-          "src": "crypto_ai_analyser/how_ai_works.jpg",
-          "alt": "Quantum Portfolio Optimizer and Risk Manager",
-          "title": "AI Risk Management"
-        }
-      ],
-      "technologies": [
-        { "name": "Python", "icon": "python-icon.svg" },
-        { "name": "Scikit-learn", "icon": "python-icon.svg" },
-        { "name": "NumPy", "icon": "python-icon.svg" },
-        { "name": "Pandas", "icon": "python-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/trading-bot",
-        "website": null
-      },
-      "metrics": [
-        { "value": "50+", "label": "Indicators" },
-        { "value": "3", "label": "ML Models" },
-        { "value": "AI", "label": "Auto Analysis" }
       ]
     },
     {
@@ -276,8 +692,8 @@
       "caseStudySlug": "dataconvert-template-processing",
       "projectType": "SaaS Data Processing Platform",
       "status": "In Development",
-      "title": "DataConvert - Professional Data Processing Platform",
-      "description": "Complete SaaS platform for corporate data processing automation. Multi-tenant system with custom template creation, intelligent PDF table extraction using dual AI (tabula-py + pdfplumber), visual column mapping, and automated PDF→CSV/JSON conversion. Full-stack architecture with Node.js/TypeScript/Express backend, React/TypeScript frontend, JWT authentication, plan system (Free/Personal/Enterprise), and Python FastAPI service for PDF processing. Includes analytics dashboard, template management, drag-&-drop upload, and multi-tenancy system for enterprises.",
+      "title": "DataConvert",
+      "description": "SaaS platform for automating corporate data processing. Multi-tenant, with custom templates, PDF table extraction via tabula-py and pdfplumber, visual column mapping, and automated PDF→CSV/JSON conversion. Stack: Node.js/TypeScript/Express backend, React/TypeScript frontend, JWT auth, plan tiers (Free/Personal/Enterprise), and a Python FastAPI service for PDF processing. Analytics dashboard, template management, drag-and-drop upload, and a multi-tenancy system for enterprises.",
       "images": [
         {
           "src": "data-convert/landing_page.jpg",
@@ -306,582 +722,233 @@
         }
       ],
       "technologies": [
-        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
-        { "name": "React", "icon": "reactjs-icon.svg" },
-        { "name": "Node.js", "icon": "nodejs-icon.svg" },
-        { "name": "Express.js", "icon": "express.svg" },
-        { "name": "TypeORM", "icon": "nodejs-icon.svg" },
-        { "name": "PostgreSQL", "icon": "mysql-official.svg" },
-        { "name": "Python", "icon": "python-icon.svg" },
-        { "name": "FastAPI", "icon": "python-icon.svg" },
-        { "name": "Vite", "icon": "js.svg" },
-        { "name": "TailwindCSS", "icon": "tailwindcss-icon.svg" },
-        { "name": "Tabula-py", "icon": "python-icon.svg" },
-        { "name": "PDFplumber", "icon": "python-icon.svg" },
-        { "name": "Pandas", "icon": "python-icon.svg" },
-        { "name": "JWT Authentication", "icon": "getpostman-icon.svg" },
-        { "name": "Bcrypt", "icon": "visualstudio_code-icon.svg" },
-        { "name": "Axios", "icon": "js.svg" },
-        { "name": "Multer", "icon": "nodejs-icon.svg" }
+        {
+          "name": "TypeScript",
+          "icon": "typescriptlang-icon.svg"
+        },
+        {
+          "name": "React",
+          "icon": "reactjs-icon.svg"
+        },
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "Express.js",
+          "icon": "express.svg"
+        },
+        {
+          "name": "TypeORM",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "PostgreSQL",
+          "icon": "mysql-official.svg"
+        },
+        {
+          "name": "Python",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "FastAPI",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "Vite",
+          "icon": "js.svg"
+        },
+        {
+          "name": "TailwindCSS",
+          "icon": "tailwindcss-icon.svg"
+        },
+        {
+          "name": "Tabula-py",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "PDFplumber",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "Pandas",
+          "icon": "python-icon.svg"
+        },
+        {
+          "name": "JWT Authentication",
+          "icon": "getpostman-icon.svg"
+        },
+        {
+          "name": "Bcrypt",
+          "icon": "visualstudio_code-icon.svg"
+        },
+        {
+          "name": "Axios",
+          "icon": "js.svg"
+        },
+        {
+          "name": "Multer",
+          "icon": "nodejs-icon.svg"
+        }
       ],
       "links": {
         "repository": "https://github.com/mopanc/dataconvert-platform",
         "website": null
       },
       "metrics": [
-        { "value": "2", "label": "AI Extractors" },
-        { "value": "SaaS", "label": "Multi-tenant" },
-        { "value": "3", "label": "Plan Tiers" }
+        {
+          "value": "2",
+          "label": "AI Extractors"
+        },
+        {
+          "value": "SaaS",
+          "label": "Multi-tenant"
+        },
+        {
+          "value": "3",
+          "label": "Plan Tiers"
+        }
       ]
     },
     {
-      "id": "google-glass-website",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Responsive Website with Modern Redesign",
-      "status": "Completed",
-      "title": "Google Glass - Modernized Website",
-      "description": "Complete redesign of my first web project - a Google Glass website originally created following Gustavo Guanabara's course. Transformed the classic design into a modern and professional experience while maintaining all original structure and content. Implemented premium design system with sophisticated earthy palette, advanced navigation menu, complete responsiveness, fluid animations, and micro-interactions. Project includes modernized form with validation, interactive image gallery, optimized video playback, and hierarchical typography. A tribute to initial learning, elevated to current frontend development standards.",
-      "images": [
-        {
-          "src": "google_glass/homepage.jpg",
-          "alt": "Homepage with glassmorphism header and premium design",
-          "title": "Homepage Premium Design"
-        },
-        {
-          "src": "google_glass/fotos.jpg",
-          "alt": "Modern navigation menu with sophisticated hover effects",
-          "title": "Advanced Navigation"
-        },
-        {
-          "src": "google_glass/multimidia.jpg",
-          "alt": "Responsive layout with modern grid and premium typography",
-          "title": "Modern Content Layout"
-        },
-        {
-          "src": "google_glass/specs.jpg",
-          "alt": "Modernized contact form with real-time validation",
-          "title": "Modern Contact Form"
-        }
-      ],
-      "technologies": [
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "Media Queries", "icon": "w3_css-icon.svg" },
-        { "name": "Google Fonts", "icon": "google_analytics-icon.svg" },
-        { "name": "Accessibility (A11y)", "icon": "w3_html5-icon.svg" },
-        { "name": "Cross-browser Support", "icon": "visualstudio_code-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/projeto-glass-html5",
-        "website": null
-      }
-    },
-    {
-      "id": "digital-garage-management",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Web Application - Garage Management System",
-      "status": "Completed",
-      "title": "Digital Garage Management System",
-      "description": "Modern and professional garage management system built with React.js and Ant Design. The application provides complete management of automotive services with online booking, customer management, and administrative controls. Features a stunning homepage with Ferrari theme, professional workshop color scheme (dark blues and oranges), and cutting-edge technology showcase. The system includes three main sections: a marketing homepage with hero banner and service features, a comprehensive booking management system with CRUD operations, and an administrative panel for service types and booking oversight. Built with modern React patterns, the application features responsive design, animated components with fade-in effects, professional table layouts with tags and status indicators, modal forms for creating and editing bookings, and a clean administrative interface with tabbed navigation. The backend is powered by JSON Server providing RESTful API endpoints for services management. Implements modern CSS with gradients, glassmorphism effects, hover animations, and mobile-responsive design. The interface includes professional headers with navigation, modern card layouts, advanced form handling with validation, and a sophisticated color scheme reflecting automotive workshop aesthetics.",
-      "images": [
-        {
-          "src": "garage/banner.jpg",
-          "alt": "Homepage showing Digital Garage hero banner with Ferrari theme and service features",
-          "title": "Digital Garage Homepage"
-        },
-        {
-          "src": "garage/features.jpg",
-          "alt": "Booking management interface with table, filters and CRUD operations",
-          "title": "Booking Management System"
-        },
-        {
-          "src": "garage/tipos.jpg",
-          "alt": "Administrative panel for service type management",
-          "title": "Administrative Panel"
-        },
-        {
-          "src": "garage/admin1.jpg",
-          "alt": "Booking form interface with validation and controls",
-          "title": "Booking Forms Interface"
-        },
-        {
-          "src": "garage/admin2.jpg",
-          "alt": "Advanced booking management with status tracking",
-          "title": "Advanced Booking Management"
-        }
-      ],
-      "technologies": [
-        { "name": "React.js", "icon": "reactjs-icon.svg" },
-        { "name": "Ant Design", "icon": "reactjs-icon.svg" },
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "JSON Server", "icon": "js.svg" },
-        { "name": "Axios", "icon": "js.svg" },
-        { "name": "React Router", "icon": "reactjs-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/digital-garage-management",
-        "website": null
-      }
-    },
-    {
-      "id": "capitalges-website",
+      "id": "payment-machine-backend",
       "category": "professional",
       "isPublic": false,
       "featured": true,
-      "projectType": "Web Development - Corporate Website",
+      "projectType": "Embedded Systems - Payment Machine Backend",
       "status": "In Production",
-      "title": "CapitalGes - Business Consulting",
-      "description": "Professional corporate website developed for CapitalGes, a Portuguese company specializing in business consulting for micro, small, and medium enterprises. The project presents a complete web solution focused on accounting, taxation, management support, and human resources. Developed with pure PHP and robust architecture using Nginx as web server, the site offers a modern and intuitive user experience with minimalist and professional design. Key features include detailed presentation of business services, newsletter system for exclusive content, news and updates area, social media integration (LinkedIn), direct contact forms, and dynamic content management. The project was built with focus on performance and SEO, implementing Google Analytics for traffic analysis, Google Tag Manager for script management, search engine optimization, fully responsive design, and compliance with cookie regulations. The interface uses a neutral and professional color palette (white, gray, black) with clear and legible typography, custom minimalist icons, smooth animations in JavaScript and jQuery, and structured content organization by sections. Technical development employs pure PHP for greater control and performance, Nginx for serving static and dynamic content, SASS for advanced and maintainable styling, JavaScript and jQuery for interactivity, semantic HTML5 for accessibility, and CSS3 with Grid and Flexbox for responsive layouts. This project represents a complete business solution that combines professional design with robust functionality, providing CapitalGes with a solid and reliable digital presence to attract and serve their clients in the business consulting sector.",
+      "title": "Payment Machine Backend",
+      "description": "Embedded backend for an automated payment machine, written in pure C to drive the hardware: hoppers, coin and bill validators, recycler, security safe. CCTalk and ID003 for peripherals, MQTT for the mobile companion app. Tight memory management in a constrained embedded environment, leak prevention, binary protocol handling, real-time sync. Automatic value validation, change calculation, LED control, remote MQTT monitoring, detailed transaction logging.",
       "images": [
         {
-          "src": "capitalges/homepage.jpg",
-          "alt": "CapitalGes homepage showing business consulting services with minimalist design",
-          "title": "Main Page"
-        },
-        {
-          "src": "capitalges/news.jpg",
-          "alt": "Services page detailing accounting, taxation and management support",
-          "title": "Business Services"
-        },
-        {
-          "src": "capitalges/aboutus.jpg",
-          "alt": "About page with company mission and values of CapitalGes",
-          "title": "About the Company"
-        },
-        {
-          "src": "capitalges/contacts.jpg",
-          "alt": "Contact page with form and location information",
-          "title": "Contacts and Location"
-        },
-        {
-          "src": "def.png",
-          "alt": "News and updates area about business consulting",
-          "title": "News Center"
-        },
-        {
-          "src": "def.png",
-          "alt": "News and updates area about business consulting",
-          "title": "News Center"
+          "src": "alice4cash/alice.png",
+          "alt": "Payment machine backend — illustrative hardware visualization (AI-generated, not the actual proprietary product)",
+          "title": "Payment Machine"
         }
       ],
       "technologies": [
-        { "name": "PHP", "icon": "php-icon.svg" },
-        { "name": "Nginx", "icon": "docker-icon.svg" },
-        { "name": "JavaScript", "icon": "js.svg" },
-        { "name": "jQuery", "icon": "jquery-vertical.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "Sass", "icon": "sass-lang-icon.svg" },
-        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" }
-      ],
-      "links": {
-        "repository": null,
-        "website": "https://www.capitalges.pt"
-      }
-    },
-    {
-      "id": "amf-shoes-website",
-      "category": "professional",
-      "isPublic": false,
-      "featured": true,
-      "projectType": "Web Development - Corporate E-commerce Website",
-      "status": "In Production",
-      "title": "AMF Safety Shoes - Corporate Website",
-      "description": "Corporate website developed for AMF Safety Shoes, Portuguese leader in technical safety footwear (650,000 pairs/year, €20M revenue). Premium multilingual digital platform (PT/EN) that combines corporate storytelling with e-commerce functionalities. Developed with PHP, Nginx and focus on sustainability, R&D innovation and quality certifications.",
-      "images": [
         {
-          "src": "amf/homepage.jpg",
-          "alt": "AMF Safety Shoes homepage with hero section and presentation of the leading safety footwear company",
-          "title": "Corporate Homepage"
+          "name": "C Programming",
+          "icon": "c-programming.svg"
         },
         {
-          "src": "amf/page1.jpg",
-          "alt": "AMF internal page showing detailed content about products and services",
-          "title": "Content Page"
+          "name": "MQTT Protocol",
+          "icon": "mqtt-icon-solid.svg"
         },
         {
-          "src": "amf/page2.jpg",
-          "alt": "Second internal page with company information and processes",
-          "title": "Company Information"
+          "name": "CCTalk Protocol",
+          "icon": "binary-svgrepo-com.svg"
         },
         {
-          "src": "def.png",
-          "alt": "AMF mobile site version showing responsive design and optimized navigation",
-          "title": "Mobile Interface 1"
+          "name": "ID003 Protocol",
+          "icon": "binary-svgrepo-com.svg"
         },
         {
-          "src": "def.png",
-          "alt": "Second mobile interface demonstrating design adaptability for mobile devices",
-          "title": "Mobile Interface 2"
+          "name": "Embedded Systems",
+          "icon": "memory.svg"
+        },
+        {
+          "name": "Linux Embedded",
+          "icon": "linux.svg"
+        },
+        {
+          "name": "IoT Communication",
+          "icon": "iot.svg"
         }
       ],
-      "technologies": [
-        { "name": "PHP", "icon": "php-icon.svg" },
-        { "name": "Nginx", "icon": "docker-icon.svg" },
-        { "name": "JavaScript", "icon": "js.svg" },
-        { "name": "jQuery", "icon": "jquery-vertical.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "Sass", "icon": "sass-lang-icon.svg" },
-        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
-        { "name": "Google Tag Manager", "icon": "google_analytics-icon.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
-        { "name": "Multilingual Support", "icon": "w3_html5-icon.svg" }
-      ],
       "links": {
-        "repository": null,
-        "website": "https://www.amfshoes.com/pt/"
-      }
-    },
-    {
-      "id": "toworkfor-ecommerce",
-      "category": "professional",
-      "isPublic": false,
-      "featured": true,
-      "projectType": "E-commerce Development - B2C Online Store",
-      "status": "In Production",
-      "title": "Toworkfor - Safety Footwear E-commerce",
-      "description": "Complete B2C e-commerce platform developed for Toworkfor, specialized in professional safety footwear. The project presents a modern and functional online store with extensive catalog of workplace safety products, user management system, and optimized shopping experience. Developed with pure PHP and robust architecture, the site offers advanced e-commerce functionalities including intelligent shopping cart, secure checkout system, real-time inventory management, multiple payment methods, and order tracking system. The platform features premium responsive design, multilingual support (Portuguese, English, Spanish, French, German), advanced filtering system by category, size, brand and price, intelligent product search, review and rating system, loyalty program, and social media integration. Technical development includes robust PHP backend, JavaScript and jQuery for interactivity, semantic HTML5 for optimized SEO, responsive CSS3 with mobile-first design, Google Analytics and Tag Manager integration, Facebook Pixel for remarketing, GDPR compliant cookie management system, and performance optimization. The interface highlights intuitive category navigation, product visualization with zoom, wishlist system, product comparator, shipping calculator, integrated support chat, and personalized customer area. This project represents a complete e-commerce solution that combines business functionality with superior user experience, positioning Toworkfor as digital leader in the personal protective equipment and professional safety footwear market.",
-      "images": [
-        {
-          "src": "toworkfor/homepage.jpg",
-          "alt": "Toworkfor homepage showing safety footwear catalog with modern design and intuitive navigation",
-          "title": "E-commerce Homepage"
-        },
-        {
-          "src": "toworkfor/products.jpg",
-          "alt": "Product page with advanced filters, responsive grid and detailed safety footwear information",
-          "title": "Product Catalog"
-        },
-        {
-          "src": "toworkfor/shoes.jpg",
-          "alt": "Product details page showing technical specifications, images and purchase options",
-          "title": "Product Details"
-        },
-        {
-          "src": "toworkfor/login.jpg",
-          "alt": "Login and registration interface with modern design and form validation",
-          "title": "Authentication System"
-        },
-        {
-          "src": "toworkfor/menu.jpg",
-          "alt": "Navigation menu with organized categories and advanced search system",
-          "title": "Navigation and Menu"
-        },
-        {
-          "src": "def.png",
-          "alt": "Optimized mobile interface showing responsiveness and mobile device adaptation",
-          "title": "Mobile Interface 1"
-        },
-        {
-          "src": "toworkfor/mobile2.jpg",
-          "alt": "Second mobile screen demonstrating shopping cart and mobile checkout process",
-          "title": "Mobile Interface 2"
-        }
-      ],
-      "technologies": [
-        { "name": "PHP", "icon": "php-icon.svg" },
-        { "name": "MySQL", "icon": "mysql-official.svg" },
-        { "name": "JavaScript", "icon": "js.svg" },
-        { "name": "jQuery", "icon": "jquery-vertical.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "Bootstrap", "icon": "getbootstrap-icon.svg" },
-        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
-        { "name": "Google Tag Manager", "icon": "google_analytics-icon.svg" },
-        { "name": "Facebook Pixel", "icon": "slack-icon.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
-        { "name": "Multilingual Support", "icon": "w3_html5-icon.svg" },
-        { "name": "Payment Integration", "icon": "getpostman-icon.svg" },
-        { "name": "GDPR Compliance", "icon": "visualstudio_code-icon.svg" }
-      ],
-      "links": {
-        "repository": null,
-        "website": "https://www.toworkfor.pt/pt/"
-      }
-    },
-    {
-      "id": "loucas-falcao-ecommerce",
-      "category": "professional",
-      "isPublic": false,
-      "featured": true,
-      "projectType": "E-commerce Development - B2B/B2C Wholesale Platform",
-      "status": "In Production",
-      "title": "Louças Falcão - Porcelain and Decoration E-commerce",
-      "description": "Sophisticated e-commerce platform developed for Louças Falcão, Portuguese company specialized in porcelain, ceramics and decorative items based in Barcelos. The project presents a complete digital solution that combines B2B and B2C sales, offering an extensive catalog of decoration products, household utilities and collectible items. Developed with modern web technologies, the site serves both professional clients and end consumers, with functionalities adapted for both segments. The platform offers advanced navigation through multiple categories including porcelain/ceramics, marfinites/resins, glass, artificial flowers/plants, wicker/wood, porcelain dolls, toys/plushes, textiles/footwear and thematic decorations. The e-commerce system includes advanced search engine with specific filters, distinction between national and imported products, separation between decorative and utility items, professional login system for B2B clients, complete multilingual support (Portuguese, English, French, Spanish), and integration with payment and logistics systems. Technical development employs robust architecture for complex inventory management, differentiated B2B/B2C pricing system, SEO optimization for multiple languages, responsive design for all devices, Google Analytics integration for detailed analysis, and administrative interface for product and order management. The user experience highlights intuitive navigation through extensive categories, professional product visualization with zoom, wishlist and comparison system, quantity calculator for professional orders, and personalized customer area with purchase history. This project represents a specialized e-commerce solution that positions Louças Falcão as digital reference in the Portuguese decoration and household utilities market, combining artisanal tradition with modern technology.",
-      "images": [
-        {
-          "src": "falcao/homepage.jpg",
-          "alt": "Louças Falcão homepage showing porcelain, ceramics and decorative items catalog with professional navigation",
-          "title": "E-commerce Homepage"
-        },
-        {
-          "src": "falcao/products.jpg",
-          "alt": "Product page with organized grid, advanced filters and detailed categorization of pottery and decoration",
-          "title": "Product Catalog"
-        },
-        {
-          "src": "falcao/toys.jpg",
-          "alt": "Toys and collectibles section showing catalog diversity and category organization",
-          "title": "Toys and Collectibles Category"
-        }
-      ],
-      "technologies": [
-        { "name": "PHP", "icon": "php-icon.svg" },
-        { "name": "MySQL", "icon": "mysql-official.svg" },
-        { "name": "JavaScript", "icon": "js.svg" },
-        { "name": "jQuery", "icon": "jquery-vertical.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "Bootstrap", "icon": "getbootstrap-icon.svg" },
-        { "name": "Google Analytics", "icon": "google_analytics-icon.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
-        { "name": "Multilingual Support", "icon": "w3_html5-icon.svg" },
-        { "name": "Advanced Search", "icon": "google_analytics-icon.svg" },
-        { "name": "B2B Integration", "icon": "business.svg" },
-        { "name": "Inventory Management", "icon": "inventory.svg" },
-        { "name": "SEO Optimization", "icon": "google_analytics-icon.svg" }
-      ],
-      "links": {
-        "repository": null,
-        "website": "https://www.loucasfalcao.com/pt/porcelana-ceramica"
-      }
-    },
-    {
-      "id": "frontend-training-collection",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Web Development - Frontend Training Collection",
-      "status": "Completed",
-      "title": "Frontend Training Collection - Clone Projects",
-      "description": "Collection of frontend training projects developed during my self-taught programming journey, showcasing dedication to mastering HTML5, CSS3, and vanilla JavaScript through real-world interface reproduction. This collection demonstrates my autodidactic approach to learning web development by recreating popular and recognizable interfaces from major platforms. Projects include pixel-perfect recreations of Facebook's login page with authentic styling and form layouts, Instagram's login interface featuring gradient backgrounds and modern UI elements, Netflix's main homepage with responsive grid layouts and hover effects, Game of Thrones official website with immersive dark theme and medieval aesthetics, and a custom-designed modern calculator with sleek interface and full functionality. Each project focuses on different aspects of frontend development: responsive design principles, CSS Grid and Flexbox layouts, modern CSS techniques including gradients and animations, JavaScript DOM manipulation and event handling, form validation and user interactions, and cross-browser compatibility. These projects represent my commitment to continuous learning and skill development, demonstrating progression from basic HTML/CSS to more complex JavaScript interactions. Built without frameworks to master fundamental web technologies, each clone project captures the essence and functionality of the original while serving as practical exercises in frontend development best practices.",
-      "images": [
-        {
-          "src": "frontend/insta.jpg",
-          "alt": "Instagram login interface recreation with gradient backgrounds",
-          "title": "Instagram Login Clone"
-        },
-        {
-          "src": "frontend/facebook.jpg",
-          "alt": "Facebook login page clone with authentic blue theme and form layout",
-          "title": "Facebook Login Clone"
-        },
-        {
-          "src": "frontend/netflix.jpg",
-          "alt": "Netflix main page clone with movie grid and responsive design",
-          "title": "Netflix Homepage Clone"
-        },
-        {
-          "src": "frontend/gameofthrones.jpg",
-          "alt": "Game of Thrones website clone with dark medieval theme",
-          "title": "Game of Thrones Website Clone"
-        },
-        {
-          "src": "frontend/calc.jpg",
-          "alt": "Custom modern calculator with sleek design and full functionality",
-          "title": "Modern Calculator (Original Design)"
-        },
-        {
-          "src": "frontend/maccalc.jpg",
-          "alt": "Mac-style calculator with advanced functionality and design",
-          "title": "Mac Calculator Clone"
-        }
-      ],
-      "technologies": [
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" },
-        { "name": "CSS Grid", "icon": "grid.svg" },
-        { "name": "Flexbox", "icon": "flexbox.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/frontend-training-clones",
-        "website": null
-      }
-    },
-    {
-      "id": "jobscalc-freelancer-calculator",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Web Application - Freelancer Project Calculator",
-      "status": "Completed",
-      "title": "JobsCalc - Freelancer Project Calculator",
-      "description": "Full-stack web application developed during Rocketseat's Maratona Discover bootcamp for calculating freelancer project estimates and managing work hours. Features comprehensive project management with CRUD operations, automatic budget calculations based on hourly rates, project status tracking (in progress/completed), and professional dashboard with real-time metrics. Includes user profile management with customizable hourly rates, vacation planning, and work schedule configuration. Built with modern Node.js architecture using Express, EJS templating, and SQLite database. The application provides an intuitive interface for freelancers to track their projects, calculate fair pricing, and manage their professional time effectively.",
-      "images": [
-        {
-          "src": "jobs_calc/dashboard.jpg",
-          "alt": "Professional dashboard showing project overview with status cards and metrics",
-          "title": "Project Dashboard"
-        },
-        {
-          "src": "jobs_calc/profile.jpg",
-          "alt": "Profile management page with hourly rate calculator and work planning",
-          "title": "Profile & Rate Configuration"
-        },
-        {
-          "src": "def.png",
-          "alt": "Job creation form with automatic budget calculation",
-          "title": "New Project Creation"
-        }
-      ],
-      "technologies": [
-        { "name": "Node.js", "icon": "nodejs-icon.svg" },
-        { "name": "Express.js", "icon": "express.svg" },
-        { "name": "EJS", "icon": "ejs.svg" },
-        { "name": "SQLite", "icon": "sqlite.svg" },
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "MVC Architecture", "icon": "architecture.svg" },
-        { "name": "RESTful API", "icon": "getpostman-icon.svg" },
-        { "name": "Nodemon", "icon": "nodemon.svg" },
-        { "name": "NPM", "icon": "npm.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/MaratonaDiscover",
-        "website": null
-      }
-    },
-    {
-      "id": "marvel-digital-catalog",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Web Application - Marvel Comics & Characters Catalog",
-      "status": "Completed",
-      "title": "Marvel Digital Catalog",
-      "description": "Modern and interactive web application for exploring the Marvel universe, featuring comics and characters from the official Marvel API. Built with vanilla JavaScript and modern CSS techniques, the application provides a premium user experience with glassmorphism design, real-time search, advanced filtering, and a fully functional shopping cart system. Features include responsive grid layouts displaying comics and characters with detailed information, favorites system with localStorage persistence, modal dialogs for detailed views, and comprehensive cart management with checkout simulation. The interface includes a sleek navbar with cart counter, search functionality with debounce, category filters (All, Recent, Popular, Favorites), and smooth animations throughout. Implements modern CSS Grid for responsive layouts, backdrop-filter effects for glassmorphism design, and gradient animations for visual appeal. The application consumes the Marvel API with proper authentication, handles API errors gracefully, and provides loading states for better UX. Built with modular JavaScript architecture, component-based structure, and mobile-first responsive design.",
-      "images": [
-        {
-          "src": "marvel/home.jpg",
-          "alt": "Homepage showing Marvel comics grid with search bar and filters",
-          "title": "Comics Catalog Homepage"
-        },
-        {
-          "src": "marvel/characteres.jpg",
-          "alt": "Characters page displaying Marvel heroes and villains with stats",
-          "title": "Marvel Characters Gallery"
-        },
-        {
-          "src": "marvel/cart.jpg",
-          "alt": "Shopping cart interface with item management and checkout",
-          "title": "Shopping Cart System"
-        },
-        {
-          "src": "marvel/detail.jpg",
-          "alt": "Detail interface with detailed information",
-          "title": "Detailed Modal"
-        }
-      ],
-      "technologies": [
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "Marvel API", "icon": "getpostman-icon.svg" },
-        { "name": "Bootstrap 4", "icon": "getbootstrap-icon.svg" },
-        { "name": "jQuery", "icon": "jquery-vertical.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/catalogo-digital-marvel",
-        "website": null
-      }
-    },
-    {
-      "id": "monty-hall-problem",
-      "category": "personal",
-      "isPublic": true,
-      "featured": false,
-      "projectType": "Web Development - Interactive Educational Game",
-      "status": "Completed",
-      "title": "Monty Hall Problem - Interactive Game",
-      "description": "Interactive educational web application that demonstrates the famous Monty Hall probability paradox through an engaging game interface. This project recreates the classic game show scenario where players choose between three doors, with only one containing a prize, to illustrate the counterintuitive probability concept that switching doors increases winning chances from 33.3% to 66.7%. Built with Vue.js 2, the application features a visually appealing interface with realistic 3D-styled doors, animated gift presentations, and comprehensive educational content explaining the mathematical principle behind the paradox. The game includes step-by-step instructions, probability visualization cards, and a clean three-column layout that fits entirely on one screen for optimal user experience. Key features include interactive door selection and opening mechanics, animated gift reveal with bouncing effects and sparkles, automatic game state management with door reset functionality, responsive design that works across all devices, educational content explaining the probability theory, and visual probability comparison showing the mathematical advantage of switching doors. The project serves both as an entertaining game and an educational tool, making complex probability concepts accessible through hands-on interaction. Built with modern web technologies and featuring smooth animations, hover effects, and polished UI components with gradient backgrounds and glass morphism effects.",
-      "images": [
-        {
-          "src": "monthy_hall/home.jpg",
-          "alt": "Monty Hall game interface showing three doors with instructions and probability explanation",
-          "title": "Main Game Interface"
-        },
-        {
-          "src": "monthy_hall/door.jpg",
-          "alt": "Monty Hall game with door selection and probability cards visible",
-          "title": "Door Selection State"
-        },
-        {
-          "src": "monthy_hall/open.jpg",
-          "alt": "Monty Hall game showing opened door with animated gift reveal",
-          "title": "Prize Reveal Animation"
-        }
-      ],
-      "technologies": [
-        { "name": "Vue.js 2", "icon": "vue.svg" },
-        { "name": "JavaScript ES6+", "icon": "js.svg" },
-        { "name": "CSS3", "icon": "w3_css-icon.svg" },
-        { "name": "HTML5", "icon": "w3_html5-icon.svg" },
-        { "name": "CSS Grid", "icon": "grid.svg" },
-        { "name": "CSS Animations", "icon": "animation.svg" },
-        { "name": "Responsive Design", "icon": "w3_css-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/montyhall",
-        "website": null
-      }
-    },
-    {
-      "id": "depguard",
-      "category": "personal",
-      "isPublic": true,
-      "featured": true,
-      "caseStudySlug": "depguard-mcp-security-server",
-      "projectType": "Open Source - MCP Security Server",
-      "status": "Active Development",
-      "title": "depguard — MCP Security Server for AI Coding Agents",
-      "description": "Open-source MCP server for npm dependency security. AI coding agents install packages without reviewing them, depguard gives them the tools to verify before installing. Includes a pre-install guardian that checks if packages exist and detects typosquatting, dead dependency detection to find unused packages, and full vulnerability auditing with dual advisory sources (npm + GitHub). Built with TypeScript, zero runtime dependencies, 147 offline tests. Published on npm: npmjs.com/package/depguard-cli",
-      "images": [
-        {
-          "src": "depguard/home.png",
-          "alt": "depguard landing page showing MCP Security Server for AI Coding Agents",
-          "title": "Landing Page"
-        },
-        {
-          "src": "depguard/demo.png",
-          "alt": "depguard live demo showing package audit results in terminal",
-          "title": "Live Demo"
-        },
-        {
-          "src": "depguard/description.png",
-          "alt": "depguard feature overview with 9 MCP tools and scoring model",
-          "title": "Features Overview"
-        },
-        {
-          "src": "depguard/npm.png",
-          "alt": "depguard-cli package page on npm registry",
-          "title": "npm Package"
-        }
-      ],
-      "technologies": [
-        { "name": "TypeScript", "icon": "typescriptlang-icon.svg" },
-        { "name": "Node.js", "icon": "nodejs-icon.svg" },
-        { "name": "npm", "icon": "npmjs-icon.svg" },
-        { "name": "GitHub", "icon": "github-icon.svg" }
-      ],
-      "links": {
-        "repository": "https://github.com/mopanc/depguard",
-        "website": "https://depguard.dev"
+        "repository": null
       },
       "metrics": [
-        { "value": "9", "label": "MCP Tools" },
-        { "value": "0", "label": "Dependencies" },
-        { "value": "147", "label": "Tests" }
+        {
+          "value": "0",
+          "label": "Memory Leaks"
+        },
+        {
+          "value": "3+",
+          "label": "HW Protocols"
+        },
+        {
+          "value": "Live",
+          "label": "MQTT Feed"
+        }
+      ]
+    },
+    {
+      "id": "truck-scale-automation-platform",
+      "category": "professional",
+      "isPublic": false,
+      "featured": true,
+      "projectType": "Industrial Self-Service Weighbridge System",
+      "status": "In Production · Multi-site",
+      "title": "Industrial Truck Scale Automation Platform",
+      "description": "On-premise truck scale automation deployed across multiple industrial sites. Replaces manual weighing with self-service driver flows. The on-premise executable orchestrates the weighbridge end-to-end: scale instruments, programmable I/O boards (barriers, traffic lights, sensors), MUPI LED displays at both scale entries that guide drivers through every step, ticket printers, RFID readers, IP cameras with automatic license-plate recognition (ANPR), MJPEG and RTSP streams (custom integration via go2rtc). Companion Raspberry Pi monitors run the trucker and check-in interfaces, so a full weighbridge operates without anyone on site. Desktop app for local printer control and remote operation, plus a CMS for managing weighing documents and operator workflows. Built in Node.js with SQL Server, packaged via pkg + InnoSetup, hardened with Watchdog process supervision. Angular frontend.",
+      "images": [
+        {
+          "src": "truck-scale/dashboard.png",
+          "alt": "Truck scale automation platform — illustrative weighbridge dashboard view (AI-generated visualization, not the actual proprietary UI)",
+          "title": "Weighbridge Operation"
+        }
+      ],
+      "technologies": [
+        {
+          "name": "Node.js",
+          "icon": "nodejs-icon.svg"
+        },
+        {
+          "name": "JavaScript",
+          "icon": "javascript.svg"
+        },
+        {
+          "name": "SQL Server",
+          "icon": "microsoft-sql-server.svg"
+        },
+        {
+          "name": "Angular",
+          "icon": ""
+        },
+        {
+          "name": "go2rtc",
+          "icon": ""
+        },
+        {
+          "name": "RTSP",
+          "icon": ""
+        },
+        {
+          "name": "MJPEG",
+          "icon": ""
+        },
+        {
+          "name": "InnoSetup",
+          "icon": "innosetup.svg"
+        },
+        {
+          "name": "pkg",
+          "icon": ""
+        },
+        {
+          "name": "Watchdog",
+          "icon": ""
+        }
+      ],
+      "links": {
+        "repository": null,
+        "website": null
+      },
+      "metrics": [
+        {
+          "value": "Multi-site",
+          "label": "Production"
+        },
+        {
+          "value": "Zero",
+          "label": "Operators on Site"
+        },
+        {
+          "value": "8",
+          "label": "Hardware Integrations"
+        }
       ]
     }
   ]
