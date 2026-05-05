@@ -67,4 +67,11 @@ export default {
 .app--dark-page {
   background: #0a0d14;
 }
+
+/* The sticky header's backdrop-filter blurs whatever's behind it in viewport
+   space. On dark pages, body must match so the blurred backdrop is dark, not
+   the off-white default from --color-bg-primary-bk. */
+body:has(#app .app--dark-page) {
+  background: #0a0d14;
+}
 </style>
