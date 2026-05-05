@@ -24,40 +24,53 @@
 
   <url>
     <loc>https://jorgemopanc.com/contact</loc>
-    <lastmod>2025-11-15</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://jorgemopanc.com/hire</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
   </url>
 
   <url>
     <loc>https://jorgemopanc.com/about</loc>
-    <lastmod>2025-11-15</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
-  <!-- Case Study URLs -->
+  <!-- Case Study URLs (slugs match src/data/case-studies.js) -->
   <url>
-    <loc>https://jorgemopanc.com/projects/balanca-marques-iot-system</loc>
-    <lastmod>2025-11-15</lastmod>
+    <loc>https://jorgemopanc.com/projects/distributed-iot-monitoring</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jorgemopanc.com/projects/pos-sync-fiscal-compliance</loc>
-    <lastmod>2025-11-15</lastmod>
+    <loc>https://jorgemopanc.com/projects/federated-pos-synchronization</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://jorgemopanc.com/projects/dataconvert-template-processing</loc>
-    <lastmod>2025-11-15</lastmod>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://jorgemopanc.com/projects/qscope-quantum-elliott-wave-ai</loc>
-    <lastmod>2025-11-15</lastmod>
+    <loc>https://jorgemopanc.com/projects/depguard-mcp-security-server</loc>
+    <lastmod>2026-05-02</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://jorgemopanc.com/projects/quantum-elliott-wave-trading-ai</loc>
+    <lastmod>2026-05-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -65,7 +78,7 @@
   <!-- BLOG_START -->
   <url>
     <loc>https://jorgemopanc.com/blog</loc>
-    <lastmod>2026-04-26</lastmod>
+    <lastmod>2026-05-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
