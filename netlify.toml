@@ -1,7 +1,10 @@
 [build]
   publish = "dist"
-  command = "npm run build"
+  command = "npx puppeteer browsers install chrome && npm run build"
   edge_functions = "netlify/edge-functions"
+
+[build.environment]
+  PUPPETEER_CACHE_DIR = "/opt/build/repo/.cache/puppeteer"
 
 # Social media crawler OG tag injection for /blog/:slug
 [[edge_functions]]
