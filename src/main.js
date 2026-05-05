@@ -22,20 +22,22 @@ window.addEventListener('unhandledrejection', (event) => {
 
 app.provide(headSymbol, head);
 app.use(router);
-app.mount('#app');
 
-// Emit prerender event for prerender-spa-plugin
-if (window.__PRERENDER_INJECTED && window.__PRERENDER_INJECTED.prerendered) {
-  // Already prerendered, emit event immediately
-  document.dispatchEvent(new Event('render-event'));
-} else {
-  // Wait for app to be fully mounted, then emit
-  router.isReady().then(() => {
+// Wait for the router to resolve the initial route (incl. async page chunks)
+// before mounting/hydrating. Without this, lazy-loaded route components cause
+// a hydration flash on prerendered pages: <router-view> renders empty while
+// the chunk loads, blanking the prerendered HTML until the import resolves.
+router.isReady().then(() => {
+  app.mount('#app');
+
+  if (window.__PRERENDER_INJECTED && window.__PRERENDER_INJECTED.prerendered) {
+    document.dispatchEvent(new Event('render-event'));
+  } else {
     setTimeout(() => {
       document.dispatchEvent(new Event('render-event'));
     }, 100);
-  });
-}
+  }
+});
 
 // Defer ScrollReveal initialization using requestIdleCallback for better INP
 const initScrollReveal = () => {
