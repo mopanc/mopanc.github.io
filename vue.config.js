@@ -9,12 +9,8 @@ module.exports = defineConfig({
   publicPath: process.env.NODE_ENV === 'production' ? '/' : '/',
 
   configureWebpack: config => {
-    // Skip prerendering on Netlify CI (no Chrome available) or when explicitly disabled
     const shouldPrerender = process.env.NODE_ENV === 'production'
       && process.env.PRERENDER !== 'false'
-      && process.env.NETLIFY !== 'true'
-      && process.env.CI_PLATFORM !== 'netlify'
-    // Only enable prerendering in production (allow opt-out for local builds)
     if (shouldPrerender) {
       return {
         plugins: [
@@ -38,7 +34,6 @@ module.exports = defineConfig({
               '/projects/depguard-mcp-security-server',
               '/projects/quantum-elliott-wave-trading-ai',
               '/about',
-              '/certificates',
               '/contact',
               '/hire',
               '/privacy',
