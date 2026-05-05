@@ -68,10 +68,11 @@ export default {
   background: #0a0d14;
 }
 
-/* The sticky header's backdrop-filter blurs whatever's behind it in viewport
-   space. On dark pages, body must match so the blurred backdrop is dark, not
-   the off-white default from --color-bg-primary-bk. */
-body:has(#app .app--dark-page) {
+/* The sticky header has 8px transparent padding around its inner navbar pill.
+   On dark pages, that transparent zone leaks the body's off-white bg in some
+   stacking contexts (Netlify CDN paint order). Force a dark backing on the
+   sticky header so the navbar's backdrop-filter always blurs dark, not light. */
+.app--dark-page .lc-header {
   background: #0a0d14;
 }
 </style>
