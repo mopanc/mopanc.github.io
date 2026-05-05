@@ -36,13 +36,15 @@ export default {
 
     const route = useRoute()
     const isDarkPage = computed(() => {
-      const p = route.path
+      // Normalize trailing slash — Netlify redirects /about → /about/, so
+      // exact-match checks failed in production while passing locally.
+      const p = route.path.replace(/\/$/, '') || '/'
       return p === '/'
         || p.startsWith('/projects')
-        || p === '/about'
-        || p === '/certificates'
-        || p === '/blog'
-        || p === '/contact'
+        || p.startsWith('/about')
+        || p.startsWith('/certificates')
+        || p.startsWith('/blog')
+        || p.startsWith('/contact')
         || route.name === 'NotFound'
         || !route.matched.length
     })
@@ -65,14 +67,6 @@ export default {
 
 /* ═══ Dark page — homepage only ═══ */
 .app--dark-page {
-  background: #0a0d14;
-}
-
-/* The sticky header has 8px transparent padding around its inner navbar pill.
-   On dark pages, that transparent zone leaks the body's off-white bg in some
-   stacking contexts (Netlify CDN paint order). Force a dark backing on the
-   sticky header so the navbar's backdrop-filter always blurs dark, not light. */
-.app--dark-page .lc-header {
   background: #0a0d14;
 }
 </style>
