@@ -3,6 +3,16 @@ node_modules
 memory/
 *.bak
 
+# Personal docs not meant to be in the repo (PDFs, screenshots, planning notes, sketches, one-shot scripts)
+jm_docs/
+
+# Build output
+dist/
+
+# Stray screenshots dropped into the repo root
+/Screenshot*.png
+/Screenshot*.jpg
+
 
 # local env files
 .env.local

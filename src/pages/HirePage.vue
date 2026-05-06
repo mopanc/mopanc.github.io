@@ -19,7 +19,7 @@
             {{ translations.hire_cta_primary || 'Talk about a role' }}
             <i class="ri-arrow-right-line"></i>
           </a>
-          <a href="/Jorge-Morais-CV.pdf" class="hp-btn hp-btn--ghost" download>
+          <a href="/cv/jorge-morais-cv.pdf" download="Jorge-Morais-CV.pdf" class="hp-btn hp-btn--ghost">
             {{ translations.hire_cta_cv || 'Download CV' }}
             <i class="ri-download-line"></i>
           </a>

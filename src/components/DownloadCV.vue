@@ -90,12 +90,9 @@
 <script setup>
 import { ref, computed, onMounted } from 'vue'
 import { useLanguage } from '../composables/useLanguage.js'
-import { useDownload } from '../composables/useDownload.js'
 import TerminalModal from './TerminalModal.vue'
 
 const { translations, initialize } = useLanguage()
-// const { } = useDownload() // Available for future use
-useDownload() // Initialize for future use
 
 const isDownloading = ref(false)
 const showToast = ref(false)
